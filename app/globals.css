@@ -1,0 +1,43 @@
+:root{
+  --porcelain:#FDFCF8;
+  --porcelain-dim:#F4F2EA;
+  --ink:#26261F;
+  --ink-soft:#5C5A4E;
+  --oro:#827838;
+  --oro-deep:#665E2B;
+  --plata:#82817A;
+  --plata-deep:#5C5B54;
+  --line:#E4E1D4;
+  --card-bg:#FFFFFF;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  background:var(--porcelain);
+  color:var(--ink);
+  font-family:Georgia, 'Times New Roman', serif;
+}
+
+.display{
+  font-family:'Jost', Arial, sans-serif;
+  font-weight:500;
+  letter-spacing:0.01em;
+}
+
+.stamp{
+  font-family:'Jost', Arial, sans-serif;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  font-size:10.5px;
+}
+
+a{ color:inherit; }
+
+.container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 6%;
+}
