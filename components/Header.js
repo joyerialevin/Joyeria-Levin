@@ -8,8 +8,9 @@ export default function Header() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: "22px 6%",
+        padding: "20px 6%",
         borderBottom: "1px solid var(--line)",
+        background: "var(--porcelain)",
       }}
     >
       <Link href="/" style={{ display: "block" }}>
@@ -18,18 +19,18 @@ export default function Header() {
           alt="Levin Joyería & Relojería"
           width={160}
           height={82}
-          style={{ height: 48, width: "auto" }}
+          style={{ height: 52, width: "auto" }}
           priority
         />
       </Link>
-      <nav style={{ display: "flex", gap: 32 }}>
-        <Link href="/catalogo" className="stamp">
+      <nav style={{ display: "flex", gap: 36 }}>
+        <Link href="/catalogo" className="stamp" style={{ color: "var(--ink)" }}>
           Catálogo
         </Link>
-        <Link href="/sobre-nosotros" className="stamp">
+        <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--ink)" }}>
           Sobre nosotros
         </Link>
-        <Link href="/contacto" className="stamp">
+        <Link href="/contacto" className="stamp" style={{ color: "var(--ink)" }}>
           Contactanos
         </Link>
       </nav>

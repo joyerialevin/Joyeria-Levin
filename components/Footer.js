@@ -1,17 +1,19 @@
 export default function Footer() {
   return (
     <footer
+      className="stamp"
       style={{
-        padding: "24px 6%",
+        padding: "26px 6%",
         borderTop: "1px solid var(--line)",
         display: "flex",
         justifyContent: "space-between",
-        fontSize: 12,
+        fontSize: 10,
+        fontWeight: 500,
         color: "var(--ink-soft)",
         marginTop: 60,
       }}
     >
-      <span>© {new Date().getFullYear()} Joyería Levin</span>
+      <span>© {new Date().getFullYear()} Levin — Joyería &amp; Relojería</span>
       <span>Pagos con Mercado Pago</span>
     </footer>
   );
