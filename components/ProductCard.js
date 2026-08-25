@@ -71,8 +71,16 @@ export default function ProductCard({ producto }) {
             {subtitulo}
           </div>
         )}
-        <div style={{ fontSize: 15, fontWeight: 500 }}>{precioFormateado}</div>
-        <BotonComprar productoId={producto.id} />
+        {producto.precio > 0 ? (
+          <>
+            <div style={{ fontSize: 15, fontWeight: 500 }}>{precioFormateado}</div>
+            <BotonComprar productoId={producto.id} />
+          </>
+        ) : (
+          <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)" }}>
+            Precio a consultar
+          </div>
+        )}
       </div>
     </div>
   );
