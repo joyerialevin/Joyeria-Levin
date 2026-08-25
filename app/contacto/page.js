@@ -4,7 +4,7 @@ export default function ContactoPage() {
       <h2 className="display" style={{ fontSize: 28, marginBottom: 18 }}>
         Contactanos
       </h2>
-      <p style={{ color: "var(--ink-soft)", lineHeight: 1.7 }}>
+      <p style={{ color: "var(--text-inverse-soft)", lineHeight: 1.7 }}>
         Escribinos por WhatsApp o visitá el local.
       </p>
       {/* TODO: reemplazar por los datos reales */}
