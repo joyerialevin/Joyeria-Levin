@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server";
-import { mpPreference } from "../../../../lib/mercadopago";
+import { getMpPreference } from "../../../../lib/mercadopago";
 import { supabaseAdmin } from "../../../../lib/supabaseAdmin";
 
-// Recibe el carrito desde el frontend, vuelve a validar precios contra la
-// base de datos (nunca confiar en el precio que manda el navegador),
-// crea el pedido en estado "pendiente" y devuelve el link de pago de
-// Mercado Pago (Checkout Pro).
+export const dynamic = "force-dynamic";
+
 export async function POST(request) {
   try {
     const { items, cliente } = await request.json();
@@ -41,6 +39,7 @@ export async function POST(request) {
 
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
+    const mpPreference = getMpPreference();
     const preference = await mpPreference.create({
       body: {
         items: itemsMp,
