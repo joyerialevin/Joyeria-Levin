@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getMpPreference } from "../../../../lib/mercadopago";
-import { supabaseAdmin } from "../../../../lib/supabaseAdmin";
+import { getSupabaseAdmin } from "../../../../lib/supabaseAdmin";
 
 export const dynamic = "force-dynamic";
 
@@ -12,6 +12,7 @@ export async function POST(request) {
       return NextResponse.json({ error: "Carrito vacío" }, { status: 400 });
     }
 
+    const supabaseAdmin = getSupabaseAdmin();
     const ids = items.map((i) => i.id);
     const { data: productos, error } = await supabaseAdmin
       .from("productos")
@@ -69,3 +70,4 @@ export async function POST(request) {
     );
   }
 }
+
