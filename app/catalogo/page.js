@@ -1,9 +1,10 @@
-import { supabase } from "../../lib/supabaseClient";
+import { getSupabase } from "../../lib/supabaseClient";
 import CatalogoClient from "../../components/CatalogoClient";
 
 export const revalidate = 60; // vuelve a pedir los productos cada 60s
 
 export default async function CatalogoPage() {
+  const supabase = getSupabase();
   const { data: productos, error } = await supabase
     .from("productos")
     .select("*")
