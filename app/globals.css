@@ -9,6 +9,14 @@
   --plata-deep:#5C5B54;
   --line:#E4E1D4;
   --card-bg:#FFFFFF;
+
+  /* Tipografías del manual de identidad: Gill Sans (títulos / cuerpo)
+     + Georgia (subtítulos / copetes). Gill Sans no es una web font
+     licenciada para self-host, así que se apoya en la copia del
+     sistema (macOS trae "Gill Sans", Windows+Office trae "Gill Sans MT"). */
+  --font-title:'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
+  --font-editorial:Georgia, 'Times New Roman', serif;
+  --font-body:'Gill Sans MT', 'Gill Sans', Calibri, 'Segoe UI', sans-serif;
 }
 
 *{ box-sizing:border-box; }
@@ -17,18 +25,26 @@ body{
   margin:0;
   background:var(--porcelain);
   color:var(--ink);
-  font-family:Georgia, 'Times New Roman', serif;
+  font-family:var(--font-body);
+  font-weight:300;
 }
 
 .display{
-  font-family:'Jost', Arial, sans-serif;
-  font-weight:500;
-  letter-spacing:0.01em;
+  font-family:var(--font-title);
+  font-weight:700;
+  letter-spacing:-0.01em;
+}
+
+.editorial{
+  font-family:var(--font-editorial);
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:0;
 }
 
 .stamp{
-  font-family:'Jost', Arial, sans-serif;
-  font-weight:500;
+  font-family:var(--font-title);
+  font-weight:600;
   letter-spacing:0.12em;
   text-transform:uppercase;
   font-size:10.5px;
