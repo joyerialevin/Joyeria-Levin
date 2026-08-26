@@ -1,3 +1,6 @@
+const MENSAJE_WHATSAPP = "Hola! Vi la web de Joyería Levin y quería hacer una consulta.";
+const LINK_WHATSAPP = `https://wa.me/5493434728312?text=${encodeURIComponent(MENSAJE_WHATSAPP)}`;
+
 export default function ContactoPage() {
   return (
     <section className="container" style={{ padding: "70px 0", maxWidth: 640, marginLeft: "6%" }}>
@@ -12,7 +15,7 @@ export default function ContactoPage() {
         <div>
           <strong>WhatsApp:</strong>{" "}
           <a
-            href="https://wa.me/5493434728312?text=Hola!%20Quer%C3%ADa%20hacer%20una%20consulta."
+            href={LINK_WHATSAPP}
             target="_blank"
             rel="noopener noreferrer"
           >
