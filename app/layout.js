@@ -2,6 +2,7 @@ import { Hanken_Grotesk } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 // Sharp Grotesk es una fuente paga (Lineto) sin licencia disponible acá.
 // Hanken Grotesk es la alternativa gratuita más cercana en espíritu
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer />
+        <WhatsAppButton />
       </body>
     </html>
   );
