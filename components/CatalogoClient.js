@@ -1,11 +1,21 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ProductCard from "./ProductCard";
 import { CATEGORIAS, MATERIAL_LABEL, TIPO_LABEL } from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
   const [categoriaActiva, setCategoriaActiva] = useState("relojes");
+
+  // Permite entrar directo a una categoría vía /catalogo?cat=swarovski
+  // (usado por los links de "Comprá por categoría" en la home).
+  useEffect(() => {
+    const cat = new URLSearchParams(window.location.search).get("cat");
+    if (cat && CATEGORIAS.some((c) => c.slug === cat)) {
+      setCategoriaActiva(cat);
+    }
+  }, []);
+
   const [filtros, setFiltros] = useState({
     tipo: new Set(),
     marca: new Set(),
