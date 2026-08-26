@@ -159,7 +159,7 @@ export default function CatalogoClient({ productos }) {
         {/* Grilla de productos */}
         <div>
           {productosFiltrados.length === 0 ? (
-            <p style={{ color: "var(--text-inverse-soft)" }}>
+            <p style={{ color: "var(--ink-soft)" }}>
               Todavía no hay productos cargados en esta categoría.
             </p>
           ) : (
@@ -186,7 +186,7 @@ function FiltroGrupo({ titulo, children }) {
     <div style={{ marginBottom: 28 }}>
       <h4
         className="stamp"
-        style={{ fontSize: 11.5, color: "var(--text-inverse-soft)", marginBottom: 10 }}
+        style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 10 }}
       >
         {titulo}
       </h4>
@@ -205,7 +205,7 @@ function FiltroOpcion({ label, checked, onChange }) {
         fontSize: 13.5,
         padding: "6px 0",
         cursor: "pointer",
-        color: "var(--text-inverse-soft)",
+        color: "var(--ink-soft)",
       }}
     >
       <input type="checkbox" checked={checked} onChange={onChange} />

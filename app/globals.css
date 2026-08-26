@@ -1,58 +1,58 @@
 :root{
   --porcelain:#FDFCF8;
   --porcelain-dim:#F4F2EA;
+  --sunken:#F7F4EC;
   --ink:#26261F;
   --ink-soft:#5C5A4E;
   --oro:#827838;
   --oro-deep:#665E2B;
   --plata:#82817A;
   --plata-deep:#5C5B54;
-  --line:#E4E1D4;
+  --line:#DCD5BE;
   --card-bg:#FFFFFF;
   --text-inverse:#FDFCF8;
-  --text-inverse-soft:rgba(253,252,248,0.72);
+  --text-inverse-soft:#DCD5BE;
+  --radius-sm:2px;
+  --radius-pill:999px;
+  --shadow-card:0 1px 2px rgba(38,38,31,0.06), 0 8px 24px rgba(38,38,31,0.08);
 
-  /* Hanken Grotesk (self-hosteada vía next/font) para títulos y cuerpo —
-     alternativa gratuita a Sharp Grotesk, que es una fuente paga sin
-     licencia disponible. Georgia se mantiene para el registro editorial
-     (tagline en itálica). */
-  --font-title: var(--font-hanken), 'Segoe UI', Arial, sans-serif;
-  --font-editorial:Georgia, 'Times New Roman', serif;
-  --font-body: var(--font-hanken), 'Segoe UI', Arial, sans-serif;
+  /* Georgia para títulos y cuerpo (editorial), Lato (self-hosteada vía
+     next/font) para eyebrows/nav/botones en mayúscula — mismo sistema
+     tipográfico del diseño de referencia integrado. */
+  --font-serif:Georgia, 'Noto Serif', 'Times New Roman', serif;
+  --font-sans: var(--font-lato), 'Gill Sans MT', 'Gill Sans', sans-serif;
 }
 
 *{ box-sizing:border-box; }
 
 body{
   margin:0;
-  background:var(--oro);
-  color:var(--text-inverse);
-  font-family:var(--font-body);
-  font-weight:300;
+  background:var(--porcelain);
+  color:var(--ink);
+  font-family:var(--font-serif);
 }
 
 .display{
-  font-family:var(--font-title);
-  font-weight:700;
+  font-family:var(--font-serif);
+  font-weight:400;
   letter-spacing:-0.01em;
 }
 
 .editorial{
-  font-family:var(--font-editorial);
+  font-family:var(--font-serif);
   font-style:italic;
   font-weight:400;
-  letter-spacing:0;
 }
 
 .stamp{
-  font-family:var(--font-title);
-  font-weight:600;
-  letter-spacing:0.12em;
+  font-family:var(--font-sans);
+  font-weight:500;
+  letter-spacing:0.1em;
   text-transform:uppercase;
-  font-size:10.5px;
+  font-size:12px;
 }
 
-a{ color:inherit; }
+a{ color:inherit; text-decoration:none; }
 
 .container{
   max-width:1200px;
@@ -84,5 +84,23 @@ a{ color:inherit; }
 }
 .hover-lift:hover{
   transform: translateY(-3px);
-  box-shadow: 0 10px 24px rgba(38,38,31,0.18);
+  box-shadow: var(--shadow-card);
+}
+
+@keyframes levin-fade{
+  0%{ opacity:0; transform:translateY(10px); }
+  100%{ opacity:1; transform:none; }
+}
+.levin-fade{
+  animation: levin-fade 700ms ease both;
+}
+
+@keyframes levin-ticker{
+  0%{ transform:translateX(0); }
+  100%{ transform:translateX(-50%); }
+}
+.levin-ticker{
+  display:flex;
+  width:max-content;
+  animation: levin-ticker 34s linear infinite;
 }
