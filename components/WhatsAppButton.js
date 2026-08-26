@@ -1,5 +1,5 @@
 const NUMERO_WHATSAPP = "5493434728312";
-const MENSAJE = "Hola! Quería hacer una consulta.";
+const MENSAJE = "Hola! Vi la web de Joyería Levin y quería hacer una consulta.";
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(MENSAJE)}`;
