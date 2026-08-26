@@ -12,13 +12,13 @@
   --text-inverse:#FDFCF8;
   --text-inverse-soft:rgba(253,252,248,0.72);
 
-  /* Tipografías del manual de identidad: Gill Sans (títulos / cuerpo)
-     + Georgia (subtítulos / copetes). Gill Sans no es una web font
-     licenciada para self-host, así que se apoya en la copia del
-     sistema (macOS trae "Gill Sans", Windows+Office trae "Gill Sans MT"). */
-  --font-title:'Gill Sans MT', 'Gill Sans', Calibri, 'Trebuchet MS', sans-serif;
+  /* Hanken Grotesk (self-hosteada vía next/font) para títulos y cuerpo —
+     alternativa gratuita a Sharp Grotesk, que es una fuente paga sin
+     licencia disponible. Georgia se mantiene para el registro editorial
+     (tagline en itálica). */
+  --font-title: var(--font-hanken), 'Segoe UI', Arial, sans-serif;
   --font-editorial:Georgia, 'Times New Roman', serif;
-  --font-body:'Gill Sans MT', 'Gill Sans', Calibri, 'Segoe UI', sans-serif;
+  --font-body: var(--font-hanken), 'Segoe UI', Arial, sans-serif;
 }
 
 *{ box-sizing:border-box; }
