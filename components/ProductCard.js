@@ -71,6 +71,22 @@ export default function ProductCard({ producto }) {
               {badge}
             </span>
           )}
+          {producto.imagenes && producto.imagenes.length > 1 && (
+            <span
+              className="stamp"
+              style={{
+                position: "absolute",
+                top: 12,
+                right: 12,
+                padding: "4px 8px",
+                borderRadius: 2,
+                background: "rgba(38,38,31,0.72)",
+                color: "var(--text-inverse)",
+              }}
+            >
+              +{producto.imagenes.length - 1}
+            </span>
+          )}
         </div>
         <div style={{ padding: "16px 16px 20px" }}>
           <h5 className="display" style={{ fontSize: 16, marginBottom: 4 }}>
