@@ -65,6 +65,7 @@ export default function CatalogoClient({ productos }) {
               border: `1px solid ${categoriaActiva === cat.slug ? "var(--oro)" : "var(--line)"}`,
               borderRadius: 4,
               background: categoriaActiva === cat.slug ? "#FBF6EC" : "var(--card-bg)",
+              color: "var(--ink)",
               cursor: "pointer",
             }}
           >
@@ -148,7 +149,7 @@ export default function CatalogoClient({ productos }) {
         {/* Grilla de productos */}
         <div>
           {productosFiltrados.length === 0 ? (
-            <p style={{ color: "var(--ink-soft)" }}>
+            <p style={{ color: "var(--text-inverse-soft)" }}>
               Todavía no hay productos cargados en esta categoría.
             </p>
           ) : (
@@ -175,7 +176,7 @@ function FiltroGrupo({ titulo, children }) {
     <div style={{ marginBottom: 28 }}>
       <h4
         className="stamp"
-        style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 10 }}
+        style={{ fontSize: 11.5, color: "var(--text-inverse-soft)", marginBottom: 10 }}
       >
         {titulo}
       </h4>
@@ -194,7 +195,7 @@ function FiltroOpcion({ label, checked, onChange }) {
         fontSize: 13.5,
         padding: "6px 0",
         cursor: "pointer",
-        color: "var(--ink-soft)",
+        color: "var(--text-inverse-soft)",
       }}
     >
       <input type="checkbox" checked={checked} onChange={onChange} />

@@ -9,6 +9,8 @@
   --plata-deep:#5C5B54;
   --line:#E4E1D4;
   --card-bg:#FFFFFF;
+  --text-inverse:#FDFCF8;
+  --text-inverse-soft:rgba(253,252,248,0.72);
 
   /* Tipografías del manual de identidad: Gill Sans (títulos / cuerpo)
      + Georgia (subtítulos / copetes). Gill Sans no es una web font
@@ -23,8 +25,8 @@
 
 body{
   margin:0;
-  background:var(--porcelain);
-  color:var(--ink);
+  background:var(--oro);
+  color:var(--text-inverse);
   font-family:var(--font-body);
   font-weight:300;
 }

@@ -16,7 +16,7 @@ export default function HomePage() {
       <div>
         <span
           className="stamp"
-          style={{ color: "var(--oro-deep)" }}
+          style={{ color: "var(--text-inverse)" }}
         >
           Joyería &amp; Relojería
         </span>
@@ -37,7 +37,7 @@ export default function HomePage() {
           className="editorial"
           style={{
             marginTop: 24,
-            color: "var(--ink-soft)",
+            color: "var(--text-inverse-soft)",
             maxWidth: 420,
             lineHeight: 1.6,
             fontSize: 19,
@@ -48,7 +48,7 @@ export default function HomePage() {
         <p
           style={{
             marginTop: 14,
-            color: "var(--ink-soft)",
+            color: "var(--text-inverse-soft)",
             maxWidth: 420,
             lineHeight: 1.7,
             fontWeight: 300,
@@ -85,7 +85,7 @@ export default function HomePage() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          background: "var(--ink)",
+          background: "#FFFFFF",
           borderRadius: 6,
           aspectRatio: "4 / 5",
         }}

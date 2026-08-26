@@ -9,7 +9,7 @@ export default function Footer() {
         justifyContent: "space-between",
         fontSize: 10,
         fontWeight: 500,
-        color: "var(--ink-soft)",
+        color: "var(--text-inverse-soft)",
         marginTop: 60,
       }}
     >
