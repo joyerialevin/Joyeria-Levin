@@ -59,3 +59,30 @@ a{ color:inherit; }
   margin:0 auto;
   padding:0 6%;
 }
+
+.product-modal{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (max-width: 640px){
+  .product-modal{
+    grid-template-columns: 1fr;
+  }
+}
+
+.scroll-row{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  padding-bottom:8px;
+  scrollbar-width:thin;
+}
+.scroll-row > *{ flex:0 0 auto; }
+
+.hover-lift{
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.hover-lift:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(38,38,31,0.18);
+}
