@@ -4,27 +4,33 @@ export default function BrandStrip({ marcas }) {
   return (
     <section
       style={{
+        borderTop: "1px solid var(--line)",
+        borderBottom: "1px solid var(--line)",
         background: "var(--porcelain)",
-        padding: "28px 0",
+        padding: "30px 0",
+        overflow: "hidden",
       }}
     >
-      <div
-        className="container"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          gap: "14px 34px",
-        }}
-      >
-        {marcas.map((marca) => (
-          <span
-            key={marca}
-            className="stamp"
-            style={{ color: "var(--oro-deep)", fontSize: 12 }}
+      <div className="levin-ticker">
+        {[0, 1].map((rep) => (
+          <div
+            key={rep}
+            style={{
+              display: "flex",
+              gap: 72,
+              paddingRight: 72,
+            }}
           >
-            {marca}
-          </span>
+            {marcas.map((marca) => (
+              <span
+                key={marca}
+                className="stamp"
+                style={{ fontSize: 15, letterSpacing: "0.2em", color: "var(--ink-soft)", fontWeight: 300 }}
+              >
+                {marca}
+              </span>
+            ))}
+          </div>
         ))}
       </div>
     </section>

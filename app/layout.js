@@ -1,16 +1,16 @@
-import { Hanken_Grotesk } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 
-// Sharp Grotesk es una fuente paga (Lineto) sin licencia disponible acá.
-// Hanken Grotesk es la alternativa gratuita más cercana en espíritu
-// (grotesca geométrica, neutra) y se puede self-hostear vía next/font.
-const hanken = Hanken_Grotesk({
+// Lato para eyebrows/nav/botones en mayúscula (alternativa gratuita a
+// Gill Sans para self-host). Georgia, para títulos y cuerpo, es una
+// fuente de sistema y no necesita cargarse acá.
+const lato = Lato({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-hanken",
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
   display: "swap",
 });
 
@@ -22,7 +22,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" className={hanken.variable}>
+    <html lang="es" className={lato.variable}>
       <body>
         <Header />
         {children}

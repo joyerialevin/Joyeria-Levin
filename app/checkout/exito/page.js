@@ -4,7 +4,7 @@ export default function ExitoPage() {
       <h2 className="display" style={{ fontSize: 26, marginBottom: 12 }}>
         ¡Gracias por tu compra!
       </h2>
-      <p style={{ color: "var(--text-inverse-soft)" }}>
+      <p style={{ color: "var(--ink-soft)" }}>
         Tu pago fue aprobado. En breve te contactamos para coordinar la entrega.
       </p>
     </section>
