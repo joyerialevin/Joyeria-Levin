@@ -35,34 +35,74 @@ export default function CategoryStrip({ categorias }) {
           gap: 14,
         }}
       >
-        {categorias.map((cat) => (
-          <Link
-            key={cat.slug}
-            href={`/catalogo?cat=${cat.slug}`}
-            className="hover-lift"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              minHeight: 168,
-              padding: "22px 22px 20px",
-              background: "var(--card-bg)",
-              border: "1px solid var(--line)",
-              borderRadius: "var(--radius-sm)",
-              color: "var(--ink)",
-            }}
-          >
-            <div style={{ width: 24, height: 1, background: "var(--oro)" }} />
-            <div>
-              <div className="stamp" style={{ marginBottom: 8 }}>
-                {cat.nombre}
+        {categorias.map((cat) =>
+          cat.imagen ? (
+            <Link
+              key={cat.slug}
+              href={`/catalogo?cat=${cat.slug}`}
+              className="hover-lift"
+              style={{
+                position: "relative",
+                display: "block",
+                aspectRatio: "3 / 4",
+                borderRadius: "var(--radius-sm)",
+                overflow: "hidden",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={cat.imagen}
+                alt={cat.nombre}
+                style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: "linear-gradient(180deg, rgba(38,38,31,0) 45%, rgba(38,38,31,0.78) 100%)",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "flex-end",
+                  padding: 20,
+                }}
+              >
+                <div className="stamp" style={{ color: "var(--porcelain)", marginBottom: 4 }}>
+                  {cat.nombre}
+                </div>
+                <div style={{ fontSize: 13, lineHeight: 1.4, color: "rgba(253,252,248,0.82)" }}>
+                  {cat.subtexto}
+                </div>
               </div>
-              <div style={{ fontSize: 14, lineHeight: 1.5, color: "var(--ink-soft)" }}>
-                {cat.subtexto}
+            </Link>
+          ) : (
+            <Link
+              key={cat.slug}
+              href={`/catalogo?cat=${cat.slug}`}
+              className="hover-lift"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: 168,
+                padding: "22px 22px 20px",
+                background: "var(--card-bg)",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--radius-sm)",
+                color: "var(--ink)",
+              }}
+            >
+              <div style={{ width: 24, height: 1, background: "var(--oro)" }} />
+              <div>
+                <div className="stamp" style={{ marginBottom: 8 }}>
+                  {cat.nombre}
+                </div>
+                <div style={{ fontSize: 14, lineHeight: 1.5, color: "var(--ink-soft)" }}>
+                  {cat.subtexto}
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          )
+        )}
       </div>
     </section>
   );
