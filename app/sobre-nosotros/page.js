@@ -48,8 +48,15 @@ export default function SobreNosotrosPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/sobre-hero.jpg"
-          alt="Atención en el local de Joyería Levin"
-          style={{ width: "100%", height: "min(52vw, 460px)", minHeight: 280, objectFit: "cover", display: "block" }}
+          alt="Joyería Levin"
+          style={{
+            width: "100%",
+            height: "min(52vw, 460px)",
+            minHeight: 280,
+            objectFit: "cover",
+            objectPosition: "50% 22%",
+            display: "block",
+          }}
         />
         <div
           style={{
