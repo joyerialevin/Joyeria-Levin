@@ -246,6 +246,20 @@ export default function ContactoPage() {
           </form>
 
           <div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/fotos/contacto-packaging.jpg"
+              alt="Compra envuelta en packaging de Joyería Levin"
+              style={{
+                width: "100%",
+                aspectRatio: "4 / 5",
+                objectFit: "cover",
+                objectPosition: "50% 15%",
+                display: "block",
+                borderRadius: "var(--radius-sm)",
+                marginBottom: 28,
+              }}
+            />
             <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14 }}>
               El local
             </div>
