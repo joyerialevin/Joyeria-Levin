@@ -2,17 +2,11 @@
 
 import { useState } from "react";
 import { MATERIAL_LABEL, TIPO_LABEL } from "../lib/categorias";
-import BotonComprar from "./BotonComprar";
+import ConsultarWhatsApp from "./ConsultarWhatsApp";
 import ProductModal from "./ProductModal";
 
 export default function ProductCard({ producto }) {
   const [abierto, setAbierto] = useState(false);
-
-  const precioFormateado = new Intl.NumberFormat("es-AR", {
-    style: "currency",
-    currency: "ARS",
-    maximumFractionDigits: 0,
-  }).format(producto.precio);
 
   const badge = producto.material ? MATERIAL_LABEL[producto.material] : null;
 
@@ -97,18 +91,12 @@ export default function ProductCard({ producto }) {
               {subtitulo}
             </div>
           )}
-          {producto.precio > 0 ? (
-            <>
-              <div style={{ fontSize: 15, fontWeight: 500 }}>{precioFormateado}</div>
-              <div onClick={(e) => e.stopPropagation()}>
-                <BotonComprar productoId={producto.id} />
-              </div>
-            </>
-          ) : (
-            <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-              Precio a consultar
-            </div>
-          )}
+          <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)" }}>
+            Precio a consultar
+          </div>
+          <div onClick={(e) => e.stopPropagation()}>
+            <ConsultarWhatsApp titulo={producto.titulo} />
+          </div>
         </div>
       </div>
 
@@ -116,7 +104,6 @@ export default function ProductCard({ producto }) {
         <ProductModal
           producto={producto}
           subtitulo={subtitulo}
-          precioFormateado={precioFormateado}
           onClose={() => setAbierto(false)}
         />
       )}

@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import BotonComprar from "./BotonComprar";
+import ConsultarWhatsApp from "./ConsultarWhatsApp";
 
-export default function ProductModal({ producto, subtitulo, precioFormateado, onClose }) {
+export default function ProductModal({ producto, subtitulo, onClose }) {
   const galeria =
     producto.imagenes && producto.imagenes.length > 0
       ? producto.imagenes
@@ -186,18 +186,12 @@ export default function ProductModal({ producto, subtitulo, precioFormateado, on
             </p>
           )}
           <div style={{ marginTop: 24 }}>
-            {producto.precio > 0 ? (
-              <>
-                <div style={{ fontSize: 20, fontWeight: 500 }}>{precioFormateado}</div>
-                <div style={{ maxWidth: 260 }}>
-                  <BotonComprar productoId={producto.id} />
-                </div>
-              </>
-            ) : (
-              <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)" }}>
-                Precio a consultar
-              </div>
-            )}
+            <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)" }}>
+              Precio a consultar
+            </div>
+            <div style={{ maxWidth: 260 }}>
+              <ConsultarWhatsApp titulo={producto.titulo} />
+            </div>
           </div>
         </div>
       </div>

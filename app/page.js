@@ -18,6 +18,19 @@ const SUBTEXTO_ESTATICO = {
   swarovski: "Línea de cristales",
 };
 
+// Fotos elegidas a mano para las tarjetas de categoría de la home —
+// tienen prioridad sobre la foto del producto más reciente.
+const IMAGEN_CURADA = {
+  relojes:
+    "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/relojes/dsc-4333.jpg", // Reloj Citizen 1
+  swarovski:
+    "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/pulseras/pulsera-comb-10-colores.jpg",
+  anillos: "/fotos/categoria-anillos.jpg",
+  pulseras: "/fotos/categoria-pulseras.jpg",
+  cadenas: "/fotos/categoria-cadenas.jpg",
+  aros: "/fotos/categoria-aros.jpg",
+};
+
 async function getDatosHome() {
   const supabase = getSupabase();
 
@@ -51,7 +64,7 @@ async function getDatosHome() {
   const categorias = CATEGORIAS.map((cat) => ({
     slug: cat.slug,
     nombre: cat.nombre,
-    imagen: imagenPorCategoria[cat.slug] || null,
+    imagen: IMAGEN_CURADA[cat.slug] || imagenPorCategoria[cat.slug] || null,
     subtexto:
       cat.slug === "relojes"
         ? marcasRelojes.slice(0, 4).join(" · ") || "Casio · Festina · Citizen · Tissot"
