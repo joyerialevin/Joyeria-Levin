@@ -25,6 +25,7 @@ const IMAGEN_CURADA = {
     "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/relojes/dsc-4333.jpg", // Reloj Citizen 1
   swarovski:
     "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/pulseras/pulsera-comb-10-colores.jpg",
+  anillos: "/fotos/categoria-anillos.jpg",
   pulseras: "/fotos/categoria-pulseras.jpg",
   cadenas: "/fotos/categoria-cadenas.jpg",
   aros: "/fotos/categoria-aros.jpg",
