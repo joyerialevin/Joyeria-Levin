@@ -47,6 +47,7 @@ export default function Footer() {
             <a href="https://instagram.com/joyerialevin" target="_blank" rel="noopener noreferrer">
               Instagram @joyerialevin
             </a>
+            <a href="mailto:joyerialevin@gmail.com">joyerialevin@gmail.com</a>
           </div>
         </div>
         <div>
