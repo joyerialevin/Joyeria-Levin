@@ -44,61 +44,46 @@ const VALORES = [
 export default function SobreNosotrosPage() {
   return (
     <>
-      <section style={{ position: "relative" }}>
+      <section
+        className="container"
+        style={{
+          padding: "80px 6% 20px",
+          display: "grid",
+          gridTemplateColumns: "1.15fr 0.85fr",
+          gap: 56,
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+            Sobre nosotros — desde 1973
+          </div>
+          <h1 className="display" style={{ fontSize: 44, lineHeight: 1.12, margin: "0 0 22px" }}>
+            50 años de historia, familia y confianza.
+          </h1>
+          <p style={{ fontSize: 18, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
+            Lo que hoy es Joyería Levin nació en 1973 como un pequeño taller de orfebrería, levantado a puro
+            oficio. Medio siglo después, sigue siendo un negocio de familia en el mismo lugar de Paraná.
+          </p>
+        </div>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/sobre-hero.jpg"
           alt="Joyería Levin"
           style={{
             width: "100%",
-            height: "min(52vw, 460px)",
-            minHeight: 280,
+            maxWidth: 340,
+            aspectRatio: "3 / 4",
             objectFit: "cover",
-            objectPosition: "50% 22%",
+            objectPosition: "50% 18%",
             display: "block",
+            borderRadius: "var(--radius-sm)",
+            marginLeft: "auto",
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(0deg, rgba(38,38,31,0.82) 0%, rgba(38,38,31,0.15) 55%, rgba(38,38,31,0) 100%)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 6% 40px",
-          }}
-        >
-          <div className="stamp" style={{ color: "rgba(253,252,248,0.82)", fontWeight: 300, marginBottom: 14 }}>
-            Sobre nosotros — desde 1973
-          </div>
-          <h1
-            className="display"
-            style={{ fontSize: 44, lineHeight: 1.12, margin: 0, color: "var(--porcelain)", maxWidth: 600 }}
-          >
-            50 años de historia, familia y confianza.
-          </h1>
-        </div>
       </section>
 
-      <section className="container" style={{ padding: "48px 6%" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 24,
-          }}
-        >
-          <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink)", margin: 0 }}>
-            Empezamos en 1973 como un taller de orfebrería.
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0 }}>
-            Medio siglo después seguimos siendo un negocio de familia, en el mismo lugar de Paraná.
-          </p>
-        </div>
-      </section>
-
-      <section className="container" style={{ padding: "20px 6% 70px" }}>
+      <section className="container" style={{ padding: "56px 6% 70px" }}>
         <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 30 }}>
           Hitos
         </div>

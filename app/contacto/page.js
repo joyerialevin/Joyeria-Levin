@@ -150,6 +150,7 @@ export default function ContactoPage() {
           }}
           className="contacto-grid"
         >
+          <div>
           <form onSubmit={enviarPorWhatsApp} style={{ maxWidth: 520 }}>
             <h2 className="display" style={{ fontSize: 26, margin: "0 0 10px" }}>
               Consultá por una pieza
@@ -244,6 +245,23 @@ export default function ContactoPage() {
               Al enviar, se abre WhatsApp con tu consulta ya redactada — te responde una persona del local.
             </p>
           </form>
+
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/fotos/contacto-collar-detalle.jpg"
+            alt="Detalle de collar de Joyería Levin"
+            style={{
+              width: "100%",
+              maxWidth: 520,
+              aspectRatio: "4 / 3",
+              objectFit: "cover",
+              objectPosition: "50% 60%",
+              display: "block",
+              borderRadius: "var(--radius-sm)",
+              marginTop: 32,
+            }}
+          />
+          </div>
 
           <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
