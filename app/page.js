@@ -110,8 +110,8 @@ export default async function HomePage() {
               maxWidth: "44ch",
             }}
           >
-            Oro, plata y tiempo. Cada pieza se elige por su permanencia — y se entrega en mano, en nuestro local de
-            siempre.
+            Más de 50 años acompañando momentos que perduran. Joyas y relojes elegidos con dedicación, atención
+            personalizada y el cuidado de siempre.
           </p>
           <div style={{ display: "flex", gap: 10, marginBottom: 38 }}>
             {["Oro 18K", "Plata 925", "Relojería"].map((etiqueta) => (
