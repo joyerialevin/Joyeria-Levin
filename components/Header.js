@@ -34,6 +34,9 @@ export default function Header() {
           />
         </Link>
         <nav style={{ display: "flex", gap: 32, justifySelf: "center" }}>
+          <Link href="/" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+            Inicio
+          </Link>
           <Link href="/catalogo" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
             Catálogo
           </Link>
