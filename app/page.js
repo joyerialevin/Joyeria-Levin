@@ -161,34 +161,26 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", gap: 16, alignItems: "end" }}>
+        <div style={{ display: "grid", gap: 16 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/fotos/hero-aros-modelo.jpg"
             alt="Aros de oro puestos en modelo"
             style={{
               width: "100%",
-              aspectRatio: "3 / 4.1",
+              aspectRatio: "4 / 4.3",
               objectFit: "cover",
-              objectPosition: "50% 22%",
+              objectPosition: "50% 32%",
               display: "block",
               borderRadius: "var(--radius-sm)",
             }}
           />
-          <div style={{ display: "grid", gap: 16 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/hero-pulsera.jpg"
-              alt="Pulsera de oro"
-              style={{ width: "100%", aspectRatio: "3 / 4", objectFit: "cover", display: "block", borderRadius: "var(--radius-sm)" }}
-            />
-            <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14 }}>
-              <div className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
-                Perú 134 · Paraná
-              </div>
-              <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
-                Lun a sáb · 9 a 13 y 17 a 20.30
-              </div>
+          <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14 }}>
+            <div className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
+              Perú 134 · Paraná
+            </div>
+            <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
+              Lun a sáb · 9 a 13 y 17 a 20.30
             </div>
           </div>
         </div>
