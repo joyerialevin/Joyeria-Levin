@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getMpPreference } from "../../../../lib/mercadopago";
 import { getSupabaseAdmin } from "../../../../lib/supabaseAdmin";
+import { getSanity } from "../../../../lib/sanityClient";
 
 export const dynamic = "force-dynamic";
 
@@ -14,12 +15,10 @@ export async function POST(request) {
 
     const supabaseAdmin = getSupabaseAdmin();
     const ids = items.map((i) => i.id);
-    const { data: productos, error } = await supabaseAdmin
-      .from("productos")
-      .select("id, titulo, precio")
-      .in("id", ids);
-
-    if (error) throw error;
+    const productos = await getSanity().fetch(
+      `*[_type == "producto" && _id in $ids]{ "id": _id, titulo, precio }`,
+      { ids }
+    );
 
     const itemsMp = items.map((i) => {
       const producto = productos.find((p) => p.id === i.id);

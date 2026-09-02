@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getSupabase } from "../lib/supabaseClient";
+import { getSanity, DESTACADOS_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import PhotoStrip from "../components/PhotoStrip";
@@ -32,20 +32,11 @@ const IMAGEN_CURADA = {
 };
 
 async function getDatosHome() {
-  const supabase = getSupabase();
+  const sanity = getSanity();
 
-  const [{ data: resumen }, { data: destacados }] = await Promise.all([
-    supabase
-      .from("productos")
-      .select("categoria_slug,marca,imagen_url,creado_en")
-      .eq("activo", true)
-      .order("creado_en", { ascending: false }),
-    supabase
-      .from("productos")
-      .select("*")
-      .eq("activo", true)
-      .order("creado_en", { ascending: false })
-      .limit(10),
+  const [resumen, destacados] = await Promise.all([
+    sanity.fetch(RESUMEN_HOME_QUERY),
+    sanity.fetch(DESTACADOS_QUERY),
   ]);
 
   const filas = resumen || [];

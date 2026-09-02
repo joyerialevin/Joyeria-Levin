@@ -1,4 +1,4 @@
-import { getSupabase } from "../../lib/supabaseClient";
+import { getSanity, PRODUCTOS_QUERY } from "../../lib/sanityClient";
 import CatalogoClient from "../../components/CatalogoClient";
 
 export const revalidate = 60; // vuelve a pedir los productos cada 60s
@@ -9,14 +9,10 @@ const LINK_WHATSAPP = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponen
 )}`;
 
 export default async function CatalogoPage() {
-  const supabase = getSupabase();
-  const { data: productos, error } = await supabase
-    .from("productos")
-    .select("*")
-    .eq("activo", true)
-    .order("creado_en", { ascending: false });
-
-  if (error) {
+  let productos = [];
+  try {
+    productos = await getSanity().fetch(PRODUCTOS_QUERY);
+  } catch (error) {
     return (
       <div className="container" style={{ padding: "60px 0" }}>
         <p>No se pudieron cargar los productos. Intentá de nuevo más tarde.</p>
