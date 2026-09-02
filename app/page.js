@@ -99,7 +99,7 @@ export default async function HomePage() {
             className="display"
             style={{ fontSize: 64, lineHeight: 1.06, letterSpacing: "-0.01em", margin: "0 0 26px" }}
           >
-            Piezas que se heredan.
+            Joyería & Relojería Levin
           </h1>
           <p
             style={{
