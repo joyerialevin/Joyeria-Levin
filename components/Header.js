@@ -37,8 +37,14 @@ export default function Header() {
           <Link href="/" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
             Inicio
           </Link>
-          <Link href="/catalogo" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
-            Catálogo
+          <Link href="/catalogo?grupo=caballero" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+            Caballero
+          </Link>
+          <Link href="/catalogo?grupo=dama" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+            Dama
+          </Link>
+          <Link href="/catalogo?grupo=alianzas" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+            Alianzas
           </Link>
           <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
             Sobre nosotros

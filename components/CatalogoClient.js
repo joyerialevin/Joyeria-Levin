@@ -1,34 +1,59 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCard";
-import { CATEGORIAS, MATERIAL_LABEL, TIPO_LABEL } from "../lib/categorias";
+import { CATEGORIAS, GRUPOS, MATERIAL_LABEL } from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
+  const searchParams = useSearchParams();
+  const [grupoActivo, setGrupoActivo] = useState("caballero");
   const [categoriaActiva, setCategoriaActiva] = useState("relojes");
 
-  // Permite entrar directo a una categoría vía /catalogo?cat=swarovski
-  // (usado por los links de "Comprá por categoría" en la home).
+  // Permite entrar directo a un grupo vía /catalogo?grupo=dama (usado por
+  // el menú de navegación) o a una categoría vía /catalogo?cat=swarovski
+  // (usado por los links de "Comprá por categoría" en la home). Como una
+  // misma categoría puede vivir en más de un grupo (ej. relojes en
+  // Caballero y en Dama), entra al primer grupo que la contenga.
+  // Usa useSearchParams (no window.location) para que también reaccione
+  // cuando se navega entre estos links sin recargar la página.
   useEffect(() => {
-    const cat = new URLSearchParams(window.location.search).get("cat");
-    if (cat && CATEGORIAS.some((c) => c.slug === cat)) {
-      setCategoriaActiva(cat);
+    const cat = searchParams.get("cat");
+    const grupoParam = searchParams.get("grupo");
+
+    if (cat) {
+      const grupo = GRUPOS.find((g) => g.categorias.some((c) => c.slug === cat));
+      if (grupo) {
+        setGrupoActivo(grupo.slug);
+        setCategoriaActiva(cat);
+        return;
+      }
     }
-  }, []);
+
+    if (grupoParam && GRUPOS.some((g) => g.slug === grupoParam)) {
+      setGrupoActivo(grupoParam);
+      setCategoriaActiva(GRUPOS.find((g) => g.slug === grupoParam)?.categorias[0]?.slug ?? null);
+    }
+  }, [searchParams]);
 
   const [filtros, setFiltros] = useState({
-    tipo: new Set(),
     marca: new Set(),
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
   });
 
-  const categoriaInfo = CATEGORIAS.find((c) => c.slug === categoriaActiva);
+  const grupoInfo = GRUPOS.find((g) => g.slug === grupoActivo);
+  const categoriaConfig = grupoInfo?.categorias.find((c) => c.slug === categoriaActiva);
+  const categoriaInfo = categoriaConfig && CATEGORIAS.find((c) => c.slug === categoriaConfig.slug);
 
-  const productosCategoria = useMemo(
-    () => productos.filter((p) => p.categoria_slug === categoriaActiva),
-    [productos, categoriaActiva]
-  );
+  const productosCategoria = useMemo(() => {
+    if (!categoriaConfig) return [];
+    return productos.filter(
+      (p) =>
+        p.categoria_slug === categoriaConfig.slug &&
+        (categoriaConfig.tipo == null || p.tipo === categoriaConfig.tipo)
+    );
+  }, [productos, categoriaConfig]);
 
   const marcasDisponibles = useMemo(
     () =>
@@ -38,7 +63,6 @@ export default function CatalogoClient({ productos }) {
 
   const productosFiltrados = useMemo(() => {
     return productosCategoria.filter((p) => {
-      if (filtros.tipo.size && !filtros.tipo.has(p.tipo)) return false;
       if (filtros.marca.size && !filtros.marca.has(p.marca)) return false;
       if (filtros.material.size && !filtros.material.has(p.material))
         return false;
@@ -48,9 +72,13 @@ export default function CatalogoClient({ productos }) {
     });
   }, [productosCategoria, filtros]);
 
+  function limpiarFiltros() {
+    setFiltros({ marca: new Set(), material: new Set(), abridor: null });
+  }
+
   function cambiarCategoria(slug) {
     setCategoriaActiva(slug);
-    setFiltros({ tipo: new Set(), marca: new Set(), material: new Set(), abridor: null });
+    limpiarFiltros();
   }
 
   function toggleSetFiltro(campo, valor) {
@@ -63,46 +91,42 @@ export default function CatalogoClient({ productos }) {
 
   return (
     <section className="container" style={{ padding: "20px 0 90px" }}>
-      {/* Tira de categorías */}
-      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", padding: "10px 0 40px", borderBottom: "1px solid var(--line)" }}>
-        {CATEGORIAS.map((cat) => (
-          <button
-            key={cat.slug}
-            onClick={() => cambiarCategoria(cat.slug)}
-            className="stamp"
-            style={{
-              padding: "14px 22px",
-              border: `1px solid ${categoriaActiva === cat.slug ? "var(--oro)" : "var(--line)"}`,
-              borderRadius: 4,
-              background: categoriaActiva === cat.slug ? "#FBF6EC" : "var(--card-bg)",
-              color: "var(--ink)",
-              cursor: "pointer",
-            }}
-          >
-            {cat.nombre}
-          </button>
-        ))}
-      </div>
+      {/* Tira de categorías dentro del grupo activo (Caballero/Dama/Alianzas
+          se elige desde el menú de arriba, no se repite acá) */}
+      {grupoInfo.categorias.length > 0 && (
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", padding: "10px 0 40px", borderBottom: "1px solid var(--line)" }}>
+          {grupoInfo.categorias.map(({ slug }) => {
+            const cat = CATEGORIAS.find((c) => c.slug === slug);
+            return (
+              <button
+                key={slug}
+                onClick={() => cambiarCategoria(slug)}
+                className="stamp"
+                style={{
+                  padding: "14px 22px",
+                  border: `1px solid ${categoriaActiva === slug ? "var(--oro)" : "var(--line)"}`,
+                  borderRadius: 4,
+                  background: categoriaActiva === slug ? "#FBF6EC" : "var(--card-bg)",
+                  color: "var(--ink)",
+                  cursor: "pointer",
+                }}
+              >
+                {cat.nombre}
+              </button>
+            );
+          })}
+        </div>
+      )}
 
+      {!categoriaInfo ? (
+        <p style={{ color: "var(--ink-soft)", marginTop: 40 }}>Próximamente.</p>
+      ) : (
       <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 44, marginTop: 40 }}>
         {/* Filtros según la categoría activa */}
         <aside>
           <h3 className="display" style={{ fontSize: 16, marginBottom: 16 }}>
             Filtros
           </h3>
-
-          {categoriaInfo.filtros.includes("tipo") && (
-            <FiltroGrupo titulo="Tipo">
-              {["dama", "caballero"].map((v) => (
-                <FiltroOpcion
-                  key={v}
-                  label={TIPO_LABEL[v]}
-                  checked={filtros.tipo.has(v)}
-                  onChange={() => toggleSetFiltro("tipo", v)}
-                />
-              ))}
-            </FiltroGrupo>
-          )}
 
           {categoriaInfo.filtros.includes("marca") && marcasDisponibles.length > 0 && (
             <FiltroGrupo titulo="Marca">
@@ -177,6 +201,7 @@ export default function CatalogoClient({ productos }) {
           )}
         </div>
       </div>
+      )}
     </section>
   );
 }

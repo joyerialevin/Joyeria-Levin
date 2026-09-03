@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getSanity, PRODUCTOS_QUERY } from "../../lib/sanityClient";
 import CatalogoClient from "../../components/CatalogoClient";
 
@@ -22,135 +23,10 @@ export default async function CatalogoPage() {
 
   return (
     <>
-      <section style={{ position: "relative" }}>
-        <video
-          src="/videos/catalogo-hero.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            width: "100%",
-            height: "min(70vh, 620px)",
-            minHeight: 340,
-            objectFit: "cover",
-            objectPosition: "50% 30%",
-            display: "block",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(0deg, rgba(38,38,31,0.85) 0%, rgba(38,38,31,0.25) 50%, rgba(38,38,31,0) 100%)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-            padding: "0 6% 44px",
-          }}
-        >
-          <div className="stamp" style={{ color: "rgba(253,252,248,0.82)", fontWeight: 300, marginBottom: 16 }}>
-            Catálogo · Paraná, Entre Ríos
-          </div>
-          <h1
-            className="display"
-            style={{ fontSize: 48, lineHeight: 1.1, margin: "0 0 20px", color: "var(--porcelain)", maxWidth: 620 }}
-          >
-            Lo esencial siempre encuentra su lugar.
-          </h1>
-          <p
-            style={{
-              fontSize: 17,
-              lineHeight: 1.6,
-              color: "rgba(253,252,248,0.82)",
-              margin: "0 0 30px",
-              maxWidth: "44ch",
-            }}
-          >
-            Oro 18K, plata 925 y relojería seleccionada. Este catálogo reúne lo que hay en vitrina hoy — la
-            disponibilidad de talles y medidas se confirma en el local o por WhatsApp.
-          </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 28, flexWrap: "wrap" }}>
-            <a
-              href="#catalogo"
-              className="stamp"
-              style={{
-                color: "var(--porcelain)",
-                background: "var(--oro)",
-                padding: "16px 32px",
-                borderRadius: "var(--radius-sm)",
-              }}
-            >
-              Ver el catálogo
-            </a>
-            <a
-              href="#visitanos"
-              className="stamp"
-              style={{
-                color: "var(--porcelain)",
-                borderBottom: "1px solid rgba(253,252,248,0.4)",
-                paddingBottom: 4,
-                fontWeight: 400,
-              }}
-            >
-              Visitar el local
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ padding: "70px 6%" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
-          <div>
-            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 16 }}>
-              La casa
-            </div>
-            <h2 className="display" style={{ fontSize: 32, lineHeight: 1.18, margin: "0 0 20px" }}>
-              Joyería y relojería desde el centro de Paraná.
-            </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px" }}>
-              Elegimos cada pieza de a una. Oro y plata trabajados para durar, relojes que se ajustan y se reparan
-              en nuestro propio taller.
-            </p>
-            <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-              Este catálogo reúne lo que hay en vitrina hoy. La disponibilidad de talles y medidas se confirma en
-              el local.
-            </p>
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/catalogo-anillos-mano.jpg"
-              alt="Anillos de oro puestos en mano"
-              style={{
-                width: "100%",
-                aspectRatio: "3 / 4",
-                objectFit: "cover",
-                objectPosition: "50% 30%",
-                display: "block",
-                borderRadius: "var(--radius-sm)",
-                marginTop: 32,
-              }}
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/catalogo-piezas-en-uso.jpg"
-              alt="Piezas de Joyería Levin en uso"
-              style={{
-                width: "100%",
-                aspectRatio: "3 / 4",
-                objectFit: "cover",
-                objectPosition: "50% 15%",
-                display: "block",
-                borderRadius: "var(--radius-sm)",
-              }}
-            />
-          </div>
-        </div>
-      </section>
-
       <div id="catalogo">
-        <CatalogoClient productos={productos || []} />
+        <Suspense fallback={null}>
+          <CatalogoClient productos={productos || []} />
+        </Suspense>
       </div>
 
       <section style={{ background: "var(--ink)" }}>
