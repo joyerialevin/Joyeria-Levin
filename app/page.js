@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { getSanity, DESTACADOS_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
@@ -79,109 +78,106 @@ export default async function HomePage() {
         style={{
           padding: "84px 6% 64px",
           display: "grid",
-          gridTemplateColumns: "1fr 1.05fr",
+          gridTemplateColumns: "1.1fr 0.9fr",
           gap: 72,
           alignItems: "center",
         }}
       >
         <div>
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 26 }}>
-            Joyería y relojería · Paraná
-          </div>
           <h1
-            className="display"
-            style={{ fontSize: 64, lineHeight: 1.06, letterSpacing: "-0.01em", margin: "0 0 26px" }}
+            style={{
+              fontFamily: "var(--font-sans)",
+              fontWeight: 700,
+              textTransform: "uppercase",
+              fontSize: 56,
+              lineHeight: 1.08,
+              letterSpacing: "-0.01em",
+              color: "var(--ink)",
+              margin: "0 0 24px",
+            }}
           >
             Joyería & Relojería Levin
           </h1>
-          <p
+          <div style={{ width: 48, height: 2, background: "var(--oro)", margin: "0 0 20px" }} />
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, marginBottom: 24 }}>
+            Joyería & relojería en Paraná
+          </div>
+          <h2
             style={{
-              fontSize: 19,
-              lineHeight: 1.65,
-              color: "var(--ink-soft)",
-              margin: "0 0 32px",
-              maxWidth: "44ch",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 700,
+              fontSize: 27,
+              lineHeight: 1.3,
+              color: "var(--ink)",
+              margin: "0 0 20px",
+              maxWidth: "20ch",
             }}
           >
-            Más de 50 años acompañando momentos que perduran. Joyas y relojes elegidos con dedicación, atención
-            personalizada y el cuidado de siempre.
+            Más de 50 años acompañando momentos que perduran
+          </h2>
+          <p
+            style={{
+              fontSize: 17,
+              lineHeight: 1.65,
+              color: "var(--ink-soft)",
+              margin: "0 0 34px",
+              maxWidth: "40ch",
+            }}
+          >
+            Joyas y relojes elegidos con dedicación, atención personalizada y el cuidado de siempre.
           </p>
-          <div style={{ display: "flex", gap: 10, marginBottom: 38 }}>
-            {["Oro 18K", "Plata 925", "Relojería"].map((etiqueta) => (
-              <span
-                key={etiqueta}
-                className="stamp"
-                style={{
-                  padding: "5px 14px",
-                  borderRadius: "var(--radius-pill)",
-                  fontWeight: 300,
-                  fontSize: 11,
-                  background: "rgba(130,120,56,0.12)",
-                  color: "var(--oro-deep)",
-                }}
-              >
-                {etiqueta}
-              </span>
-            ))}
-          </div>
-          <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-            <Link
-              href="/catalogo"
-              className="stamp"
-              style={{
-                color: "var(--porcelain)",
-                background: "var(--oro)",
-                padding: "16px 34px",
-                borderRadius: "var(--radius-sm)",
-              }}
-            >
-              Ver catálogo
-            </Link>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
             <a
               href="https://wa.me/5493434728312"
               target="_blank"
               rel="noopener noreferrer"
               className="stamp"
               style={{
-                color: "var(--ink)",
-                borderBottom: "1px solid var(--line)",
-                paddingBottom: 4,
-                fontWeight: 400,
+                color: "var(--porcelain)",
+                background: "var(--oro)",
+                padding: "16px 28px",
+                borderRadius: "var(--radius-sm)",
               }}
             >
-              Consultar por WhatsApp
+              Escribinos por WhatsApp
+            </a>
+            <a
+              href="https://instagram.com/joyerialevin"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stamp"
+              style={{
+                color: "var(--ink)",
+                border: "1px solid var(--ink)",
+                padding: "15px 28px",
+                borderRadius: "var(--radius-sm)",
+              }}
+            >
+              Seguinos en Instagram
             </a>
           </div>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "1.35fr 1fr", gap: 16, alignItems: "end" }}>
+        <div style={{ width: "82%", marginLeft: "auto" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/fotos/hero-aros-modelo.jpg"
             alt="Aros de oro puestos en modelo"
             style={{
               width: "100%",
-              aspectRatio: "3 / 4.1",
+              aspectRatio: "3 / 3.6",
               objectFit: "cover",
               objectPosition: "50% 22%",
               display: "block",
               borderRadius: "var(--radius-sm)",
             }}
           />
-          <div style={{ display: "grid", gap: 16 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/hero-pulsera.jpg"
-              alt="Pulsera de oro"
-              style={{ width: "100%", aspectRatio: "3 / 4", objectFit: "cover", display: "block", borderRadius: "var(--radius-sm)" }}
-            />
-            <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14 }}>
-              <div className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
-                Perú 134 · Paraná
-              </div>
-              <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
-                Lun a sáb · 9 a 13 y 17 a 20.30
-              </div>
+          <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14, marginTop: 16 }}>
+            <div className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
+              Perú 134 · Paraná
+            </div>
+            <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
+              Lun a sáb · 9 a 13 y 17 a 20.30
             </div>
           </div>
         </div>
