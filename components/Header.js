@@ -82,7 +82,7 @@ export default async function Header() {
             <Link href="/catalogo?grupo=caballero" className="stamp mega-trigger">
               Caballero
             </Link>
-            <PanelGrupo grupoSlug="caballero" tipo="caballero" marcas={marcasPorTipo.caballero} />
+            <PanelGrupo grupoSlug="caballero" tipo="caballero" marcas={marcasPorTipo.caballero} alinear="left" />
           </div>
 
           <div className="mega-item">
@@ -144,10 +144,10 @@ export default async function Header() {
   );
 }
 
-function PanelGrupo({ grupoSlug, tipo, marcas }) {
+function PanelGrupo({ grupoSlug, tipo, marcas, alinear }) {
   const items = itemsDelGrupo(grupoSlug);
   return (
-    <div className="mega-panel">
+    <div className={`mega-panel${alinear === "left" ? " mega-panel-left" : ""}`}>
       <div className="mega-panel-inner">
         {items.map((item) => (
           <div key={item.slug} className="mega-col">

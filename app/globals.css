@@ -125,10 +125,12 @@ a{ color:inherit; text-decoration:none; }
   transition: opacity .15s ease, transform .15s ease, visibility .15s;
   background:var(--porcelain);
   border:1px solid var(--line);
+  max-width:calc(100vw - 32px);
   box-shadow:var(--shadow-card);
-  padding:28px 32px;
+  padding:22px 24px;
   z-index:50;
   white-space:nowrap;
+  overflow-x:auto;
 }
 .mega-item:hover .mega-panel,
 .mega-item:focus-within .mega-panel{
@@ -137,11 +139,23 @@ a{ color:inherit; text-decoration:none; }
   transform:translate(-50%, 0);
   pointer-events:auto;
 }
+/* Ítems cerca del borde izquierdo del header (ej. Caballero): el panel
+   ancho de varias columnas, centrado, se salía de la pantalla por
+   izquierda. Estos anclan a la izquierda del trigger y se abren hacia
+   la derecha, donde siempre hay lugar. */
+.mega-panel-left{
+  left:0;
+  transform:translateY(-6px);
+}
+.mega-item:hover .mega-panel-left,
+.mega-item:focus-within .mega-panel-left{
+  transform:translateY(0);
+}
 .mega-panel-inner{
   display:flex;
-  gap:40px;
+  gap:22px;
 }
-.mega-col{ min-width:150px; }
+.mega-col{ min-width:105px; }
 .mega-col-title{
   display:block;
   color:var(--ink);
