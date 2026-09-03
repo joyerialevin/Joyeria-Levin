@@ -95,6 +95,80 @@ a{ color:inherit; text-decoration:none; }
   animation: levin-fade 700ms ease both;
 }
 
+/* Mega menú del header: se abre con hover, no con click. El truco del
+   padding/margin negativo en .mega-item extiende el área de hover hasta
+   el borde inferior del header (que tiene 18px de padding), para que no
+   se pierda el hover al bajar el mouse del texto al panel. */
+.mega-nav{
+  display:flex;
+  align-items:center;
+  gap:32px;
+}
+.mega-item{
+  position:relative;
+  padding-bottom:18px;
+  margin-bottom:-18px;
+}
+.mega-trigger{
+  display:block;
+  color:var(--ink);
+  font-weight:400;
+}
+.mega-panel{
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translate(-50%, -6px);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition: opacity .15s ease, transform .15s ease, visibility .15s;
+  background:var(--porcelain);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-card);
+  padding:28px 32px;
+  z-index:50;
+  white-space:nowrap;
+}
+.mega-item:hover .mega-panel,
+.mega-item:focus-within .mega-panel{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%, 0);
+  pointer-events:auto;
+}
+.mega-panel-inner{
+  display:flex;
+  gap:40px;
+}
+.mega-col{ min-width:150px; }
+.mega-col-title{
+  display:block;
+  color:var(--ink);
+  margin-bottom:14px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+.mega-sublist{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+.mega-sublist li a{
+  font-family:var(--font-sans);
+  font-size:13.5px;
+  color:var(--ink-soft);
+}
+.mega-sublist li a:hover{ color:var(--oro-deep); }
+.mega-empty{
+  font-family:var(--font-sans);
+  font-size:13px;
+  color:var(--ink-soft);
+}
+.mega-panel-alianzas{ min-width:220px; }
+
 @keyframes levin-ticker{
   0%{ transform:translateX(0); }
   100%{ transform:translateX(-50%); }

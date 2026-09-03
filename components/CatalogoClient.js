@@ -3,44 +3,59 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import ProductCard from "./ProductCard";
-import { CATEGORIAS, GRUPOS, MATERIAL_LABEL } from "../lib/categorias";
+import {
+  CATEGORIAS,
+  GRUPOS,
+  MATERIAL_LABEL,
+  MATERIALES_ESTANDAR,
+  MATERIALES_ALIANZAS,
+} from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
   const searchParams = useSearchParams();
   const [grupoActivo, setGrupoActivo] = useState("caballero");
   const [categoriaActiva, setCategoriaActiva] = useState("relojes");
-
-  // Permite entrar directo a un grupo vía /catalogo?grupo=dama (usado por
-  // el menú de navegación) o a una categoría vía /catalogo?cat=swarovski
-  // (usado por los links de "Comprá por categoría" en la home). Como una
-  // misma categoría puede vivir en más de un grupo (ej. relojes en
-  // Caballero y en Dama), entra al primer grupo que la contenga.
-  // Usa useSearchParams (no window.location) para que también reaccione
-  // cuando se navega entre estos links sin recargar la página.
-  useEffect(() => {
-    const cat = searchParams.get("cat");
-    const grupoParam = searchParams.get("grupo");
-
-    if (cat) {
-      const grupo = GRUPOS.find((g) => g.categorias.some((c) => c.slug === cat));
-      if (grupo) {
-        setGrupoActivo(grupo.slug);
-        setCategoriaActiva(cat);
-        return;
-      }
-    }
-
-    if (grupoParam && GRUPOS.some((g) => g.slug === grupoParam)) {
-      setGrupoActivo(grupoParam);
-      setCategoriaActiva(GRUPOS.find((g) => g.slug === grupoParam)?.categorias[0]?.slug ?? null);
-    }
-  }, [searchParams]);
-
   const [filtros, setFiltros] = useState({
     marca: new Set(),
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
   });
+
+  // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
+  // categoría vía ?cat=anillos y con filtros de marca/material ya
+  // aplicados (usado por el mega menú del header y por los links de
+  // "Comprá por categoría" en la home). Como una misma categoría puede
+  // vivir en más de un grupo (ej. relojes en Caballero y en Dama), si no
+  // viene ?grupo= entra al primer grupo que contenga esa categoría.
+  // Usa useSearchParams (no window.location) para que también reaccione
+  // cuando se navega entre estos links sin recargar la página.
+  useEffect(() => {
+    const cat = searchParams.get("cat");
+    const grupoParam = searchParams.get("grupo");
+    const materialParams = searchParams.getAll("material");
+    const marcaParams = searchParams.getAll("marca");
+
+    let grupo = null;
+    let cat_ = null;
+
+    if (grupoParam && GRUPOS.some((g) => g.slug === grupoParam)) {
+      grupo = GRUPOS.find((g) => g.slug === grupoParam);
+      cat_ = cat && grupo.categorias.some((c) => c.slug === cat) ? cat : grupo.categorias[0]?.slug ?? null;
+    } else if (cat) {
+      grupo = GRUPOS.find((g) => g.categorias.some((c) => c.slug === cat));
+      cat_ = grupo ? cat : null;
+    }
+
+    if (!grupo) return;
+
+    setGrupoActivo(grupo.slug);
+    setCategoriaActiva(cat_);
+    setFiltros({
+      marca: new Set(marcaParams),
+      material: new Set(materialParams),
+      abridor: null,
+    });
+  }, [searchParams]);
 
   const grupoInfo = GRUPOS.find((g) => g.slug === grupoActivo);
   const categoriaConfig = grupoInfo?.categorias.find((c) => c.slug === categoriaActiva);
@@ -93,7 +108,7 @@ export default function CatalogoClient({ productos }) {
     <section className="container" style={{ padding: "20px 0 90px" }}>
       {/* Tira de categorías dentro del grupo activo (Caballero/Dama/Alianzas
           se elige desde el menú de arriba, no se repite acá) */}
-      {grupoInfo.categorias.length > 0 && (
+      {grupoInfo.categorias.length > 1 && (
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", padding: "10px 0 40px", borderBottom: "1px solid var(--line)" }}>
           {grupoInfo.categorias.map(({ slug }) => {
             const cat = CATEGORIAS.find((c) => c.slug === slug);
@@ -143,7 +158,7 @@ export default function CatalogoClient({ productos }) {
 
           {categoriaInfo.filtros.includes("material") && (
             <FiltroGrupo titulo="Material">
-              {["oro_18k", "plata_925"].map((v) => (
+              {(categoriaActiva === "alianzas" ? MATERIALES_ALIANZAS : MATERIALES_ESTANDAR).map((v) => (
                 <FiltroOpcion
                   key={v}
                   label={MATERIAL_LABEL[v]}

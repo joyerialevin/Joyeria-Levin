@@ -4,9 +4,11 @@ const CATEGORIA_OPTIONS = [
   { title: "Relojes", value: "relojes" },
   { title: "Anillos", value: "anillos" },
   { title: "Pulseras", value: "pulseras" },
-  { title: "Cadenas", value: "cadenas" },
-  { title: "Aros", value: "aros" },
+  { title: "Cadenas / Dijes", value: "cadenas" },
+  { title: "Aritos", value: "aros" },
   { title: "Swarovski", value: "swarovski" },
+  { title: "Bebés", value: "bebes" },
+  { title: "Alianzas", value: "alianzas" },
 ];
 
 export default defineType({

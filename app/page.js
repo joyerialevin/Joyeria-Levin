@@ -52,7 +52,9 @@ async function getDatosHome() {
     ...new Set(filas.filter((f) => f.categoria_slug === "relojes").map((f) => f.marca).filter(Boolean)),
   ];
 
-  const categorias = CATEGORIAS.map((cat) => ({
+  // Bebés y Alianzas viven en el mega menú del header pero, por ahora,
+  // no tienen tarjeta propia en esta grilla de la home.
+  const categorias = CATEGORIAS.filter((cat) => !["bebes", "alianzas"].includes(cat.slug)).map((cat) => ({
     slug: cat.slug,
     nombre: cat.nombre,
     imagen: IMAGEN_CURADA[cat.slug] || imagenPorCategoria[cat.slug] || null,
