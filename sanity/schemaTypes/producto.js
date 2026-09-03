@@ -37,8 +37,9 @@ export default defineType({
     defineField({
       name: "precio",
       title: "Precio",
+      description: "Podés dejarlo vacío y cargarlo más adelante — mientras tanto la web muestra \"Precio a consultar\".",
       type: "number",
-      validation: (Rule) => Rule.required().positive(),
+      validation: (Rule) => Rule.positive(),
     }),
     defineField({
       name: "descripcion",
@@ -69,6 +70,7 @@ export default defineType({
         list: [
           { title: "Oro 18K", value: "oro_18k" },
           { title: "Plata 925", value: "plata_925" },
+          { title: "Oro 18K y Plata 925", value: "oro_18k_y_plata_925" },
         ],
       },
     }),

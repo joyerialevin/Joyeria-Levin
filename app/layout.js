@@ -1,8 +1,6 @@
 import { Lato } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
+import SiteChrome from "../components/SiteChrome";
 
 // Lato para eyebrows/nav/botones en mayúscula (alternativa gratuita a
 // Gill Sans para self-host). Georgia, para títulos y cuerpo, es una
@@ -24,10 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es" className={lato.variable}>
       <body>
-        <Header />
-        {children}
-        <Footer />
-        <WhatsAppButton />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );
