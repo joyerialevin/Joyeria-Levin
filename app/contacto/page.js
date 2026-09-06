@@ -13,7 +13,7 @@ const MOTIVOS = [
   "Service de relojería",
   "Arreglo de joyas",
   "Grabados personalizados",
-  "Tasación",
+  "Tasación de Oro y Plata",
 ];
 
 const METODOS = [
