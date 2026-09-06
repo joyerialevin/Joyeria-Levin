@@ -72,13 +72,50 @@ export default function ContactoPage() {
   return (
     <>
       <section className="container" style={{ padding: "80px 6% 6px" }}>
-        <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
-          Realizá tu consulta
-        </h1>
-        <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
-          Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
-          WhatsApp.
-        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.05fr 1fr",
+            gap: 56,
+            alignItems: "start",
+          }}
+          className="contacto-grid"
+        >
+          <div>
+            <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
+              Realizá tu consulta
+            </h1>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
+              Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
+              WhatsApp.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gap: 14, maxWidth: 300, marginLeft: "auto" }}>
+            {METODOS.map((m) => (
+              <a
+                key={m.nombre}
+                href={m.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover-lift"
+                style={{
+                  display: "block",
+                  padding: "18px 20px 16px",
+                  borderRadius: "var(--radius-sm)",
+                  background: "var(--oro)",
+                  color: "var(--porcelain)",
+                }}
+              >
+                <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 8 }}>
+                  {m.nombre}
+                </div>
+                <div style={{ fontSize: 15, marginBottom: 4 }}>{m.valor}</div>
+                <div style={{ fontSize: 12.5, color: "var(--text-inverse-soft)" }}>{m.nota}</div>
+              </a>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="container" style={{ padding: "6px 6% 70px" }}>
@@ -177,84 +214,45 @@ export default function ContactoPage() {
       </section>
 
       <section className="container" style={{ padding: "20px 6% 70px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.05fr 1fr",
-            gap: 56,
-          }}
-          className="contacto-grid"
-        >
-          <div>
-            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
-              Visitanos
-            </div>
-            <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 24px" }}>
-              Estamos en Perú 134, Paraná, Entre Ríos.
-            </h2>
-            <a
-              href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stamp"
-              style={{ display: "inline-block", color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, marginBottom: 20 }}
-            >
-              Cómo llegar
-            </a>
-            <div
-              style={{
-                borderRadius: "var(--radius-sm)",
-                overflow: "hidden",
-                border: "1px solid var(--line)",
-                aspectRatio: "4 / 3",
-                marginBottom: 28,
-              }}
-            >
-              <iframe
-                title="Ubicación de Joyería Levin en el mapa"
-                src="https://www.google.com/maps?q=Per%C3%BA+134,+Paran%C3%A1,+Entre+R%C3%ADos&output=embed"
-                loading="lazy"
-                style={{ width: "100%", height: "100%", border: 0, display: "block" }}
-              />
-            </div>
-            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
-              Horarios
-            </div>
-            <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)" }}>
-              Lunes a viernes 9:00–13:00 y 16:00–20:00
-              <br />
-              Sábados 9:00–13:00 · Domingo cerrado
-            </div>
+        <div style={{ maxWidth: 620 }}>
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+            Visitanos
           </div>
-
-          <div>
-            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
-              Contactanos
-            </div>
-            <div style={{ display: "grid", gap: 16 }}>
-              {METODOS.map((m) => (
-                <a
-                  key={m.nombre}
-                  href={m.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover-lift"
-                  style={{
-                    display: "block",
-                    padding: "22px 22px 20px",
-                    border: "1px solid var(--line)",
-                    borderRadius: "var(--radius-sm)",
-                    color: "var(--ink)",
-                  }}
-                >
-                  <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 10 }}>
-                    {m.nombre}
-                  </div>
-                  <div style={{ fontSize: 16, marginBottom: 4 }}>{m.valor}</div>
-                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>{m.nota}</div>
-                </a>
-              ))}
-            </div>
+          <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 24px" }}>
+            Estamos en Perú 134, Paraná, Entre Ríos.
+          </h2>
+          <a
+            href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="stamp"
+            style={{ display: "inline-block", color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, marginBottom: 20 }}
+          >
+            Cómo llegar
+          </a>
+          <div
+            style={{
+              borderRadius: "var(--radius-sm)",
+              overflow: "hidden",
+              border: "1px solid var(--line)",
+              aspectRatio: "4 / 3",
+              marginBottom: 28,
+            }}
+          >
+            <iframe
+              title="Ubicación de Joyería Levin en el mapa"
+              src="https://www.google.com/maps?q=Per%C3%BA+134,+Paran%C3%A1,+Entre+R%C3%ADos&output=embed"
+              loading="lazy"
+              style={{ width: "100%", height: "100%", border: 0, display: "block" }}
+            />
+          </div>
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
+            Horarios
+          </div>
+          <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)" }}>
+            Lunes a viernes 9:00–13:00 y 16:00–20:00
+            <br />
+            Sábados 9:00–13:00 · Domingo cerrado
           </div>
         </div>
       </section>
