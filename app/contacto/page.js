@@ -11,7 +11,8 @@ const MOTIVOS = [
   "Consulta por una pieza del catálogo",
   "Alianzas y anillos de compromiso",
   "Service de relojería",
-  "Arreglo de joyas o grabado",
+  "Arreglo de joyas",
+  "Grabados personalizados",
   "Tasación",
 ];
 
