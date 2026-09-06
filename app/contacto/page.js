@@ -71,7 +71,7 @@ export default function ContactoPage() {
 
   return (
     <>
-      <section className="container" style={{ padding: "80px 6% 20px" }}>
+      <section className="container" style={{ padding: "80px 6% 6px" }}>
         <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
           Realizá tu consulta
         </h1>
@@ -81,7 +81,7 @@ export default function ContactoPage() {
         </p>
       </section>
 
-      <section className="container" style={{ padding: "30px 6% 70px" }}>
+      <section className="container" style={{ padding: "6px 6% 70px" }}>
         <div
           style={{
             display: "grid",
@@ -136,31 +136,20 @@ export default function ContactoPage() {
               />
             </label>
 
-            <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
-              <button
-                type="submit"
-                className="stamp"
-                style={{
-                  color: "var(--porcelain)",
-                  background: "var(--oro)",
-                  padding: "15px 30px",
-                  border: "none",
-                  borderRadius: "var(--radius-sm)",
-                  cursor: "pointer",
-                }}
-              >
-                Enviar consulta
-              </button>
-              <a
-                href={LINK_WHATSAPP_DIRECTO}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="stamp"
-                style={{ color: "var(--ink)", borderBottom: "1px solid var(--line)", paddingBottom: 4 }}
-              >
-                Prefiero WhatsApp
-              </a>
-            </div>
+            <button
+              type="submit"
+              className="stamp"
+              style={{
+                color: "var(--porcelain)",
+                background: "var(--oro)",
+                padding: "15px 30px",
+                border: "none",
+                borderRadius: "var(--radius-sm)",
+                cursor: "pointer",
+              }}
+            >
+              Enviar consulta
+            </button>
             <p style={{ fontSize: 12.5, color: "var(--ink-soft)", marginTop: 18, lineHeight: 1.6 }}>
               Al enviar, se abre WhatsApp con tu consulta ya redactada — te responde una persona del local.
             </p>
