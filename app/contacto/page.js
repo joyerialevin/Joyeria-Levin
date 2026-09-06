@@ -51,7 +51,6 @@ const inputStyle = {
 export default function ContactoPage() {
   const [form, setForm] = useState({
     nombre: "",
-    contacto: "",
     motivo: MOTIVOS[0],
     mensaje: "",
   });
@@ -65,7 +64,6 @@ export default function ContactoPage() {
     const sinPuntoFinal = (s) => s.trim().replace(/[.\s]+$/, "");
     const partes = [`Hola! Soy ${form.nombre || "un cliente"}.`, `Motivo: ${form.motivo}.`];
     if (form.mensaje) partes.push(`Mensaje: ${sinPuntoFinal(form.mensaje)}.`);
-    if (form.contacto) partes.push(`Mi contacto: ${sinPuntoFinal(form.contacto)}.`);
     const mensaje = partes.join(" ");
     window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`, "_blank", "noopener,noreferrer");
   }
@@ -76,7 +74,7 @@ export default function ContactoPage() {
         <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
           Realizá tu consulta
         </h1>
-        <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
+        <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
           Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
           WhatsApp.
         </p>
@@ -103,19 +101,6 @@ export default function ContactoPage() {
                 placeholder="Tu nombre"
                 value={form.nombre}
                 onChange={(e) => actualizar("nombre", e.target.value)}
-                style={inputStyle}
-              />
-            </label>
-
-            <label style={{ display: "block", marginBottom: 18 }}>
-              <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
-                Teléfono o mail
-              </div>
-              <input
-                type="text"
-                placeholder="343 000 0000"
-                value={form.contacto}
-                onChange={(e) => actualizar("contacto", e.target.value)}
                 style={inputStyle}
               />
             </label>
