@@ -28,12 +28,6 @@ const METODOS = [
     nota: "Novedades y piezas nuevas",
     href: "https://instagram.com/joyerialevin",
   },
-  {
-    nombre: "Mail",
-    valor: "joyerialevin@gmail.com",
-    nota: "Consultas y presupuestos",
-    href: "mailto:joyerialevin@gmail.com",
-  },
 ];
 
 const SERVICIOS = [
@@ -78,70 +72,17 @@ export default function ContactoPage() {
 
   return (
     <>
-      <section className="container" style={{ padding: "80px 6% 40px", maxWidth: 760 }}>
-        <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
-          Contactanos
-        </div>
-        <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px" }}>
-          Estamos en Perú 134, Paraná.
+      <section className="container" style={{ padding: "80px 6% 20px" }}>
+        <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
+          Realizá tu consulta
         </h1>
-        <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-soft)", margin: 0 }}>
-          Atendemos en el local y por WhatsApp. Contanos qué pieza buscás y te respondemos con fotos y
-          disponibilidad.
+        <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
+          Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
+          WhatsApp.
         </p>
       </section>
 
-      <section className="container" style={{ padding: "10px 6% 50px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-            gap: 16,
-          }}
-        >
-          {METODOS.map((m) => (
-            <a
-              key={m.nombre}
-              href={m.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover-lift"
-              style={{
-                display: "block",
-                padding: "22px 22px 20px",
-                border: "1px solid var(--line)",
-                borderRadius: "var(--radius-sm)",
-                color: "var(--ink)",
-              }}
-            >
-              <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 10 }}>
-                {m.nombre}
-              </div>
-              <div style={{ fontSize: 16, marginBottom: 4 }}>{m.valor}</div>
-              <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>{m.nota}</div>
-            </a>
-          ))}
-          <div
-            style={{
-              padding: "22px 22px 20px",
-              border: "1px solid var(--line)",
-              borderRadius: "var(--radius-sm)",
-              background: "var(--sunken)",
-            }}
-          >
-            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 10 }}>
-              Horarios
-            </div>
-            <div style={{ fontSize: 14, lineHeight: 1.7, color: "var(--ink)" }}>
-              Lun a vie 9–13 · 16–20
-              <br />
-              Sábados 9–13
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ padding: "20px 6% 70px" }}>
+      <section className="container" style={{ padding: "30px 6% 70px" }}>
         <div
           style={{
             display: "grid",
@@ -152,13 +93,6 @@ export default function ContactoPage() {
         >
           <div>
           <form onSubmit={enviarPorWhatsApp} style={{ maxWidth: 520 }}>
-            <h2 className="display" style={{ fontSize: 26, margin: "0 0 10px" }}>
-              Consultá por una pieza
-            </h2>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 28px" }}>
-              Armamos el mensaje y lo enviamos por WhatsApp con todos los datos.
-            </p>
-
             <label style={{ display: "block", marginBottom: 18 }}>
               <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
                 Nombre
@@ -245,22 +179,6 @@ export default function ContactoPage() {
               Al enviar, se abre WhatsApp con tu consulta ya redactada — te responde una persona del local.
             </p>
           </form>
-
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/fotos/contacto-collar-detalle.jpg"
-            alt="Detalle de collar de Joyería Levin"
-            style={{
-              width: "100%",
-              maxWidth: 520,
-              aspectRatio: "4 / 3",
-              objectFit: "cover",
-              objectPosition: "50% 60%",
-              display: "block",
-              borderRadius: "var(--radius-sm)",
-              marginTop: 32,
-            }}
-          />
           </div>
 
           <div>
@@ -270,38 +188,51 @@ export default function ContactoPage() {
               alt="Compra envuelta en packaging de Joyería Levin"
               style={{
                 width: "100%",
+                maxWidth: 340,
+                marginLeft: "auto",
                 aspectRatio: "4 / 5",
                 objectFit: "cover",
                 objectPosition: "50% 15%",
                 display: "block",
                 borderRadius: "var(--radius-sm)",
-                marginBottom: 28,
               }}
             />
-            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14 }}>
-              El local
+          </div>
+        </div>
+      </section>
+
+      <section className="container" style={{ padding: "20px 6% 70px" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.05fr 1fr",
+            gap: 56,
+          }}
+          className="contacto-grid"
+        >
+          <div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+              Visitanos
             </div>
-            <div style={{ fontSize: 17, color: "var(--ink)", marginBottom: 6 }}>Perú 134, Paraná</div>
-            <div style={{ fontSize: 14, color: "var(--ink-soft)", marginBottom: 18 }}>Entre Ríos</div>
-            <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 20px" }}>
-              A dos cuadras de Plaza 1° de Mayo, en pleno centro. Taller propio de relojería en el mismo local.
-            </p>
+            <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 24px" }}>
+              Estamos en Perú 134, Paraná, Entre Ríos.
+            </h2>
             <a
               href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
               target="_blank"
               rel="noopener noreferrer"
               className="stamp"
-              style={{ color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4 }}
+              style={{ display: "inline-block", color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, marginBottom: 20 }}
             >
               Cómo llegar
             </a>
             <div
               style={{
-                marginTop: 24,
                 borderRadius: "var(--radius-sm)",
                 overflow: "hidden",
                 border: "1px solid var(--line)",
                 aspectRatio: "4 / 3",
+                marginBottom: 28,
               }}
             >
               <iframe
@@ -310,6 +241,44 @@ export default function ContactoPage() {
                 loading="lazy"
                 style={{ width: "100%", height: "100%", border: 0, display: "block" }}
               />
+            </div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
+              Horarios
+            </div>
+            <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)" }}>
+              Lunes a viernes 9:00–13:00 y 16:00–20:00
+              <br />
+              Sábados 9:00–13:00 · Domingo cerrado
+            </div>
+          </div>
+
+          <div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+              Contactanos
+            </div>
+            <div style={{ display: "grid", gap: 16 }}>
+              {METODOS.map((m) => (
+                <a
+                  key={m.nombre}
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover-lift"
+                  style={{
+                    display: "block",
+                    padding: "22px 22px 20px",
+                    border: "1px solid var(--line)",
+                    borderRadius: "var(--radius-sm)",
+                    color: "var(--ink)",
+                  }}
+                >
+                  <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 10 }}>
+                    {m.nombre}
+                  </div>
+                  <div style={{ fontSize: 16, marginBottom: 4 }}>{m.valor}</div>
+                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>{m.nota}</div>
+                </a>
+              ))}
             </div>
           </div>
         </div>
