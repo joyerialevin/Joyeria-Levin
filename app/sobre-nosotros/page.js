@@ -1,38 +1,4 @@
-const HITOS = [
-  {
-    anio: "1973",
-    titulo: "El taller donde empezó todo",
-    texto:
-      "David Levin llegó a Paraná con años de oficio como orfebre y abrió un pequeño taller dedicado a restaurar y fabricar piezas a mano. No había vitrinas ni ventas: solo trabajo artesanal, en el mismo lugar donde la joyería sigue funcionando hoy.",
-    foto: { src: "/fotos/sobre-hito-1973.jpg", alt: "Trabajo de orfebrería sobre el mostrador" },
-  },
-  {
-    anio: "1973–1986",
-    titulo: "El joyero de referencia",
-    texto:
-      "David se ganó fama entre sus colegas: muchos clientes se quedaban tardes enteras observándolo trabajar. Su esposa Clara lo acompañó en cada jornada. Fueron años exigentes —el local llegó a dividirse en dos para sostener el negocio— pero la dedicación nunca faltó.",
-  },
-  {
-    anio: "1986–1991",
-    titulo: "Clara y Ricardo continúan",
-    texto:
-      "David falleció en 1986, a los 59 años. Clara siguió al frente del negocio mientras Ricardo, su hijo, aprendía el oficio con el apoyo de otros colegas. Sin la misma formación en orfebrería, empezaron a orientar el comercio hacia la venta de relojes y joyas.",
-    foto: { src: "/fotos/sobre-hito-vitrina.jpg", alt: "Vitrina de joyas y relojes" },
-  },
-  {
-    anio: "1991–1992",
-    titulo: "Un nuevo local, una nueva etapa",
-    texto:
-      "Ricardo asumió por completo la conducción del negocio. Al año siguiente conoció a Nanci —hoy su esposa— y juntos reformaron y unificaron el local, que volvió a crecer con rapidez incorporando productos modernos y exclusivos para la ciudad.",
-  },
-  {
-    anio: "Hoy",
-    titulo: "Adriana y Débora, la cara del local",
-    texto:
-      "Tercera generación atendiendo detrás del mismo mostrador, en Perú 134, con la misma dedicación de siempre.",
-    foto: { src: "/fotos/sobre-hito-hoy.jpg", alt: "Asesoramiento sobre una pieza" },
-  },
-];
+import Link from "next/link";
 
 const VALORES = [
   { nombre: "Confianza", texto: "Clientes que vuelven desde hace tres generaciones." },
@@ -44,94 +10,144 @@ const VALORES = [
 export default function SobreNosotrosPage() {
   return (
     <>
-      <section
-        className="container"
-        style={{
-          padding: "80px 6% 20px",
-          display: "grid",
-          gridTemplateColumns: "1.15fr 0.85fr",
-          gap: 56,
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
-            Sobre nosotros — desde 1973
-          </div>
-          <h1 className="display" style={{ fontSize: 44, lineHeight: 1.12, margin: "0 0 22px" }}>
-            50 años de historia, familia y confianza.
-          </h1>
-          <p style={{ fontSize: 18, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-            Lo que hoy es Joyería Levin nació en 1973 como un pequeño taller de orfebrería, levantado a puro
-            oficio. Medio siglo después, sigue siendo un negocio de familia en el mismo lugar de Paraná.
-          </p>
+      {/* 1. Presentación */}
+      <section className="container" style={{ padding: "80px 6% 56px", textAlign: "center" }}>
+        <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+          Sobre nosotros · Desde 1973
         </div>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/fotos/sobre-hero.jpg"
-          alt="Joyería Levin"
-          style={{
-            width: "100%",
-            maxWidth: 340,
-            aspectRatio: "3 / 4",
-            objectFit: "cover",
-            objectPosition: "50% 18%",
-            display: "block",
-            borderRadius: "var(--radius-sm)",
-            marginLeft: "auto",
-          }}
-        />
+        <h1
+          className="display"
+          style={{ fontSize: 40, lineHeight: 1.18, margin: "0 auto 22px", maxWidth: 720 }}
+        >
+          Una historia de familia construida sobre la confianza
+        </h1>
+        <p style={{ fontSize: 18, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 auto", maxWidth: "52ch" }}>
+          Desde hace más de 50 años acompañamos a familias de Paraná en sus momentos más importantes.
+        </p>
       </section>
 
-      <section className="container" style={{ padding: "56px 6% 70px" }}>
-        <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 30 }}>
-          Hitos
+      {/* 2. Fotografía histórica a todo lo ancho */}
+      <section aria-label="Nuestra historia">
+        <div className="sobre-historica" style={{ position: "relative", overflow: "hidden", background: "var(--ink)" }}>
+          {/*
+            TODO: reemplazar por la fotografía histórica que enviará la clienta.
+            Cuando esté lista, reemplazar el div de abajo por una <img> (o
+            next/image) con object-fit: cover y el object-position ajustado
+            al punto principal de la foto — dejando encima la capa oscura
+            que ya está puesta para que el texto blanco se siga leyendo.
+          */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(135deg, #3a3625 0%, #26261f 100%)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <span className="stamp" style={{ color: "var(--text-inverse-soft)", fontWeight: 300 }}>
+              Fotografía histórica — próximamente
+            </span>
+          </div>
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "linear-gradient(180deg, rgba(38,38,31,0.25) 0%, rgba(38,38,31,0.8) 100%)",
+            }}
+          />
+          <div
+            className="container"
+            style={{ position: "relative", height: "100%", display: "flex", alignItems: "flex-end", padding: "0 6% 48px" }}
+          >
+            <div style={{ maxWidth: 550 }}>
+              <div
+                className="display"
+                style={{ fontSize: "clamp(36px, 8vw, 52px)", lineHeight: 1, color: "var(--oro)", marginBottom: 12 }}
+              >
+                1973
+              </div>
+              <h2
+                className="display"
+                style={{ fontSize: "clamp(22px, 5vw, 28px)", lineHeight: 1.2, color: "var(--porcelain)", margin: "0 0 14px" }}
+              >
+                Donde empezó todo
+              </h2>
+              <p style={{ fontSize: 16, lineHeight: 1.7, color: "rgba(253,252,248,0.85)", margin: 0 }}>
+                David Levin abrió un pequeño taller de orfebrería en Perú 134. Con oficio, dedicación y el
+                apoyo de Clara, comenzó una historia familiar que continúa hasta hoy.
+              </p>
+            </div>
+          </div>
         </div>
-        <div style={{ maxWidth: 1120 }}>
-          {HITOS.map((h) => (
+      </section>
+
+      {/* 3. El presente */}
+      <section className="container" style={{ padding: "72px 6%" }}>
+        <div
+          className="sobre-presente-grid"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}
+        >
+          <div style={{ position: "relative" }}>
+            {/* TODO: reemplazar por una fotografía actual que enviará la clienta. */}
             <div
-              key={h.anio}
               style={{
-                display: "grid",
-                gridTemplateColumns: "140px 1fr",
-                gap: 32,
-                padding: "36px 0",
-                borderTop: "1px solid var(--line)",
+                width: "100%",
+                aspectRatio: "4 / 5",
+                borderRadius: "var(--radius-sm)",
+                background: "var(--sunken)",
+                border: "1px dashed var(--line)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-              <div className="display" style={{ fontSize: 28, color: "var(--oro)" }}>
-                {h.anio}
-              </div>
-              <div
-                style={
-                  h.foto
-                    ? { display: "grid", gridTemplateColumns: "1.1fr 1fr", gap: 32, alignItems: "center" }
-                    : undefined
-                }
-              >
-                <div>
-                  <h3 className="stamp" style={{ fontSize: 12, color: "var(--ink)", marginBottom: 10 }}>
-                    {h.titulo}
-                  </h3>
-                  <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>{h.texto}</p>
-                </div>
-                {h.foto && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={h.foto.src}
-                    alt={h.foto.alt}
-                    style={{
-                      width: "100%",
-                      aspectRatio: "4 / 3",
-                      objectFit: "cover",
-                      display: "block",
-                      borderRadius: "var(--radius-sm)",
-                    }}
-                  />
-                )}
-              </div>
+              <span className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
+                Foto del equipo — próximamente
+              </span>
             </div>
-          ))}
+            <div
+              className="stamp"
+              style={{
+                position: "absolute",
+                left: 20,
+                bottom: 20,
+                background: "var(--porcelain)",
+                color: "var(--oro-deep)",
+                padding: "8px 16px",
+                borderRadius: "var(--radius-sm)",
+              }}
+            >
+              Equipo Levin · Hoy
+            </div>
+          </div>
+
+          <div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 16 }}>
+              Hoy
+            </div>
+            <h2 className="display" style={{ fontSize: 32, lineHeight: 1.18, margin: "0 0 20px" }}>
+              La misma esencia, una historia que continúa
+            </h2>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 16px" }}>
+              Más de 50 años después, Levin continúa siendo una joyería familiar.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 28px" }}>
+              Desde el mismo lugar donde comenzó todo, nuestro equipo acompaña cada elección con atención
+              cercana, honestidad y dedicación.
+            </p>
+            <p className="stamp" style={{ color: "var(--ink)", marginBottom: 32 }}>
+              Más de 50 años · Desde 1973 · Perú 134
+            </p>
+
+            {/* 4. Botón final */}
+            <Link href="/catalogo" className="stamp btn-oro">
+              Conocé nuestras joyas
+            </Link>
+          </div>
         </div>
       </section>
 
