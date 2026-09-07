@@ -176,7 +176,9 @@ export default async function HomePage() {
               Perú 134 · Paraná
             </div>
             <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
-              Lun a sáb · 9 a 13 y 17 a 20.30
+              Lunes a viernes 9:00–13:00 y 16:00–20:00
+              <br />
+              Sábados 9:00–13:00
             </div>
           </div>
         </div>
