@@ -9,6 +9,16 @@ import {
   MATERIALES_ALIANZAS,
 } from "../lib/categorias";
 
+// Todavía sin página propia — se muestran sin link hasta que se cargue
+// el contenido de cada una.
+const INFORMACION_VACIA = [
+  "Envíos",
+  "Cambios y devoluciones",
+  "Garantía y cuidados",
+  "Medios de pago",
+  "Preguntas frecuentes",
+];
+
 // Arma, para un grupo (Caballero/Dama), la lista de categorías del mega
 // menú con su tipo de submenú: "marca" para relojes (las marcas se cargan
 // dinámicamente más abajo), "material" para las categorías que ya separan
@@ -111,9 +121,23 @@ export default async function Header() {
             Service Relojería
           </Link>
 
-          <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Sobre nosotros
-          </Link>
+          <div className="mega-item">
+            <Link href="/sobre-nosotros" className="stamp mega-trigger">
+              Información
+            </Link>
+            <div className="mega-panel mega-panel-alianzas mega-panel-right">
+              <ul className="mega-sublist">
+                <li>
+                  <Link href="/sobre-nosotros">Sobre nosotros</Link>
+                </li>
+                {INFORMACION_VACIA.map((texto) => (
+                  <li key={texto}>
+                    <span className="mega-empty">{texto}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Contacto
           </Link>
