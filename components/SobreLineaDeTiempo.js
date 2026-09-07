@@ -177,22 +177,12 @@ export default function SobreLineaDeTiempo() {
             </p>
 
             <figure style={{ margin: "0 0 28px", maxWidth: 480 }}>
-              {/* TODO: reemplazar por la foto actual del frente que enviará la clienta. */}
-              <div
-                style={{
-                  width: "100%",
-                  aspectRatio: "4 / 3",
-                  background: "var(--sunken)",
-                  border: "1px dashed var(--line)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <span className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
-                  Foto actual del frente — próximamente
-                </span>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/fotos/sobre-frente-hoy.jpg"
+                alt="Frente actual de Joyería y Relojería Levin"
+                style={{ width: "100%", aspectRatio: "4 / 3", objectFit: "cover", display: "block" }}
+              />
               <figcaption
                 className="stamp"
                 style={{ marginTop: 10, fontWeight: 300, letterSpacing: "0.14em", color: "var(--ink-soft)" }}
