@@ -48,9 +48,8 @@ export default async function Header() {
         position: "sticky",
         top: 0,
         zIndex: 40,
-        background: "rgba(253,252,248,0.94)",
-        backdropFilter: "blur(6px)",
-        borderBottom: "1px solid var(--line)",
+        background: "var(--ink)",
+        borderBottom: "1px solid rgba(253,252,248,0.12)",
       }}
     >
       <div
@@ -65,7 +64,7 @@ export default async function Header() {
       >
         <Link href="/" style={{ display: "block", justifySelf: "start" }}>
           <Image
-            src="/logo.png"
+            src="/logo-blanco.png"
             alt="Levin Joyería & Relojería"
             width={160}
             height={82}
@@ -74,7 +73,7 @@ export default async function Header() {
           />
         </Link>
         <nav className="mega-nav" style={{ justifySelf: "center" }}>
-          <Link href="/" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+          <Link href="/" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Inicio
           </Link>
 
@@ -107,14 +106,14 @@ export default async function Header() {
             </div>
           </div>
 
-          <Link href="/service-relojeria" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+          <Link href="/service-relojeria" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Service Relojería
           </Link>
 
-          <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+          <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Sobre nosotros
           </Link>
-          <Link href="/contacto" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+          <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Contactanos
           </Link>
         </nav>
@@ -124,7 +123,7 @@ export default async function Header() {
             target="_blank"
             rel="noopener noreferrer"
             className="stamp"
-            style={{ color: "var(--ink-soft)", fontWeight: 300 }}
+            style={{ color: "var(--line)", fontWeight: 300 }}
           >
             Instagram
           </a>

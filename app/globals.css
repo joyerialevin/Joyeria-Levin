@@ -121,7 +121,7 @@ a{ color:inherit; text-decoration:none; }
 }
 .mega-trigger{
   display:block;
-  color:var(--ink);
+  color:var(--porcelain);
   font-weight:400;
 }
 .mega-panel{
