@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HistoriaCarousel from "../../components/HistoriaCarousel";
 
 const VALORES = [
   { nombre: "Confianza", texto: "Clientes que vuelven desde hace tres generaciones." },
@@ -25,6 +26,8 @@ export default function SobreNosotrosPage() {
           Desde hace más de 50 años acompañamos a familias de Paraná en sus momentos más importantes.
         </p>
       </section>
+
+      <HistoriaCarousel />
 
       {/* 2. Fotografía histórica a todo lo ancho */}
       <section aria-label="Nuestra historia">
