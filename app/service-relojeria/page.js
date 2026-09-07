@@ -15,7 +15,7 @@ const SERVICIOS = [
 
 export default function ServiceRelojeriaPage() {
   return (
-    <section style={{ background: "var(--oro-deep)" }}>
+    <section style={{ background: "var(--line)" }}>
       <div
         className="container"
         style={{
@@ -45,7 +45,7 @@ export default function ServiceRelojeriaPage() {
         </div>
 
         <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 16, fontWeight: 300 }}>
+          <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 16, fontWeight: 300 }}>
             Forma de trabajo
           </div>
           <h1
@@ -54,35 +54,35 @@ export default function ServiceRelojeriaPage() {
               fontWeight: 700,
               fontSize: 34,
               lineHeight: 1.2,
-              color: "var(--porcelain)",
+              color: "var(--ink)",
               margin: "0 0 20px",
             }}
           >
             Servicio técnico de relojería
           </h1>
-          <div style={{ width: 48, height: 2, background: "var(--porcelain)", marginBottom: 32 }} />
+          <div style={{ width: 48, height: 2, background: "var(--oro)", marginBottom: 32 }} />
 
           <div style={{ display: "grid", gap: 20, marginBottom: 36 }}>
             {PASOS.map((paso, i) => (
               <div key={paso} style={{ display: "flex", gap: 18 }}>
                 <span
                   className="stamp"
-                  style={{ color: "var(--porcelain)", fontWeight: 700, fontSize: 15, minWidth: 24 }}
+                  style={{ color: "var(--oro-deep)", fontWeight: 700, fontSize: 15, minWidth: 24 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span style={{ fontSize: 17, lineHeight: 1.5, color: "var(--porcelain)" }}>{paso}</span>
+                <span style={{ fontSize: 17, lineHeight: 1.5, color: "var(--ink)" }}>{paso}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ borderTop: "1px solid rgba(253,252,248,0.15)", paddingTop: 28 }}>
-            <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 14, fontWeight: 300 }}>
+          <div style={{ borderTop: "1px solid rgba(38,38,31,0.15)", paddingTop: 28 }}>
+            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14, fontWeight: 300 }}>
               Nuestros servicios
             </div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 28px" }}>
               {SERVICIOS.map((s) => (
-                <span key={s} style={{ fontSize: 16, color: "var(--porcelain)" }}>
+                <span key={s} style={{ fontSize: 16, color: "var(--ink)" }}>
                   {s}
                 </span>
               ))}
