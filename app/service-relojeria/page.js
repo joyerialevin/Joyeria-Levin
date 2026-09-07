@@ -15,7 +15,7 @@ const SERVICIOS = [
 
 export default function ServiceRelojeriaPage() {
   return (
-    <section style={{ background: "var(--ink)" }}>
+    <section style={{ background: "var(--oro-deep)" }}>
       <div
         className="container"
         style={{
@@ -30,7 +30,7 @@ export default function ServiceRelojeriaPage() {
         <div style={{ position: "relative", minHeight: 480 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/fotos/taller.jpg"
+            src="/fotos/service-relojeria.jpg"
             alt="Service técnico de relojería en el taller"
             style={{
               width: "100%",
@@ -60,14 +60,14 @@ export default function ServiceRelojeriaPage() {
           >
             Servicio técnico de relojería
           </h1>
-          <div style={{ width: 48, height: 2, background: "var(--oro)", marginBottom: 32 }} />
+          <div style={{ width: 48, height: 2, background: "var(--porcelain)", marginBottom: 32 }} />
 
           <div style={{ display: "grid", gap: 20, marginBottom: 36 }}>
             {PASOS.map((paso, i) => (
               <div key={paso} style={{ display: "flex", gap: 18 }}>
                 <span
                   className="stamp"
-                  style={{ color: "var(--oro)", fontWeight: 700, fontSize: 15, minWidth: 24 }}
+                  style={{ color: "var(--porcelain)", fontWeight: 700, fontSize: 15, minWidth: 24 }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
