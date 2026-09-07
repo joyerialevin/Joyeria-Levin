@@ -157,29 +157,23 @@ export default async function HomePage() {
           </div>
         </div>
 
-        <div style={{ width: "82%", marginLeft: "auto" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/fotos/hero-aros-modelo.jpg"
-            alt="Aros de oro puestos en modelo"
-            style={{
-              width: "100%",
-              aspectRatio: "3 / 3.6",
-              objectFit: "cover",
-              objectPosition: "50% 22%",
-              display: "block",
-              borderRadius: "var(--radius-sm)",
-            }}
-          />
-          <div style={{ borderTop: "1px solid var(--line)", paddingTop: 14, marginTop: 16 }}>
-            <div className="stamp" style={{ color: "var(--ink-soft)", fontWeight: 300 }}>
-              Perú 134 · Paraná
-            </div>
-            <div style={{ fontSize: 15, color: "var(--ink)", marginTop: 6 }}>
-              Lunes a viernes 9:00–13:00 y 16:00–20:00
-              <br />
-              Sábados 9:00–13:00
-            </div>
+        <div
+          style={{
+            background: "var(--oro)",
+            color: "var(--porcelain)",
+            padding: "44px 40px",
+            borderRadius: "var(--radius-sm)",
+            maxWidth: 380,
+            marginLeft: "auto",
+          }}
+        >
+          <div className="stamp" style={{ color: "rgba(253,252,248,0.85)", fontWeight: 300, marginBottom: 12 }}>
+            Perú 134 · Paraná
+          </div>
+          <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+            Lunes a viernes 9:00–13:00 y 16:00–20:00
+            <br />
+            Sábados 9:00–13:00
           </div>
         </div>
       </section>
