@@ -52,7 +52,7 @@ const inputStyle = {
 export default function ContactoPage() {
   const [form, setForm] = useState({
     nombre: "",
-    motivo: MOTIVOS[0],
+    motivo: "",
     mensaje: "",
   });
 
@@ -82,17 +82,17 @@ export default function ContactoPage() {
         >
           <div>
             <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 10px", maxWidth: 620 }}>
-              Realizá tu consulta
+              ¿En qué podemos ayudarte?
             </h1>
             <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 14px", maxWidth: 620 }}>
-              Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
-              WhatsApp.
+              Completá estos datos y te llevamos a WhatsApp con el mensaje listo para enviar. Te responderá una
+              persona de nuestro local.
             </p>
 
           <form onSubmit={enviarPorWhatsApp} style={{ maxWidth: 520 }}>
             <label style={{ display: "block", marginBottom: 18 }}>
               <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
-                Nombre
+                1. Tu nombre
               </div>
               <input
                 type="text"
@@ -106,13 +106,17 @@ export default function ContactoPage() {
 
             <label style={{ display: "block", marginBottom: 18 }}>
               <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
-                Motivo
+                2. ¿Qué necesitás?
               </div>
               <select
+                required
                 value={form.motivo}
                 onChange={(e) => actualizar("motivo", e.target.value)}
                 style={inputStyle}
               >
+                <option value="" disabled>
+                  Seleccioná una opción
+                </option>
                 {MOTIVOS.map((m) => (
                   <option key={m} value={m}>
                     {m}
@@ -123,7 +127,7 @@ export default function ContactoPage() {
 
             <label style={{ display: "block", marginBottom: 22 }}>
               <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
-                Mensaje
+                3. Contanos un poco más
               </div>
               <textarea
                 rows={4}
@@ -146,10 +150,10 @@ export default function ContactoPage() {
                 cursor: "pointer",
               }}
             >
-              Enviar consulta
+              Continuar por WhatsApp
             </button>
             <p style={{ fontSize: 12.5, color: "var(--ink-soft)", marginTop: 18, lineHeight: 1.6 }}>
-              Al enviar, se abre WhatsApp con tu consulta ya redactada — te responde una persona del local.
+              Se abrirá WhatsApp. Podrás revisar el mensaje antes de enviarlo.
             </p>
           </form>
           </div>
