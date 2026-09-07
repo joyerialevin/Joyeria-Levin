@@ -234,7 +234,7 @@ a{ color:inherit; text-decoration:none; }
 .sobre-item{
   position:relative;
   border-left:1px solid var(--line);
-  padding:0 0 88px 32px;
+  padding:0 0 48px 32px;
   opacity:.4;
   transition:opacity 700ms ease;
 }
