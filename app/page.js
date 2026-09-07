@@ -159,18 +159,18 @@ export default async function HomePage() {
 
         <div
           style={{
-            background: "var(--oro)",
-            color: "var(--porcelain)",
-            padding: "44px 40px",
+            background: "var(--oro-hover-suave)",
+            color: "var(--ink)",
+            padding: "28px 26px",
             borderRadius: "var(--radius-sm)",
-            maxWidth: 380,
+            maxWidth: 300,
             marginLeft: "auto",
           }}
         >
-          <div className="stamp" style={{ color: "rgba(253,252,248,0.85)", fontWeight: 300, marginBottom: 12 }}>
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
             Perú 134 · Paraná
           </div>
-          <div style={{ fontSize: 15, lineHeight: 1.7 }}>
+          <div style={{ fontSize: 14, lineHeight: 1.7 }}>
             Lunes a viernes 9:00–13:00 y 16:00–20:00
             <br />
             Sábados 9:00–13:00
