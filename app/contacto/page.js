@@ -71,7 +71,8 @@ export default function ContactoPage() {
 
   return (
     <>
-      <section className="container" style={{ padding: "80px 6% 70px" }}>
+      <section style={{ background: "rgba(130,120,56,0.05)" }}>
+        <div className="container" style={{ padding: "80px 6% 70px" }}>
         <div
           style={{
             display: "grid",
@@ -199,17 +200,16 @@ export default function ContactoPage() {
             />
           </div>
         </div>
+        </div>
       </section>
 
-      <section className="container" style={{ padding: "20px 6% 70px" }}>
+      <section style={{ background: "rgba(130,120,56,0.16)" }}>
+        <div className="container" style={{ padding: "56px 6% 70px" }}>
         <div
           style={{
             maxWidth: 620,
             margin: "0 auto",
             textAlign: "center",
-            background: "rgba(130,120,56,0.08)",
-            borderRadius: "var(--radius-sm)",
-            padding: "44px 40px",
           }}
         >
           <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
@@ -250,6 +250,7 @@ export default function ContactoPage() {
               style={{ width: "100%", height: "100%", border: 0, display: "block" }}
             />
           </div>
+        </div>
         </div>
       </section>
 
