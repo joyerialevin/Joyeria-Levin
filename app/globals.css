@@ -267,13 +267,32 @@ a{ color:inherit; text-decoration:none; }
 }
 .sobre-valor-card{
   background:var(--card-bg);
-  padding:44px 30px;
+  padding:40px 30px 44px;
   display:flex;
   flex-direction:column;
-  gap:12px;
-  transition:background 240ms ease;
+  gap:10px;
+  opacity:0;
+  transform:translateY(20px);
+  transition-property: opacity, transform, background;
+  transition-duration: 900ms, 900ms, 240ms;
+  transition-timing-function: cubic-bezier(.22,.61,.36,1), cubic-bezier(.22,.61,.36,1), ease;
+  transition-delay: var(--reveal-delay, 0ms), var(--reveal-delay, 0ms), 0ms;
 }
+.sobre-valor-card.is-in{ opacity:1; transform:none; }
 .sobre-valor-card:hover{ background:var(--oro-hover-suave); }
+@media (prefers-reduced-motion: reduce){
+  .sobre-valor-card{ transition:none; opacity:1; transform:none; }
+}
+
+.sobre-valor-numero{
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 4px;
+  color: #C7BE86;
+  color: oklch(from var(--oro) 0.82 calc(c * 0.8) h);
+}
 
 @keyframes levin-ticker{
   0%{ transform:translateX(0); }

@@ -104,11 +104,14 @@ export default function SobreNosotrosPage() {
           Lo que no cambió en tres generaciones.
         </p>
         <div className="sobre-valores-grid">
-          {VALORES.map((v) => (
-            <article key={v.numero} data-reveal className="sobre-valor-card">
-              <span className="stamp" style={{ fontWeight: 300, fontSize: 12, letterSpacing: "0.14em", color: "var(--oro-deep)" }}>
-                {v.numero}
-              </span>
+          {VALORES.map((v, i) => (
+            <article
+              key={v.numero}
+              data-reveal
+              className="sobre-valor-card"
+              style={{ "--reveal-delay": `${i * 140}ms` }}
+            >
+              <span className="sobre-valor-numero">{v.numero}</span>
               <h3 style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: 20, margin: 0 }}>{v.nombre}</h3>
               <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--ink-soft)", margin: 0 }}>{v.texto}</p>
             </article>
