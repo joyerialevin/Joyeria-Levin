@@ -5,7 +5,6 @@ import PhotoStrip from "../components/PhotoStrip";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import BrandStrip from "../components/BrandStrip";
 import TrustBar from "../components/TrustBar";
-import TallerSection from "../components/TallerSection";
 
 export const revalidate = 60;
 
@@ -187,7 +186,6 @@ export default async function HomePage() {
       <CategoryStrip categorias={categorias} />
       <TrustBar />
       <FeaturedCarousel productos={destacados} />
-      <TallerSection />
       <BrandStrip marcas={marcas} />
     </>
   );

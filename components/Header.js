@@ -107,6 +107,10 @@ export default async function Header() {
             </div>
           </div>
 
+          <Link href="/contacto" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
+            Service Relojería
+          </Link>
+
           <Link href="/sobre-nosotros" className="stamp" style={{ color: "var(--ink)", fontWeight: 400 }}>
             Sobre nosotros
           </Link>
