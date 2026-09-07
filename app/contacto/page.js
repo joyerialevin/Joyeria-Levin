@@ -71,63 +71,24 @@ export default function ContactoPage() {
 
   return (
     <>
-      <section className="container" style={{ padding: "80px 6% 6px" }}>
+      <section className="container" style={{ padding: "80px 6% 70px" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1.05fr 1fr",
             gap: 56,
-            alignItems: "start",
           }}
           className="contacto-grid"
         >
           <div>
-            <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 20px", maxWidth: 620 }}>
+            <h1 className="display" style={{ fontSize: 40, lineHeight: 1.14, margin: "0 0 10px", maxWidth: 620 }}>
               Realizá tu consulta
             </h1>
-            <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0, maxWidth: 620 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 14px", maxWidth: 620 }}>
               Contanos qué necesitás —una pieza, un service, un regalo— y armamos el mensaje para enviarlo por
               WhatsApp.
             </p>
-          </div>
 
-          <div style={{ display: "grid", gap: 14, maxWidth: 300, marginLeft: "auto" }}>
-            {METODOS.map((m) => (
-              <a
-                key={m.nombre}
-                href={m.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover-lift"
-                style={{
-                  display: "block",
-                  padding: "18px 20px 16px",
-                  borderRadius: "var(--radius-sm)",
-                  background: "var(--oro)",
-                  color: "var(--porcelain)",
-                }}
-              >
-                <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 8 }}>
-                  {m.nombre}
-                </div>
-                <div style={{ fontSize: 15, marginBottom: 4 }}>{m.valor}</div>
-                <div style={{ fontSize: 12.5, color: "var(--text-inverse-soft)" }}>{m.nota}</div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="container" style={{ padding: "6px 6% 70px" }}>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.05fr 1fr",
-            gap: 56,
-          }}
-          className="contacto-grid"
-        >
-          <div>
           <form onSubmit={enviarPorWhatsApp} style={{ maxWidth: 520 }}>
             <label style={{ display: "block", marginBottom: 18 }}>
               <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)", marginBottom: 8 }}>
@@ -193,15 +154,38 @@ export default function ContactoPage() {
           </form>
           </div>
 
-          <div>
+          <div style={{ maxWidth: 340, marginLeft: "auto" }}>
+            <div style={{ display: "flex", gap: 12, marginBottom: 12 }}>
+              {METODOS.map((m) => (
+                <a
+                  key={m.nombre}
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover-lift"
+                  style={{
+                    display: "block",
+                    flex: 1,
+                    padding: "16px 16px 14px",
+                    borderRadius: "var(--radius-sm)",
+                    background: "var(--oro)",
+                    color: "var(--porcelain)",
+                  }}
+                >
+                  <div className="stamp" style={{ fontSize: 10.5, color: "var(--text-inverse-soft)", marginBottom: 6 }}>
+                    {m.nombre}
+                  </div>
+                  <div style={{ fontSize: 13.5, marginBottom: 3 }}>{m.valor}</div>
+                  <div style={{ fontSize: 11, color: "var(--text-inverse-soft)" }}>{m.nota}</div>
+                </a>
+              ))}
+            </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/contacto-packaging.jpg"
               alt="Compra envuelta en packaging de Joyería Levin"
               style={{
                 width: "100%",
-                maxWidth: 340,
-                marginLeft: "auto",
                 aspectRatio: "4 / 5",
                 objectFit: "cover",
                 objectPosition: "50% 15%",
