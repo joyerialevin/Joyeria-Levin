@@ -202,13 +202,30 @@ export default function ContactoPage() {
       </section>
 
       <section className="container" style={{ padding: "20px 6% 70px" }}>
-        <div style={{ maxWidth: 620 }}>
+        <div
+          style={{
+            maxWidth: 620,
+            margin: "0 auto",
+            textAlign: "center",
+            background: "rgba(130,120,56,0.08)",
+            borderRadius: "var(--radius-sm)",
+            padding: "44px 40px",
+          }}
+        >
           <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
             Visitanos
           </div>
           <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 24px" }}>
             Estamos en Perú 134, Paraná, Entre Ríos.
           </h2>
+          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
+            Horarios
+          </div>
+          <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)", marginBottom: 24 }}>
+            Lunes a viernes 9:00–13:00 y 16:00–20:00
+            <br />
+            Sábados 9:00–13:00 · Domingo cerrado
+          </div>
           <a
             href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
             target="_blank"
@@ -224,7 +241,6 @@ export default function ContactoPage() {
               overflow: "hidden",
               border: "1px solid var(--line)",
               aspectRatio: "4 / 3",
-              marginBottom: 28,
             }}
           >
             <iframe
@@ -233,14 +249,6 @@ export default function ContactoPage() {
               loading="lazy"
               style={{ width: "100%", height: "100%", border: 0, display: "block" }}
             />
-          </div>
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
-            Horarios
-          </div>
-          <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)" }}>
-            Lunes a viernes 9:00–13:00 y 16:00–20:00
-            <br />
-            Sábados 9:00–13:00 · Domingo cerrado
           </div>
         </div>
       </section>
