@@ -312,6 +312,20 @@ a{ color:inherit; text-decoration:none; }
   color: oklch(from var(--oro) 0.82 calc(c * 0.8) h);
 }
 
+@media (max-width: 760px){
+  .home-hero-grid{ grid-template-columns:1fr !important; }
+  .taller-grid{ grid-template-columns:1fr !important; }
+  .service-grid{ grid-template-columns:1fr !important; }
+  .visitanos-info-grid{ grid-template-columns:1fr !important; }
+  .catalogo-filtros-grid{ grid-template-columns:1fr !important; }
+}
+@media (max-width: 900px){
+  .footer-grid{ grid-template-columns:1fr 1fr !important; gap:32px !important; }
+}
+@media (max-width: 560px){
+  .footer-grid{ grid-template-columns:1fr !important; }
+}
+
 @keyframes levin-ticker{
   0%{ transform:translateX(0); }
   100%{ transform:translateX(-50%); }

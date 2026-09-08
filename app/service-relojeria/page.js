@@ -17,7 +17,7 @@ export default function ServiceRelojeriaPage() {
   return (
     <section style={{ background: "var(--line)" }}>
       <div
-        className="container"
+        className="container service-grid"
         style={{
           padding: 0,
           maxWidth: 1200,

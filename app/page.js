@@ -73,7 +73,17 @@ export default async function HomePage() {
   return (
     <>
       <section className="levin-fade" style={{ background: "var(--ink)" }}>
-        <div className="container" style={{ padding: "64px 6% 48px", maxWidth: 680 }}>
+        <div
+          className="container home-hero-grid"
+          style={{
+            padding: "64px 6% 48px",
+            display: "grid",
+            gridTemplateColumns: "1.05fr 0.75fr",
+            gap: 56,
+            alignItems: "center",
+          }}
+        >
+        <div>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
             <span style={{ width: 24, height: 1, background: "var(--oro)" }} />
             <span className="stamp" style={{ color: "var(--oro-20)", fontWeight: 400 }}>
@@ -156,6 +166,22 @@ export default async function HomePage() {
               Ver colección
             </a>
           </div>
+        </div>
+
+        <video
+          src="/videos/hero-inicio.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            width: "100%",
+            aspectRatio: "9 / 16",
+            objectFit: "cover",
+            borderRadius: "var(--radius-sm)",
+            display: "block",
+          }}
+        />
         </div>
       </section>
 

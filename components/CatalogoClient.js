@@ -136,7 +136,7 @@ export default function CatalogoClient({ productos }) {
       {!categoriaInfo ? (
         <p style={{ color: "var(--ink-soft)", marginTop: 40 }}>Próximamente.</p>
       ) : (
-      <div style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 44, marginTop: 40 }}>
+      <div className="catalogo-filtros-grid" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 44, marginTop: 40 }}>
         {/* Filtros según la categoría activa */}
         <aside>
           <h3 className="display" style={{ fontSize: 16, marginBottom: 16 }}>

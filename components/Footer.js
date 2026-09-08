@@ -31,7 +31,7 @@ export default function Footer() {
   return (
     <footer style={{ background: "var(--ink)", color: "var(--text-inverse-soft)" }}>
       <div
-        className="container"
+        className="container footer-grid"
         style={{
           padding: "72px 6% 40px",
           display: "grid",

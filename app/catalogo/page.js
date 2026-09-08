@@ -31,7 +31,7 @@ export default async function CatalogoPage() {
 
       <section style={{ background: "var(--ink)" }}>
         <div
-          className="container"
+          className="container taller-grid"
           style={{
             padding: 0,
             maxWidth: 1200,
@@ -115,7 +115,7 @@ export default async function CatalogoPage() {
           <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 28px" }}>
             Te esperamos en el local.
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 36, textAlign: "left" }}>
+          <div className="visitanos-info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 36, textAlign: "left" }}>
             <div>
               <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 10 }}>
                 Dirección
