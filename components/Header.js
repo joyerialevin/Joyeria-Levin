@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import MobileNav from "./MobileNav";
 import { getSanity, MARCAS_RELOJES_QUERY } from "../lib/sanityClient";
 import {
   CATEGORIAS,
@@ -142,7 +143,7 @@ export default async function Header() {
             Contacto
           </Link>
         </nav>
-        <div style={{ display: "flex", alignItems: "center", gap: 22, justifySelf: "end" }}>
+        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 22, justifySelf: "end" }}>
           <a
             href="https://instagram.com/joyerialevin"
             target="_blank"
@@ -167,6 +168,7 @@ export default async function Header() {
             Consultar
           </a>
         </div>
+        <MobileNav />
       </div>
     </header>
   );

@@ -114,6 +114,13 @@ a{ color:inherit; text-decoration:none; }
   align-items:center;
   gap:32px;
 }
+.header-actions-desktop{ display:flex; }
+.header-hamburger{ display:none; }
+@media (max-width: 1180px){
+  .mega-nav{ display:none; }
+  .header-actions-desktop{ display:none; }
+  .header-hamburger{ display:flex; }
+}
 .mega-item{
   position:relative;
   padding-bottom:18px;
