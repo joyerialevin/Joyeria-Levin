@@ -103,7 +103,7 @@ export default async function HomePage() {
           </h1>
           <p
             style={{
-              fontSize: "clamp(13px, 1.8vh, 17px)",
+              fontSize: "clamp(16px, 2.4vh, 21px)",
               lineHeight: 1.6,
               color: "var(--line)",
               margin: "0 0 clamp(14px, 2.6vh, 28px)",
