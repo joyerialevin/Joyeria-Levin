@@ -72,60 +72,63 @@ export default async function HomePage() {
 
   return (
     <>
-      <section
-        className="container levin-fade"
-        style={{
-          padding: "84px 6% 64px",
-          display: "grid",
-          gridTemplateColumns: "1.1fr 0.9fr",
-          gap: 72,
-          alignItems: "center",
-        }}
-      >
-        <div>
-          <h1
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-              textTransform: "uppercase",
-              fontSize: 56,
-              lineHeight: 1.08,
-              letterSpacing: "-0.01em",
-              color: "var(--ink)",
-              margin: "0 0 24px",
-            }}
-          >
-            Joyería & Relojería Levin
-          </h1>
-          <div style={{ width: 48, height: 2, background: "var(--oro)", margin: "0 0 20px" }} />
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, marginBottom: 24 }}>
-            Joyería & relojería en Paraná
+      <section className="levin-fade" style={{ background: "var(--ink)" }}>
+        <div className="container" style={{ padding: "64px 6% 48px", maxWidth: 680 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 18 }}>
+            <span style={{ width: 24, height: 1, background: "var(--oro)" }} />
+            <span className="stamp" style={{ color: "var(--oro-20)", fontWeight: 400 }}>
+              Joyería &amp; relojería · Paraná
+            </span>
           </div>
-          <h2
+          <h1
+            className="display"
             style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-              fontSize: 27,
-              lineHeight: 1.3,
-              color: "var(--ink)",
-              margin: "0 0 20px",
-              maxWidth: "20ch",
+              fontSize: "clamp(36px, 4.5vw, 52px)",
+              lineHeight: 1.15,
+              color: "var(--porcelain)",
+              margin: "0 0 18px",
             }}
           >
-            Más de 50 años acompañando momentos que perduran
-          </h2>
+            Más de 50 años acompañando momentos que perduran.
+          </h1>
           <p
             style={{
               fontSize: 17,
-              lineHeight: 1.65,
-              color: "var(--ink-soft)",
-              margin: "0 0 34px",
-              maxWidth: "40ch",
+              lineHeight: 1.6,
+              color: "var(--line)",
+              margin: "0 0 28px",
+              maxWidth: "42ch",
             }}
           >
             Joyas y relojes elegidos con dedicación, atención personalizada y el cuidado de siempre.
           </p>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+
+          <div style={{ borderTop: "1px solid rgba(253,252,248,0.15)", paddingTop: 24, marginBottom: 28 }}>
+            <div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
+              <div>
+                <div className="stamp" style={{ color: "var(--oro-20)", fontWeight: 300, marginBottom: 8 }}>
+                  Dirección
+                </div>
+                <div style={{ fontSize: 15, color: "var(--porcelain)", lineHeight: 1.6 }}>
+                  Perú 134, Paraná
+                  <br />
+                  Entre Ríos
+                </div>
+              </div>
+              <div>
+                <div className="stamp" style={{ color: "var(--oro-20)", fontWeight: 300, marginBottom: 8 }}>
+                  Horarios
+                </div>
+                <div style={{ fontSize: 15, color: "var(--porcelain)", lineHeight: 1.6 }}>
+                  Lunes a viernes 9:00–13:00 y 16:00–20:00
+                  <br />
+                  Sábados 9:00–13:00
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
             <a
               href="https://wa.me/5493434728312"
               target="_blank"
@@ -141,39 +144,18 @@ export default async function HomePage() {
               Escribinos por WhatsApp
             </a>
             <a
-              href="https://instagram.com/joyerialevin"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/catalogo"
               className="stamp"
               style={{
-                color: "var(--ink)",
-                border: "1px solid var(--ink)",
-                padding: "15px 28px",
-                borderRadius: "var(--radius-sm)",
+                color: "var(--porcelain)",
+                borderBottom: "1px solid rgba(253,252,248,0.4)",
+                paddingBottom: 4,
+                fontWeight: 400,
               }}
             >
-              Seguinos en Instagram
+              Ver colección
             </a>
           </div>
-        </div>
-
-        <div
-          style={{
-            background: "var(--oro-hover-suave)",
-            color: "var(--ink)",
-            padding: "28px 26px",
-            borderRadius: "var(--radius-sm)",
-            maxWidth: 360,
-            marginLeft: "auto",
-          }}
-        >
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
-            Perú 134 · Paraná
-          </div>
-          <div style={{ fontSize: 14, lineHeight: 1.7, whiteSpace: "nowrap" }}>
-            Lunes a viernes 9:00–13:00 y 16:00–20:00
-          </div>
-          <div style={{ fontSize: 14, lineHeight: 1.7 }}>Sábados 9:00–13:00</div>
         </div>
       </section>
 
