@@ -177,7 +177,6 @@ export default async function HomePage() {
           style={{
             width: "100%",
             height: "100%",
-            minHeight: 480,
             objectFit: "cover",
             borderRadius: "var(--radius-sm)",
             display: "block",
