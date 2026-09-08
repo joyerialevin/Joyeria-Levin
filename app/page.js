@@ -78,9 +78,9 @@ export default async function HomePage() {
           style={{
             padding: "64px 6% 48px",
             display: "grid",
-            gridTemplateColumns: "1.05fr 0.75fr",
+            gridTemplateColumns: "0.9fr 1.15fr",
             gap: 56,
-            alignItems: "center",
+            alignItems: "stretch",
           }}
         >
         <div>
@@ -176,7 +176,8 @@ export default async function HomePage() {
           playsInline
           style={{
             width: "100%",
-            aspectRatio: "9 / 16",
+            height: "100%",
+            minHeight: 480,
             objectFit: "cover",
             borderRadius: "var(--radius-sm)",
             display: "block",
