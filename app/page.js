@@ -98,17 +98,17 @@ export default async function HomePage() {
             justifyContent: "center",
           }}
         >
-        <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, maxWidth: 620, width: "100%" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: "clamp(8px, 1.6vh, 18px)" }}>
+        <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", minHeight: 0, maxWidth: 680, width: "100%", margin: "0 auto" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 14, marginBottom: "clamp(8px, 1.6vh, 18px)" }}>
             <span style={{ width: 24, height: 1, background: "var(--oro)", flexShrink: 0 }} />
-            <span className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, fontSize: "clamp(12px, 1.7vh, 14px)" }}>
+            <span className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, fontSize: "clamp(13px, 1.9vh, 16px)" }}>
               Joyería &amp; relojería · Paraná
             </span>
           </div>
           <h1
             className="display"
             style={{
-              fontSize: "clamp(30px, min(5vw, 5.2vh), 58px)",
+              fontSize: "clamp(34px, min(5.6vw, 5.8vh), 64px)",
               lineHeight: 1.15,
               color: "var(--ink)",
               margin: "0 0 clamp(10px, 1.8vh, 18px)",
@@ -118,7 +118,7 @@ export default async function HomePage() {
           </h1>
           <p
             style={{
-              fontSize: "clamp(16px, 2.4vh, 21px)",
+              fontSize: "clamp(18px, 2.7vh, 23px)",
               lineHeight: 1.6,
               color: "var(--ink-soft)",
               margin: "0 0 clamp(14px, 2.6vh, 28px)",
@@ -129,22 +129,22 @@ export default async function HomePage() {
           </p>
 
           <div style={{ borderTop: "1px solid rgba(38,38,31,0.15)", paddingTop: "clamp(10px, 2vh, 24px)", marginBottom: "clamp(14px, 2.6vh, 28px)" }}>
-            <div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", justifyContent: "center", gap: 48, flexWrap: "wrap" }}>
               <div>
-                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(11px, 1.6vh, 13px)" }}>
                   Dirección
                 </div>
-                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--ink)", lineHeight: 1.6 }}>
+                <div style={{ fontSize: "clamp(13px, 1.7vh, 16px)", color: "var(--ink)", lineHeight: 1.6 }}>
                   Perú 134, Paraná
                   <br />
                   Entre Ríos
                 </div>
               </div>
               <div>
-                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(11px, 1.6vh, 13px)" }}>
                   Horarios
                 </div>
-                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--ink)", lineHeight: 1.6 }}>
+                <div style={{ fontSize: "clamp(13px, 1.7vh, 16px)", color: "var(--ink)", lineHeight: 1.6 }}>
                   Lunes a viernes 9:00–13:00 y 16:00–20:00
                   <br />
                   Sábados 9:00–13:00
@@ -153,7 +153,7 @@ export default async function HomePage() {
             </div>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
             <a
               href="https://wa.me/5493434728312"
               target="_blank"
@@ -162,9 +162,9 @@ export default async function HomePage() {
               style={{
                 color: "var(--porcelain)",
                 background: "var(--oro)",
-                padding: "clamp(11px, 2vh, 16px) clamp(18px, 3vh, 28px)",
+                padding: "clamp(12px, 2.2vh, 18px) clamp(20px, 3.4vh, 32px)",
                 borderRadius: "var(--radius-sm)",
-                fontSize: "clamp(10px, 1.4vh, 12px)",
+                fontSize: "clamp(11px, 1.6vh, 13px)",
               }}
             >
               Escribinos por WhatsApp
@@ -177,7 +177,7 @@ export default async function HomePage() {
                 borderBottom: "1px solid rgba(38,38,31,0.4)",
                 paddingBottom: 4,
                 fontWeight: 400,
-                fontSize: "clamp(10px, 1.4vh, 12px)",
+                fontSize: "clamp(11px, 1.6vh, 13px)",
               }}
             >
               Ver colección

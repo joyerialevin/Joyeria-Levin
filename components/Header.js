@@ -80,7 +80,7 @@ export default async function Header() {
             alt="Levin Joyería & Relojería"
             width={160}
             height={82}
-            style={{ height: 76, width: "auto" }}
+            style={{ height: 95, width: "auto" }}
             priority
           />
         </Link>
