@@ -72,18 +72,40 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="levin-fade home-hero-section" style={{ background: "var(--ink)" }}>
-        <div
-          className="container home-hero-grid"
+      <section className="levin-fade home-hero-section" style={{ position: "relative", background: "var(--ink)" }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/fotos/hero-portada.jpg"
+          alt="Modelo luciendo joyas y reloj Levin"
           style={{
-            display: "grid",
-            gridTemplateColumns: "0.9fr 1.15fr",
-            gap: "clamp(24px, 4vh, 56px)",
-            alignItems: "stretch",
+            position: "absolute",
+            inset: 0,
+            width: "100%",
             height: "100%",
+            objectFit: "cover",
+            objectPosition: "center 26%",
+            display: "block",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(38,38,31,0.52)",
+          }}
+        />
+        <div
+          className="container home-hero-content"
+          style={{
+            position: "relative",
+            zIndex: 1,
+            height: "100%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
-        <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0 }}>
+        <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, maxWidth: 620, width: "100%" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: "clamp(8px, 1.6vh, 18px)" }}>
             <span style={{ width: 24, height: 1, background: "var(--oro)", flexShrink: 0 }} />
             <span className="stamp" style={{ color: "var(--oro-20)", fontWeight: 400, fontSize: "clamp(10px, 1.4vh, 12px)" }}>
@@ -169,23 +191,6 @@ export default async function HomePage() {
             </a>
           </div>
         </div>
-
-        <video
-          src="/videos/hero-inicio.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            width: "100%",
-            height: "100%",
-            minHeight: 0,
-            minWidth: 0,
-            objectFit: "cover",
-            borderRadius: "var(--radius-sm)",
-            display: "block",
-          }}
-        />
         </div>
       </section>
 
