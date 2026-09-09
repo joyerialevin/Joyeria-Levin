@@ -67,7 +67,7 @@ export default async function Header() {
         style={{
           maxWidth: 1400,
           margin: "0 auto",
-          padding: "18px 32px",
+          padding: "10px 32px",
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
