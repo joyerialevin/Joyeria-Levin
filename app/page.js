@@ -76,22 +76,15 @@ export default async function HomePage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/hero-portada.jpg"
-          alt="Modelo luciendo joyas y reloj Levin"
+          alt="Modelos luciendo joyas y relojes Levin"
           style={{
             position: "absolute",
             inset: 0,
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center 26%",
+            objectPosition: "center",
             display: "block",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(38,38,31,0.52)",
           }}
         />
         <div
@@ -108,7 +101,7 @@ export default async function HomePage() {
         <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, maxWidth: 620, width: "100%" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: "clamp(8px, 1.6vh, 18px)" }}>
             <span style={{ width: 24, height: 1, background: "var(--oro)", flexShrink: 0 }} />
-            <span className="stamp" style={{ color: "var(--oro-20)", fontWeight: 400, fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+            <span className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, fontSize: "clamp(10px, 1.4vh, 12px)" }}>
               Joyería &amp; relojería · Paraná
             </span>
           </div>
@@ -117,7 +110,7 @@ export default async function HomePage() {
             style={{
               fontSize: "clamp(26px, min(4.5vw, 4.6vh), 52px)",
               lineHeight: 1.15,
-              color: "var(--porcelain)",
+              color: "var(--ink)",
               margin: "0 0 clamp(10px, 1.8vh, 18px)",
             }}
           >
@@ -127,7 +120,7 @@ export default async function HomePage() {
             style={{
               fontSize: "clamp(16px, 2.4vh, 21px)",
               lineHeight: 1.6,
-              color: "var(--line)",
+              color: "var(--ink-soft)",
               margin: "0 0 clamp(14px, 2.6vh, 28px)",
               maxWidth: "42ch",
             }}
@@ -135,23 +128,23 @@ export default async function HomePage() {
             Joyas y relojes elegidos con dedicación, atención personalizada y el cuidado de siempre.
           </p>
 
-          <div style={{ borderTop: "1px solid rgba(253,252,248,0.15)", paddingTop: "clamp(10px, 2vh, 24px)", marginBottom: "clamp(14px, 2.6vh, 28px)" }}>
+          <div style={{ borderTop: "1px solid rgba(38,38,31,0.15)", paddingTop: "clamp(10px, 2vh, 24px)", marginBottom: "clamp(14px, 2.6vh, 28px)" }}>
             <div style={{ display: "flex", gap: 48, flexWrap: "wrap" }}>
               <div>
-                <div className="stamp" style={{ color: "var(--oro-20)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
                   Dirección
                 </div>
-                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--porcelain)", lineHeight: 1.6 }}>
+                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--ink)", lineHeight: 1.6 }}>
                   Perú 134, Paraná
                   <br />
                   Entre Ríos
                 </div>
               </div>
               <div>
-                <div className="stamp" style={{ color: "var(--oro-20)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+                <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: "clamp(4px, 0.8vh, 8px)", fontSize: "clamp(10px, 1.4vh, 12px)" }}>
                   Horarios
                 </div>
-                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--porcelain)", lineHeight: 1.6 }}>
+                <div style={{ fontSize: "clamp(12px, 1.5vh, 15px)", color: "var(--ink)", lineHeight: 1.6 }}>
                   Lunes a viernes 9:00–13:00 y 16:00–20:00
                   <br />
                   Sábados 9:00–13:00
@@ -180,8 +173,8 @@ export default async function HomePage() {
               href="/catalogo"
               className="stamp"
               style={{
-                color: "var(--porcelain)",
-                borderBottom: "1px solid rgba(253,252,248,0.4)",
+                color: "var(--ink)",
+                borderBottom: "1px solid rgba(38,38,31,0.4)",
                 paddingBottom: 4,
                 fontWeight: 400,
                 fontSize: "clamp(10px, 1.4vh, 12px)",
