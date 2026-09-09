@@ -101,14 +101,14 @@ export default async function HomePage() {
         <div className="home-hero-text" style={{ display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, maxWidth: 620, width: "100%" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: "clamp(8px, 1.6vh, 18px)" }}>
             <span style={{ width: 24, height: 1, background: "var(--oro)", flexShrink: 0 }} />
-            <span className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, fontSize: "clamp(10px, 1.4vh, 12px)" }}>
+            <span className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 400, fontSize: "clamp(12px, 1.7vh, 14px)" }}>
               Joyería &amp; relojería · Paraná
             </span>
           </div>
           <h1
             className="display"
             style={{
-              fontSize: "clamp(26px, min(4.5vw, 4.6vh), 52px)",
+              fontSize: "clamp(30px, min(5vw, 5.2vh), 58px)",
               lineHeight: 1.15,
               color: "var(--ink)",
               margin: "0 0 clamp(10px, 1.8vh, 18px)",
