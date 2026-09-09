@@ -67,7 +67,7 @@ export default async function Header() {
         style={{
           maxWidth: 1400,
           margin: "0 auto",
-          padding: "10px 32px",
+          padding: "6px 32px",
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
@@ -80,7 +80,7 @@ export default async function Header() {
             alt="Levin Joyería & Relojería"
             width={160}
             height={82}
-            style={{ height: 95, width: "auto" }}
+            style={{ height: 80, width: "auto" }}
             priority
           />
         </Link>
