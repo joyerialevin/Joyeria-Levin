@@ -120,8 +120,8 @@ export default function SobreLineaDeTiempo() {
               La continuidad
             </h2>
             <p style={{ fontSize: 18, lineHeight: 1.75, margin: 0, maxWidth: "54ch" }}>
-              Tras su fallecimiento, Clara mantuvo el negocio en marcha y Ricardo, su hijo, comenzó a aprender el
-              oficio. Con el tiempo,{" "}
+              Tras su fallecimiento, Clara, su esposa, mantuvo el negocio en marcha y Ricardo, su hijo, comenzó a
+              aprender el oficio. Con el tiempo,{" "}
               <span style={{ background: "linear-gradient(to top, var(--oro-marcador) 88%, transparent 88%)" }}>
                 el taller se transformó en una joyería y relojería
               </span>
