@@ -168,6 +168,17 @@ export default async function Header() {
             Buscar
           </button>
           <a
+            href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ver ubicación en Google Maps"
+            style={{ display: "flex", alignItems: "center", color: "var(--oro)" }}
+          >
+            <svg width="19" height="19" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+            </svg>
+          </a>
+          <a
             href="https://wa.me/5493434728312"
             target="_blank"
             rel="noopener noreferrer"

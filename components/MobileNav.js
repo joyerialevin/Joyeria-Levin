@@ -110,23 +110,37 @@ export default function MobileNav() {
               </svg>
               Buscar
             </button>
-            <a
-              href="https://wa.me/5493434728312"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stamp"
-              onClick={cerrar}
-              style={{
-                color: "var(--porcelain)",
-                background: "var(--oro)",
-                textAlign: "center",
-                padding: "16px 0",
-                borderRadius: "var(--radius-sm)",
-                marginTop: 20,
-              }}
-            >
-              Consultar
-            </a>
+            <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 20 }}>
+              <a
+                href="https://wa.me/5493434728312"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stamp"
+                onClick={cerrar}
+                style={{
+                  flex: 1,
+                  color: "var(--porcelain)",
+                  background: "var(--oro)",
+                  textAlign: "center",
+                  padding: "16px 0",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                Consultar
+              </a>
+              <a
+                href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Ver ubicación en Google Maps"
+                onClick={cerrar}
+                style={{ display: "flex", alignItems: "center", color: "var(--oro)", flexShrink: 0 }}
+              >
+                <svg width="26" height="26" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
+                </svg>
+              </a>
+            </div>
           </nav>
         </div>
       )}
