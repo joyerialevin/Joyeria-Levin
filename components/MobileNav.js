@@ -111,21 +111,6 @@ export default function MobileNav() {
               Buscar
             </button>
             <a
-              href="https://instagram.com/joyerialevin"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stamp"
-              onClick={cerrar}
-              style={{
-                color: "var(--line)",
-                padding: "18px 0",
-                borderBottom: "1px solid rgba(253,252,248,0.12)",
-                fontWeight: 300,
-              }}
-            >
-              Instagram
-            </a>
-            <a
               href="https://wa.me/5493434728312"
               target="_blank"
               rel="noopener noreferrer"

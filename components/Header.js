@@ -166,16 +166,6 @@ export default async function Header() {
             </svg>
             Buscar
           </button>
-          <span style={{ width: 1, height: 16, background: "rgba(253,252,248,0.25)" }} />
-          <a
-            href="https://instagram.com/joyerialevin"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stamp"
-            style={{ color: "var(--line)", fontWeight: 300 }}
-          >
-            Instagram
-          </a>
           <a
             href="https://wa.me/5493434728312"
             target="_blank"

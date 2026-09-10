@@ -1,4 +1,9 @@
-const ITEMS = ["3 cuotas sin interés", "10% off por transferencia", "Envíos a todo el país"];
+const ITEMS = [
+  "3 cuotas sin interés",
+  "10% off por transferencia",
+  "Perú 134, Paraná, Entre Ríos",
+  "Envíos a todo el país",
+];
 
 export default function AnnouncementBar() {
   return (
