@@ -119,7 +119,7 @@ export default async function Header() {
           </div>
 
           <Link href="/service-relojeria" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Service Relojería
+            Service
           </Link>
 
           <div className="mega-item">
@@ -139,11 +139,31 @@ export default async function Header() {
               </ul>
             </div>
           </div>
-          <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Contacto
-          </Link>
         </nav>
-        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 22, justifySelf: "end" }}>
+        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 18, justifySelf: "end" }}>
+          <button
+            type="button"
+            className="stamp"
+            aria-label="Buscar"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+              color: "var(--line)",
+              fontWeight: 300,
+            }}
+          >
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+            </svg>
+            Buscar
+          </button>
+          <span style={{ width: 1, height: 16, background: "rgba(253,252,248,0.25)" }} />
           <a
             href="https://instagram.com/joyerialevin"
             target="_blank"
@@ -153,6 +173,9 @@ export default async function Header() {
           >
             Instagram
           </a>
+          <Link href="/contacto" className="stamp" style={{ color: "var(--line)", fontWeight: 300 }}>
+            Contacto
+          </Link>
           <a
             href="https://wa.me/5493434728312"
             target="_blank"

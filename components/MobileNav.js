@@ -8,9 +8,8 @@ const LINKS = [
   { href: "/catalogo?grupo=caballero", label: "Caballero" },
   { href: "/catalogo?grupo=dama", label: "Dama" },
   { href: "/catalogo?grupo=alianzas", label: "Alianzas" },
-  { href: "/service-relojeria", label: "Service Relojería" },
+  { href: "/service-relojeria", label: "Service" },
   { href: "/sobre-nosotros", label: "Información" },
-  { href: "/contacto", label: "Contacto" },
 ];
 
 export default function MobileNav() {
@@ -75,6 +74,29 @@ export default function MobileNav() {
                 {l.label}
               </Link>
             ))}
+            <button
+              type="button"
+              className="stamp"
+              aria-label="Buscar"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                background: "none",
+                border: "none",
+                color: "var(--line)",
+                padding: "18px 0",
+                borderBottom: "1px solid rgba(253,252,248,0.12)",
+                fontWeight: 300,
+                cursor: "pointer",
+              }}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
+              </svg>
+              Buscar
+            </button>
             <a
               href="https://instagram.com/joyerialevin"
               target="_blank"
@@ -90,6 +112,19 @@ export default function MobileNav() {
             >
               Instagram
             </a>
+            <Link
+              href="/contacto"
+              className="stamp"
+              onClick={cerrar}
+              style={{
+                color: "var(--line)",
+                padding: "18px 0",
+                borderBottom: "1px solid rgba(253,252,248,0.12)",
+                fontWeight: 300,
+              }}
+            >
+              Contacto
+            </Link>
             <a
               href="https://wa.me/5493434728312"
               target="_blank"
