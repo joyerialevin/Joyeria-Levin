@@ -32,7 +32,7 @@ export default function MobileNav() {
           border: "none",
           cursor: "pointer",
           padding: 6,
-          marginLeft: "auto",
+          justifySelf: "end",
         }}
       >
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--porcelain)" strokeWidth="1.6" aria-hidden="true">

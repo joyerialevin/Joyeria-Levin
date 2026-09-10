@@ -68,11 +68,13 @@ export default async function Header() {
           maxWidth: 1400,
           margin: "0 auto",
           padding: "6px 32px",
-          display: "flex",
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
           alignItems: "center",
+          gap: 24,
         }}
       >
-        <Link href="/" style={{ display: "block" }}>
+        <Link href="/" style={{ display: "block", justifySelf: "start" }}>
           <Image
             src="/logo-blanco.png"
             alt="Levin Joyería & Relojería"
@@ -82,7 +84,7 @@ export default async function Header() {
             priority
           />
         </Link>
-        <nav className="mega-nav" style={{ marginLeft: 48 }}>
+        <nav className="mega-nav" style={{ justifySelf: "center" }}>
           <Link href="/" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Inicio
           </Link>
@@ -137,11 +139,12 @@ export default async function Header() {
               </ul>
             </div>
           </div>
-        </nav>
-        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, marginLeft: "auto", marginRight: 28 }}>
+
           <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Contacto
           </Link>
+        </nav>
+        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end", marginRight: 28 }}>
           <button
             type="button"
             className="stamp"
