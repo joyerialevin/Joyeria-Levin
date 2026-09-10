@@ -18,10 +18,8 @@ const SUBTEXTO_ESTATICO = {
 // Fotos elegidas a mano para las tarjetas de categoría de la home —
 // tienen prioridad sobre la foto del producto más reciente.
 const IMAGEN_CURADA = {
-  relojes:
-    "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/relojes/dsc-4333.jpg", // Reloj Citizen 1
-  swarovski:
-    "https://cpoaqzrgggpghnaitpqu.supabase.co/storage/v1/object/public/productos/pulseras/pulsera-comb-10-colores.jpg",
+  relojes: "/fotos/categoria-relojes.jpg",
+  swarovski: "/fotos/categoria-swarovski.jpg",
   anillos: "/fotos/categoria-anillos.jpg",
   pulseras: "/fotos/categoria-pulseras.jpg",
   cadenas: "/fotos/categoria-cadenas.jpg",
