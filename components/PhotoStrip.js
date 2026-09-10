@@ -6,21 +6,16 @@ const SLOTS = 6;
 const INTERVALO_MS = 4000;
 
 const FOTOS = [
-  { src: "/fotos/maxi-aros-mesa.jpg", alt: "Aros sobre la mesa" },
-  { src: "/fotos/maxi-anillos-mesa.jpg", alt: "Anillos sobre la mesa" },
-  { src: "/fotos/maxi-anillo-mesa.jpg", alt: "Anillo sobre la mesa" },
-  { src: "/fotos/maxi-anillo-estuche.jpg", alt: "Anillo en estuche" },
-  { src: "/fotos/maxi-anillo-estuche-2.jpg", alt: "Anillo en estuche" },
-  { src: "/fotos/maxi-anillo-esmeralda.jpg", alt: "Anillo con esmeralda en estuche" },
-  { src: "/fotos/maxi-anillo-estuche-3.jpg", alt: "Anillo en estuche" },
-  { src: "/fotos/maxi-anillo-estuche-4.jpg", alt: "Anillo en estuche" },
-  { src: "/fotos/maxi-dije-colgante.jpg", alt: "Dije colgante" },
-  { src: "/fotos/maxi-pulseras.jpg", alt: "Pulseras" },
-  { src: "/fotos/maxi-cadenas-flatlay.jpg", alt: "Cadenas y dijes" },
-  { src: "/fotos/maxi-collar-dije.jpg", alt: "Collar con dije" },
-  { src: "/fotos/maxi-cadenas.jpg", alt: "Cadenas" },
-  { src: "/fotos/maxi-mano-anillos.jpg", alt: "Anillos puestos en mano" },
-  { src: "/fotos/maxi-mano-pulsera.jpg", alt: "Pulsera y anillos puestos" },
+  { src: "/fotos/maxi-modelo-manos-anillos.jpg", alt: "Modelo luciendo anillos y pulsera" },
+  { src: "/fotos/maxi-modelo-mano-cara.jpg", alt: "Modelo luciendo anillos" },
+  { src: "/fotos/maxi-modelo-manos-anillos-2.jpg", alt: "Modelo luciendo anillos" },
+  { src: "/fotos/maxi-modelo-brazos-cruzados.jpg", alt: "Modelo luciendo joyas" },
+  { src: "/fotos/maxi-modelo-pulsera-muneca.jpg", alt: "Modelo luciendo pulsera" },
+  { src: "/fotos/maxi-modelo-collar.jpg", alt: "Modelo luciendo collar" },
+  { src: "/fotos/maxi-modelo-collar-2.jpg", alt: "Modelo luciendo collar" },
+  { src: "/fotos/maxi-modelo-mano-menton.jpg", alt: "Modelo luciendo anillos" },
+  { src: "/fotos/maxi-modelo-reloj-pulsera.jpg", alt: "Modelo luciendo reloj y pulsera" },
+  { src: "/fotos/maxi-modelo-mano-cara-2.jpg", alt: "Modelo luciendo anillos" },
 ];
 
 export default function PhotoStrip() {
