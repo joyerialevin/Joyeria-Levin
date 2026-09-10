@@ -1,7 +1,6 @@
 import { getSanity, DESTACADOS_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
-import PhotoStrip from "../components/PhotoStrip";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import BrandStrip from "../components/BrandStrip";
 import TrustBar from "../components/TrustBar";
@@ -81,7 +80,6 @@ export default async function HomePage() {
         />
       </section>
 
-      <PhotoStrip />
       <CategoryStrip categorias={categorias} />
       <TrustBar />
       <FeaturedCarousel productos={destacados} />
