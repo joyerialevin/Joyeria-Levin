@@ -74,6 +74,19 @@ export default function MobileNav() {
                 {l.label}
               </Link>
             ))}
+            <Link
+              href="/contacto"
+              className="stamp"
+              onClick={cerrar}
+              style={{
+                color: "var(--line)",
+                padding: "18px 0",
+                borderBottom: "1px solid rgba(253,252,248,0.12)",
+                fontWeight: 300,
+              }}
+            >
+              Contacto
+            </Link>
             <button
               type="button"
               className="stamp"
@@ -112,19 +125,6 @@ export default function MobileNav() {
             >
               Instagram
             </a>
-            <Link
-              href="/contacto"
-              className="stamp"
-              onClick={cerrar}
-              style={{
-                color: "var(--line)",
-                padding: "18px 0",
-                borderBottom: "1px solid rgba(253,252,248,0.12)",
-                fontWeight: 300,
-              }}
-            >
-              Contacto
-            </Link>
             <a
               href="https://wa.me/5493434728312"
               target="_blank"

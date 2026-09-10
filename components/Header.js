@@ -140,7 +140,10 @@ export default async function Header() {
             </div>
           </div>
         </nav>
-        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 18, justifySelf: "end" }}>
+        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end", marginRight: 28 }}>
+          <Link href="/contacto" className="stamp" style={{ color: "var(--line)", fontWeight: 300 }}>
+            Contacto
+          </Link>
           <button
             type="button"
             className="stamp"
@@ -173,9 +176,6 @@ export default async function Header() {
           >
             Instagram
           </a>
-          <Link href="/contacto" className="stamp" style={{ color: "var(--line)", fontWeight: 300 }}>
-            Contacto
-          </Link>
           <a
             href="https://wa.me/5493434728312"
             target="_blank"
