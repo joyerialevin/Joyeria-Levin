@@ -3,7 +3,6 @@ import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import FeaturedCarousel from "../components/FeaturedCarousel";
 import BrandStrip from "../components/BrandStrip";
-import TrustBar from "../components/TrustBar";
 
 export const revalidate = 60;
 
@@ -79,7 +78,6 @@ export default async function HomePage() {
       </section>
 
       <CategoryStrip categorias={categorias} />
-      <TrustBar />
       <FeaturedCarousel productos={destacados} />
       <BrandStrip marcas={marcas} />
     </>
