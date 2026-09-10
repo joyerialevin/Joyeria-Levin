@@ -79,10 +79,10 @@ export default function MobileNav() {
               className="stamp"
               onClick={cerrar}
               style={{
-                color: "var(--line)",
+                color: "var(--porcelain)",
                 padding: "18px 0",
                 borderBottom: "1px solid rgba(253,252,248,0.12)",
-                fontWeight: 300,
+                fontWeight: 400,
               }}
             >
               Contacto

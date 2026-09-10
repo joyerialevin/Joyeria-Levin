@@ -141,7 +141,7 @@ export default async function Header() {
           </div>
         </nav>
         <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end", marginRight: 28 }}>
-          <Link href="/contacto" className="stamp" style={{ color: "var(--line)", fontWeight: 300 }}>
+          <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
             Contacto
           </Link>
           <button
