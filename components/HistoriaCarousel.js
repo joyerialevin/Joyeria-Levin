@@ -19,6 +19,17 @@ const FOTOS = [
     caption: "Ricardo Levin junto a Clara, su madre",
     objectPosition: "50% 30%",
   },
+  {
+    src: "/fotos/sobre-carrusel-nanci-ricardo-1.jpg",
+    alt: "Nanci y Ricardo en el local, 1995",
+    caption: "Nanci y Ricardo · 1995",
+  },
+  {
+    src: "/fotos/sobre-carrusel-nanci-ricardo-2.jpg",
+    alt: "Nanci y Ricardo frente al local, 1995",
+    caption: "Nanci y Ricardo · 1995",
+    objectPosition: "50% 20%",
+  },
 ];
 
 export default function HistoriaCarousel() {
