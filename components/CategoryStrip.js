@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CategoryStrip({ categorias }) {
   return (
-    <section className="container" style={{ padding: "0 6% 84px" }}>
+    <section className="container" style={{ padding: "88px 6% 84px" }}>
       <div
         style={{
           display: "flex",
