@@ -210,7 +210,7 @@ export default function ServiceRelojeriaPage() {
       </section>
 
       {/* Servicios */}
-      <section style={{ padding: "clamp(52px, 7vw, 100px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--oro)", padding: "clamp(52px, 7vw, 100px) clamp(20px, 5vw, 72px)" }}>
         <div style={{ maxWidth: 1360, margin: "0 auto" }}>
           <div
             style={{
@@ -222,7 +222,7 @@ export default function ServiceRelojeriaPage() {
             }}
           >
             <div style={{ minWidth: 0 }}>
-              <Eyebrow texto="Nuestros servicios" lineColor="var(--oro)" textColor="var(--oro-80)" />
+              <Eyebrow texto="Nuestros servicios" lineColor="var(--oro-40)" textColor="var(--line)" />
               <h2
                 style={{
                   fontFamily: "var(--font-sans)",
@@ -230,13 +230,14 @@ export default function ServiceRelojeriaPage() {
                   fontSize: "clamp(32px, 3.8vw, 50px)",
                   lineHeight: 1.1,
                   margin: 0,
+                  color: "var(--porcelain)",
                   textWrap: "balance",
                 }}
               >
                 Todo lo que tu reloj necesita
               </h2>
             </div>
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-soft)", maxWidth: "44ch", margin: 0 }}>
+            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--line)", maxWidth: "44ch", margin: 0 }}>
               Desde un cambio de pila hasta una reparación completa. Trabajamos con relojes de todas las marcas que
               vendemos y con los que ya son parte de tu historia.
             </p>
@@ -394,7 +395,7 @@ export default function ServiceRelojeriaPage() {
       </section>
 
       {/* Contacto */}
-      <section style={{ background: "var(--ink)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--oro-90)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
         <div
           style={{
             maxWidth: 1360,
