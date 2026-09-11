@@ -1,15 +1,17 @@
 import ServiceProcesoPasos from "../../components/ServiceProcesoPasos";
 
 const NUMERO_WHATSAPP = "5493434728312";
-const LINK_WHATSAPP = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(
-  "Hola! Quería consultar sobre el service de mi reloj."
-)}`;
+const linkWhatsApp = (mensaje) => `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+
+const MSG_HERO = "Hola, vengo desde la página web. Quería saber más sobre el servicio técnico de relojería.";
+const MSG_CONTACTO = "Hola, vengo desde la página web. No sé qué servicio necesita mi reloj y quería que me orienten.";
 
 const SERVICIOS = [
   {
     numero: "01",
     titulo: "Cambio de pila",
     body: "Reemplazo de pila con sellado y control de marcha. En la mayoría de los relojes, listo en el momento.",
+    mensaje: "Hola, vengo desde la página web. Necesito un cambio de pila para mi reloj. ¿Me pueden orientar?",
     icono: (
       <>
         <rect x="2" y="8" width="15" height="9" rx="1.5" />
@@ -22,6 +24,7 @@ const SERVICIOS = [
     numero: "02",
     titulo: "Mallas, pernos y cierres",
     body: "Ajuste a medida, cambio de malla, reemplazo de pernos y reparación de cierres y broches.",
+    mensaje: "Hola, vengo desde la página web. Quería consultar por la malla de mi reloj (ajuste, cambio, pernos o cierre).",
     icono: (
       <>
         <path d="M9.5 14.5a3.5 3.5 0 0 1 0-5l2-2a3.5 3.5 0 0 1 5 5l-1 1" />
@@ -33,6 +36,7 @@ const SERVICIOS = [
     numero: "03",
     titulo: "Revisión y reparación",
     body: "Relojes que se detienen, atrasan o se humedecieron: diagnóstico completo y presupuesto antes de intervenir.",
+    mensaje: "Hola, vengo desde la página web. Mi reloj necesita una revisión. Quería consultar por un diagnóstico y presupuesto.",
     destacada: true,
     icono: (
       <>
@@ -143,7 +147,7 @@ export default function ServiceRelojeriaPage() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "20px 30px", marginBottom: 34 }}>
             <a
-              href={LINK_WHATSAPP}
+              href={linkWhatsApp(MSG_HERO)}
               target="_blank"
               rel="noopener noreferrer"
               className="svc-cta"
@@ -298,7 +302,7 @@ export default function ServiceRelojeriaPage() {
                   {s.body}
                 </p>
                 <a
-                  href={LINK_WHATSAPP}
+                  href={linkWhatsApp(s.mensaje)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={s.destacada ? "svc-consultar-dark" : "svc-consultar"}
@@ -422,7 +426,7 @@ export default function ServiceRelojeriaPage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 22, alignItems: "flex-start" }}>
             <a
-              href={LINK_WHATSAPP}
+              href={linkWhatsApp(MSG_CONTACTO)}
               target="_blank"
               rel="noopener noreferrer"
               className="svc-cta"
