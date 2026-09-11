@@ -394,8 +394,8 @@ export default function ServiceRelojeriaPage() {
         </div>
       </section>
 
-      {/* Foto */}
-      <section style={{ position: "relative", height: "clamp(320px, 42vw, 480px)", overflow: "hidden" }}>
+      {/* Contacto */}
+      <section style={{ position: "relative", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)", overflow: "hidden" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/service-tecnico-reloj.jpg"
@@ -410,35 +410,10 @@ export default function ServiceRelojeriaPage() {
             display: "block",
           }}
         />
+        <div style={{ position: "absolute", inset: 0, background: "rgba(130,120,56,0.86)" }} />
         <div
           style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(0deg, rgba(38,38,31,0.62) 0%, rgba(38,38,31,0) 45%)",
-          }}
-        />
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "0 clamp(20px, 5vw, 72px) clamp(20px, 3vw, 32px)" }}>
-          <div style={{ maxWidth: 1360, margin: "0 auto" }}>
-            <span
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 300,
-                fontSize: 13,
-                letterSpacing: "0.16em",
-                textTransform: "uppercase",
-                color: "var(--line)",
-              }}
-            >
-              Cada pieza, tratada con el mismo cuidado
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Contacto */}
-      <section style={{ background: "var(--oro)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
-        <div
-          style={{
+            position: "relative",
             maxWidth: 1360,
             margin: "0 auto",
             display: "grid",
