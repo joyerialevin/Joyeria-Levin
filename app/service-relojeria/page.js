@@ -316,7 +316,7 @@ export default function ServiceRelojeriaPage() {
                     fontSize: 14,
                     letterSpacing: "0.06em",
                     textTransform: "uppercase",
-                    borderTop: `1px solid ${s.destacada ? "rgba(253,252,248,0.18)" : "var(--line)"}`,
+                    borderTop: `1px solid ${s.destacada ? "rgba(253,252,248,0.18)" : s.tinte ? "var(--oro-40)" : "var(--line)"}`,
                     paddingTop: 16,
                   }}
                 >
@@ -396,7 +396,7 @@ export default function ServiceRelojeriaPage() {
       </section>
 
       {/* Contacto */}
-      <section style={{ background: "var(--oro-80)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--oro)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
         <div
           style={{
             maxWidth: 1360,
