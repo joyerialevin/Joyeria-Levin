@@ -112,7 +112,7 @@ export default function MobileNav() {
             </button>
             <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 20 }}>
               <a
-                href="https://wa.me/5493434728312"
+                href="https://api.whatsapp.com/send?phone=5493434728312"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="stamp"

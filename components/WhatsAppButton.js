@@ -2,7 +2,7 @@ const NUMERO_WHATSAPP = "5493434728312";
 const MENSAJE = "Hola! Vi la web de Joyería Levin y quería hacer una consulta.";
 
 export default function WhatsAppButton() {
-  const href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(MENSAJE)}`;
+  const href = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(MENSAJE)}`;
 
   return (
     <a

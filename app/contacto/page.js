@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 const NUMERO_WHATSAPP = "5493434728312";
-const LINK_WHATSAPP_DIRECTO = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(
+const LINK_WHATSAPP_DIRECTO = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(
   "Hola! Vi la web de Joyería Levin y quería hacer una consulta."
 )}`;
 
@@ -66,7 +66,7 @@ export default function ContactoPage() {
     const partes = [`Hola! Soy ${form.nombre || "un cliente"}.`, `Motivo: ${form.motivo}.`];
     if (form.mensaje) partes.push(`Mensaje: ${sinPuntoFinal(form.mensaje)}.`);
     const mensaje = partes.join(" ");
-    window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`, "_blank", "noopener,noreferrer");
+    window.open(`https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`, "_blank", "noopener,noreferrer");
   }
 
   return (

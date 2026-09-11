@@ -5,7 +5,7 @@ import CatalogoClient from "../../components/CatalogoClient";
 export const revalidate = 60; // vuelve a pedir los productos cada 60s
 
 const NUMERO_WHATSAPP = "5493434728312";
-const LINK_WHATSAPP = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(
+const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(
   "Hola! Vi el catálogo de Joyería Levin y quería hacer una consulta."
 )}`;
 

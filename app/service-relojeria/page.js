@@ -1,7 +1,7 @@
 import ServiceProcesoPasos from "../../components/ServiceProcesoPasos";
 
 const NUMERO_WHATSAPP = "5493434728312";
-const linkWhatsApp = (mensaje) => `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+const linkWhatsApp = (mensaje) => `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
 
 const MSG_HERO = "Hola, vengo desde la página web. Quería saber más sobre el servicio técnico de relojería.";
 const MSG_CONTACTO = "Hola, vengo desde la página web. No sé qué servicio necesita mi reloj y quería que me orienten.";
