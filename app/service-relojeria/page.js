@@ -25,6 +25,7 @@ const SERVICIOS = [
     titulo: "Mallas, pernos y cierres",
     body: "Ajuste a medida, cambio de malla, reemplazo de pernos y reparación de cierres y broches.",
     mensaje: "Hola, vengo desde la página web. Quería consultar por la malla de mi reloj (ajuste, cambio, pernos o cierre).",
+    tinte: true,
     icono: (
       <>
         <path d="M9.5 14.5a3.5 3.5 0 0 1 0-5l2-2a3.5 3.5 0 0 1 5 5l-1 1" />
@@ -247,7 +248,7 @@ export default function ServiceRelojeriaPage() {
             {SERVICIOS.map((s) => (
               <article
                 key={s.numero}
-                className={s.destacada ? "svc-card-dark" : "svc-card"}
+                className={s.destacada ? "svc-card-dark" : s.tinte ? "svc-card-tint" : "svc-card"}
                 style={{
                   borderRadius: "var(--radius-sm)",
                   padding: "clamp(28px, 3vw, 40px)",
@@ -395,7 +396,7 @@ export default function ServiceRelojeriaPage() {
       </section>
 
       {/* Contacto */}
-      <section style={{ background: "var(--oro-90)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
+      <section style={{ background: "var(--oro-80)", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)" }}>
         <div
           style={{
             maxWidth: 1360,

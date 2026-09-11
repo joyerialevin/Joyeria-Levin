@@ -338,6 +338,9 @@ a{ color:inherit; text-decoration:none; }
 .svc-card{ background:var(--sunken); border:1px solid var(--sand-200); transition:box-shadow 240ms ease, border-color 240ms ease; }
 .svc-card:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.09); border-color:var(--oro-40); }
 
+.svc-card-tint{ background:var(--oro-20); border:1px solid var(--oro-40); transition:box-shadow 240ms ease, border-color 240ms ease; }
+.svc-card-tint:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.09); border-color:var(--oro-80); }
+
 .svc-card-dark{ background:var(--ink); border:1px solid var(--ink); transition:box-shadow 240ms ease; }
 .svc-card-dark:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.2); }
 
