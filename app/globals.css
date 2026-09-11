@@ -27,6 +27,8 @@
      de marca existentes, no son colores nuevos. */
   --oro-20: oklch(from var(--oro) calc(l + 0.30) calc(c * 0.65) h);
   --oro-40: oklch(from var(--oro) calc(l + 0.14) calc(c * 0.85) h);
+  --oro-80: oklch(from var(--oro) calc(l - 0.12) c h);
+  --oro-90: oklch(from var(--oro) calc(l - 0.18) calc(c * 0.9) h);
   --oro-marcador: oklch(from var(--oro) 0.88 calc(c * 0.7) h);
   --oro-hover-suave: oklch(from var(--oro) 0.94 calc(c * 0.5) h);
   --sand-200:#EFEADA;
@@ -314,7 +316,6 @@ a{ color:inherit; text-decoration:none; }
 
 @media (max-width: 760px){
   .taller-grid{ grid-template-columns:1fr !important; }
-  .service-grid{ grid-template-columns:1fr !important; }
   .visitanos-info-grid{ grid-template-columns:1fr !important; }
   .catalogo-filtros-grid{ grid-template-columns:1fr !important; }
 }
@@ -324,6 +325,26 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width: 560px){
   .footer-grid{ grid-template-columns:1fr !important; }
 }
+
+/* Página Servicio técnico (service-relojeria): estados hover que deben
+   quedar en clase, no inline, porque un estilo inline nunca puede ser
+   sobreescrito por un :hover externo (aprendido con .btn-oro). */
+.svc-cta{ background:var(--oro-40); color:var(--ink); transition:background 240ms ease; }
+.svc-cta:hover{ background:var(--line); }
+
+.svc-secondary-link{ color:var(--porcelain); border-bottom:1px solid rgba(253,252,248,0.4); transition:border-color 240ms ease; }
+.svc-secondary-link:hover{ border-color:var(--oro-40); }
+
+.svc-card{ background:var(--sunken); border:1px solid var(--sand-200); transition:box-shadow 240ms ease, border-color 240ms ease; }
+.svc-card:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.09); border-color:var(--oro-40); }
+
+.svc-card-dark{ background:var(--ink); border:1px solid var(--ink); transition:box-shadow 240ms ease; }
+.svc-card-dark:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.2); }
+
+.svc-consultar{ color:var(--oro-80); transition:color 240ms ease; }
+.svc-consultar:hover{ color:var(--oro-90); }
+.svc-consultar-dark{ color:var(--oro-40); transition:color 240ms ease; }
+.svc-consultar-dark:hover{ color:var(--line); }
 
 @keyframes levin-ticker{
   0%{ transform:translateX(0); }
