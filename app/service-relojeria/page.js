@@ -144,7 +144,6 @@ export default function ServiceRelojeriaPage() {
             }}
           >
             Revisamos cada pieza con detalle, te explicamos qué necesita y te la devolvemos funcionando como debe.
-            Sin apuros y sin sorpresas.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "20px 30px", marginBottom: 34 }}>
             <a
