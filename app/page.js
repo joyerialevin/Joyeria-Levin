@@ -1,7 +1,6 @@
 import { getSanity, DESTACADOS_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
-import FeaturedCarousel from "../components/FeaturedCarousel";
 import BrandStrip from "../components/BrandStrip";
 
 export const revalidate = 60;
@@ -64,7 +63,7 @@ async function getDatosHome() {
 }
 
 export default async function HomePage() {
-  const { categorias, marcas, destacados } = await getDatosHome();
+  const { categorias, marcas } = await getDatosHome();
 
   return (
     <>
@@ -78,7 +77,6 @@ export default async function HomePage() {
       </section>
 
       <CategoryStrip categorias={categorias} />
-      <FeaturedCarousel productos={destacados} />
       <BrandStrip marcas={marcas} />
     </>
   );
