@@ -4,9 +4,7 @@ import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
 import NovedadesSection from "../components/NovedadesSection";
 
-// 0 mientras curamos contenido en desarrollo, para ver los cambios de
-// Sanity al instante. Volver a 60 antes de publicar el sitio.
-export const revalidate = 0;
+export const revalidate = 60;
 
 const SUBTEXTO_ESTATICO = {
   relojes: "+ de 15 marcas",

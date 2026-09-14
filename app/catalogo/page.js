@@ -2,10 +2,7 @@ import { Suspense } from "react";
 import { getSanity, PRODUCTOS_QUERY } from "../../lib/sanityClient";
 import CatalogoClient from "../../components/CatalogoClient";
 
-// 0 mientras curamos contenido en desarrollo, para ver los cambios de
-// Sanity al instante en vez de esperar hasta 60s. Volver a 60 antes de
-// publicar el sitio (revalidate: 0 = sin caché, más pedidos a Sanity).
-export const revalidate = 0;
+export const revalidate = 60; // vuelve a pedir los productos cada 60s
 
 const NUMERO_WHATSAPP = "5493434728312";
 const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(
