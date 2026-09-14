@@ -7,7 +7,7 @@ export default function NovedadesSection({ productos }) {
     <section className="container" style={{ padding: "84px 6% 0" }}>
       <div style={{ marginBottom: 30 }}>
         <h2 className="display" style={{ fontSize: 40, lineHeight: 1.1, margin: 0 }}>
-          Nuevos
+          Nuevos ingresos
         </h2>
       </div>
 
