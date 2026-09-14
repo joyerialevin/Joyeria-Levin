@@ -203,9 +203,10 @@ export default function CatalogoClient({ productos }) {
             </p>
           ) : (
             <div
+              className="product-grid"
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
                 gap: 26,
               }}
             >

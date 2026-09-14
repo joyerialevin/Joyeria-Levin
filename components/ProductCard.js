@@ -8,6 +8,21 @@ import ProductModal from "./ProductModal";
 
 export default function ProductCard({ producto }) {
   const [abierto, setAbierto] = useState(false);
+  const [indice, setIndice] = useState(0);
+
+  const galeria =
+    producto.imagenes && producto.imagenes.length > 0
+      ? producto.imagenes
+      : [producto.imagen_url].filter(Boolean);
+
+  function anterior(e) {
+    e.stopPropagation();
+    setIndice((i) => (i - 1 + galeria.length) % galeria.length);
+  }
+  function siguiente(e) {
+    e.stopPropagation();
+    setIndice((i) => (i + 1) % galeria.length);
+  }
 
   const badge = producto.material ? MATERIAL_LABEL[producto.material] : null;
 
@@ -39,10 +54,10 @@ export default function ProductCard({ producto }) {
             position: "relative",
           }}
         >
-          {producto.imagen_url && (
+          {galeria[indice] && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={producto.imagen_url}
+              src={galeria[indice]}
               alt={producto.titulo}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
@@ -66,21 +81,51 @@ export default function ProductCard({ producto }) {
               {badge}
             </span>
           )}
-          {producto.imagenes && producto.imagenes.length > 1 && (
-            <span
-              className="stamp"
-              style={{
-                position: "absolute",
-                top: 12,
-                right: 12,
-                padding: "4px 8px",
-                borderRadius: 2,
-                background: "rgba(38,38,31,0.72)",
-                color: "var(--text-inverse)",
-              }}
-            >
-              +{producto.imagenes.length - 1}
-            </span>
+          {galeria.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={anterior}
+                aria-label="Foto anterior"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: 8,
+                  transform: "translateY(-50%)",
+                  width: 28,
+                  height: 28,
+                  borderRadius: "50%",
+                  border: "none",
+                  background: "rgba(255,255,255,0.85)",
+                  color: "var(--ink)",
+                  fontSize: 14,
+                  cursor: "pointer",
+                }}
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={siguiente}
+                aria-label="Foto siguiente"
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  right: 8,
+                  transform: "translateY(-50%)",
+                  width: 28,
+                  height: 28,
+                  borderRadius: "50%",
+                  border: "none",
+                  background: "rgba(255,255,255,0.85)",
+                  color: "var(--ink)",
+                  fontSize: 14,
+                  cursor: "pointer",
+                }}
+              >
+                ›
+              </button>
+            </>
           )}
         </div>
         <div style={{ padding: "16px 16px 20px" }}>
