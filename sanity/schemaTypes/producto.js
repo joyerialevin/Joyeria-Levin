@@ -44,9 +44,55 @@ export default defineType({
       validation: (Rule) => Rule.positive(),
     }),
     defineField({
+      name: "ocultarPrecio",
+      title: "Mostrar \"Precio a consultar\" igual",
+      description:
+        "Activalo para que la web muestre \"Precio a consultar\" aunque el producto ya tenga Precio cargado abajo — útil para tapar precios temporalmente sin perder el dato. Desactivalo cuando quieras que se vuelva a ver.",
+      type: "boolean",
+      initialValue: false,
+    }),
+    defineField({
+      name: "precioAnterior",
+      title: "Precio anterior (tachado)",
+      description:
+        "Opcional. Solo tiene efecto si además cargaste el Precio de arriba — ahí la web lo muestra tachado al lado del precio final, como descuento.",
+      type: "number",
+      validation: (Rule) => Rule.positive(),
+    }),
+    defineField({
+      name: "precioTransferencia",
+      title: "Precio con transferencia",
+      description:
+        "Opcional, para cuando el proveedor ofrece un descuento extra por pagar con transferencia (además del precio normal de arriba). Se muestra aparte, con su propio % de descuento calculado contra el Precio anterior.",
+      type: "number",
+      validation: (Rule) => Rule.positive(),
+    }),
+    defineField({
       name: "descripcion",
       title: "Descripción",
       type: "text",
+    }),
+    defineField({
+      name: "detalles",
+      title: "Detalles del producto",
+      description:
+        "Ficha técnica en pares etiqueta/valor (Colección, Género, Movimiento, Material, Diámetro, Cristal, Resistencia al agua, etc.), como en la web del fabricante. Se muestra debajo del precio, en el mismo orden en que los cargues acá.",
+      type: "array",
+      of: [
+        defineField({
+          name: "detalle",
+          title: "Detalle",
+          type: "object",
+          fields: [
+            defineField({ name: "etiqueta", title: "Etiqueta", type: "string", validation: (Rule) => Rule.required() }),
+            defineField({ name: "valor", title: "Valor", type: "string", validation: (Rule) => Rule.required() }),
+          ],
+          preview: {
+            select: { etiqueta: "etiqueta", valor: "valor" },
+            prepare: ({ etiqueta, valor }) => ({ title: etiqueta, subtitle: valor }),
+          },
+        }),
+      ],
     }),
     defineField({
       name: "tipo",
@@ -86,6 +132,13 @@ export default defineType({
       title: "Activo (visible en la web)",
       type: "boolean",
       initialValue: true,
+    }),
+    defineField({
+      name: "destacarNuevo",
+      title: "Destacar como Nuevo",
+      description: "Lo muestra en la sección \"Nuevos\" de la home. Marcalo/desmarcalo a mano cuando quieras.",
+      type: "boolean",
+      initialValue: false,
     }),
     defineField({
       name: "supabaseId",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { calcularDescuento, formatearPrecio } from "../lib/precio";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 
 export default function ProductModal({ producto, subtitulo, onClose }) {
@@ -180,18 +181,80 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
               {subtitulo}
             </div>
           )}
+
+          {producto.precio && !producto.ocultar_precio ? (
+            <div style={{ marginTop: 20 }}>
+              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
+                {producto.precio_anterior > producto.precio && (
+                  <span
+                    className="stamp"
+                    style={{ fontSize: 14, color: "var(--ink-soft)", textDecoration: "line-through" }}
+                  >
+                    {formatearPrecio(producto.precio_anterior)}
+                  </span>
+                )}
+                <span className="display" style={{ fontSize: 22, color: "var(--ink)" }}>
+                  {formatearPrecio(producto.precio)}
+                </span>
+                {calcularDescuento(producto.precio_anterior, producto.precio) != null && (
+                  <span className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)" }}>
+                    {calcularDescuento(producto.precio_anterior, producto.precio)}% OFF
+                  </span>
+                )}
+              </div>
+              {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
+                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 6 }}>
+                  <span style={{ fontSize: 15, color: "var(--ink)" }}>
+                    {formatearPrecio(producto.precio_transferencia)} con transferencia
+                  </span>
+                  {calcularDescuento(producto.precio, producto.precio_transferencia) != null && (
+                    <span className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)" }}>
+                      {calcularDescuento(producto.precio, producto.precio_transferencia)}% OFF EXTRA
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 20 }}>
+              Precio a consultar
+            </div>
+          )}
+
           {producto.descripcion && (
             <p style={{ marginTop: 20, color: "var(--ink-soft)", lineHeight: 1.7 }}>
               {producto.descripcion}
             </p>
           )}
-          <div style={{ marginTop: 24 }}>
-            <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)" }}>
-              Precio a consultar
+
+          {producto.detalles && producto.detalles.length > 0 && (
+            <div style={{ marginTop: 28 }}>
+              <h4 className="display" style={{ fontSize: 15, marginBottom: 12 }}>
+                Detalles del producto
+              </h4>
+              <div style={{ borderTop: "1px solid var(--line)" }}>
+                {producto.detalles.map((d, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      gap: 16,
+                      padding: "10px 0",
+                      borderBottom: "1px solid var(--line)",
+                      fontSize: 13.5,
+                    }}
+                  >
+                    <span style={{ color: "var(--ink-soft)" }}>{d.etiqueta}</span>
+                    <span style={{ color: "var(--ink)", textAlign: "right" }}>{d.valor}</span>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div style={{ maxWidth: 260 }}>
-              <ConsultarWhatsApp titulo={producto.titulo} />
-            </div>
+          )}
+
+          <div style={{ marginTop: 28, maxWidth: 260 }}>
+            <ConsultarWhatsApp titulo={producto.titulo} />
           </div>
         </div>
       </div>

@@ -64,6 +64,7 @@ export default async function Header() {
       }}
     >
       <div
+        className="header-inner"
         style={{
           maxWidth: 1400,
           margin: "0 auto",

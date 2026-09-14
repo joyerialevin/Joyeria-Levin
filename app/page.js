@@ -1,9 +1,12 @@
-import { getSanity, DESTACADOS_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
+import { getSanity, NOVEDADES_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
+import NovedadesSection from "../components/NovedadesSection";
 
-export const revalidate = 60;
+// 0 mientras curamos contenido en desarrollo, para ver los cambios de
+// Sanity al instante. Volver a 60 antes de publicar el sitio.
+export const revalidate = 0;
 
 const SUBTEXTO_ESTATICO = {
   relojes: "+ de 15 marcas",
@@ -28,9 +31,9 @@ const IMAGEN_CURADA = {
 async function getDatosHome() {
   const sanity = getSanity();
 
-  const [resumen, destacados] = await Promise.all([
+  const [resumen, novedades] = await Promise.all([
     sanity.fetch(RESUMEN_HOME_QUERY),
-    sanity.fetch(DESTACADOS_QUERY),
+    sanity.fetch(NOVEDADES_QUERY),
   ]);
 
   const filas = resumen || [];
@@ -53,11 +56,11 @@ async function getDatosHome() {
 
   const marcas = [...new Set(filas.map((f) => f.marca).filter(Boolean))].sort();
 
-  return { categorias, marcas, destacados: destacados || [] };
+  return { categorias, marcas, novedades: novedades || [] };
 }
 
 export default async function HomePage() {
-  const { categorias, marcas } = await getDatosHome();
+  const { categorias, marcas, novedades } = await getDatosHome();
 
   return (
     <>
@@ -70,6 +73,7 @@ export default async function HomePage() {
         />
       </section>
 
+      <NovedadesSection productos={novedades} />
       <CategoryStrip categorias={categorias} />
       <BrandStrip marcas={marcas} />
     </>

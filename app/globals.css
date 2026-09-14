@@ -123,6 +123,7 @@ a{ color:inherit; text-decoration:none; }
   .mega-nav{ display:none; }
   .header-actions-desktop{ display:none; }
   .header-hamburger{ display:flex; }
+  .header-inner{ grid-template-columns: 1fr auto; }
 }
 .mega-item{
   position:relative;
