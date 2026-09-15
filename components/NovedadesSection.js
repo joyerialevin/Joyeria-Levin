@@ -1,8 +1,8 @@
 import ProductCard from "./ProductCard";
 
-function GrupoNovedades({ titulo, productos, esUltimo }) {
+function GrupoNovedades({ titulo, productos }) {
   return (
-    <div style={{ marginBottom: esUltimo ? 0 : 48 }}>
+    <div>
       <div
         className="stamp"
         style={{
@@ -15,11 +15,11 @@ function GrupoNovedades({ titulo, productos, esUltimo }) {
         {titulo}
       </div>
       <div
-        className="product-grid"
+        className="novedades-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-          gap: 26,
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gap: 22,
         }}
       >
         {productos.map((p) => (
@@ -33,11 +33,14 @@ function GrupoNovedades({ titulo, productos, esUltimo }) {
 export default function NovedadesSection({ productos }) {
   if (!productos || productos.length === 0) return null;
 
-  const grupos = [
-    { titulo: "Caballero", productos: productos.filter((p) => p.tipo === "caballero") },
-    { titulo: "Dama", productos: productos.filter((p) => p.tipo === "dama") },
-    { titulo: "Otros", productos: productos.filter((p) => p.tipo !== "caballero" && p.tipo !== "dama") },
-  ].filter((g) => g.productos.length > 0);
+  const caballero = productos.filter((p) => p.tipo === "caballero");
+  const dama = productos.filter((p) => p.tipo === "dama");
+  const otros = productos.filter((p) => p.tipo !== "caballero" && p.tipo !== "dama");
+
+  // Caballero y Dama van lado a lado (con divisoria) en pantallas grandes,
+  // apilados en mobile. El split solo tiene sentido si hay de los dos —
+  // si solo hay novedades de un género, se muestra a todo el ancho.
+  const hayAmbosGeneros = caballero.length > 0 && dama.length > 0;
 
   return (
     <section className="container" style={{ padding: "84px 6% 0" }}>
@@ -47,9 +50,23 @@ export default function NovedadesSection({ productos }) {
         </h2>
       </div>
 
-      {grupos.map((g, i) => (
-        <GrupoNovedades key={g.titulo} titulo={g.titulo} productos={g.productos} esUltimo={i === grupos.length - 1} />
-      ))}
+      {hayAmbosGeneros ? (
+        <div className="novedades-split">
+          <GrupoNovedades titulo="Caballero" productos={caballero} />
+          <GrupoNovedades titulo="Dama" productos={dama} />
+        </div>
+      ) : (
+        <>
+          {caballero.length > 0 && <GrupoNovedades titulo="Caballero" productos={caballero} />}
+          {dama.length > 0 && <GrupoNovedades titulo="Dama" productos={dama} />}
+        </>
+      )}
+
+      {otros.length > 0 && (
+        <div style={{ marginTop: caballero.length > 0 || dama.length > 0 ? 48 : 0 }}>
+          <GrupoNovedades titulo="Otros" productos={otros} />
+        </div>
+      )}
     </section>
   );
 }
