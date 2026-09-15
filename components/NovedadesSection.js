@@ -18,8 +18,8 @@ function GrupoNovedades({ titulo, productos }) {
         className="novedades-grid"
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-          gap: 22,
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: 18,
         }}
       >
         {productos.map((p) => (
