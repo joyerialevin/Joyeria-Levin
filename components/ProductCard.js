@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { MATERIAL_LABEL, TIPO_LABEL } from "../lib/categorias";
 import { calcularDescuento, formatearPrecio } from "../lib/precio";
+import { optimizarImagenSanity } from "../lib/imagenSanity";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 import ProductModal from "./ProductModal";
 
@@ -57,8 +58,9 @@ export default function ProductCard({ producto }) {
           {galeria[indice] && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={galeria[indice]}
+              src={optimizarImagenSanity(galeria[indice], { width: 600 })}
               alt={producto.titulo}
+              loading="lazy"
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
           )}

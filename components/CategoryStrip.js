@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GRUPOS } from "../lib/categorias";
+import { optimizarImagenSanity } from "../lib/imagenSanity";
 
 const CABALLERO_SLUGS = new Set(
   GRUPOS.find((g) => g.slug === "caballero").categorias.map((c) => c.slug)
@@ -101,8 +102,9 @@ export default function CategoryStrip({ categorias }) {
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={cat.imagen}
+                  src={optimizarImagenSanity(cat.imagen, { width: 500 })}
                   alt={cat.nombre}
+                  loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
                 <div

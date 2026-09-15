@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { calcularDescuento, formatearPrecio } from "../lib/precio";
+import { optimizarImagenSanity } from "../lib/imagenSanity";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 
 export default function ProductModal({ producto, subtitulo, onClose }) {
@@ -104,7 +105,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
           {galeria[indice] && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={galeria[indice]}
+              src={optimizarImagenSanity(galeria[indice], { width: 900 })}
               alt={producto.titulo}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
