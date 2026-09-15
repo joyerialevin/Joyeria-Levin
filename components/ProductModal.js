@@ -6,8 +6,8 @@ import ConsultarWhatsApp from "./ConsultarWhatsApp";
 
 export default function ProductModal({ producto, subtitulo, onClose }) {
   const galeria =
-    producto.imagenes && producto.imagenes.length > 0
-      ? producto.imagenes
+    producto.imagenes && producto.imagenes.filter(Boolean).length > 0
+      ? producto.imagenes.filter(Boolean)
       : [producto.imagen_url].filter(Boolean);
 
   const [indice, setIndice] = useState(0);
