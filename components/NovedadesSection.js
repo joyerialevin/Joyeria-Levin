@@ -1,6 +1,27 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-function GrupoNovedades({ titulo, productos }) {
+const INTERVALO_MS = 30000;
+const TAMANO_TANDA = 4;
+
+function tandaActual(productos, indice) {
+  if (productos.length === 0) return [];
+  const totalTandas = Math.ceil(productos.length / TAMANO_TANDA);
+  const inicio = (indice % totalTandas) * TAMANO_TANDA;
+  return productos.slice(inicio, inicio + TAMANO_TANDA);
+}
+
+function FilaNovedades({ titulo, productos }) {
+  const [indice, setIndice] = useState(0);
+
+  useEffect(() => {
+    if (productos.length <= TAMANO_TANDA) return;
+    const id = setInterval(() => setIndice((i) => i + 1), INTERVALO_MS);
+    return () => clearInterval(id);
+  }, [productos.length]);
+
   return (
     <div>
       <div
@@ -14,15 +35,8 @@ function GrupoNovedades({ titulo, productos }) {
       >
         {titulo}
       </div>
-      <div
-        className="novedades-grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(2, 1fr)",
-          gap: 18,
-        }}
-      >
-        {productos.map((p) => (
+      <div className="novedades-fila">
+        {tandaActual(productos, indice).map((p) => (
           <ProductCard key={p.id} producto={p} />
         ))}
       </div>
@@ -33,14 +47,10 @@ function GrupoNovedades({ titulo, productos }) {
 export default function NovedadesSection({ productos }) {
   if (!productos || productos.length === 0) return null;
 
-  const caballero = productos.filter((p) => p.tipo === "caballero");
   const dama = productos.filter((p) => p.tipo === "dama");
-  const otros = productos.filter((p) => p.tipo !== "caballero" && p.tipo !== "dama");
+  const caballero = productos.filter((p) => p.tipo === "caballero");
 
-  // Caballero y Dama van lado a lado (con divisoria) en pantallas grandes,
-  // apilados en mobile. El split solo tiene sentido si hay de los dos —
-  // si solo hay novedades de un género, se muestra a todo el ancho.
-  const hayAmbosGeneros = caballero.length > 0 && dama.length > 0;
+  if (dama.length === 0 && caballero.length === 0) return null;
 
   return (
     <section className="container" style={{ padding: "84px 6% 0" }}>
@@ -50,23 +60,12 @@ export default function NovedadesSection({ productos }) {
         </h2>
       </div>
 
-      {hayAmbosGeneros ? (
-        <div className="novedades-split">
-          <GrupoNovedades titulo="Caballero" productos={caballero} />
-          <GrupoNovedades titulo="Dama" productos={dama} />
-        </div>
-      ) : (
-        <>
-          {caballero.length > 0 && <GrupoNovedades titulo="Caballero" productos={caballero} />}
-          {dama.length > 0 && <GrupoNovedades titulo="Dama" productos={dama} />}
-        </>
-      )}
-
-      {otros.length > 0 && (
-        <div style={{ marginTop: caballero.length > 0 || dama.length > 0 ? 48 : 0 }}>
-          <GrupoNovedades titulo="Otros" productos={otros} />
+      {dama.length > 0 && (
+        <div style={{ marginBottom: caballero.length > 0 ? 48 : 0 }}>
+          <FilaNovedades titulo="Dama" productos={dama} />
         </div>
       )}
+      {caballero.length > 0 && <FilaNovedades titulo="Caballero" productos={caballero} />}
     </section>
   );
 }

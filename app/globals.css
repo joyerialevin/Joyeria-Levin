@@ -253,20 +253,12 @@ a{ color:inherit; text-decoration:none; }
   .sobre-aside{ position:sticky; top:96px; align-self:start; }
 }
 
-/* Nuevos ingresos: Caballero y Dama lado a lado con una divisoria en
-   pantallas grandes; apilados en mobile, donde dos columnas angostas
-   dejarían las tarjetas de producto demasiado chicas. */
-.novedades-split{ display:grid; grid-template-columns:minmax(0,1fr); gap:48px; }
+/* Nuevos ingresos: cada fila (Dama, Caballero) muestra una tanda de 4
+   productos que rota sola. 2 columnas en mobile para que las tarjetas
+   no queden minúsculas, 4 en pantallas grandes. */
+.novedades-fila{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
 @media (min-width:860px){
-  .novedades-split{
-    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-    column-gap:56px;
-  }
-  .novedades-split > div:last-child{
-    padding-left:56px;
-    border-left:1px solid var(--line);
-    margin-left:-1px;
-  }
+  .novedades-fila{ grid-template-columns:repeat(4, 1fr); gap:22px; }
 }
 
 .sobre-item{
