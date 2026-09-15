@@ -254,7 +254,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
           )}
 
           <div style={{ marginTop: 28, maxWidth: 260 }}>
-            <ConsultarWhatsApp titulo={producto.titulo} />
+            <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={galeria[indice]} />
           </div>
         </div>
       </div>

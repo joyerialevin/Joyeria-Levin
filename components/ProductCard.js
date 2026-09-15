@@ -176,7 +176,7 @@ export default function ProductCard({ producto }) {
             </div>
           )}
           <div onClick={(e) => e.stopPropagation()}>
-            <ConsultarWhatsApp titulo={producto.titulo} />
+            <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={producto.imagen_url} />
           </div>
         </div>
       </div>

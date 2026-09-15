@@ -1,7 +1,9 @@
 const NUMERO_WHATSAPP = "5493434728312";
 
-export default function ConsultarWhatsApp({ titulo, onClick }) {
-  const mensaje = `Hola! Vi en la web "${titulo}" y quería consultar por precio y disponibilidad.`;
+export default function ConsultarWhatsApp({ titulo, imagenUrl, onClick }) {
+  const mensaje = imagenUrl
+    ? `Hola! Vi en la web "${titulo}" y quería consultar por precio y disponibilidad.\n${imagenUrl}`
+    : `Hola! Vi en la web "${titulo}" y quería consultar por precio y disponibilidad.`;
   const href = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
 
   return (
