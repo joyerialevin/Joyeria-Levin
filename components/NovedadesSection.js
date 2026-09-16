@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-const INTERVALO_MS = 30000;
+const INTERVALO_MS = 15000;
 const TAMANO_TANDA = 4;
 
 function tandaActual(productos, indice) {
