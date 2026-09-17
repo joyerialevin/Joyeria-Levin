@@ -1,6 +1,6 @@
 const NUMERO_WHATSAPP = "5493434728312";
 
-export default function ConsultarWhatsApp({ titulo, imagenUrl, onClick }) {
+export default function ConsultarWhatsApp({ titulo, imagenUrl, onClick, compacto }) {
   const mensaje = imagenUrl
     ? `Hola! Vi en la web "${titulo}" y quería consultar por precio y disponibilidad.\n${imagenUrl}`
     : `Hola! Vi en la web "${titulo}" y quería consultar por precio y disponibilidad.`;
@@ -14,10 +14,11 @@ export default function ConsultarWhatsApp({ titulo, imagenUrl, onClick }) {
       onClick={onClick}
       className="stamp"
       style={{
-        marginTop: 12,
+        marginTop: compacto ? 8 : 12,
         display: "block",
         width: "100%",
-        padding: "10px 0",
+        padding: compacto ? "8px 0" : "10px 0",
+        fontSize: compacto ? 11 : undefined,
         background: "var(--oro)",
         color: "var(--porcelain)",
         border: "none",

@@ -130,12 +130,12 @@ export default function ProductCard({ producto }) {
             </>
           )}
         </div>
-        <div style={{ padding: "16px 16px 20px" }}>
-          <h5 className="display" style={{ fontSize: 16, marginBottom: 4 }}>
+        <div style={{ padding: "12px 12px 14px" }}>
+          <h5 className="display" style={{ fontSize: 14.5, marginBottom: 3 }}>
             {producto.titulo}
           </h5>
           {subtitulo && (
-            <div style={{ fontSize: 12.5, color: "var(--ink-soft)", marginBottom: 12 }}>
+            <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 8 }}>
               {subtitulo}
             </div>
           )}
@@ -172,13 +172,9 @@ export default function ProductCard({ producto }) {
                 </div>
               )}
             </div>
-          ) : (
-            <div className="stamp" style={{ fontSize: 11, color: "var(--ink-soft)" }}>
-              Precio a consultar
-            </div>
-          )}
+          ) : null}
           <div onClick={(e) => e.stopPropagation()}>
-            <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={producto.imagen_url} />
+            <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={producto.imagen_url} compacto />
           </div>
         </div>
       </div>
