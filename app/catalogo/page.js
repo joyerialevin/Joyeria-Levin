@@ -29,7 +29,7 @@ export default async function CatalogoPage() {
         </Suspense>
       </div>
 
-      <section id="visitanos" style={{ background: "var(--oro-deep)" }}>
+      <section id="visitanos" style={{ background: "#EBE9DD" }}>
         <div
           className="container taller-grid"
           style={{
@@ -59,26 +59,26 @@ export default async function CatalogoPage() {
             />
           </div>
           <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 20, fontWeight: 300 }}>
+            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 20, fontWeight: 300 }}>
               Visitanos
             </div>
-            <h2 className="display" style={{ fontSize: 36, lineHeight: 1.15, margin: "0 0 28px", color: "var(--porcelain)" }}>
+            <h2 className="display" style={{ fontSize: 36, lineHeight: 1.15, margin: "0 0 28px", color: "var(--ink)" }}>
               Te esperamos en el local.
             </h2>
             <div style={{ display: "grid", gap: 24, marginBottom: 32 }}>
               <div>
-                <div className="stamp" style={{ fontSize: 11, color: "var(--text-inverse-soft)", marginBottom: 8 }}>
+                <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 8 }}>
                   Dirección
                 </div>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--porcelain)", margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
                   Perú 134, Paraná, Entre Ríos.
                 </p>
               </div>
               <div>
-                <div className="stamp" style={{ fontSize: 11, color: "var(--text-inverse-soft)", marginBottom: 8 }}>
+                <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 8 }}>
                   Horarios
                 </div>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--porcelain)", margin: 0 }}>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
                   Lunes a viernes 9:00–13:00 y 16:00–20:00
                   <br />
                   Sábados 9:00–13:00
