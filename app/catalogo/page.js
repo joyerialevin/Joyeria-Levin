@@ -29,51 +29,77 @@ export default async function CatalogoPage() {
         </Suspense>
       </div>
 
-      <section
-        id="visitanos"
-        style={{ background: "var(--sunken)", borderTop: "1px solid var(--line)" }}
-      >
-        <div className="container" style={{ padding: "70px 6%", maxWidth: 640, textAlign: "center", margin: "0 auto" }}>
-          <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 18 }}>
-            Visitanos
+      <section id="visitanos" style={{ background: "var(--ink)" }}>
+        <div
+          className="container taller-grid"
+          style={{
+            padding: 0,
+            maxWidth: 1200,
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            alignItems: "stretch",
+          }}
+        >
+          <div style={{ position: "relative", minHeight: 420 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/fotos/taller.jpg"
+              alt="Joyería Levin"
+              style={{
+                width: "100%",
+                height: "100%",
+                minHeight: 420,
+                objectFit: "cover",
+                display: "block",
+                position: "absolute",
+                inset: 0,
+              }}
+            />
           </div>
-          <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 28px" }}>
-            Te esperamos en el local.
-          </h2>
-          <div className="visitanos-info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 36, textAlign: "left" }}>
-            <div>
-              <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 10 }}>
-                Dirección
-              </div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                Perú 134, Paraná, Entre Ríos.
-              </p>
+          <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+            <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 20, fontWeight: 300 }}>
+              Visitanos
             </div>
-            <div>
-              <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 10 }}>
-                Horarios
+            <h2 className="display" style={{ fontSize: 36, lineHeight: 1.15, margin: "0 0 28px", color: "var(--porcelain)" }}>
+              Te esperamos en el local.
+            </h2>
+            <div style={{ display: "grid", gap: 24, marginBottom: 32 }}>
+              <div>
+                <div className="stamp" style={{ fontSize: 11, color: "var(--text-inverse-soft)", marginBottom: 8 }}>
+                  Dirección
+                </div>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--porcelain)", margin: 0 }}>
+                  Perú 134, Paraná, Entre Ríos.
+                </p>
               </div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                Lunes a viernes 9:00–13:00 y 16:00–20:00
-                <br />
-                Sábados 9:00–13:00
-              </p>
+              <div>
+                <div className="stamp" style={{ fontSize: 11, color: "var(--text-inverse-soft)", marginBottom: 8 }}>
+                  Horarios
+                </div>
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--porcelain)", margin: 0 }}>
+                  Lunes a viernes 9:00–13:00 y 16:00–20:00
+                  <br />
+                  Sábados 9:00–13:00
+                </p>
+              </div>
             </div>
+            <a
+              href={LINK_WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stamp"
+              style={{
+                color: "var(--porcelain)",
+                background: "var(--oro)",
+                padding: "15px 30px",
+                borderRadius: "var(--radius-sm)",
+                alignSelf: "flex-start",
+              }}
+            >
+              Consultar por WhatsApp
+            </a>
           </div>
-          <a
-            href={LINK_WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stamp"
-            style={{
-              color: "var(--porcelain)",
-              background: "var(--oro)",
-              padding: "16px 32px",
-              borderRadius: "var(--radius-sm)",
-            }}
-          >
-            Consultar por WhatsApp
-          </a>
         </div>
       </section>
     </>

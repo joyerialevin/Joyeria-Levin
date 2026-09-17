@@ -325,7 +325,7 @@ a{ color:inherit; text-decoration:none; }
 }
 
 @media (max-width: 760px){
-  .visitanos-info-grid{ grid-template-columns:1fr !important; }
+  .taller-grid{ grid-template-columns:1fr !important; }
   .catalogo-filtros-grid{ grid-template-columns:1fr !important; }
   /* Fotos grandes tipo editorial (Maria Cher): 2 columnas fijas en mobile,
      en vez de dejar que el ancho mínimo de la tarjeta decida cuántas entran. */
