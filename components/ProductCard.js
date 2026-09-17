@@ -7,7 +7,7 @@ import { optimizarImagenSanity } from "../lib/imagenSanity";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 import ProductModal from "./ProductModal";
 
-export default function ProductCard({ producto }) {
+export default function ProductCard({ producto, soloMarca }) {
   const [abierto, setAbierto] = useState(false);
   const [indice, setIndice] = useState(0);
 
@@ -27,11 +27,12 @@ export default function ProductCard({ producto }) {
 
   const badge = producto.material ? MATERIAL_LABEL[producto.material] : null;
 
-  // En la tarjeta se muestra la marca como nombre, no el título completo
-  // (que suele traer el código de referencia del fabricante, ej. "Festina
-  // F20669.2") — al cliente no le interesa el código, y queda solo como
-  // dato interno visible al entrar al detalle del producto.
-  const tituloCard = producto.marca || producto.titulo;
+  // En la home (soloMarca) se muestra la marca como nombre, no el título
+  // completo (que suele traer el código de referencia del fabricante, ej.
+  // "Festina F20669.2") — es una vidriera rápida, el código no aporta ahí.
+  // En el catálogo sí se necesita para distinguir entre varios productos
+  // de la misma marca, así que se muestra el título completo.
+  const tituloCard = soloMarca ? producto.marca || producto.titulo : producto.titulo;
 
   const subtitulo = [
     producto.tipo ? TIPO_LABEL[producto.tipo] : null,
@@ -147,9 +148,9 @@ export default function ProductCard({ producto }) {
           <h5 className="display" style={{ fontSize: 14.5, marginBottom: 3 }}>
             {tituloCard}
           </h5>
-          {subtituloCard && (
+          {(soloMarca ? subtituloCard : subtitulo) && (
             <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 8 }}>
-              {subtituloCard}
+              {soloMarca ? subtituloCard : subtitulo}
             </div>
           )}
           {producto.precio && !producto.ocultar_precio ? (

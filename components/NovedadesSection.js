@@ -41,7 +41,7 @@ function FilaNovedades({ titulo, productos }) {
       </div>
       <div className="novedades-fila">
         {tandaActual(productos, indice).map((p) => (
-          <ProductCard key={p.id} producto={p} />
+          <ProductCard key={p.id} producto={p} soloMarca />
         ))}
       </div>
     </div>
