@@ -53,19 +53,21 @@ export default function NovedadesSection({ productos }) {
   if (dama.length === 0 && caballero.length === 0) return null;
 
   return (
-    <section className="container" style={{ padding: "84px 6% 0" }}>
-      <div style={{ marginBottom: 40 }}>
-        <h2 className="display" style={{ fontSize: 40, lineHeight: 1.1, margin: 0 }}>
-          Nuevos ingresos
-        </h2>
-      </div>
-
-      {dama.length > 0 && (
-        <div style={{ marginBottom: caballero.length > 0 ? 48 : 0 }}>
-          <FilaNovedades titulo="Dama" productos={dama} />
+    <section style={{ background: "var(--card-bg)" }}>
+      <div className="container" style={{ padding: "84px 6% 84px" }}>
+        <div style={{ marginBottom: 40 }}>
+          <h2 className="display" style={{ fontSize: 40, lineHeight: 1.1, margin: 0 }}>
+            Nuevos ingresos
+          </h2>
         </div>
-      )}
-      {caballero.length > 0 && <FilaNovedades titulo="Caballero" productos={caballero} />}
+
+        {dama.length > 0 && (
+          <div style={{ marginBottom: caballero.length > 0 ? 48 : 0 }}>
+            <FilaNovedades titulo="Dama" productos={dama} />
+          </div>
+        )}
+        {caballero.length > 0 && <FilaNovedades titulo="Caballero" productos={caballero} />}
+      </div>
     </section>
   );
 }
