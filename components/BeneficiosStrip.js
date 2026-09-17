@@ -2,7 +2,6 @@ const ITEMS = [
   "3 cuotas sin interés (Macro)",
   "Descuentos en efectivo y transferencia",
   "Envíos a todo el país",
-  "Comprá con seguridad",
   "Atención personalizada",
 ];
 
@@ -16,7 +15,7 @@ export default function BeneficiosStrip() {
         overflow: "hidden",
       }}
     >
-      <div className="levin-ticker">
+      <div className="levin-ticker" style={{ animationDuration: "26s" }}>
         {[0, 1].map((rep) => (
           <div key={rep} style={{ display: "flex", alignItems: "center", gap: 72, paddingRight: 72 }}>
             {ITEMS.map((item) => (
@@ -25,7 +24,7 @@ export default function BeneficiosStrip() {
                 className="stamp"
                 style={{
                   color: "var(--porcelain)",
-                  fontSize: 13,
+                  fontSize: 14.5,
                   fontWeight: 400,
                   letterSpacing: "0.2em",
                   whiteSpace: "nowrap",
