@@ -41,21 +41,12 @@ export default async function CatalogoPage() {
             alignItems: "stretch",
           }}
         >
-          <div style={{ position: "relative", minHeight: 620 }}>
+          <div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/taller.jpg"
               alt="Joyería Levin"
-              style={{
-                width: "100%",
-                height: "100%",
-                minHeight: 620,
-                objectFit: "cover",
-                objectPosition: "center top",
-                display: "block",
-                position: "absolute",
-                inset: 0,
-              }}
+              style={{ width: "100%", height: "auto", display: "block" }}
             />
           </div>
           <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
