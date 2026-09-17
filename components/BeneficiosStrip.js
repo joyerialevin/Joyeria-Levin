@@ -3,6 +3,7 @@ const ITEMS = [
   "Descuentos en efectivo y transferencia",
   "Envíos a todo el país",
   "Comprá con seguridad",
+  "Atención personalizada",
 ];
 
 export default function BeneficiosStrip() {
