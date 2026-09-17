@@ -80,7 +80,7 @@ export default async function HomePage() {
       <section className="levin-fade" style={{ lineHeight: 0 }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/fotos/inicio1.png"
+          src="/fotos/clara-inicio.png"
           alt="Joyería Levin — Joyería & Relojería"
           style={{ width: "100%", height: "auto", display: "block" }}
         />
