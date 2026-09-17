@@ -27,9 +27,22 @@ export default function ProductCard({ producto }) {
 
   const badge = producto.material ? MATERIAL_LABEL[producto.material] : null;
 
+  // En la tarjeta se muestra la marca como nombre, no el título completo
+  // (que suele traer el código de referencia del fabricante, ej. "Festina
+  // F20669.2") — al cliente no le interesa el código, y queda solo como
+  // dato interno visible al entrar al detalle del producto.
+  const tituloCard = producto.marca || producto.titulo;
+
   const subtitulo = [
     producto.tipo ? TIPO_LABEL[producto.tipo] : null,
     producto.marca,
+    !producto.tipo && producto.material ? MATERIAL_LABEL[producto.material] : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+
+  const subtituloCard = [
+    producto.tipo ? TIPO_LABEL[producto.tipo] : null,
     !producto.tipo && producto.material ? MATERIAL_LABEL[producto.material] : null,
   ]
     .filter(Boolean)
@@ -132,11 +145,11 @@ export default function ProductCard({ producto }) {
         </div>
         <div style={{ padding: "12px 12px 14px" }}>
           <h5 className="display" style={{ fontSize: 14.5, marginBottom: 3 }}>
-            {producto.titulo}
+            {tituloCard}
           </h5>
-          {subtitulo && (
+          {subtituloCard && (
             <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 8 }}>
-              {subtitulo}
+              {subtituloCard}
             </div>
           )}
           {producto.precio && !producto.ocultar_precio ? (
