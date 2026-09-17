@@ -52,7 +52,22 @@ async function getDatosHome() {
     subtexto: SUBTEXTO_ESTATICO[cat.slug] || "",
   }));
 
-  const marcas = [...new Set(filas.map((f) => f.marca).filter(Boolean))].sort();
+  // La tira de marcas de la home es solo de relojes. Se agrupa sin
+  // distinguir mayúsculas/minúsculas porque el mismo nombre puede estar
+  // cargado con distinta capitalización en Sanity (ej. "CASIO" y
+  // "Casio"), y se prefiere la versión que no está toda en mayúscula.
+  const marcasPorClave = new Map();
+  filas
+    .filter((f) => f.categoria_slug === "relojes" && f.marca)
+    .forEach((f) => {
+      const marca = f.marca.trim();
+      const clave = marca.toLowerCase();
+      const actual = marcasPorClave.get(clave);
+      if (!actual || (actual === actual.toUpperCase() && marca !== marca.toUpperCase())) {
+        marcasPorClave.set(clave, marca);
+      }
+    });
+  const marcas = [...marcasPorClave.values()].sort();
 
   return { categorias, marcas, novedades: novedades || [] };
 }
