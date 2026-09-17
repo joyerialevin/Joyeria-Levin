@@ -6,11 +6,15 @@ import ProductCard from "./ProductCard";
 const INTERVALO_MS = 15000;
 const TAMANO_TANDA = 4;
 
+// Ventana circular: siempre devuelve TAMANO_TANDA relojes (salvo que
+// haya menos cargados), completando con los primeros de vuelta si la
+// tanda se pasa del final de la lista.
 function tandaActual(productos, indice) {
-  if (productos.length === 0) return [];
-  const totalTandas = Math.ceil(productos.length / TAMANO_TANDA);
-  const inicio = (indice % totalTandas) * TAMANO_TANDA;
-  return productos.slice(inicio, inicio + TAMANO_TANDA);
+  const total = productos.length;
+  if (total === 0) return [];
+  const cantidad = Math.min(TAMANO_TANDA, total);
+  const inicio = (indice * TAMANO_TANDA) % total;
+  return Array.from({ length: cantidad }, (_, i) => productos[(inicio + i) % total]);
 }
 
 function FilaNovedades({ titulo, productos }) {
