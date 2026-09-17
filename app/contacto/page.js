@@ -31,13 +31,6 @@ const METODOS = [
   },
 ];
 
-const SERVICIOS = [
-  { titulo: "Service de relojería", texto: "Pilas, mallas y ajuste de movimientos en taller propio." },
-  { titulo: "Arreglos y grabados", texto: "Soldaduras, cambio de talle y grabados a pedido." },
-  { titulo: "Tasación", texto: "Evaluación de piezas propias, sin cargo y en el momento." },
-  { titulo: "Envíos", texto: "Coordinamos envío asegurado a todo el país." },
-];
-
 const inputStyle = {
   width: "100%",
   padding: "12px 14px",
@@ -251,28 +244,6 @@ export default function ContactoPage() {
             />
           </div>
         </div>
-        </div>
-      </section>
-
-      <section style={{ background: "var(--sunken)", borderTop: "1px solid var(--line)" }}>
-        <div className="container" style={{ padding: "56px 6%" }}>
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-              gap: 32,
-            }}
-          >
-            {SERVICIOS.map((s) => (
-              <div key={s.titulo}>
-                <div style={{ width: 24, height: 1, background: "var(--oro)", marginBottom: 14 }} />
-                <h3 className="stamp" style={{ fontSize: 12.5, color: "var(--ink)", marginBottom: 8 }}>
-                  {s.titulo}
-                </h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0 }}>{s.texto}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
