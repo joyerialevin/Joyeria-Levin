@@ -17,20 +17,20 @@ export default function BeneficiosStrip() {
     >
       <div className="levin-ticker">
         {[0, 1].map((rep) => (
-          <div key={rep} style={{ display: "flex", alignItems: "center", gap: 48, paddingRight: 48 }}>
+          <div key={rep} style={{ display: "flex", alignItems: "center", gap: 72, paddingRight: 72 }}>
             {ITEMS.map((item) => (
               <span
                 key={item}
                 className="stamp"
                 style={{
                   color: "var(--porcelain)",
-                  fontSize: 12,
+                  fontSize: 13,
                   fontWeight: 400,
-                  letterSpacing: "0.08em",
+                  letterSpacing: "0.2em",
                   whiteSpace: "nowrap",
                   display: "flex",
                   alignItems: "center",
-                  gap: 48,
+                  gap: 72,
                 }}
               >
                 {item}
