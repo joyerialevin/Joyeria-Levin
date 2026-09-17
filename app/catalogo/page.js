@@ -29,7 +29,7 @@ export default async function CatalogoPage() {
         </Suspense>
       </div>
 
-      <section id="visitanos" style={{ background: "var(--ink)" }}>
+      <section id="visitanos" style={{ background: "var(--oro-deep)" }}>
         <div
           className="container taller-grid"
           style={{
@@ -51,6 +51,7 @@ export default async function CatalogoPage() {
                 height: "100%",
                 minHeight: 420,
                 objectFit: "cover",
+                objectPosition: "center 20%",
                 display: "block",
                 position: "absolute",
                 inset: 0,
