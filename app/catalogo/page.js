@@ -41,7 +41,7 @@ export default async function CatalogoPage() {
             alignItems: "stretch",
           }}
         >
-          <div style={{ aspectRatio: "1152 / 758", overflow: "hidden" }}>
+          <div style={{ position: "relative", minHeight: 300, aspectRatio: "1152 / 758", overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/taller.jpg"
@@ -55,7 +55,17 @@ export default async function CatalogoPage() {
               }}
             />
           </div>
-          <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
+          <div
+            style={{
+              position: "relative",
+              zIndex: 1,
+              background: "#EBE9DD",
+              padding: "72px 6%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+            }}
+          >
             <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 20, fontWeight: 300 }}>
               Visitanos
             </div>
