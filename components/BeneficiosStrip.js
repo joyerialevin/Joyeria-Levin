@@ -26,7 +26,7 @@ export default function BeneficiosStrip() {
                   color: "var(--porcelain)",
                   fontSize: 14.5,
                   fontWeight: 400,
-                  letterSpacing: "0.2em",
+                  letterSpacing: "0.1em",
                   whiteSpace: "nowrap",
                   display: "flex",
                   alignItems: "center",
