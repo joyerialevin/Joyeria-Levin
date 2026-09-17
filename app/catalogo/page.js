@@ -29,81 +29,6 @@ export default async function CatalogoPage() {
         </Suspense>
       </div>
 
-      <section style={{ background: "var(--ink)" }}>
-        <div
-          className="container taller-grid"
-          style={{
-            padding: 0,
-            maxWidth: 1200,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            alignItems: "stretch",
-          }}
-        >
-          <div style={{ position: "relative", minHeight: 420 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/taller.jpg"
-              alt="Taller de relojería Levin"
-              style={{
-                width: "100%",
-                height: "100%",
-                minHeight: 420,
-                objectFit: "cover",
-                display: "block",
-                position: "absolute",
-                inset: 0,
-              }}
-            />
-          </div>
-          <div style={{ padding: "72px 6%", display: "flex", flexDirection: "column", justifyContent: "center" }}>
-            <div className="stamp" style={{ color: "var(--text-inverse-soft)", marginBottom: 20, fontWeight: 300 }}>
-              Taller propio
-            </div>
-            <h2 className="display" style={{ fontSize: 36, lineHeight: 1.15, margin: "0 0 20px", color: "var(--porcelain)" }}>
-              El reloj se queda acá.
-            </h2>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: "var(--text-inverse-soft)", margin: "0 0 32px", maxWidth: "44ch" }}>
-              Cambio de pilas, ajuste de mallas, cambio de vidrio y revisión completa. Evaluamos la pieza, te pasamos
-              presupuesto y recién entonces trabajamos.
-            </p>
-            <div style={{ display: "grid", gap: 14, marginBottom: 32 }}>
-              {["Cambio de pila", "Ajuste o cambio de malla", "Revisión y reparación"].map((s) => (
-                <div
-                  key={s}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    borderTop: "1px solid rgba(253,252,248,0.15)",
-                    paddingTop: 14,
-                    fontSize: 14.5,
-                  }}
-                >
-                  <span style={{ color: "var(--porcelain)" }}>{s}</span>
-                  <span style={{ color: "var(--text-inverse-soft)" }}>A presupuesto</span>
-                </div>
-              ))}
-            </div>
-            <a
-              href={LINK_WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stamp"
-              style={{
-                color: "var(--porcelain)",
-                background: "var(--oro)",
-                padding: "15px 30px",
-                borderRadius: "var(--radius-sm)",
-                alignSelf: "flex-start",
-              }}
-            >
-              Consultar por WhatsApp
-            </a>
-          </div>
-        </div>
-      </section>
-
       <section
         id="visitanos"
         style={{ background: "var(--sunken)", borderTop: "1px solid var(--line)" }}
@@ -121,11 +46,7 @@ export default async function CatalogoPage() {
                 Dirección
               </div>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                Perú 134
-                <br />
-                Paraná, Entre Ríos
-                <br />
-                Argentina
+                Perú 134, Paraná, Entre Ríos.
               </p>
             </div>
             <div>
@@ -133,11 +54,9 @@ export default async function CatalogoPage() {
                 Horarios
               </div>
               <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                Lun a vie
+                Lunes a viernes 9:00–13:00 y 16:00–20:00
                 <br />
-                9 a 13 y 16 a 20
-                <br />
-                Sáb 9 a 13
+                Sábados 9:00–13:00
               </p>
             </div>
           </div>
