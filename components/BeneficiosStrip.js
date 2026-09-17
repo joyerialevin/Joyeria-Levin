@@ -17,7 +17,7 @@ export default function BeneficiosStrip() {
     >
       <div className="levin-ticker">
         {[0, 1].map((rep) => (
-          <div key={rep} style={{ display: "flex", alignItems: "center", gap: 20, paddingRight: 20 }}>
+          <div key={rep} style={{ display: "flex", alignItems: "center", gap: 48, paddingRight: 48 }}>
             {ITEMS.map((item) => (
               <span
                 key={item}
@@ -30,7 +30,7 @@ export default function BeneficiosStrip() {
                   whiteSpace: "nowrap",
                   display: "flex",
                   alignItems: "center",
-                  gap: 20,
+                  gap: 48,
                 }}
               >
                 {item}
