@@ -3,6 +3,7 @@ import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
 import NovedadesSection from "../components/NovedadesSection";
+import BeneficiosStrip from "../components/BeneficiosStrip";
 
 export const revalidate = 60;
 
@@ -86,6 +87,7 @@ export default async function HomePage() {
         />
       </section>
 
+      <BeneficiosStrip />
       <NovedadesSection productos={novedades} />
       <CategoryStrip categorias={categorias} />
       <BrandStrip marcas={marcas} />
