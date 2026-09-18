@@ -41,7 +41,7 @@ export default async function CatalogoPage() {
             alignItems: "stretch",
           }}
         >
-          <div style={{ position: "relative", minHeight: 300, aspectRatio: "1152 / 758", overflow: "hidden" }}>
+          <div style={{ position: "relative", minHeight: 300, aspectRatio: "1152 / 1454", overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/taller.jpg"
@@ -50,7 +50,7 @@ export default async function CatalogoPage() {
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                objectPosition: "center 70%",
+                objectPosition: "center 34.5%",
                 display: "block",
               }}
             />
