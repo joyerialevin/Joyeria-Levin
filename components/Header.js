@@ -170,7 +170,7 @@ export default async function Header() {
             className="stamp"
             style={{
               color: "var(--porcelain)",
-              background: "#3F6B4A",
+              background: "var(--oro)",
               padding: "11px 22px",
               borderRadius: "var(--radius-sm)",
             }}
