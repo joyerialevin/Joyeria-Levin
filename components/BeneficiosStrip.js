@@ -1,6 +1,6 @@
 const ITEMS = [
   "3 cuotas sin interés (Macro)",
-  "Descuentos en efectivo y transferencia",
+  "10% OFF en efectivo y transferencia",
   "Envíos a todo el país",
   "Atención personalizada",
 ];
