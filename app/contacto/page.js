@@ -197,37 +197,7 @@ export default function ContactoPage() {
       </section>
 
       <section style={{ background: "rgba(130,120,56,0.16)" }}>
-        <div className="container" style={{ padding: "56px 6% 70px" }}>
-        <div
-          style={{
-            maxWidth: 620,
-            margin: "0 auto",
-            textAlign: "center",
-          }}
-        >
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
-            Visitanos
-          </div>
-          <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 24px" }}>
-            Estamos en Perú 134, Paraná, Entre Ríos.
-          </h2>
-          <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
-            Horarios
-          </div>
-          <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)", marginBottom: 24 }}>
-            Lunes a viernes 9:00–13:00 y 16:00–20:00
-            <br />
-            Sábados 9:00–13:00 · Domingo cerrado
-          </div>
-          <a
-            href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="stamp"
-            style={{ display: "inline-block", color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, marginBottom: 20 }}
-          >
-            Cómo llegar
-          </a>
+        <div className="container visitanos-grid" style={{ padding: "56px 6% 70px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
           <div
             style={{
               borderRadius: "var(--radius-sm)",
@@ -243,13 +213,39 @@ export default function ContactoPage() {
               style={{ width: "100%", height: "100%", border: 0, display: "block" }}
             />
           </div>
-        </div>
+
+          <div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 18 }}>
+              Visitanos
+            </div>
+            <h2 className="display" style={{ fontSize: 32, lineHeight: 1.15, margin: "0 0 20px" }}>
+              Estamos en Perú 134, Paraná, Entre Ríos.
+            </h2>
+            <a
+              href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="stamp"
+              style={{ display: "inline-block", color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, marginBottom: 28 }}
+            >
+              Cómo llegar
+            </a>
+            <div className="stamp" style={{ color: "var(--oro-deep)", fontWeight: 300, marginBottom: 10 }}>
+              Horarios
+            </div>
+            <div style={{ fontSize: 15, lineHeight: 1.8, color: "var(--ink)" }}>
+              Lunes a viernes 9:00–13:00 y 16:00–20:00
+              <br />
+              Sábados 9:00–13:00 · Domingo cerrado
+            </div>
+          </div>
         </div>
       </section>
 
       <style>{`
         @media (max-width: 760px) {
           .contacto-grid { grid-template-columns: 1fr !important; }
+          .visitanos-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>
