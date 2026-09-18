@@ -141,9 +141,6 @@ export default async function Header() {
             </div>
           </div>
 
-          <Link href="/contacto" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Contacto
-          </Link>
         </nav>
         <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end", marginRight: 28 }}>
           <button
@@ -168,20 +165,18 @@ export default async function Header() {
             </svg>
             Buscar
           </button>
-          <a
-            href="https://api.whatsapp.com/send?phone=5493434728312"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/contacto"
             className="stamp"
             style={{
               color: "var(--porcelain)",
-              background: "var(--oro)",
+              background: "#3F6B4A",
               padding: "11px 22px",
               borderRadius: "var(--radius-sm)",
             }}
           >
-            Consultar
-          </a>
+            Contacto
+          </Link>
           <a
             href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
             target="_blank"
