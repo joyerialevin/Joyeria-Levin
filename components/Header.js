@@ -119,9 +119,43 @@ export default async function Header() {
             </div>
           </div>
 
-          <Link href="/service-relojeria" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Service
-          </Link>
+          <div className="mega-item">
+            <Link href="/service-relojeria" className="stamp mega-trigger">
+              Servicios
+            </Link>
+            <div className="mega-panel mega-panel-right">
+              <div className="mega-panel-inner">
+                <div className="mega-col">
+                  <Link href="/service-relojeria" className="stamp mega-col-title">
+                    Taller relojería
+                  </Link>
+                  <ul className="mega-sublist">
+                    <li>
+                      <Link href="/service-relojeria">Cambio de pila</Link>
+                    </li>
+                    <li>
+                      <Link href="/service-relojeria">Mallas, pernos y cierres</Link>
+                    </li>
+                    <li>
+                      <Link href="/service-relojeria">Revisión y reparación</Link>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mega-col">
+                  <span className="stamp mega-col-title">Tasación Oro y Plata</span>
+                  <ul className="mega-sublist">
+                    <li className="mega-empty">Próximamente</li>
+                  </ul>
+                </div>
+                <div className="mega-col">
+                  <span className="stamp mega-col-title">Grabados personalizados</span>
+                  <ul className="mega-sublist">
+                    <li className="mega-empty">Próximamente</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="mega-item">
             <Link href="/sobre-nosotros" className="stamp mega-trigger">
