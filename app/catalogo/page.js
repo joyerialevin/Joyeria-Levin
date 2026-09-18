@@ -88,9 +88,9 @@ export default async function CatalogoPage() {
                   Horarios
                 </div>
                 <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink)", margin: 0 }}>
-                  Lunes a viernes 9:00–13:00
+                  Lunes a viernes 9:00–13:00 y 16:00–20:00
                   <br />
-                  y 16:00–20:00. Sáb 9:00–13:00
+                  Sábados 9:00–13:00
                 </p>
               </div>
             </div>
