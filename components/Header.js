@@ -123,13 +123,17 @@ export default async function Header() {
             <Link href="/service-relojeria" className="stamp mega-trigger">
               Servicios
             </Link>
-            <div className="mega-panel mega-panel-alianzas mega-panel-right">
+            <div className="mega-panel mega-panel-alianzas">
               <ul className="mega-sublist">
                 <li>
                   <Link href="/service-relojeria">Taller relojería</Link>
                 </li>
-                <li className="mega-empty">Tasación de Oro y Plata (Próximamente)</li>
-                <li className="mega-empty">Grabados personalizados (Próximamente)</li>
+                <li>
+                  <Link href="/tasacion-oro-plata">Tasación de Oro y Plata</Link>
+                </li>
+                <li>
+                  <Link href="/grabados-personalizados">Grabados personalizados</Link>
+                </li>
               </ul>
             </div>
           </div>
