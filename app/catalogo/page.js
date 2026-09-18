@@ -37,7 +37,7 @@ export default async function CatalogoPage() {
             maxWidth: 1200,
             margin: "0 auto",
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
+            gridTemplateColumns: "2fr 3fr",
             alignItems: "stretch",
           }}
         >
@@ -72,41 +72,53 @@ export default async function CatalogoPage() {
             <h2 className="display" style={{ fontSize: 36, lineHeight: 1.15, margin: "0 0 28px", color: "var(--ink)" }}>
               Te esperamos en el local.
             </h2>
-            <div style={{ display: "grid", gap: 24, marginBottom: 32 }}>
+            <div className="visitanos-info-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28, marginBottom: 32 }}>
               <div>
                 <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 8 }}>
                   Dirección
                 </div>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                  Perú 134, Paraná, Entre Ríos.
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink)", margin: 0 }}>
+                  Perú 134
+                  <br />
+                  Paraná, Entre Ríos.
                 </p>
               </div>
               <div>
                 <div className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)", marginBottom: 8 }}>
                   Horarios
                 </div>
-                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink-soft)", margin: 0 }}>
-                  Lunes a viernes 9:00–13:00 y 16:00–20:00
+                <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--ink)", margin: 0 }}>
+                  Lunes a viernes 9:00–13:00
                   <br />
-                  Sábados 9:00–13:00
+                  y 16:00–20:00. Sáb 9:00–13:00
                 </p>
               </div>
             </div>
-            <a
-              href={LINK_WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="stamp"
-              style={{
-                color: "var(--porcelain)",
-                background: "var(--oro)",
-                padding: "15px 30px",
-                borderRadius: "var(--radius-sm)",
-                alignSelf: "flex-start",
-              }}
-            >
-              Consultar por WhatsApp
-            </a>
+            <div style={{ display: "flex", alignItems: "center", gap: 28, flexWrap: "wrap" }}>
+              <a
+                href={LINK_WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stamp"
+                style={{
+                  color: "var(--porcelain)",
+                  background: "var(--oro)",
+                  padding: "15px 30px",
+                  borderRadius: "var(--radius-sm)",
+                }}
+              >
+                Consultar por WhatsApp
+              </a>
+              <a
+                href="https://maps.google.com/?q=Perú+134,+Paraná,+Entre+Ríos"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="stamp"
+                style={{ color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4 }}
+              >
+                Cómo llegar →
+              </a>
+            </div>
           </div>
         </div>
       </section>
