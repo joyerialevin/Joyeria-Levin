@@ -96,6 +96,17 @@ export default function CatalogoClient({ productos }) {
     limpiarFiltros();
   }
 
+  // Permite saltar de Caballero a Dama (y viceversa) sin pasar por el
+  // menú de arriba, manteniendo la misma categoría si existe en el
+  // otro grupo (ej. de Caballero > Relojes a Dama > Relojes).
+  function cambiarGrupo(slug) {
+    const grupo = GRUPOS.find((g) => g.slug === slug);
+    const mantieneCategoria = grupo.categorias.some((c) => c.slug === categoriaActiva);
+    setGrupoActivo(slug);
+    setCategoriaActiva(mantieneCategoria ? categoriaActiva : grupo.categorias[0]?.slug ?? null);
+    limpiarFiltros();
+  }
+
   function toggleSetFiltro(campo, valor) {
     setFiltros((prev) => {
       const next = new Set(prev[campo]);
@@ -106,8 +117,43 @@ export default function CatalogoClient({ productos }) {
 
   return (
     <section className="container" style={{ padding: "20px 0 90px" }}>
-      {/* Tira de categorías dentro del grupo activo (Caballero/Dama/Alianzas
-          se elige desde el menú de arriba, no se repite acá) */}
+      {/* Indicador de grupo activo (Caballero/Dama), con acceso directo
+          para saltar al otro sin volver al menú de arriba. Alianzas no
+          tiene contraparte de género, así que no muestra el switch. */}
+      {(grupoActivo === "caballero" || grupoActivo === "dama") && (
+        <div
+          className="stamp"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 10,
+            padding: "18px 0 0",
+            color: "var(--ink-soft)",
+          }}
+        >
+          <span style={{ color: "var(--ink)", fontWeight: 700 }}>
+            {grupoActivo === "caballero" ? "Caballero" : "Dama"}
+          </span>
+          <span style={{ opacity: 0.5 }}>·</span>
+          <button
+            type="button"
+            onClick={() => cambiarGrupo(grupoActivo === "caballero" ? "dama" : "caballero")}
+            className="stamp"
+            style={{
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+              color: "var(--oro-deep)",
+              borderBottom: "1px solid var(--oro)",
+            }}
+          >
+            Cambiar a {grupoActivo === "caballero" ? "Dama" : "Caballero"}
+          </button>
+        </div>
+      )}
+
+      {/* Tira de categorías dentro del grupo activo */}
       {grupoInfo.categorias.length > 1 && (
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", padding: "10px 0 40px", borderBottom: "1px solid var(--line)" }}>
           {grupoInfo.categorias.map(({ slug }) => {
