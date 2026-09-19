@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
+import Link from "next/link";
+import NuevoIngresoCard from "./NuevoIngresoCard";
 
 const INTERVALO_MS = 15000;
 const TAMANO_TANDA = 4;
@@ -41,7 +42,7 @@ function FilaNovedades({ titulo, productos }) {
       </div>
       <div className="novedades-fila">
         {tandaActual(productos, indice).map((p) => (
-          <ProductCard key={p.id} producto={p} soloMarca />
+          <NuevoIngresoCard key={p.id} producto={p} />
         ))}
       </div>
     </div>
@@ -59,10 +60,34 @@ export default function NovedadesSection({ productos }) {
   return (
     <section style={{ background: "var(--card-bg)" }}>
       <div className="container" style={{ padding: "84px 6% 84px" }}>
-        <div style={{ marginBottom: 40 }}>
-          <h2 className="display" style={{ fontSize: 40, lineHeight: 1.1, margin: 0 }}>
-            Nuevos ingresos
-          </h2>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            flexWrap: "wrap",
+            gap: 20,
+            marginBottom: 40,
+          }}
+        >
+          <div>
+            <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 12 }}>
+              Nuevos ingresos
+            </div>
+            <h2 className="display" style={{ fontSize: 40, lineHeight: 1.1, margin: "0 0 10px" }}>
+              Descubrí los últimos modelos que llegaron a Levin
+            </h2>
+            <p style={{ fontSize: 15, color: "var(--ink-soft)", margin: 0 }}>
+              Relojes de primeras marcas, elegidos para cada momento.
+            </p>
+          </div>
+          <Link
+            href="/catalogo?cat=relojes"
+            className="stamp"
+            style={{ color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4, whiteSpace: "nowrap" }}
+          >
+            Ver todos los relojes →
+          </Link>
         </div>
 
         {dama.length > 0 && (
