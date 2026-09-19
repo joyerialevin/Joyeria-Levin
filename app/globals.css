@@ -75,12 +75,7 @@ a{ color:inherit; text-decoration:none; }
 
 .product-modal{
   display:grid;
-  grid-template-columns: 1fr 1fr;
-}
-@media (max-width: 640px){
-  .product-modal{
-    grid-template-columns: 1fr;
-  }
+  grid-template-columns: 1fr;
 }
 
 .scroll-row{

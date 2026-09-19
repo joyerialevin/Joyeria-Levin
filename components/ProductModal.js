@@ -65,7 +65,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
         style={{
           background: "var(--card-bg)",
           borderRadius: 6,
-          maxWidth: 860,
+          maxWidth: 600,
           width: "100%",
           maxHeight: "88vh",
           overflow: "auto",
