@@ -1,6 +1,6 @@
 export default function VisitanosSection() {
   return (
-    <section style={{ background: "rgba(130,120,56,0.16)" }}>
+    <section id="visitanos" style={{ background: "rgba(130,120,56,0.16)" }}>
       <div className="container visitanos-grid" style={{ padding: "56px 6% 70px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
         <div
           style={{

@@ -108,6 +108,31 @@ a{ color:inherit; text-decoration:none; }
   animation: levin-fade 700ms ease both;
 }
 
+/* Hero de la home: el texto vive sobre la mitad vacía (izquierda) de la
+   foto, sin overlay — esa zona ya es fondo liso, con buen contraste
+   natural para texto oscuro. En mobile la foto es demasiado baja a lo
+   ancho (recorte panorámico), así que se le da más alto y se recorta el
+   costado derecho (que igual muestra el anillo, no la cara) para dejar
+   lugar a un texto apilado y legible. */
+.hero-home{ position:relative; }
+.hero-home-img{ width:100%; height:auto; display:block; }
+.hero-home-copy{
+  position:absolute;
+  top:50%;
+  left:6%;
+  transform:translateY(-50%);
+  max-width:34%;
+}
+@media (max-width:760px){
+  .hero-home-img{
+    height:334px;
+    object-fit:cover;
+    object-position:0% center;
+  }
+  .hero-home-copy{ max-width:60%; left:6%; }
+  .hero-home-botones{ flex-direction:column; align-items:flex-start !important; gap:14px !important; }
+}
+
 /* Mega menú del header: se abre con hover, no con click. El truco del
    padding/margin negativo en .mega-item extiende el área de hover hasta
    el borde inferior del header (que tiene 18px de padding), para que no

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getSanity, NOVEDADES_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
@@ -79,13 +80,56 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="levin-fade" style={{ lineHeight: 0 }}>
+      <section className="levin-fade hero-home">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/clara-inicio.png"
           alt="Joyería Levin — Joyería & Relojería"
-          style={{ width: "100%", height: "auto", display: "block" }}
+          className="hero-home-img"
         />
+        <div className="hero-home-copy">
+          <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14 }}>
+            Joyería &amp; Relojería Levin
+          </div>
+          <h1
+            className="display"
+            style={{
+              fontSize: "clamp(26px, 3.6vw, 46px)",
+              lineHeight: 1.15,
+              margin: "0 0 20px",
+              color: "var(--ink)",
+            }}
+          >
+            Desde 1973, acompañando momentos que perduran.
+          </h1>
+          <p
+            style={{
+              fontSize: "clamp(13px, 1.1vw, 16px)",
+              lineHeight: 1.6,
+              color: "var(--ink-soft)",
+              margin: "0 0 32px",
+            }}
+          >
+            Joyas en oro 18K y plata 925 · Relojes de primeras marcas · Taller y atención personalizada.
+          </p>
+          <div className="hero-home-botones" style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap", marginBottom: 18 }}>
+            <Link
+              href="/catalogo"
+              className="stamp"
+              style={{ color: "var(--porcelain)", background: "var(--oro)", padding: "16px 34px", borderRadius: "var(--radius-sm)" }}
+            >
+              Ver catálogo
+            </Link>
+            <a
+              href="#visitanos"
+              className="stamp"
+              style={{ color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4 }}
+            >
+              Visitanos en Paraná
+            </a>
+          </div>
+          <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>Perú 134 · Paraná</div>
+        </div>
       </section>
 
       <BeneficiosStrip />
