@@ -1,8 +1,8 @@
 const ITEMS = [
-  "3 cuotas sin interés (Macro)",
-  "10% OFF en efectivo y transferencia",
+  "3 cuotas sin interés",
+  "10% OFF transferencia y efectivo",
   "Envíos a todo el país",
-  "Atención personalizada",
+  "Perú 134, Paraná",
 ];
 
 export default function BeneficiosStrip() {
@@ -34,7 +34,7 @@ export default function BeneficiosStrip() {
                 }}
               >
                 {item}
-                <span style={{ opacity: 0.5 }}>|</span>
+                <span style={{ opacity: 0.5 }}>·</span>
               </span>
             ))}
           </div>
