@@ -173,63 +173,84 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
           )}
         </div>
 
-        <div style={{ padding: 32 }}>
-          <h3 className="display" style={{ fontSize: 24, marginBottom: 4 }}>
-            {producto.titulo}
-          </h3>
-          {subtitulo && (
-            <div className="stamp" style={{ color: "var(--ink-soft)" }}>
-              {subtitulo}
-            </div>
-          )}
-
-          {producto.precio && !producto.ocultar_precio ? (
-            <div style={{ marginTop: 20 }}>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
-                {producto.precio_anterior > producto.precio && (
-                  <span
-                    className="stamp"
-                    style={{ fontSize: 14, color: "var(--ink-soft)", textDecoration: "line-through" }}
-                  >
-                    {formatearPrecio(producto.precio_anterior)}
+        <div style={{ padding: "40px 32px" }}>
+          <div style={{ textAlign: "center", marginBottom: 8 }}>
+            <h3 className="display" style={{ fontSize: 26, marginBottom: 6 }}>
+              {producto.titulo}
+            </h3>
+            {producto.precio && !producto.ocultar_precio ? (
+              <div style={{ marginTop: 24 }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
+                  {producto.precio_anterior > producto.precio && (
+                    <span
+                      className="stamp"
+                      style={{ fontSize: 12, color: "var(--ink-soft)", textDecoration: "line-through" }}
+                    >
+                      {formatearPrecio(producto.precio_anterior)}
+                    </span>
+                  )}
+                  <span className="display" style={{ fontSize: 19, fontWeight: 700, color: "var(--ink)" }}>
+                    {formatearPrecio(producto.precio)}
                   </span>
-                )}
-                <span className="display" style={{ fontSize: 22, color: "var(--ink)" }}>
-                  {formatearPrecio(producto.precio)}
-                </span>
-                {calcularDescuento(producto.precio_anterior, producto.precio) != null && (
-                  <span className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)" }}>
-                    {calcularDescuento(producto.precio_anterior, producto.precio)}% OFF
-                  </span>
-                )}
-              </div>
-              {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8, marginTop: 6 }}>
-                  <span style={{ fontSize: 15, color: "var(--ink)" }}>
-                    {formatearPrecio(producto.precio_transferencia)} con transferencia
-                  </span>
-                  {calcularDescuento(producto.precio, producto.precio_transferencia) != null && (
-                    <span className="stamp" style={{ fontSize: 11, color: "var(--oro-deep)" }}>
-                      {calcularDescuento(producto.precio, producto.precio_transferencia)}% OFF EXTRA
+                  {calcularDescuento(producto.precio_anterior, producto.precio) != null && (
+                    <span className="stamp" style={{ fontSize: 10, color: "var(--oro-deep)" }}>
+                      {calcularDescuento(producto.precio_anterior, producto.precio)}% OFF
                     </span>
                   )}
                 </div>
-              )}
-            </div>
-          ) : (
-            <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 20 }}>
-              Precio a consultar
-            </div>
-          )}
+                {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
+                    <span style={{ fontSize: 16, color: "var(--ink)" }}>
+                      <strong>{formatearPrecio(producto.precio_transferencia)}</strong> con Efectivo y Transferencia
+                    </span>
+                    {calcularDescuento(producto.precio, producto.precio_transferencia) != null && (
+                      <span
+                        className="stamp"
+                        style={{
+                          fontSize: 13,
+                          fontWeight: 700,
+                          color: "var(--porcelain)",
+                          background: "var(--oro)",
+                          padding: "4px 12px",
+                          borderRadius: "var(--radius-pill)",
+                        }}
+                      >
+                        {calcularDescuento(producto.precio, producto.precio_transferencia)}% OFF EXTRA
+                      </span>
+                    )}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 24 }}>
+                Precio a consultar
+              </div>
+            )}
+
+            {typeof producto.stock === "number" && (
+              <div
+                className="stamp"
+                style={{
+                  marginTop: 12,
+                  fontSize: 11,
+                  color: producto.stock > 0 ? "var(--oro-deep)" : "var(--ink-soft)",
+                }}
+              >
+                {producto.stock > 0
+                  ? `${producto.stock} ${producto.stock === 1 ? "disponible" : "disponibles"}`
+                  : "Sin stock"}
+              </div>
+            )}
+          </div>
 
           {producto.descripcion && (
-            <p style={{ marginTop: 20, color: "var(--ink-soft)", lineHeight: 1.7 }}>
+            <p style={{ marginTop: 32, color: "var(--ink-soft)", lineHeight: 1.6, fontSize: 12.5 }}>
               {producto.descripcion}
             </p>
           )}
 
           {producto.detalles && producto.detalles.length > 0 && (
-            <div style={{ marginTop: 28 }}>
+            <div style={{ marginTop: 32 }}>
               <h4 className="display" style={{ fontSize: 15, marginBottom: 12 }}>
                 Detalles del producto
               </h4>
@@ -254,7 +275,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
             </div>
           )}
 
-          <div style={{ marginTop: 28, maxWidth: 260 }}>
+          <div style={{ marginTop: 32, maxWidth: 280, marginLeft: "auto", marginRight: "auto" }}>
             <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={galeria[indice]} />
           </div>
         </div>
