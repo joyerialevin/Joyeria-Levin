@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { getSanity, PRODUCTOS_QUERY } from "../../lib/sanityClient";
+import { getRelojesSupabase } from "../../lib/productosSupabase";
 import CatalogoClient from "../../components/CatalogoClient";
 
 export const revalidate = 60; // vuelve a pedir los productos cada 60s
@@ -12,7 +13,11 @@ const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&te
 export default async function CatalogoPage() {
   let productos = [];
   try {
-    productos = await getSanity().fetch(PRODUCTOS_QUERY);
+    const [deSanity, relojes] = await Promise.all([
+      getSanity().fetch(PRODUCTOS_QUERY),
+      getRelojesSupabase(),
+    ]);
+    productos = [...relojes, ...deSanity];
   } catch (error) {
     return (
       <div className="container" style={{ padding: "60px 0" }}>

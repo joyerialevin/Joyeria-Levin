@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getSanity, NOVEDADES_QUERY, RESUMEN_HOME_QUERY } from "../lib/sanityClient";
+import { getRelojesSupabase } from "../lib/productosSupabase";
 import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
@@ -32,12 +33,24 @@ const IMAGEN_CURADA = {
 async function getDatosHome() {
   const sanity = getSanity();
 
-  const [resumen, novedades] = await Promise.all([
+  const [resumenSanity, novedadesSanity, relojes] = await Promise.all([
     sanity.fetch(RESUMEN_HOME_QUERY),
     sanity.fetch(NOVEDADES_QUERY),
+    getRelojesSupabase(),
   ]);
 
-  const filas = resumen || [];
+  // Relojes ya viven en Supabase — se agregan acá con la misma forma que
+  // usa el resumen de Sanity (categoria_slug, marca, imagen_url) para que
+  // sigan apareciendo en la tira de marcas y en la foto de la categoría.
+  const resumenRelojes = relojes.map((r) => ({
+    categoria_slug: r.categoria_slug,
+    marca: r.marca,
+    imagen_url: r.imagen_url,
+  }));
+  const filas = [...(resumenSanity || []), ...resumenRelojes];
+
+  const novedadesRelojes = relojes.filter((r) => r.destacar_nuevo);
+  const novedades = [...(novedadesSanity || []), ...novedadesRelojes];
 
   const imagenPorCategoria = {};
   filas.forEach((f) => {

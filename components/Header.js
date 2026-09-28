@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
-import { getSanity, MARCAS_RELOJES_QUERY } from "../lib/sanityClient";
+import { getRelojesSupabase } from "../lib/productosSupabase";
 import {
   CATEGORIAS,
   GRUPOS,
@@ -36,10 +36,10 @@ function itemsDelGrupo(grupoSlug) {
 
 async function getMarcasPorTipo() {
   try {
-    const filas = await getSanity().fetch(MARCAS_RELOJES_QUERY, {}, { next: { revalidate: 300 } });
+    const relojes = await getRelojesSupabase();
     const porTipo = { caballero: new Set(), dama: new Set() };
-    for (const f of filas) {
-      if (f.tipo === "caballero" || f.tipo === "dama") porTipo[f.tipo].add(f.marca);
+    for (const r of relojes) {
+      if ((r.tipo === "caballero" || r.tipo === "dama") && r.marca) porTipo[r.tipo].add(r.marca);
     }
     return {
       caballero: [...porTipo.caballero].sort(),
