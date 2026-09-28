@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 // importarlos acá — un Client Component no puede importar y renderizar
 // un Server Component directamente, eso rompe en navegaciones del lado
 // del cliente (ej. al volver atrás) con "a client-side exception".
-export default function SiteChrome({ children, announcement, header, footer, whatsapp, instagram }) {
+export default function SiteChrome({ children, announcement, header, footer, whatsapp }) {
   const pathname = usePathname();
   const esStudio = pathname?.startsWith("/studio");
 
@@ -24,7 +24,6 @@ export default function SiteChrome({ children, announcement, header, footer, wha
       {children}
       {footer}
       {whatsapp}
-      {instagram}
     </>
   );
 }

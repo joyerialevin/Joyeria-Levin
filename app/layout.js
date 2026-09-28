@@ -4,7 +4,6 @@ import SiteChrome from "../components/SiteChrome";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
-import InstagramButton from "../components/InstagramButton";
 import AnnouncementBar from "../components/AnnouncementBar";
 
 // Lato para eyebrows/nav/botones en mayúscula (alternativa gratuita a
@@ -37,7 +36,6 @@ export default function RootLayout({ children }) {
           header={<Header />}
           footer={<Footer />}
           whatsapp={<WhatsAppButton />}
-          instagram={<InstagramButton />}
         >
           {children}
         </SiteChrome>
