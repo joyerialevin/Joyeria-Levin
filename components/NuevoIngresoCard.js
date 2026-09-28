@@ -21,6 +21,12 @@ export default function NuevoIngresoCard({ producto }) {
   const descuentoTransferencia = tieneTransferencia
     ? calcularDescuento(producto.precio, producto.precio_transferencia)
     : null;
+  // Descuento que aplica en cualquier medio de pago (ej. Festina): precio
+  // anterior tachado + el % OFF general, igual que en el catálogo.
+  const tieneDescuentoGeneral = tienePrecio && producto.precio_anterior > producto.precio;
+  const descuentoGeneral = tieneDescuentoGeneral
+    ? calcularDescuento(producto.precio_anterior, producto.precio)
+    : null;
 
   const nombreParaMensaje = producto.titulo;
   const mensajeWhatsApp = `Hola, quería consultar disponibilidad del ${nombreParaMensaje}.`;
@@ -72,8 +78,33 @@ export default function NuevoIngresoCard({ producto }) {
           <div style={{ marginTop: "auto" }}>
             {tienePrecio ? (
               <>
-                <div className="display" style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)", marginBottom: 2 }}>
+                <div
+                  className="display"
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: 6,
+                    flexWrap: "wrap",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    color: "var(--ink)",
+                    marginBottom: 2,
+                  }}
+                >
+                  {tieneDescuentoGeneral && (
+                    <span
+                      className="stamp"
+                      style={{ fontSize: 10.5, fontWeight: 400, color: "var(--ink-soft)", textDecoration: "line-through" }}
+                    >
+                      {formatearPrecio(producto.precio_anterior)}
+                    </span>
+                  )}
                   {formatearPrecio(producto.precio)}
+                  {descuentoGeneral != null && (
+                    <span className="stamp" style={{ fontSize: 9, fontWeight: 700, color: "var(--oro-deep)" }}>
+                      {descuentoGeneral}% OFF
+                    </span>
+                  )}
                 </div>
                 {tieneTransferencia && (
                   <div style={{ marginBottom: 10, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
