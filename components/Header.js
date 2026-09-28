@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
+import { getSanity, MARCAS_RELOJES_SANITY_QUERY } from "../lib/sanityClient";
 import { getRelojesSupabase } from "../lib/productosSupabase";
 import {
   CATEGORIAS,
@@ -36,10 +37,18 @@ function itemsDelGrupo(grupoSlug) {
 
 async function getMarcasPorTipo() {
   try {
-    const relojes = await getRelojesSupabase();
+    const [relojesSupabase, filasSanity] = await Promise.all([
+      getRelojesSupabase(),
+      getSanity().fetch(MARCAS_RELOJES_SANITY_QUERY, {}, { next: { revalidate: 300 } }),
+    ]);
     const porTipo = { caballero: new Set(), dama: new Set() };
-    for (const r of relojes) {
+    for (const r of relojesSupabase) {
       if ((r.tipo === "caballero" || r.tipo === "dama") && r.marca) porTipo[r.tipo].add(r.marca);
+    }
+    // Marcas de relojes que todavía no se migraron a Supabase y siguen
+    // viviendo en Sanity (ver comentario en sanityClient.js).
+    for (const f of filasSanity) {
+      if ((f.tipo === "caballero" || f.tipo === "dama") && f.marca) porTipo[f.tipo].add(f.marca);
     }
     return {
       caballero: [...porTipo.caballero].sort(),
