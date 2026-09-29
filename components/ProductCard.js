@@ -54,18 +54,16 @@ export default function ProductCard({ producto, soloMarca }) {
       <div
         onClick={() => setAbierto(true)}
         className="hover-lift"
-        style={{
-          background: "var(--card-bg)",
-          border: "1px solid var(--line)",
-          borderRadius: 4,
-          overflow: "hidden",
-          cursor: "pointer",
-        }}
+        style={{ cursor: "pointer" }}
       >
         <div
           style={{
             aspectRatio: "1 / 1",
             background: "var(--card-bg)",
+            borderRadius: 4,
+            boxShadow: "var(--shadow-card)",
+            overflow: "hidden",
+            marginBottom: 14,
             position: "relative",
           }}
         >
@@ -144,7 +142,7 @@ export default function ProductCard({ producto, soloMarca }) {
             </>
           )}
         </div>
-        <div style={{ padding: "12px 12px 14px" }}>
+        <div style={{ padding: "0 2px 4px" }}>
           <h5 className="display" style={{ fontSize: 14.5, marginBottom: 3 }}>
             {tituloCard}
           </h5>

@@ -36,10 +36,6 @@ export default function NuevoIngresoCard({ producto }) {
     <>
       <div
         style={{
-          background: "var(--card-bg)",
-          border: "1px solid var(--line)",
-          borderRadius: 6,
-          overflow: "hidden",
           display: "flex",
           flexDirection: "column",
           height: "100%",
@@ -53,10 +49,14 @@ export default function NuevoIngresoCard({ producto }) {
             aspectRatio: "1 / 1",
             background: "var(--card-bg)",
             border: "none",
+            borderRadius: 6,
+            boxShadow: "var(--shadow-card)",
+            overflow: "hidden",
             padding: 0,
             cursor: "pointer",
             display: "block",
             width: "100%",
+            marginBottom: 14,
           }}
         >
           {galeria[0] && (
@@ -70,7 +70,7 @@ export default function NuevoIngresoCard({ producto }) {
           )}
         </button>
 
-        <div style={{ padding: "10px 12px 12px", display: "flex", flexDirection: "column", flex: 1 }}>
+        <div style={{ padding: "0 2px 4px", display: "flex", flexDirection: "column", flex: 1 }}>
           <div className="display" style={{ fontSize: 13, color: "var(--ink)", marginBottom: 10 }}>
             {producto.titulo}
           </div>

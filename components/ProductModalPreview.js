@@ -51,6 +51,11 @@ export default function ProductModalPreview({ producto, subtitulo }) {
         style={{
           aspectRatio: "1 / 1",
           background: "var(--card-bg)",
+          borderRadius: 6,
+          boxShadow: "var(--shadow-card)",
+          overflow: "hidden",
+          margin: "24px 24px 0",
+          width: "calc(100% - 48px)",
           position: "relative",
         }}
       >
