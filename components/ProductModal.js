@@ -202,21 +202,6 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
                 Precio a consultar
               </div>
             )}
-
-            {typeof producto.stock === "number" && (
-              <div
-                className="stamp"
-                style={{
-                  marginTop: 12,
-                  fontSize: 11,
-                  color: producto.stock > 0 ? "var(--oro-deep)" : "var(--ink-soft)",
-                }}
-              >
-                {producto.stock > 0
-                  ? `${producto.stock} ${producto.stock === 1 ? "disponible" : "disponibles"}`
-                  : "Sin stock"}
-              </div>
-            )}
           </div>
 
           {producto.descripcion && (
