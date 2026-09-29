@@ -3,6 +3,12 @@ import { adaptarProductoSupabase } from "../../../lib/productosSupabase";
 import NuevoIngresoCard from "../../../components/NuevoIngresoCard";
 import ProductModalPreview from "../../../components/ProductModalPreview";
 
+// Es una página de verificación en tiempo real — sin esto, Next.js la
+// puede cachear y mostrar datos viejos después de un cambio en Supabase
+// (pasó varias veces: se veía "cache del navegador" pero en realidad
+// esta página server-side estaba sirviendo una respuesta vieja).
+export const dynamic = "force-dynamic";
+
 export default async function PreviewSupabasePage({ params }) {
   const supabase = getSupabaseAdmin();
 
