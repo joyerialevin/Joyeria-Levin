@@ -39,7 +39,7 @@ export default function ProductModalPreview({ producto, subtitulo }) {
       style={{
         background: "var(--card-bg)",
         borderRadius: 6,
-        maxWidth: 860,
+        maxWidth: 1040,
         width: "100%",
         border: "1px solid var(--line)",
         position: "relative",
