@@ -46,87 +46,58 @@ export default function ProductModalPreview({ producto, subtitulo }) {
       }}
     >
       <div style={{ padding: "24px 24px 0" }}>
-      <div
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-        style={{
-          aspectRatio: "1 / 1",
-          background: "var(--card-bg)",
-          borderRadius: 6,
-          boxShadow: "var(--shadow-card)",
-          overflow: "hidden",
-          position: "relative",
-        }}
-      >
-        {galeria[indice] && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={optimizarImagenSanity(galeria[indice], { width: 900 })}
-            alt={producto.titulo}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
-        )}
-
+      <div style={{ display: "flex", gap: 8 }}>
         {galeria.length > 1 && (
-          <>
-            <button
-              onClick={anterior}
-              aria-label="Foto anterior"
-              style={{
-                position: "absolute",
-                top: "50%",
-                left: 10,
-                transform: "translateY(-50%)",
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                border: "none",
-                background: "rgba(255,255,255,0.85)",
-                color: "var(--ink)",
-                fontSize: 16,
-                cursor: "pointer",
-              }}
-            >
-              ‹
-            </button>
-            <button
-              onClick={siguiente}
-              aria-label="Foto siguiente"
-              style={{
-                position: "absolute",
-                top: "50%",
-                right: 10,
-                transform: "translateY(-50%)",
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                border: "none",
-                background: "rgba(255,255,255,0.85)",
-                color: "var(--ink)",
-                fontSize: 16,
-                cursor: "pointer",
-              }}
-            >
-              ›
-            </button>
-            <div
-              className="stamp"
-              style={{
-                position: "absolute",
-                bottom: 10,
-                left: "50%",
-                transform: "translateX(-50%)",
-                background: "rgba(38,38,31,0.65)",
-                color: "var(--text-inverse)",
-                padding: "3px 10px",
-                borderRadius: 10,
-                fontSize: 10,
-              }}
-            >
-              {indice + 1} / {galeria.length}
-            </div>
-          </>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, flexShrink: 0 }}>
+            {galeria.map((url, i) => (
+              <button
+                key={i}
+                onClick={() => setIndice(i)}
+                aria-label={`Ver foto ${i + 1}`}
+                style={{
+                  width: 48,
+                  height: 48,
+                  borderRadius: 4,
+                  overflow: "hidden",
+                  padding: 0,
+                  cursor: "pointer",
+                  background: "var(--card-bg)",
+                  border: i === indice ? "2px solid var(--oro)" : "1px solid var(--line)",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={optimizarImagenSanity(url, { width: 100 })}
+                  alt=""
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                />
+              </button>
+            ))}
+          </div>
         )}
+        <div
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          style={{
+            aspectRatio: "1 / 1",
+            background: "var(--card-bg)",
+            borderRadius: 6,
+            boxShadow: "var(--shadow-card)",
+            overflow: "hidden",
+            position: "relative",
+            flex: 1,
+            minWidth: 0,
+          }}
+        >
+          {galeria[indice] && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={optimizarImagenSanity(galeria[indice], { width: 900 })}
+              alt={producto.titulo}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            />
+          )}
+        </div>
       </div>
       </div>
 
