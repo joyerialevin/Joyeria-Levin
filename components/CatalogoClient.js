@@ -219,6 +219,16 @@ export default function CatalogoClient({ productos }) {
             </FiltroGrupo>
           )}
 
+          {categoriaInfo.filtros.includes("nuevo") && (
+            <FiltroGrupo titulo="Novedades">
+              <FiltroOpcion
+                label="Nuevos ingresos"
+                checked={filtros.soloNuevos}
+                onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
+              />
+            </FiltroGrupo>
+          )}
+
           {categoriaInfo.filtros.includes("abridor") && (
             <FiltroGrupo titulo="Cierre">
               <FiltroOpcion
