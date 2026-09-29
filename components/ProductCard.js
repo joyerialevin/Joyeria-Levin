@@ -65,7 +65,7 @@ export default function ProductCard({ producto, soloMarca }) {
         <div
           style={{
             aspectRatio: "1 / 1",
-            background: "var(--porcelain-dim)",
+            background: "var(--card-bg)",
             position: "relative",
           }}
         >

@@ -50,7 +50,7 @@ export default function ProductModalPreview({ producto, subtitulo }) {
         onTouchEnd={onTouchEnd}
         style={{
           aspectRatio: "1 / 1",
-          background: "var(--porcelain-dim)",
+          background: "var(--card-bg)",
           position: "relative",
         }}
       >

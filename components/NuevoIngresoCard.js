@@ -51,7 +51,7 @@ export default function NuevoIngresoCard({ producto }) {
           aria-label={`Ver ${nombreParaMensaje}`}
           style={{
             aspectRatio: "1 / 1",
-            background: "var(--porcelain-dim)",
+            background: "var(--card-bg)",
             border: "none",
             padding: 0,
             cursor: "pointer",

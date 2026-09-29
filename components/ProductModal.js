@@ -98,7 +98,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
           onTouchEnd={onTouchEnd}
           style={{
             aspectRatio: "1 / 1",
-            background: "var(--porcelain-dim)",
+            background: "var(--card-bg)",
             position: "relative",
           }}
         >
