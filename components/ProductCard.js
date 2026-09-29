@@ -162,7 +162,7 @@ export default function ProductCard({ producto, soloMarca }) {
                     {formatearPrecio(producto.precio_anterior)}
                   </span>
                 )}
-                <span className="stamp" style={{ fontSize: 15, color: "var(--ink)" }}>
+                <span className="stamp" style={{ fontSize: 15, fontWeight: 700, color: "var(--ink)" }}>
                   {formatearPrecio(producto.precio)}
                 </span>
                 {calcularDescuento(producto.precio_anterior, producto.precio) != null && (
@@ -174,7 +174,7 @@ export default function ProductCard({ producto, soloMarca }) {
               {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 2, flexWrap: "wrap" }}>
                   <span style={{ fontSize: 11.5, color: "var(--ink)" }}>
-                    {formatearPrecio(producto.precio_transferencia)} con transferencia
+                    <strong>{formatearPrecio(producto.precio_transferencia)}</strong> con transferencia
                   </span>
                   {calcularDescuento(producto.precio, producto.precio_transferencia) != null && (
                     <span className="stamp" style={{ fontSize: 10, color: "var(--oro-deep)" }}>
