@@ -19,6 +19,7 @@ export default function CatalogoClient({ productos }) {
     marca: new Set(),
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
+    soloNuevos: false,
   });
 
   // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
@@ -34,6 +35,7 @@ export default function CatalogoClient({ productos }) {
     const grupoParam = searchParams.get("grupo");
     const materialParams = searchParams.getAll("material");
     const marcaParams = searchParams.getAll("marca");
+    const soloNuevosParam = searchParams.get("nuevo") === "1";
 
     let grupo = null;
     let cat_ = null;
@@ -54,6 +56,7 @@ export default function CatalogoClient({ productos }) {
       marca: new Set(marcaParams),
       material: new Set(materialParams),
       abridor: null,
+      soloNuevos: soloNuevosParam,
     });
   }, [searchParams]);
 
@@ -83,12 +86,13 @@ export default function CatalogoClient({ productos }) {
         return false;
       if (filtros.abridor !== null && p.tiene_abridor !== filtros.abridor)
         return false;
+      if (filtros.soloNuevos && !p.destacar_nuevo) return false;
       return true;
     });
   }, [productosCategoria, filtros]);
 
   function limpiarFiltros() {
-    setFiltros({ marca: new Set(), material: new Set(), abridor: null });
+    setFiltros({ marca: new Set(), material: new Set(), abridor: null, soloNuevos: false });
   }
 
   function cambiarCategoria(slug) {

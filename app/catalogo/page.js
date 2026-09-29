@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { getSanity, PRODUCTOS_QUERY } from "../../lib/sanityClient";
-import { getRelojesSupabase } from "../../lib/productosSupabase";
+import { getRelojesSupabase, getProductosSupabasePorCategoria } from "../../lib/productosSupabase";
 import CatalogoClient from "../../components/CatalogoClient";
 
 export const revalidate = 60; // vuelve a pedir los productos cada 60s
@@ -13,11 +13,15 @@ const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&te
 export default async function CatalogoPage() {
   let productos = [];
   try {
-    const [deSanity, relojes] = await Promise.all([
+    // Swarovski todavía vive sobre todo en Sanity — de Supabase por ahora
+    // solo se suman los productos ya migrados ahí (no se excluye la
+    // categoría de Sanity, a diferencia de relojes que ya está 100% migrado).
+    const [deSanity, relojes, swarovski] = await Promise.all([
       getSanity().fetch(PRODUCTOS_QUERY),
       getRelojesSupabase(),
+      getProductosSupabasePorCategoria("swarovski"),
     ]);
-    productos = [...relojes, ...deSanity];
+    productos = [...relojes, ...swarovski, ...deSanity];
   } catch (error) {
     return (
       <div className="container" style={{ padding: "60px 0" }}>

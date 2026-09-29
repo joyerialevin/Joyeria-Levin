@@ -246,7 +246,7 @@ function PanelGrupo({ grupoSlug, tipo, marcas, alinear }) {
             {item.tipoSubmenu === "novedades" && (
               <ul className="mega-sublist">
                 <li>
-                  <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}`}>Nuevos Ingresos</Link>
+                  <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}&nuevo=1`}>Nuevos Ingresos</Link>
                 </li>
               </ul>
             )}
