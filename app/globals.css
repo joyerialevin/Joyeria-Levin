@@ -73,9 +73,17 @@ a{ color:inherit; text-decoration:none; }
   padding:0 6%;
 }
 
+/* Apilado en celular (la foto arriba, todo el texto abajo con espacio de
+   sobra); de 640px para arriba pasa a dos columnas (foto a la izquierda,
+   precio/descripción/ficha a la derecha), como una ficha de producto de
+   verdad en vez de un scroll largo. */
 .product-modal{
   display:grid;
   grid-template-columns: 1fr;
+  align-items:start;
+}
+@media (min-width:640px){
+  .product-modal{ grid-template-columns: 42% 1fr; column-gap:8px; }
 }
 
 .scroll-row{

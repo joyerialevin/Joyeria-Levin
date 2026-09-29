@@ -65,7 +65,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
         style={{
           background: "var(--card-bg)",
           borderRadius: 6,
-          maxWidth: 600,
+          maxWidth: 860,
           width: "100%",
           maxHeight: "88vh",
           overflow: "auto",
@@ -93,6 +93,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
           ✕
         </button>
 
+        <div style={{ padding: "24px 24px 0" }}>
         <div
           onTouchStart={onTouchStart}
           onTouchEnd={onTouchEnd}
@@ -102,8 +103,6 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
             borderRadius: 6,
             boxShadow: "var(--shadow-card)",
             overflow: "hidden",
-            margin: "24px 24px 0",
-            width: "calc(100% - 48px)",
             position: "relative",
           }}
         >
@@ -177,15 +176,16 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
             </>
           )}
         </div>
+        </div>
 
-        <div style={{ padding: "40px 32px" }}>
-          <div style={{ textAlign: "center", marginBottom: 8 }}>
+        <div style={{ padding: "24px 32px 32px 20px" }}>
+          <div style={{ textAlign: "left", marginBottom: 8 }}>
             <h3 className="display" style={{ fontSize: 26, marginBottom: 6 }}>
               {producto.titulo}
             </h3>
             {producto.precio && !producto.ocultar_precio ? (
               <div style={{ marginTop: 24 }}>
-                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "center", gap: 10, flexWrap: "wrap" }}>
+                <div style={{ display: "flex", alignItems: "baseline", justifyContent: "flex-start", gap: 10, flexWrap: "wrap" }}>
                   {producto.precio_anterior > producto.precio && (
                     <span
                       className="stamp"
@@ -204,7 +204,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
                   )}
                 </div>
                 {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
                     <span style={{ fontSize: 16, color: "var(--ink)" }}>
                       <strong>{formatearPrecio(producto.precio_transferencia)}</strong> con Efectivo y Transferencia
                     </span>
@@ -280,7 +280,7 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
             </div>
           )}
 
-          <div style={{ marginTop: 32, maxWidth: 280, marginLeft: "auto", marginRight: "auto" }}>
+          <div style={{ marginTop: 32, maxWidth: 320 }}>
             <ConsultarWhatsApp titulo={producto.titulo} imagenUrl={galeria[indice]} />
           </div>
         </div>
