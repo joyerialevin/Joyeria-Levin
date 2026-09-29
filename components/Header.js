@@ -23,13 +23,15 @@ const INFORMACION_VACIA = [
 // Arma, para un grupo (Caballero/Dama), la lista de categorías del mega
 // menú con su tipo de submenú: "marca" para relojes (las marcas se cargan
 // dinámicamente más abajo), "material" para las categorías que ya separan
-// por material, o null cuando la categoría no tiene subdivisión todavía
-// (Bebés, Swarovski).
+// por material, "novedades" para Swarovski (todavía sin filtro real
+// detrás, solo la opción en el menú), o null cuando la categoría no tiene
+// subdivisión todavía (Bebés).
 function itemsDelGrupo(grupoSlug) {
   const grupo = GRUPOS.find((g) => g.slug === grupoSlug);
   return grupo.categorias.map(({ slug }) => {
     const cat = CATEGORIAS.find((c) => c.slug === slug);
-    const tipoSubmenu = slug === "relojes" ? "marca" : cat.filtros.includes("material") ? "material" : null;
+    const tipoSubmenu =
+      slug === "relojes" ? "marca" : slug === "swarovski" ? "novedades" : cat.filtros.includes("material") ? "material" : null;
     return { slug, nombre: cat.nombre, tipoSubmenu };
   });
 }
@@ -239,6 +241,13 @@ function PanelGrupo({ grupoSlug, tipo, marcas, alinear }) {
                     </Link>
                   </li>
                 ))}
+              </ul>
+            )}
+            {item.tipoSubmenu === "novedades" && (
+              <ul className="mega-sublist">
+                <li>
+                  <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}`}>Nuevos Ingresos</Link>
+                </li>
               </ul>
             )}
           </div>
