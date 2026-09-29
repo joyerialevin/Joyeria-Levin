@@ -1,66 +1,7 @@
 import { getSupabaseAdmin } from "../../../lib/supabaseAdmin";
+import { adaptarProductoSupabase } from "../../../lib/productosSupabase";
 import NuevoIngresoCard from "../../../components/NuevoIngresoCard";
 import ProductModalPreview from "../../../components/ProductModalPreview";
-
-const TIPO_LABEL_CORTO = { dama: "Dama", caballero: "Caballero" };
-
-// Adapta una fila de Supabase (productos + producto_fichas + producto_imagenes)
-// a la forma que espera NuevoIngresoCard/ProductModal (pensados originalmente
-// para Sanity), para previsualizar con los componentes reales, no unos nuevos.
-function adaptarProducto(producto) {
-  // producto_fichas es 1 a 1 (la clave primaria de esa tabla ES el
-  // producto_id), así que Supabase lo devuelve como objeto, no array.
-  const ficha = producto.producto_fichas || null;
-  const imagenes = (producto.producto_imagenes || [])
-    .sort((a, b) => a.orden - b.orden)
-    .map((img) => img.url);
-
-  // Mismo orden que usa la página oficial de Citizen para este reloj
-  // (citizenwatch.com.ar/productos/BI501750E): colección, género y función
-  // primero, la sumergibilidad al final — no como un dato principal.
-  const detalles = [
-    ["Colección", producto.linea],
-    ["Género", TIPO_LABEL_CORTO[producto.tipo]],
-    ["Función", ficha?.funciones],
-    ["Movimiento", ficha?.movimiento],
-    ["Material caja", ficha?.material_caja],
-    ["Material malla", ficha?.material_malla],
-    ["Color esfera", ficha?.color_esfera],
-    ["Color malla", ficha?.color_malla],
-    ["Diámetro", ficha?.diametro_mm && `${ficha.diametro_mm} mm`],
-    ["Cristal", ficha?.cristal],
-    [
-      "Sumergibilidad",
-      ficha?.resistencia_agua_m && `${ficha.resistencia_agua_m / 10} ATM (${ficha.resistencia_agua_m} mts)`,
-    ],
-  ]
-    .filter(([, valor]) => valor)
-    .map(([etiqueta, valor]) => ({ etiqueta, valor }));
-
-  return {
-    id: producto.id,
-    // El título mira marca + línea (ej. "Citizen Quartz") en vez de marca +
-    // código de referencia — el código es un dato interno, no algo que le
-    // importe al cliente. Si el producto no tiene línea cargada, se cae a
-    // marca sola en vez de mostrar el código.
-    titulo: [producto.marca, producto.linea].filter(Boolean).join(" ") || producto.marca,
-    precio_transferencia: producto.precio_transferencia,
-    marca: producto.marca,
-    tipo: producto.tipo,
-    precio: producto.precio,
-    precio_anterior: producto.precio_anterior,
-    ocultar_precio: producto.ocultar_precio,
-    imagen_url: imagenes[0] || null,
-    imagenes,
-    // Si la descripción de la ficha solo repite la sumergibilidad (ej. "5
-    // ATM: no apto para sumergir."), no se muestra aparte — ese dato ya
-    // está en el detalle "Sumergibilidad". Si tiene más info real (ej.
-    // "Ancho de malla 21,4 mm."), se mantiene.
-    descripcion: /^\d+\s*atm\b/i.test(ficha?.descripcion || "") ? null : ficha?.descripcion || null,
-    detalles,
-    stock: producto.stock,
-  };
-}
 
 export default async function PreviewSupabasePage({ params }) {
   const supabase = getSupabaseAdmin();
@@ -79,7 +20,7 @@ export default async function PreviewSupabasePage({ params }) {
     );
   }
 
-  const productoAdaptado = adaptarProducto(producto);
+  const productoAdaptado = adaptarProductoSupabase(producto);
 
   return (
     <div className="container" style={{ padding: "40px 0 90px" }}>

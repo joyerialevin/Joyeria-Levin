@@ -159,7 +159,7 @@ export default async function Header() {
           </div>
 
         </nav>
-        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end", marginRight: 28 }}>
+        <div className="header-actions-desktop" style={{ alignItems: "center", gap: 28, justifySelf: "end" }}>
           <button
             type="button"
             className="stamp"
