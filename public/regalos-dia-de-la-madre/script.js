@@ -18,13 +18,13 @@ const PRODUCTOS = [
     cat: 'oro', tag: 'ORO 18K',
     titulo: 'Oro blanco y amarillo',
     texto: 'Los dos tonos del oro 18k, pensados para usarse juntos.',
-    fotos: ['post8-1.jpg', 'post8-2.jpg']
+    fotos: ['post8-1.jpg']
   },
   {
     cat: 'oro', tag: 'ORO 18K',
     titulo: 'Oro 18k para vestir',
     texto: 'Piezas en oro para acompañar sus días más elegantes.',
-    fotos: ['post7-formal1.jpg', 'post7-formal3.jpg', 'post7-formal2.jpg']
+    fotos: ['post7-formal1.jpg', 'post7-formal3.jpg']
   },
   {
     cat: 'plata', tag: 'PLATA 925',
@@ -36,7 +36,7 @@ const PRODUCTOS = [
     cat: 'cristales', tag: 'CRISTALES SWAROVSKI',
     titulo: 'Conjunto Swarovski rosado',
     texto: 'Aros y dije con cristales Swarovski en rosa. Delicado y femenino.',
-    fotos: ['post1-sw-01-0.jpg', 'post1-sw-01-7.jpg', 'post1-sw-01-8.jpg', 'post1-sw-01-5.jpg', 'post1-sw-01-6.jpg', 'post1-sw-01-1.jpg', 'post1-sw-01-2.jpg', 'post1-sw-01-3.jpg', 'post1-sw-01-4.jpg']
+    fotos: ['post1-sw-01-0.jpg', 'post1-sw-01-7.jpg', 'post1-sw-01-8.jpg', 'post1-sw-01-5.jpg', 'post1-sw-01-6.jpg', 'post1-sw-01-1.jpg', 'post1-sw-01-2.jpg', 'post1-sw-01-3.jpg']
   },
   {
     cat: 'cristales', tag: 'MURANO',
@@ -48,7 +48,7 @@ const PRODUCTOS = [
     cat: 'personalizados', tag: 'PERSONALIZADOS',
     titulo: 'Dijes para grabar',
     texto: 'Su nombre, o el de sus hijos, grabado en plata u oro.',
-    fotos: ['post2-personalizado-1.jpg', 'post2-personalizado-2.jpg', 'post2-personalizado-3.jpg', 'post2-personalizado-4.jpg']
+    fotos: ['post2-personalizado-1.jpg', 'post2-personalizado-2.jpg', 'post2-personalizado-3.jpg']
   },
   {
     cat: 'relojes', tag: 'RELOJES',
