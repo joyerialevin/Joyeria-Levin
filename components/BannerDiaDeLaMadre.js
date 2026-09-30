@@ -4,7 +4,18 @@ import Link from "next/link";
 // Sacar este componente (y su uso en app/page.js) después del
 // domingo 18 de octubre — junto con el ítem "Guía de regalos" del
 // menú en Header.js y MobileNav.js.
+// Mismo cálculo/redacción que el contador de la landing
+// (public/regalos-dia-de-la-madre/script.js) para que ambos coincidan.
+function diasParaElDia() {
+  const dia = new Date("2026-10-18T00:00:00-03:00");
+  const dias = Math.ceil((dia - new Date()) / 86400000);
+  if (dias <= 0) return null;
+  return dias === 1 ? "FALTA 1 DÍA" : `FALTAN ${dias} DÍAS`;
+}
+
 export default function BannerDiaDeLaMadre() {
+  const countdown = diasParaElDia();
+
   return (
     <section style={{ background: "var(--porcelain)" }}>
       <div
@@ -28,8 +39,24 @@ export default function BannerDiaDeLaMadre() {
           />
         </div>
         <div style={{ padding: "48px 6%" }}>
-          <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14 }}>
-            Día de la Madre
+          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14, flexWrap: "wrap" }}>
+            <div className="stamp" style={{ color: "var(--oro-deep)" }}>
+              Día de la Madre
+            </div>
+            {countdown && (
+              <span
+                className="stamp"
+                style={{
+                  fontSize: 11,
+                  color: "var(--ink)",
+                  border: "1px solid var(--oro)",
+                  borderRadius: "var(--radius-pill)",
+                  padding: "4px 12px",
+                }}
+              >
+                {countdown}
+              </span>
+            )}
           </div>
           <h2 className="display" style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.2, margin: "0 0 18px", color: "var(--ink)" }}>
             ¿Qué le regalás a mamá?
