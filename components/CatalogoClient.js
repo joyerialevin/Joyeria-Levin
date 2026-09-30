@@ -9,6 +9,9 @@ import {
   MATERIAL_LABEL,
   MATERIALES_ESTANDAR,
   MATERIALES_ALIANZAS,
+  TIPO_PRODUCTO_LABEL,
+  TIPOS_PRODUCTO_ORDEN,
+  inferirTipoProducto,
 } from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
@@ -20,6 +23,7 @@ export default function CatalogoClient({ productos }) {
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
     soloNuevos: false,
+    tipoProducto: new Set(),
   });
 
   // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
@@ -57,6 +61,7 @@ export default function CatalogoClient({ productos }) {
       material: new Set(materialParams),
       abridor: null,
       soloNuevos: soloNuevosParam,
+      tipoProducto: new Set(),
     });
   }, [searchParams]);
 
@@ -79,6 +84,13 @@ export default function CatalogoClient({ productos }) {
     [productosCategoria]
   );
 
+  const tiposProductoDisponibles = useMemo(() => {
+    const presentes = new Set(
+      productosCategoria.map((p) => inferirTipoProducto(p.titulo)).filter(Boolean)
+    );
+    return TIPOS_PRODUCTO_ORDEN.filter((t) => presentes.has(t));
+  }, [productosCategoria]);
+
   const productosFiltrados = useMemo(() => {
     return productosCategoria.filter((p) => {
       if (filtros.marca.size && !filtros.marca.has(p.marca)) return false;
@@ -87,12 +99,23 @@ export default function CatalogoClient({ productos }) {
       if (filtros.abridor !== null && p.tiene_abridor !== filtros.abridor)
         return false;
       if (filtros.soloNuevos && !p.destacar_nuevo) return false;
+      if (
+        filtros.tipoProducto.size &&
+        !filtros.tipoProducto.has(inferirTipoProducto(p.titulo))
+      )
+        return false;
       return true;
     });
   }, [productosCategoria, filtros]);
 
   function limpiarFiltros() {
-    setFiltros({ marca: new Set(), material: new Set(), abridor: null, soloNuevos: false });
+    setFiltros({
+      marca: new Set(),
+      material: new Set(),
+      abridor: null,
+      soloNuevos: false,
+      tipoProducto: new Set(),
+    });
   }
 
   function cambiarCategoria(slug) {
@@ -226,6 +249,19 @@ export default function CatalogoClient({ productos }) {
                 checked={filtros.soloNuevos}
                 onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
               />
+            </FiltroGrupo>
+          )}
+
+          {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
+            <FiltroGrupo titulo="Tipo de producto">
+              {tiposProductoDisponibles.map((t) => (
+                <FiltroOpcion
+                  key={t}
+                  label={TIPO_PRODUCTO_LABEL[t]}
+                  checked={filtros.tipoProducto.has(t)}
+                  onChange={() => toggleSetFiltro("tipoProducto", t)}
+                />
+              ))}
             </FiltroGrupo>
           )}
 
