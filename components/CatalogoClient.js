@@ -32,7 +32,6 @@ export default function CatalogoClient({ productos }) {
     orden: "destacado",
   });
   const [panelAbierto, setPanelAbierto] = useState(false);
-  const [categoriaEnHover, setCategoriaEnHover] = useState(null);
   const [seccionesAbiertas, setSeccionesAbiertas] = useState(
     () => new Set(["orden", "precio", "color", "marca", "material", "abridor"])
   );
@@ -260,12 +259,7 @@ export default function CatalogoClient({ productos }) {
             const cat = CATEGORIAS.find((c) => c.slug === slug);
             const tieneNuevos = cat.filtros.includes("nuevo");
             return (
-              <div
-                key={slug}
-                style={{ position: "relative" }}
-                onMouseEnter={() => tieneNuevos && setCategoriaEnHover(slug)}
-                onMouseLeave={() => tieneNuevos && setCategoriaEnHover(null)}
-              >
+              <div key={slug} className={tieneNuevos ? "tab-hover-wrap" : undefined}>
                 <button
                   onClick={() => cambiarCategoria(slug)}
                   className="stamp"
@@ -281,21 +275,8 @@ export default function CatalogoClient({ productos }) {
                   {cat.nombre}
                 </button>
 
-                {tieneNuevos && categoriaEnHover === slug && (
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "100%",
-                      left: 0,
-                      marginTop: 4,
-                      background: "var(--card-bg)",
-                      border: "1px solid var(--line)",
-                      borderRadius: 4,
-                      boxShadow: "var(--shadow-card)",
-                      zIndex: 50,
-                      minWidth: 180,
-                    }}
-                  >
+                {tieneNuevos && (
+                  <div className="tab-hover-panel">
                     <button
                       onClick={() => irANuevosIngresos(slug)}
                       style={{

@@ -217,6 +217,35 @@ a{ color:inherit; text-decoration:none; }
   display:flex;
   gap:22px;
 }
+/* Mismo truco que .mega-item/.mega-panel (padding-bottom + margin-bottom
+   negativo) para que el hover no se corte en el hueco entre el botón y
+   el desplegable, ej. "Nuevos ingresos" bajo Swarovski en /catalogo. */
+.tab-hover-wrap{
+  position:relative;
+  padding-bottom:14px;
+  margin-bottom:-14px;
+}
+.tab-hover-panel{
+  position:absolute;
+  top:100%;
+  left:0;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition: opacity .15s ease, visibility .15s;
+  background:var(--card-bg);
+  border:1px solid var(--line);
+  border-radius:4px;
+  box-shadow:var(--shadow-card);
+  z-index:50;
+  min-width:180px;
+}
+.tab-hover-wrap:hover .tab-hover-panel,
+.tab-hover-wrap:focus-within .tab-hover-panel{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
 .mega-col{ min-width:105px; }
 .mega-col-title{
   display:block;
