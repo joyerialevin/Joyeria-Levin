@@ -13,6 +13,7 @@ import {
   TIPOS_PRODUCTO_ORDEN,
   inferirTipoProducto,
   OPCIONES_ORDEN,
+  colorSwatch,
 } from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
@@ -30,6 +31,18 @@ export default function CatalogoClient({ productos }) {
     precioMax: "",
     orden: "destacado",
   });
+  const [panelAbierto, setPanelAbierto] = useState(false);
+  const [seccionesAbiertas, setSeccionesAbiertas] = useState(
+    () => new Set(["orden", "precio", "color", "marca", "material", "tipoProducto", "nuevo", "abridor"])
+  );
+
+  function toggleSeccion(clave) {
+    setSeccionesAbiertas((prev) => {
+      const next = new Set(prev);
+      next.has(clave) ? next.delete(clave) : next.add(clave);
+      return next;
+    });
+  }
 
   // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
   // categoría vía ?cat=anillos y con filtros de marca/material ya
@@ -125,16 +138,24 @@ export default function CatalogoClient({ productos }) {
   }, [productosCategoria, filtros]);
 
   const productosOrdenados = useMemo(() => {
-    if (filtros.orden === "destacado") return productosFiltrados;
-    const signo = filtros.orden === "precio-asc" ? 1 : -1;
-    return [...productosFiltrados].sort((a, b) => {
-      // Productos sin precio (a consultar) siempre quedan al final,
-      // sea cual sea el sentido del orden.
-      if (a.precio == null && b.precio == null) return 0;
-      if (a.precio == null) return 1;
-      if (b.precio == null) return -1;
-      return (a.precio - b.precio) * signo;
-    });
+    if (filtros.orden === "az" || filtros.orden === "za") {
+      const signo = filtros.orden === "az" ? 1 : -1;
+      return [...productosFiltrados].sort(
+        (a, b) => signo * (a.titulo || "").localeCompare(b.titulo || "")
+      );
+    }
+    if (filtros.orden === "precio-asc" || filtros.orden === "precio-desc") {
+      const signo = filtros.orden === "precio-asc" ? 1 : -1;
+      return [...productosFiltrados].sort((a, b) => {
+        // Productos sin precio (a consultar) siempre quedan al final,
+        // sea cual sea el sentido del orden.
+        if (a.precio == null && b.precio == null) return 0;
+        if (a.precio == null) return 1;
+        if (b.precio == null) return -1;
+        return (a.precio - b.precio) * signo;
+      });
+    }
+    return productosFiltrados;
   }, [productosFiltrados, filtros.orden]);
 
   function limpiarFiltros() {
@@ -242,238 +263,385 @@ export default function CatalogoClient({ productos }) {
       {!categoriaInfo ? (
         <p style={{ color: "var(--ink-soft)", marginTop: 40 }}>Próximamente.</p>
       ) : (
-      <div className="catalogo-filtros-grid" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 44, marginTop: 40 }}>
-        {/* Filtros según la categoría activa */}
-        <aside>
-          <h3 className="display" style={{ fontSize: 16, marginBottom: 16 }}>
-            Filtros
-          </h3>
+      <div style={{ marginTop: 40 }}>
+        {/* Disparador del panel de filtros, estilo "Filtrar y ordenar" */}
+        {categoriaInfo.filtros.length > 0 && (
+          <button
+            type="button"
+            onClick={() => setPanelAbierto(true)}
+            className="stamp"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "10px 4px",
+              marginBottom: 24,
+              border: "none",
+              background: "none",
+              color: "var(--ink)",
+              fontSize: 12.5,
+              letterSpacing: "0.06em",
+              cursor: "pointer",
+            }}
+          >
+            <IconSliders />
+            Filtrar y ordenar
+          </button>
+        )}
 
-          {categoriaInfo.filtros.includes("marca") && marcasDisponibles.length > 0 && (
-            <FiltroGrupo titulo="Marca">
-              {marcasDisponibles.map((m) => (
-                <FiltroOpcion
-                  key={m}
-                  label={m}
-                  checked={filtros.marca.has(m)}
-                  onChange={() => toggleSetFiltro("marca", m)}
-                />
-              ))}
-            </FiltroGrupo>
-          )}
+        {productosOrdenados.length === 0 ? (
+          <p style={{ color: "var(--ink-soft)" }}>
+            Todavía no hay productos cargados en esta categoría.
+          </p>
+        ) : (
+          <div
+            className="product-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+              gap: 26,
+            }}
+          >
+            {productosOrdenados.map((p) => (
+              <ProductCard key={p.id} producto={p} />
+            ))}
+          </div>
+        )}
+      </div>
+      )}
 
-          {categoriaInfo.filtros.includes("material") && (
-            <FiltroGrupo titulo="Material">
-              {(categoriaActiva === "alianzas" ? MATERIALES_ALIANZAS : MATERIALES_ESTANDAR).map((v) => (
-                <FiltroOpcion
-                  key={v}
-                  label={MATERIAL_LABEL[v]}
-                  checked={filtros.material.has(v)}
-                  onChange={() => toggleSetFiltro("material", v)}
-                />
-              ))}
-            </FiltroGrupo>
-          )}
-
-          {categoriaInfo.filtros.includes("nuevo") && (
-            <FiltroGrupo titulo="Novedades">
-              <FiltroOpcion
-                label="Nuevos ingresos"
-                checked={filtros.soloNuevos}
-                onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
-              />
-            </FiltroGrupo>
-          )}
-
-          {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
-            <FiltroGrupo titulo="Tipo de producto">
-              {tiposProductoDisponibles.map((t) => (
-                <FiltroOpcion
-                  key={t}
-                  label={TIPO_PRODUCTO_LABEL[t]}
-                  checked={filtros.tipoProducto === t}
-                  onChange={() =>
-                    setFiltros((prev) => ({
-                      ...prev,
-                      tipoProducto: prev.tipoProducto === t ? null : t,
-                    }))
-                  }
-                />
-              ))}
-            </FiltroGrupo>
-          )}
-
-          {categoriaInfo.filtros.includes("color") && coloresDisponibles.length > 0 && (
-            <FiltroGrupo titulo="Color">
-              {coloresDisponibles.map((c) => (
-                <FiltroOpcion
-                  key={c}
-                  label={c}
-                  checked={filtros.color.has(c)}
-                  onChange={() => toggleSetFiltro("color", c)}
-                />
-              ))}
-            </FiltroGrupo>
-          )}
-
-          {categoriaInfo.filtros.includes("precio") && (
-            <FiltroGrupo titulo="Precio">
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  placeholder="Desde"
-                  value={filtros.precioMin}
-                  onChange={(e) =>
-                    setFiltros((prev) => ({ ...prev, precioMin: e.target.value }))
-                  }
-                  style={{
-                    width: "100%",
-                    padding: "8px 10px",
-                    border: "1px solid var(--line)",
-                    borderRadius: 4,
-                    fontSize: 13,
-                    color: "var(--ink)",
-                    background: "var(--card-bg)",
-                  }}
-                />
-                <span style={{ color: "var(--ink-soft)" }}>–</span>
-                <input
-                  type="number"
-                  inputMode="numeric"
-                  placeholder="Hasta"
-                  value={filtros.precioMax}
-                  onChange={(e) =>
-                    setFiltros((prev) => ({ ...prev, precioMax: e.target.value }))
-                  }
-                  style={{
-                    width: "100%",
-                    padding: "8px 10px",
-                    border: "1px solid var(--line)",
-                    borderRadius: 4,
-                    fontSize: 13,
-                    color: "var(--ink)",
-                    background: "var(--card-bg)",
-                  }}
-                />
-              </div>
-            </FiltroGrupo>
-          )}
-
-          {categoriaInfo.filtros.includes("abridor") && (
-            <FiltroGrupo titulo="Cierre">
-              <FiltroOpcion
-                label="Con abridor"
-                checked={filtros.abridor === true}
-                onChange={() =>
-                  setFiltros((prev) => ({
-                    ...prev,
-                    abridor: prev.abridor === true ? null : true,
-                  }))
-                }
-              />
-              <FiltroOpcion
-                label="Sin abridor"
-                checked={filtros.abridor === false}
-                onChange={() =>
-                  setFiltros((prev) => ({
-                    ...prev,
-                    abridor: prev.abridor === false ? null : false,
-                  }))
-                }
-              />
-            </FiltroGrupo>
-          )}
-        </aside>
-
-        {/* Grilla de productos */}
-        <div>
-          {categoriaInfo.filtros.includes("precio") && (
+      {/* Panel de filtros deslizable, con overlay */}
+      {panelAbierto && categoriaInfo && (
+        <>
+          <div
+            onClick={() => setPanelAbierto(false)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              background: "rgba(38,38,31,0.45)",
+              zIndex: 300,
+            }}
+          />
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              bottom: 0,
+              left: 0,
+              width: 380,
+              maxWidth: "90vw",
+              background: "var(--card-bg)",
+              zIndex: 301,
+              display: "flex",
+              flexDirection: "column",
+              boxShadow: "4px 0 24px rgba(38,38,31,0.18)",
+            }}
+          >
             <div
               style={{
                 display: "flex",
-                justifyContent: "flex-end",
                 alignItems: "center",
-                gap: 10,
-                marginBottom: 20,
+                justifyContent: "space-between",
+                padding: "24px 24px 20px",
               }}
             >
-              <label
-                className="stamp"
-                htmlFor="ordenar-por"
-                style={{ fontSize: 11.5, color: "var(--ink-soft)" }}
-              >
-                Ordenar por
-              </label>
-              <select
-                id="ordenar-por"
-                value={filtros.orden}
-                onChange={(e) => setFiltros((prev) => ({ ...prev, orden: e.target.value }))}
+              <h2 className="display" style={{ fontSize: 26, margin: 0 }}>
+                Filtrar
+              </h2>
+              <button
+                type="button"
+                onClick={() => setPanelAbierto(false)}
+                aria-label="Cerrar"
                 style={{
-                  padding: "8px 10px",
-                  border: "1px solid var(--line)",
-                  borderRadius: 4,
-                  fontSize: 13,
+                  background: "none",
+                  border: "none",
+                  fontSize: 22,
+                  cursor: "pointer",
                   color: "var(--ink)",
-                  background: "var(--card-bg)",
+                  lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
+            </div>
+
+            <div style={{ flex: 1, overflowY: "auto", padding: "0 24px" }}>
+              {categoriaInfo.filtros.includes("precio") && (
+                <FiltroSeccion
+                  titulo="Ordenar por"
+                  abierta={seccionesAbiertas.has("orden")}
+                  onToggle={() => toggleSeccion("orden")}
+                >
+                  {OPCIONES_ORDEN.map((o) => (
+                    <FiltroOpcionRadio
+                      key={o.valor}
+                      label={o.etiqueta}
+                      checked={filtros.orden === o.valor}
+                      onChange={() => setFiltros((prev) => ({ ...prev, orden: o.valor }))}
+                    />
+                  ))}
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("precio") && (
+                <FiltroSeccion
+                  titulo="Precio"
+                  abierta={seccionesAbiertas.has("precio")}
+                  onToggle={() => toggleSeccion("precio")}
+                >
+                  <div style={{ display: "flex", gap: 16 }}>
+                    <div style={{ flex: 1 }}>
+                      <label
+                        className="stamp"
+                        style={{ display: "block", fontSize: 10.5, color: "var(--ink-soft)", marginBottom: 6 }}
+                      >
+                        Desde
+                      </label>
+                      <div style={{ display: "flex", alignItems: "center", border: "1px solid var(--line)", borderRadius: 4, padding: "0 10px" }}>
+                        <span style={{ color: "var(--ink-soft)", fontSize: 13 }}>$</span>
+                        <input
+                          type="number"
+                          inputMode="numeric"
+                          placeholder="100000"
+                          value={filtros.precioMin}
+                          onChange={(e) => setFiltros((prev) => ({ ...prev, precioMin: e.target.value }))}
+                          style={{
+                            width: "100%",
+                            padding: "9px 8px",
+                            border: "none",
+                            outline: "none",
+                            fontSize: 13,
+                            color: "var(--ink)",
+                            background: "transparent",
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <label
+                        className="stamp"
+                        style={{ display: "block", fontSize: 10.5, color: "var(--ink-soft)", marginBottom: 6 }}
+                      >
+                        Hasta
+                      </label>
+                      <div style={{ display: "flex", alignItems: "center", border: "1px solid var(--line)", borderRadius: 4, padding: "0 10px" }}>
+                        <span style={{ color: "var(--ink-soft)", fontSize: 13 }}>$</span>
+                        <input
+                          type="number"
+                          inputMode="numeric"
+                          placeholder="200000"
+                          value={filtros.precioMax}
+                          onChange={(e) => setFiltros((prev) => ({ ...prev, precioMax: e.target.value }))}
+                          style={{
+                            width: "100%",
+                            padding: "9px 8px",
+                            border: "none",
+                            outline: "none",
+                            fontSize: 13,
+                            color: "var(--ink)",
+                            background: "transparent",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("color") && coloresDisponibles.length > 0 && (
+                <FiltroSeccion
+                  titulo="Color"
+                  abierta={seccionesAbiertas.has("color")}
+                  onToggle={() => toggleSeccion("color")}
+                >
+                  {coloresDisponibles.map((c) => (
+                    <FiltroOpcion
+                      key={c}
+                      label={c}
+                      checked={filtros.color.has(c)}
+                      onChange={() => toggleSetFiltro("color", c)}
+                      swatch={colorSwatch(c)}
+                    />
+                  ))}
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("marca") && marcasDisponibles.length > 0 && (
+                <FiltroSeccion
+                  titulo="Marca"
+                  abierta={seccionesAbiertas.has("marca")}
+                  onToggle={() => toggleSeccion("marca")}
+                >
+                  {marcasDisponibles.map((m) => (
+                    <FiltroOpcion
+                      key={m}
+                      label={m}
+                      checked={filtros.marca.has(m)}
+                      onChange={() => toggleSetFiltro("marca", m)}
+                    />
+                  ))}
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("material") && (
+                <FiltroSeccion
+                  titulo="Material"
+                  abierta={seccionesAbiertas.has("material")}
+                  onToggle={() => toggleSeccion("material")}
+                >
+                  {(categoriaActiva === "alianzas" ? MATERIALES_ALIANZAS : MATERIALES_ESTANDAR).map((v) => (
+                    <FiltroOpcion
+                      key={v}
+                      label={MATERIAL_LABEL[v]}
+                      checked={filtros.material.has(v)}
+                      onChange={() => toggleSetFiltro("material", v)}
+                    />
+                  ))}
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
+                <FiltroSeccion
+                  titulo="Tipo de producto"
+                  abierta={seccionesAbiertas.has("tipoProducto")}
+                  onToggle={() => toggleSeccion("tipoProducto")}
+                >
+                  {tiposProductoDisponibles.map((t) => (
+                    <FiltroOpcion
+                      key={t}
+                      label={TIPO_PRODUCTO_LABEL[t]}
+                      checked={filtros.tipoProducto === t}
+                      onChange={() =>
+                        setFiltros((prev) => ({
+                          ...prev,
+                          tipoProducto: prev.tipoProducto === t ? null : t,
+                        }))
+                      }
+                    />
+                  ))}
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("nuevo") && (
+                <FiltroSeccion
+                  titulo="Novedades"
+                  abierta={seccionesAbiertas.has("nuevo")}
+                  onToggle={() => toggleSeccion("nuevo")}
+                >
+                  <FiltroOpcion
+                    label="Nuevos ingresos"
+                    checked={filtros.soloNuevos}
+                    onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
+                  />
+                </FiltroSeccion>
+              )}
+
+              {categoriaInfo.filtros.includes("abridor") && (
+                <FiltroSeccion
+                  titulo="Cierre"
+                  abierta={seccionesAbiertas.has("abridor")}
+                  onToggle={() => toggleSeccion("abridor")}
+                >
+                  <FiltroOpcion
+                    label="Con abridor"
+                    checked={filtros.abridor === true}
+                    onChange={() =>
+                      setFiltros((prev) => ({
+                        ...prev,
+                        abridor: prev.abridor === true ? null : true,
+                      }))
+                    }
+                  />
+                  <FiltroOpcion
+                    label="Sin abridor"
+                    checked={filtros.abridor === false}
+                    onChange={() =>
+                      setFiltros((prev) => ({
+                        ...prev,
+                        abridor: prev.abridor === false ? null : false,
+                      }))
+                    }
+                  />
+                </FiltroSeccion>
+              )}
+            </div>
+
+            <div style={{ padding: 24 }}>
+              <button
+                type="button"
+                onClick={() => setPanelAbierto(false)}
+                style={{
+                  width: "100%",
+                  padding: "16px",
+                  border: "none",
+                  borderRadius: 4,
+                  background: "var(--ink)",
+                  color: "var(--porcelain)",
+                  fontSize: 13,
+                  letterSpacing: "0.06em",
+                  fontWeight: 700,
                   cursor: "pointer",
                 }}
               >
-                {OPCIONES_ORDEN.map((o) => (
-                  <option key={o.valor} value={o.valor}>
-                    {o.etiqueta}
-                  </option>
-                ))}
-              </select>
+                APLICAR FILTROS
+              </button>
             </div>
-          )}
-
-          {productosOrdenados.length === 0 ? (
-            <p style={{ color: "var(--ink-soft)" }}>
-              Todavía no hay productos cargados en esta categoría.
-            </p>
-          ) : (
-            <div
-              className="product-grid"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-                gap: 26,
-              }}
-            >
-              {productosOrdenados.map((p) => (
-                <ProductCard key={p.id} producto={p} />
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
+          </div>
+        </>
       )}
     </section>
   );
 }
 
-function FiltroGrupo({ titulo, children }) {
+function IconSliders() {
   return (
-    <div style={{ marginBottom: 28 }}>
-      <h4
+    <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="3" y1="5" x2="17" y2="5" stroke="currentColor" strokeWidth="1.3" />
+      <line x1="3" y1="10" x2="17" y2="10" stroke="currentColor" strokeWidth="1.3" />
+      <line x1="3" y1="15" x2="17" y2="15" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="7" cy="5" r="2" fill="var(--card-bg)" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="13" cy="10" r="2" fill="var(--card-bg)" stroke="currentColor" strokeWidth="1.3" />
+      <circle cx="9" cy="15" r="2" fill="var(--card-bg)" stroke="currentColor" strokeWidth="1.3" />
+    </svg>
+  );
+}
+
+function FiltroSeccion({ titulo, abierta, onToggle, children }) {
+  return (
+    <div style={{ borderBottom: "1px solid var(--line)", padding: "18px 0" }}>
+      <button
+        type="button"
+        onClick={onToggle}
         className="stamp"
-        style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 10 }}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          background: "none",
+          border: "none",
+          padding: 0,
+          fontSize: 12,
+          letterSpacing: "0.06em",
+          color: "var(--ink)",
+          cursor: "pointer",
+        }}
       >
         {titulo}
-      </h4>
-      {children}
+        <span style={{ fontSize: 11, transform: abierta ? "rotate(180deg)" : "none" }}>▾</span>
+      </button>
+      {abierta && <div style={{ marginTop: 16 }}>{children}</div>}
     </div>
   );
 }
 
-function FiltroOpcion({ label, checked, onChange }) {
+function FiltroOpcion({ label, checked, onChange, swatch }) {
   return (
     <label
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 9,
+        gap: 10,
         fontSize: 13.5,
         padding: "6px 0",
         cursor: "pointer",
@@ -481,6 +649,37 @@ function FiltroOpcion({ label, checked, onChange }) {
       }}
     >
       <input type="checkbox" checked={checked} onChange={onChange} />
+      {swatch && (
+        <span
+          style={{
+            width: 16,
+            height: 16,
+            borderRadius: 3,
+            background: swatch,
+            border: "1px solid var(--line)",
+            flexShrink: 0,
+          }}
+        />
+      )}
+      {label}
+    </label>
+  );
+}
+
+function FiltroOpcionRadio({ label, checked, onChange }) {
+  return (
+    <label
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        fontSize: 13.5,
+        padding: "6px 0",
+        cursor: "pointer",
+        color: "var(--ink-soft)",
+      }}
+    >
+      <input type="radio" checked={checked} onChange={onChange} />
       {label}
     </label>
   );
