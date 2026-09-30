@@ -32,6 +32,7 @@ export default function CatalogoClient({ productos }) {
     orden: "destacado",
   });
   const [panelAbierto, setPanelAbierto] = useState(false);
+  const [categoriaEnHover, setCategoriaEnHover] = useState(null);
   const [seccionesAbiertas, setSeccionesAbiertas] = useState(
     () => new Set(["orden", "precio", "color", "marca", "material", "abridor"])
   );
@@ -177,6 +178,24 @@ export default function CatalogoClient({ productos }) {
     limpiarFiltros();
   }
 
+  // Acceso directo a "Nuevos ingresos" desde el hover de la tira de
+  // categorías (ej. Swarovski), igual que el link del mega menú del
+  // header pero sin salir de la página si ya estás en el catálogo.
+  function irANuevosIngresos(slug) {
+    setCategoriaActiva(slug);
+    setFiltros({
+      marca: new Set(),
+      material: new Set(),
+      abridor: null,
+      soloNuevos: true,
+      tipoProducto: null,
+      color: new Set(),
+      precioMin: "",
+      precioMax: "",
+      orden: "destacado",
+    });
+  }
+
   // Permite saltar de Caballero a Dama (y viceversa) sin pasar por el
   // menú de arriba, manteniendo la misma categoría si existe en el
   // otro grupo (ej. de Caballero > Relojes a Dama > Relojes).
@@ -239,22 +258,64 @@ export default function CatalogoClient({ productos }) {
         <div style={{ display: "flex", gap: 14, flexWrap: "wrap", padding: "10px 0 40px", borderBottom: "1px solid var(--line)" }}>
           {grupoInfo.categorias.map(({ slug }) => {
             const cat = CATEGORIAS.find((c) => c.slug === slug);
+            const tieneNuevos = cat.filtros.includes("nuevo");
             return (
-              <button
+              <div
                 key={slug}
-                onClick={() => cambiarCategoria(slug)}
-                className="stamp"
-                style={{
-                  padding: "14px 22px",
-                  border: `1px solid ${categoriaActiva === slug ? "var(--oro)" : "var(--line)"}`,
-                  borderRadius: 4,
-                  background: categoriaActiva === slug ? "#FBF6EC" : "var(--card-bg)",
-                  color: "var(--ink)",
-                  cursor: "pointer",
-                }}
+                style={{ position: "relative" }}
+                onMouseEnter={() => tieneNuevos && setCategoriaEnHover(slug)}
+                onMouseLeave={() => tieneNuevos && setCategoriaEnHover(null)}
               >
-                {cat.nombre}
-              </button>
+                <button
+                  onClick={() => cambiarCategoria(slug)}
+                  className="stamp"
+                  style={{
+                    padding: "14px 22px",
+                    border: `1px solid ${categoriaActiva === slug ? "var(--oro)" : "var(--line)"}`,
+                    borderRadius: 4,
+                    background: categoriaActiva === slug ? "#FBF6EC" : "var(--card-bg)",
+                    color: "var(--ink)",
+                    cursor: "pointer",
+                  }}
+                >
+                  {cat.nombre}
+                </button>
+
+                {tieneNuevos && categoriaEnHover === slug && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "100%",
+                      left: 0,
+                      marginTop: 4,
+                      background: "var(--card-bg)",
+                      border: "1px solid var(--line)",
+                      borderRadius: 4,
+                      boxShadow: "var(--shadow-card)",
+                      zIndex: 50,
+                      minWidth: 180,
+                    }}
+                  >
+                    <button
+                      onClick={() => irANuevosIngresos(slug)}
+                      className="stamp"
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        textAlign: "left",
+                        padding: "12px 16px",
+                        border: "none",
+                        background: "none",
+                        color: "var(--ink)",
+                        fontSize: 13,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Nuevos ingresos
+                    </button>
+                  </div>
+                )}
+              </div>
             );
           })}
         </div>
