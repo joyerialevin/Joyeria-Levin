@@ -33,7 +33,7 @@ export default function CatalogoClient({ productos }) {
   });
   const [panelAbierto, setPanelAbierto] = useState(false);
   const [seccionesAbiertas, setSeccionesAbiertas] = useState(
-    () => new Set(["orden", "precio", "color", "marca", "material", "tipoProducto", "nuevo", "abridor"])
+    () => new Set(["orden", "precio", "color", "marca", "material", "abridor"])
   );
 
   function toggleSeccion(clave) {
@@ -264,30 +264,82 @@ export default function CatalogoClient({ productos }) {
         <p style={{ color: "var(--ink-soft)", marginTop: 40 }}>Próximamente.</p>
       ) : (
       <div style={{ marginTop: 40 }}>
-        {/* Disparador del panel de filtros, estilo "Filtrar y ordenar" */}
-        {categoriaInfo.filtros.length > 0 && (
-          <button
-            type="button"
-            onClick={() => setPanelAbierto(true)}
-            className="stamp"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "10px 4px",
-              marginBottom: 24,
-              border: "none",
-              background: "none",
-              color: "var(--ink)",
-              fontSize: 12.5,
-              letterSpacing: "0.06em",
-              cursor: "pointer",
-            }}
-          >
-            <IconSliders />
-            Filtrar y ordenar
-          </button>
-        )}
+        {/* Fila superior: filtros siempre visibles (Tipo de producto,
+            Novedades) a la izquierda, disparador de "Filtrar y ordenar"
+            a la derecha. */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 16,
+            marginBottom: 24,
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+            {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
+              <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+                {tiposProductoDisponibles.map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() =>
+                      setFiltros((prev) => ({
+                        ...prev,
+                        tipoProducto: prev.tipoProducto === t ? null : t,
+                      }))
+                    }
+                    className="stamp"
+                    style={{
+                      padding: "9px 16px",
+                      border: `1px solid ${filtros.tipoProducto === t ? "var(--oro)" : "var(--line)"}`,
+                      borderRadius: 999,
+                      background: filtros.tipoProducto === t ? "#FBF6EC" : "var(--card-bg)",
+                      color: "var(--ink)",
+                      fontSize: 12,
+                      cursor: "pointer",
+                    }}
+                  >
+                    {TIPO_PRODUCTO_LABEL[t]}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {categoriaInfo.filtros.includes("nuevo") && (
+              <FiltroOpcion
+                label="Nuevos ingresos"
+                checked={filtros.soloNuevos}
+                onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
+              />
+            )}
+          </div>
+
+          {categoriaInfo.filtros.length > 0 && (
+            <button
+              type="button"
+              onClick={() => setPanelAbierto(true)}
+              className="stamp"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "10px 4px",
+                border: "none",
+                background: "none",
+                color: "var(--ink)",
+                fontSize: 12.5,
+                letterSpacing: "0.06em",
+                cursor: "pointer",
+                flexShrink: 0,
+              }}
+            >
+              <IconSliders />
+              Filtrar y ordenar
+            </button>
+          )}
+        </div>
 
         {productosOrdenados.length === 0 ? (
           <p style={{ color: "var(--ink-soft)" }}>
@@ -327,14 +379,14 @@ export default function CatalogoClient({ productos }) {
               position: "fixed",
               top: 0,
               bottom: 0,
-              left: 0,
+              right: 0,
               width: 380,
               maxWidth: "90vw",
               background: "var(--card-bg)",
               zIndex: 301,
               display: "flex",
               flexDirection: "column",
-              boxShadow: "4px 0 24px rgba(38,38,31,0.18)",
+              boxShadow: "-4px 0 24px rgba(38,38,31,0.18)",
             }}
           >
             <div
@@ -497,42 +549,6 @@ export default function CatalogoClient({ productos }) {
                       onChange={() => toggleSetFiltro("material", v)}
                     />
                   ))}
-                </FiltroSeccion>
-              )}
-
-              {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
-                <FiltroSeccion
-                  titulo="Tipo de producto"
-                  abierta={seccionesAbiertas.has("tipoProducto")}
-                  onToggle={() => toggleSeccion("tipoProducto")}
-                >
-                  {tiposProductoDisponibles.map((t) => (
-                    <FiltroOpcion
-                      key={t}
-                      label={TIPO_PRODUCTO_LABEL[t]}
-                      checked={filtros.tipoProducto === t}
-                      onChange={() =>
-                        setFiltros((prev) => ({
-                          ...prev,
-                          tipoProducto: prev.tipoProducto === t ? null : t,
-                        }))
-                      }
-                    />
-                  ))}
-                </FiltroSeccion>
-              )}
-
-              {categoriaInfo.filtros.includes("nuevo") && (
-                <FiltroSeccion
-                  titulo="Novedades"
-                  abierta={seccionesAbiertas.has("nuevo")}
-                  onToggle={() => toggleSeccion("nuevo")}
-                >
-                  <FiltroOpcion
-                    label="Nuevos ingresos"
-                    checked={filtros.soloNuevos}
-                    onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
-                  />
                 </FiltroSeccion>
               )}
 
