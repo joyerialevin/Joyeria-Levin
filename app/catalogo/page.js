@@ -13,19 +13,15 @@ const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&te
 export default async function CatalogoPage() {
   let productos = [];
   try {
-    // La línea Blühend/Swarovski se cargó en Supabase repartida en estas
-    // categorías reales (no en una categoría "Swarovski" aparte), así que
-    // se traen junto con relojes. El resto de cada categoría sigue viviendo
-    // en Sanity hasta que también se migre.
-    const [deSanity, relojes, aros, cadenas, pulseras, anillos] = await Promise.all([
+    // Swarovski todavía vive sobre todo en Sanity — de Supabase por ahora
+    // solo se suman los productos ya migrados ahí (no se excluye la
+    // categoría de Sanity, a diferencia de relojes que ya está 100% migrado).
+    const [deSanity, relojes, swarovski] = await Promise.all([
       getSanity().fetch(PRODUCTOS_QUERY),
       getRelojesSupabase(),
-      getProductosSupabasePorCategoria("aros"),
-      getProductosSupabasePorCategoria("cadenas"),
-      getProductosSupabasePorCategoria("pulseras"),
-      getProductosSupabasePorCategoria("anillos"),
+      getProductosSupabasePorCategoria("swarovski"),
     ]);
-    productos = [...relojes, ...aros, ...cadenas, ...pulseras, ...anillos, ...deSanity];
+    productos = [...relojes, ...swarovski, ...deSanity];
   } catch (error) {
     return (
       <div className="container" style={{ padding: "60px 0" }}>

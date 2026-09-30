@@ -16,12 +16,14 @@ const SUBTEXTO_ESTATICO = {
   pulseras: "Oro 18K y plata 925",
   cadenas: "Oro 18K y plata 925",
   aros: "Oro 18K y plata 925",
+  swarovski: "Línea de cristales",
 };
 
 // Fotos elegidas a mano para las tarjetas de categoría de la home —
 // tienen prioridad sobre la foto del producto más reciente.
 const IMAGEN_CURADA = {
   relojes: "/fotos/categoria-relojes.jpg",
+  swarovski: "/fotos/categoria-swarovski.jpg",
   anillos: "/fotos/categoria-anillos.jpg",
   pulseras: "/fotos/categoria-pulseras.jpg",
   cadenas: "/fotos/categoria-cadenas.jpg",
