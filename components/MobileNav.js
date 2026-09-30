@@ -3,8 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 
+// El link "Guía de regalos" es temporal: sacar después del 18/10 junto
+// con el ítem del menú de escritorio (Header.js) y el banner de la home
+// (app/page.js, BannerDiaDeLaMadre).
 const LINKS = [
   { href: "/", label: "Inicio" },
+  { href: "/regalos-dia-de-la-madre/", label: "Guía de regalos" },
   { href: "/catalogo?grupo=caballero", label: "Caballero" },
   { href: "/catalogo?grupo=dama", label: "Dama" },
   { href: "/catalogo?grupo=alianzas", label: "Alianzas" },

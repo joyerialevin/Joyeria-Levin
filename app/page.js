@@ -5,6 +5,7 @@ import { CATEGORIAS } from "../lib/categorias";
 import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
 import NovedadesSection from "../components/NovedadesSection";
+import BannerDiaDeLaMadre from "../components/BannerDiaDeLaMadre";
 import BeneficiosStrip from "../components/BeneficiosStrip";
 import VisitanosSection from "../components/VisitanosSection";
 
@@ -144,6 +145,10 @@ export default async function HomePage() {
           <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>Perú 134 · Paraná</div>
         </div>
       </section>
+
+      {/* Temporal: sacar después del 18/10 (ver comentario en el
+          componente y en Header.js / MobileNav.js). */}
+      <BannerDiaDeLaMadre />
 
       <BeneficiosStrip />
       <NovedadesSection productos={novedades} />

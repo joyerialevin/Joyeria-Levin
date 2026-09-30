@@ -94,6 +94,12 @@ export default async function Header() {
             Inicio
           </Link>
 
+          {/* Temporal: sacar después del 18/10 junto con el banner de la
+              home (ver app/page.js, BannerDiaDeLaMadre). */}
+          <Link href="/regalos-dia-de-la-madre/" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
+            Guía de regalos
+          </Link>
+
           <div className="mega-item">
             <Link href="/catalogo?grupo=caballero" className="stamp mega-trigger">
               Caballero
