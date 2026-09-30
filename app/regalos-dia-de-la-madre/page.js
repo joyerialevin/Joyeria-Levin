@@ -15,10 +15,10 @@ import GuiaMamaScript from "../../components/GuiaMamaScript";
 export const metadata = {
   title: "Regalos para el Día de la Madre en Paraná | Joyería Levin",
   description:
-    "Ideas de regalo para el Día de la Madre: joyas en oro 18k, plata 925, cristales Swarovski y relojes. Asesoramiento personalizado en Perú 134, Paraná.",
+    "Ideas de regalo para el Día de la Madre: joyas en oro 18K, plata 925, Swarovski y relojes. Asesoramiento personalizado en Perú 134, Paraná.",
   openGraph: {
     title: "Regalos para el Día de la Madre | Joyería Levin",
-    description: "Joyas en oro 18k, plata 925, cristales Swarovski y relojes, elegidos para cada mamá.",
+    description: "Joyas en oro 18K, plata 925, Swarovski y relojes para encontrar ese regalo especial.",
     images: ["/regalos-dia-de-la-madre/img/post4-hijo.jpg"],
   },
 };
@@ -37,17 +37,17 @@ export default function RegalosDiaDeLaMadrePage() {
               <span className="pill" id="countdown" hidden></span>
             </div>
             <h1>
-              Para ella,
+              Un regalo para mamá,
               <br />
               para siempre.
             </h1>
             <p>
-              Joyas en oro 18k, plata 925, cristales Swarovski y relojes, elegidos para cada mamá. Con el
-              asesoramiento de siempre, en Perú 134.
+              Joyas en oro 18K, plata 925, Swarovski y relojes para encontrar ese regalo especial. Te
+              ayudamos a elegirlo en nuestro local o por WhatsApp.
             </p>
             <div className="btn-row">
               <a href="#guia" className="btn btn-olive">
-                VER LA GUÍA
+                VER REGALOS
               </a>
               <a
                 href="#"
@@ -68,15 +68,15 @@ export default function RegalosDiaDeLaMadrePage() {
         <section className="trust">
           <div>
             <strong>Más de 50 años en Paraná</strong>
-            <span>Confianza de generaciones de familias.</span>
+            <span>La confianza de generaciones de familias.</span>
           </div>
           <div>
             <strong>Asesoramiento personalizado</strong>
-            <span>Te ayudamos a elegir la pieza justa.</span>
+            <span>Te ayudamos a encontrar el regalo indicado.</span>
           </div>
           <div>
-            <strong>Grabados en plata y oro</strong>
-            <span>Nombres, iniciales y fechas a pedido.</span>
+            <strong>Grabados personalizados</strong>
+            <span>Nombres, iniciales y fechas en oro y plata.</span>
           </div>
         </section>
 
@@ -87,7 +87,10 @@ export default function RegalosDiaDeLaMadrePage() {
               <span className="eyebrow">LA GUÍA</span>
               <h2>Un regalo para cada mamá</h2>
             </div>
-            <p>Elegí por material o por tipo de regalo. Pasá las fotos de cada conjunto y consultalo por WhatsApp o en el local.</p>
+            <p>
+              Explorá nuestra selección de joyas, relojes y regalos personalizados. Elegí lo que te guste
+              y consultanos disponibilidad por WhatsApp o en el local.
+            </p>
           </div>
 
           <div className="tabs" role="group" aria-label="Filtrar regalos">
@@ -115,51 +118,30 @@ export default function RegalosDiaDeLaMadrePage() {
           <div className="grid" id="grid"></div>
         </section>
 
-        {/* PIEZA DE LA TEMPORADA */}
+        {/* JOYA DESTACADA */}
         <section className="split split-sand">
           <div className="split-img">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/regalos-dia-de-la-madre/img/post6-ninosoro-3.jpg"
-              alt="Mujer con cadena de dije de nenito en oro 18k"
+              alt="Mujer con dije de niño en oro 18K"
               style={{ objectPosition: "center 20%" }}
             />
           </div>
           <div className="split-text">
-            <span className="eyebrow">PIEZA DE LA TEMPORADA</span>
+            <span className="eyebrow">UNA JOYA CON SIGNIFICADO</span>
             <h2>
               Sus hijos,
               <br />
               siempre cerca.
             </h2>
             <p>
-              El conjunto con dije de nenito, en oro 18k, es de esas piezas que se usan todos los días y se
-              heredan. Cadena, anillo y dos pulseras que se llevan juntos o por separado.
+              El dije de niño en oro 18K es uno de esos regalos que guardan un significado especial.
+              Completá el conjunto con cadena, anillo y pulseras para usar juntos o por separado.
             </p>
-            <a href="#" className="btn btn-dark js-wa" data-msg="Hola! Quiero consultar por el conjunto con dije de nenito en oro 18k">
-              CONSULTAR POR ESTA PIEZA
+            <a href="#" className="btn btn-dark js-wa" data-msg="Hola! Quiero consultar por el dije de niño en oro 18K">
+              CONSULTAR DISPONIBILIDAD
             </a>
-          </div>
-        </section>
-
-        {/* EL MOMENTO DE REGALAR */}
-        <section className="moment">
-          <div className="section-head">
-            <div>
-              <span className="eyebrow">EL MOMENTO DE REGALAR</span>
-              <h2>Lo que queda es el gesto.</h2>
-            </div>
-            <p>Cada pieza se entrega en su estuche, lista para regalar. Vos elegís; nosotros te ayudamos con el resto.</p>
-          </div>
-          <div className="mosaic">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post5-regalo-2.jpg" alt="Hijo sosteniendo un estuche de regalo" loading="lazy" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post5-regalo.jpg" alt="Estuche abierto con conjunto de joyas" loading="lazy" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post5-regalo-1.jpg" alt="Detalle del estuche con joyas" loading="lazy" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post5-regalo-3.jpg" alt="Hijo abriendo el estuche" loading="lazy" />
           </div>
         </section>
 
@@ -176,18 +158,35 @@ export default function RegalosDiaDeLaMadrePage() {
           </div>
           <div className="split-text">
             <span className="eyebrow eyebrow-light">PERSONALIZADOS</span>
-            <h2>
-              Su nombre,
-              <br />
-              grabado en Plata 925.
-            </h2>
+            <h2>Un regalo hecho especialmente para ella.</h2>
             <p>
-              Nombres, iniciales y fechas en cadenas, medallas, anillos y pulseras. Los grabados se hacen a
-              pedido: consultá los plazos para tenerlo antes del 18.
+              Personalizamos nombres, iniciales y fechas en cadenas, medallas, anillos y pulseras. Los
+              trabajos se realizan a pedido, por eso recomendamos consultarnos con anticipación.
             </p>
-            <a href="#" className="btn btn-olive js-wa" data-msg="Hola! Quiero encargar un grabado para el Día de la Madre">
-              ENCARGAR UN GRABADO
+            <a href="#" className="btn btn-olive js-wa" data-msg="Hola! Quiero consultar por una personalización para el Día de la Madre">
+              CONSULTAR PERSONALIZACIÓN
             </a>
+          </div>
+        </section>
+
+        {/* LISTO PARA REGALAR */}
+        <section className="moment">
+          <div className="section-head">
+            <div>
+              <span className="eyebrow">LISTO PARA REGALAR</span>
+              <h2>Cuidamos cada detalle.</h2>
+            </div>
+            <p>Cada joya se entrega en su estuche, lista para regalar. Elegí el regalo y nosotros nos ocupamos de la presentación.</p>
+          </div>
+          <div className="mosaic">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/regalos-dia-de-la-madre/img/post5-regalo-2.jpg" alt="Hijo sosteniendo un estuche de regalo" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/regalos-dia-de-la-madre/img/post5-regalo.jpg" alt="Estuche abierto con conjunto de joyas" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/regalos-dia-de-la-madre/img/post5-regalo-1.jpg" alt="Detalle del estuche con joyas" loading="lazy" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/regalos-dia-de-la-madre/img/post5-regalo-3.jpg" alt="Hijo abriendo el estuche" loading="lazy" />
           </div>
         </section>
 
@@ -199,8 +198,11 @@ export default function RegalosDiaDeLaMadrePage() {
           </div>
           <div className="visit-text">
             <span className="eyebrow">VISITANOS</span>
-            <h2>¿No sabés cuál elegir?</h2>
-            <p>Pasá por el local y te ayudamos a encontrar la pieza justa. Más de 50 años asesorando a las familias de Paraná.</p>
+            <h2>¿No sabés qué regalarle?</h2>
+            <p>
+              Vení a nuestro local y te ayudamos a encontrar una opción según su estilo y tu presupuesto.
+              Hace más de 50 años acompañamos a las familias de Paraná.
+            </p>
             <dl className="info">
               <div>
                 <dt>DIRECCIÓN</dt>
@@ -239,20 +241,29 @@ export default function RegalosDiaDeLaMadrePage() {
           </div>
           <div className="faq-list">
             <details open>
-              <summary>¿Cómo sé la medida de anillo de mi mamá?</summary>
-              <p>Podés traernos un anillo que ella use y lo medimos en el momento.</p>
+              <summary>¿Cómo sé la medida de anillo de mamá?</summary>
+              <p>Podés traernos un anillo que ella use habitualmente y lo medimos en el momento.</p>
             </details>
             <details>
               <summary>¿Con cuánta anticipación encargo un grabado?</summary>
-              <p>[PLAZO A CONFIRMAR]. Consultanos con tiempo para tenerlo antes del domingo 18 de octubre.</p>
+              <p>
+                Los trabajos personalizados requieren preparación. Consultanos por WhatsApp para confirmar
+                el plazo según el tipo de grabado y la fecha en que lo necesitás.
+              </p>
             </details>
             <details>
               <summary>¿Qué medios de pago aceptan?</summary>
-              <p>[MEDIOS DE PAGO — A CONFIRMAR]</p>
+              <p>
+                Efectivo, débito y transferencia. También contamos con opciones de financiación con
+                tarjetas de crédito. Consultanos para conocer las promociones vigentes.
+              </p>
             </details>
             <details>
               <summary>¿Puedo consultar por WhatsApp antes de ir?</summary>
-              <p>Sí. Mandanos la foto o el nombre de la pieza y te respondemos con disponibilidad.</p>
+              <p>
+                Sí. Mandanos una foto o el nombre del producto que te gustó y te confirmamos disponibilidad,
+                precio y opciones de pago.
+              </p>
             </details>
           </div>
         </section>

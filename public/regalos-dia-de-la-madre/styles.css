@@ -50,7 +50,7 @@
 .guia-mama .nav a:hover, .guia-mama .nav a.is-active { color: var(--olive-text); border-bottom: 1px solid var(--olive); }
 
 /* Portada */
-.guia-mama .hero { display: grid; grid-template-columns: 680px 1fr; min-height: 780px; background: var(--charcoal); }
+.guia-mama .hero { display: grid; grid-template-columns: 680px 1fr; height: clamp(560px, 68vh, 780px); background: var(--charcoal); }
 .guia-mama .hero-text { padding: 80px 80px 80px var(--pad); display: flex; flex-direction: column; justify-content: center; gap: 28px; color: var(--ivory); }
 .guia-mama .hero-kicker { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
 .guia-mama .pill { font-size: 12px; letter-spacing: 0.12em; padding: 6px 12px; border: 1px solid var(--olive); border-radius: 999px; }
@@ -81,8 +81,12 @@
 .guia-mama .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 56px 28px; }
 .guia-mama .card { display: flex; flex-direction: column; gap: 18px; }
 .guia-mama .card[hidden] { display: none; }
-.guia-mama .card-media { position: relative; aspect-ratio: 2 / 3; overflow: hidden; background: var(--sand-200); border-radius: 2px; }
+.guia-mama .card-media { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--sand-200); border-radius: 2px; }
 .guia-mama .card-media img { width: 100%; height: 100%; object-fit: cover; transition: opacity .24s; }
+/* Relojes: fotos de producto sobre fondo blanco, no ambientadas — se
+   ven mejor con "contain" que recortadas a lo ancho/alto de la tarjeta. */
+.guia-mama .card[data-cat="relojes"] .card-media { background: var(--ivory); }
+.guia-mama .card[data-cat="relojes"] .card-media img { object-fit: contain; }
 .guia-mama .badge { position: absolute; top: 16px; left: 16px; font-size: 11px; letter-spacing: 0.16em; padding: 7px 12px; background: var(--ivory); border-radius: 999px; }
 .guia-mama .arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 999px; border: none; background: rgba(253,252,248,.9); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
 .guia-mama .arrow-prev { left: 12px; }
@@ -95,7 +99,7 @@
 .guia-mama .card-link:hover { color: var(--olive-text); }
 
 /* Bloques partidos (foto + texto) */
-.guia-mama .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 720px; }
+.guia-mama .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 700px; }
 .guia-mama .split-sand { background: var(--sand-200); }
 .guia-mama .split-dark { background: var(--charcoal); color: var(--ivory); min-height: 640px; }
 .guia-mama .split-reverse .split-img { order: 2; }
@@ -110,7 +114,7 @@
 /* Momento de regalar */
 .guia-mama .moment { padding: 112px var(--pad); }
 .guia-mama .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.guia-mama .mosaic img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
+.guia-mama .mosaic img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 2px; }
 
 /* Visitanos */
 .guia-mama .visit { padding: 128px var(--pad); display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
@@ -164,7 +168,7 @@
   .guia-mama .topbar .btn-sm span { display: none; }
   .guia-mama .topbar .btn-sm { padding: 0 14px; }
 
-  .guia-mama .hero { grid-template-columns: 1fr; min-height: 0; }
+  .guia-mama .hero { grid-template-columns: 1fr; height: auto; min-height: 0; }
   .guia-mama .hero-img { order: -1; height: 440px; }
   .guia-mama .hero-text { padding: 40px var(--pad) 56px; gap: 22px; }
   .guia-mama .hero h1 { font-size: 46px; }
@@ -194,7 +198,10 @@
   .guia-mama .split-text { padding: 48px var(--pad) 64px; }
   .guia-mama .split-text .btn { align-self: stretch; }
 
-  .guia-mama .mosaic { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  /* Carrusel horizontal en vez de grilla 2x2: evita cuatro fotos
+     gigantes apiladas y todo el scroll que eso suma en mobile. */
+  .guia-mama .mosaic { display: flex; grid-template-columns: none; overflow-x: auto; gap: 10px; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad); scrollbar-width: none; }
+  .guia-mama .mosaic img { flex: 0 0 68%; aspect-ratio: 4 / 5; }
 
   .guia-mama .visit { grid-template-columns: 1fr; gap: 40px; padding: 72px var(--pad); }
   .guia-mama .visit-img img { height: 380px; }
