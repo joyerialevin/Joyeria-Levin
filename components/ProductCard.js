@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MATERIAL_LABEL, TIPO_LABEL } from "../lib/categorias";
-import { calcularDescuento, formatearPrecio } from "../lib/precio";
+import { calcularDescuento, formatearCuota, formatearPrecio } from "../lib/precio";
 import { optimizarImagenSanity } from "../lib/imagenSanity";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 import ProductModal from "./ProductModal";
@@ -181,6 +181,11 @@ export default function ProductCard({ producto, soloMarca }) {
                       {calcularDescuento(producto.precio, producto.precio_transferencia)}% OFF EXTRA
                     </span>
                   )}
+                </div>
+              )}
+              {producto.precio_anterior > producto.precio && (
+                <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 2 }}>
+                  3 cuotas sin interés de {formatearCuota(producto.precio)}
                 </div>
               )}
             </div>
