@@ -195,7 +195,7 @@ export default function RegalosDiaDeLaMadrePage() {
         <section className="visit" id="visitanos">
           <div className="visit-img">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post1-sw-01-0.jpg" alt="Mamá sonriendo con joyas de Levin" loading="lazy" />
+            <img src="/regalos-dia-de-la-madre/img/post-eleccion-mama.jpg" alt="Mamá eligiendo entre distintos collares" loading="lazy" />
           </div>
           <div className="visit-text">
             <span className="eyebrow">VISITANOS</span>
