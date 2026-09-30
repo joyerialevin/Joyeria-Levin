@@ -9,9 +9,6 @@ import {
   MATERIAL_LABEL,
   MATERIALES_ESTANDAR,
   MATERIALES_ALIANZAS,
-  TIPO_PRODUCTO_LABEL,
-  TIPOS_PRODUCTO_ORDEN,
-  inferirTipoProducto,
   OPCIONES_ORDEN,
   colorSwatch,
 } from "../lib/categorias";
@@ -25,7 +22,6 @@ export default function CatalogoClient({ productos }) {
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
     soloNuevos: false,
-    tipoProducto: null, // "aros" | "pulseras" | "collares" | "dijes" | "anillos" | null
     color: new Set(),
     precioMin: "",
     precioMax: "",
@@ -79,7 +75,6 @@ export default function CatalogoClient({ productos }) {
       material: new Set(materialParams),
       abridor: null,
       soloNuevos: soloNuevosParam,
-      tipoProducto: null,
       color: new Set(),
       precioMin: "",
       precioMax: "",
@@ -106,13 +101,6 @@ export default function CatalogoClient({ productos }) {
     [productosCategoria]
   );
 
-  const tiposProductoDisponibles = useMemo(() => {
-    const presentes = new Set(
-      productosCategoria.map((p) => inferirTipoProducto(p.titulo)).filter(Boolean)
-    );
-    return TIPOS_PRODUCTO_ORDEN.filter((t) => presentes.has(t));
-  }, [productosCategoria]);
-
   const coloresDisponibles = useMemo(
     () => [...new Set(productosCategoria.map((p) => p.linea).filter(Boolean))].sort(),
     [productosCategoria]
@@ -128,8 +116,6 @@ export default function CatalogoClient({ productos }) {
       if (filtros.abridor !== null && p.tiene_abridor !== filtros.abridor)
         return false;
       if (filtros.soloNuevos && !p.destacar_nuevo) return false;
-      if (filtros.tipoProducto && inferirTipoProducto(p.titulo) !== filtros.tipoProducto)
-        return false;
       if (filtros.color.size && !filtros.color.has(p.linea)) return false;
       if (min !== null && !(p.precio >= min)) return false;
       if (max !== null && !(p.precio <= max)) return false;
@@ -164,7 +150,6 @@ export default function CatalogoClient({ productos }) {
       material: new Set(),
       abridor: null,
       soloNuevos: false,
-      tipoProducto: null,
       color: new Set(),
       precioMin: "",
       precioMax: "",
@@ -187,7 +172,6 @@ export default function CatalogoClient({ productos }) {
       material: new Set(),
       abridor: null,
       soloNuevos: true,
-      tipoProducto: null,
       color: new Set(),
       precioMin: "",
       precioMax: "",
@@ -309,9 +293,8 @@ export default function CatalogoClient({ productos }) {
         <p style={{ color: "var(--ink-soft)", marginTop: 40 }}>Próximamente.</p>
       ) : (
       <div style={{ marginTop: 40 }}>
-        {/* Fila superior: filtros siempre visibles (Tipo de producto,
-            Novedades) a la izquierda, disparador de "Filtrar y ordenar"
-            a la derecha. */}
+        {/* Fila superior: "Nuevos ingresos" siempre visible a la
+            izquierda, disparador de "Filtrar y ordenar" a la derecha. */}
         <div
           style={{
             display: "flex",
@@ -323,35 +306,6 @@ export default function CatalogoClient({ productos }) {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
-            {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
-              <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
-                {tiposProductoDisponibles.map((t) => (
-                  <button
-                    key={t}
-                    type="button"
-                    onClick={() =>
-                      setFiltros((prev) => ({
-                        ...prev,
-                        tipoProducto: prev.tipoProducto === t ? null : t,
-                      }))
-                    }
-                    className="stamp"
-                    style={{
-                      padding: "9px 16px",
-                      border: `1px solid ${filtros.tipoProducto === t ? "var(--oro)" : "var(--line)"}`,
-                      borderRadius: 999,
-                      background: filtros.tipoProducto === t ? "#FBF6EC" : "var(--card-bg)",
-                      color: "var(--ink)",
-                      fontSize: 12,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {TIPO_PRODUCTO_LABEL[t]}
-                  </button>
-                ))}
-              </div>
-            )}
-
             {categoriaInfo.filtros.includes("nuevo") && (
               <FiltroOpcion
                 label="Nuevos ingresos"
