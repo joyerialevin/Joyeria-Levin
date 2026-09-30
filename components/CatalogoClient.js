@@ -12,6 +12,7 @@ import {
   TIPO_PRODUCTO_LABEL,
   TIPOS_PRODUCTO_ORDEN,
   inferirTipoProducto,
+  OPCIONES_ORDEN,
 } from "../lib/categorias";
 
 export default function CatalogoClient({ productos }) {
@@ -24,6 +25,10 @@ export default function CatalogoClient({ productos }) {
     abridor: null, // true | false | null (null = sin filtrar)
     soloNuevos: false,
     tipoProducto: null, // "aros" | "pulseras" | "collares" | "dijes" | "anillos" | null
+    color: new Set(),
+    precioMin: "",
+    precioMax: "",
+    orden: "destacado",
   });
 
   // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
@@ -62,6 +67,10 @@ export default function CatalogoClient({ productos }) {
       abridor: null,
       soloNuevos: soloNuevosParam,
       tipoProducto: null,
+      color: new Set(),
+      precioMin: "",
+      precioMax: "",
+      orden: "destacado",
     });
   }, [searchParams]);
 
@@ -91,7 +100,14 @@ export default function CatalogoClient({ productos }) {
     return TIPOS_PRODUCTO_ORDEN.filter((t) => presentes.has(t));
   }, [productosCategoria]);
 
+  const coloresDisponibles = useMemo(
+    () => [...new Set(productosCategoria.map((p) => p.linea).filter(Boolean))].sort(),
+    [productosCategoria]
+  );
+
   const productosFiltrados = useMemo(() => {
+    const min = filtros.precioMin !== "" ? Number(filtros.precioMin) : null;
+    const max = filtros.precioMax !== "" ? Number(filtros.precioMax) : null;
     return productosCategoria.filter((p) => {
       if (filtros.marca.size && !filtros.marca.has(p.marca)) return false;
       if (filtros.material.size && !filtros.material.has(p.material))
@@ -101,9 +117,25 @@ export default function CatalogoClient({ productos }) {
       if (filtros.soloNuevos && !p.destacar_nuevo) return false;
       if (filtros.tipoProducto && inferirTipoProducto(p.titulo) !== filtros.tipoProducto)
         return false;
+      if (filtros.color.size && !filtros.color.has(p.linea)) return false;
+      if (min !== null && !(p.precio >= min)) return false;
+      if (max !== null && !(p.precio <= max)) return false;
       return true;
     });
   }, [productosCategoria, filtros]);
+
+  const productosOrdenados = useMemo(() => {
+    if (filtros.orden === "destacado") return productosFiltrados;
+    const signo = filtros.orden === "precio-asc" ? 1 : -1;
+    return [...productosFiltrados].sort((a, b) => {
+      // Productos sin precio (a consultar) siempre quedan al final,
+      // sea cual sea el sentido del orden.
+      if (a.precio == null && b.precio == null) return 0;
+      if (a.precio == null) return 1;
+      if (b.precio == null) return -1;
+      return (a.precio - b.precio) * signo;
+    });
+  }, [productosFiltrados, filtros.orden]);
 
   function limpiarFiltros() {
     setFiltros({
@@ -112,6 +144,10 @@ export default function CatalogoClient({ productos }) {
       abridor: null,
       soloNuevos: false,
       tipoProducto: null,
+      color: new Set(),
+      precioMin: "",
+      precioMax: "",
+      orden: "destacado",
     });
   }
 
@@ -267,6 +303,63 @@ export default function CatalogoClient({ productos }) {
             </FiltroGrupo>
           )}
 
+          {categoriaInfo.filtros.includes("color") && coloresDisponibles.length > 0 && (
+            <FiltroGrupo titulo="Color">
+              {coloresDisponibles.map((c) => (
+                <FiltroOpcion
+                  key={c}
+                  label={c}
+                  checked={filtros.color.has(c)}
+                  onChange={() => toggleSetFiltro("color", c)}
+                />
+              ))}
+            </FiltroGrupo>
+          )}
+
+          {categoriaInfo.filtros.includes("precio") && (
+            <FiltroGrupo titulo="Precio">
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="Desde"
+                  value={filtros.precioMin}
+                  onChange={(e) =>
+                    setFiltros((prev) => ({ ...prev, precioMin: e.target.value }))
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "8px 10px",
+                    border: "1px solid var(--line)",
+                    borderRadius: 4,
+                    fontSize: 13,
+                    color: "var(--ink)",
+                    background: "var(--card-bg)",
+                  }}
+                />
+                <span style={{ color: "var(--ink-soft)" }}>–</span>
+                <input
+                  type="number"
+                  inputMode="numeric"
+                  placeholder="Hasta"
+                  value={filtros.precioMax}
+                  onChange={(e) =>
+                    setFiltros((prev) => ({ ...prev, precioMax: e.target.value }))
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "8px 10px",
+                    border: "1px solid var(--line)",
+                    borderRadius: 4,
+                    fontSize: 13,
+                    color: "var(--ink)",
+                    background: "var(--card-bg)",
+                  }}
+                />
+              </div>
+            </FiltroGrupo>
+          )}
+
           {categoriaInfo.filtros.includes("abridor") && (
             <FiltroGrupo titulo="Cierre">
               <FiltroOpcion
@@ -295,7 +388,47 @@ export default function CatalogoClient({ productos }) {
 
         {/* Grilla de productos */}
         <div>
-          {productosFiltrados.length === 0 ? (
+          {categoriaInfo.filtros.includes("precio") && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                gap: 10,
+                marginBottom: 20,
+              }}
+            >
+              <label
+                className="stamp"
+                htmlFor="ordenar-por"
+                style={{ fontSize: 11.5, color: "var(--ink-soft)" }}
+              >
+                Ordenar por
+              </label>
+              <select
+                id="ordenar-por"
+                value={filtros.orden}
+                onChange={(e) => setFiltros((prev) => ({ ...prev, orden: e.target.value }))}
+                style={{
+                  padding: "8px 10px",
+                  border: "1px solid var(--line)",
+                  borderRadius: 4,
+                  fontSize: 13,
+                  color: "var(--ink)",
+                  background: "var(--card-bg)",
+                  cursor: "pointer",
+                }}
+              >
+                {OPCIONES_ORDEN.map((o) => (
+                  <option key={o.valor} value={o.valor}>
+                    {o.etiqueta}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {productosOrdenados.length === 0 ? (
             <p style={{ color: "var(--ink-soft)" }}>
               Todavía no hay productos cargados en esta categoría.
             </p>
@@ -308,7 +441,7 @@ export default function CatalogoClient({ productos }) {
                 gap: 26,
               }}
             >
-              {productosFiltrados.map((p) => (
+              {productosOrdenados.map((p) => (
                 <ProductCard key={p.id} producto={p} />
               ))}
             </div>
