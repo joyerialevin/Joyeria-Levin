@@ -23,7 +23,7 @@ export default function CatalogoClient({ productos }) {
     material: new Set(),
     abridor: null, // true | false | null (null = sin filtrar)
     soloNuevos: false,
-    tipoProducto: new Set(),
+    tipoProducto: null, // "aros" | "pulseras" | "collares" | "dijes" | "anillos" | null
   });
 
   // Permite entrar directo a un grupo vía /catalogo?grupo=dama, a una
@@ -61,7 +61,7 @@ export default function CatalogoClient({ productos }) {
       material: new Set(materialParams),
       abridor: null,
       soloNuevos: soloNuevosParam,
-      tipoProducto: new Set(),
+      tipoProducto: null,
     });
   }, [searchParams]);
 
@@ -99,10 +99,7 @@ export default function CatalogoClient({ productos }) {
       if (filtros.abridor !== null && p.tiene_abridor !== filtros.abridor)
         return false;
       if (filtros.soloNuevos && !p.destacar_nuevo) return false;
-      if (
-        filtros.tipoProducto.size &&
-        !filtros.tipoProducto.has(inferirTipoProducto(p.titulo))
-      )
+      if (filtros.tipoProducto && inferirTipoProducto(p.titulo) !== filtros.tipoProducto)
         return false;
       return true;
     });
@@ -114,7 +111,7 @@ export default function CatalogoClient({ productos }) {
       material: new Set(),
       abridor: null,
       soloNuevos: false,
-      tipoProducto: new Set(),
+      tipoProducto: null,
     });
   }
 
@@ -258,8 +255,13 @@ export default function CatalogoClient({ productos }) {
                 <FiltroOpcion
                   key={t}
                   label={TIPO_PRODUCTO_LABEL[t]}
-                  checked={filtros.tipoProducto.has(t)}
-                  onChange={() => toggleSetFiltro("tipoProducto", t)}
+                  checked={filtros.tipoProducto === t}
+                  onChange={() =>
+                    setFiltros((prev) => ({
+                      ...prev,
+                      tipoProducto: prev.tipoProducto === t ? null : t,
+                    }))
+                  }
                 />
               ))}
             </FiltroGrupo>
