@@ -277,42 +277,33 @@ export default function CatalogoClient({ productos }) {
             marginBottom: 24,
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 20 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", flexWrap: "wrap", gap: 40 }}>
             {categoriaInfo.filtros.includes("tipoProducto") && tiposProductoDisponibles.length > 0 && (
-              <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: 8 }}>
+              <FiltroGrupo titulo="Tipo de producto">
                 {tiposProductoDisponibles.map((t) => (
-                  <button
+                  <FiltroOpcion
                     key={t}
-                    type="button"
-                    onClick={() =>
+                    label={TIPO_PRODUCTO_LABEL[t]}
+                    checked={filtros.tipoProducto === t}
+                    onChange={() =>
                       setFiltros((prev) => ({
                         ...prev,
                         tipoProducto: prev.tipoProducto === t ? null : t,
                       }))
                     }
-                    className="stamp"
-                    style={{
-                      padding: "9px 16px",
-                      border: `1px solid ${filtros.tipoProducto === t ? "var(--oro)" : "var(--line)"}`,
-                      borderRadius: 999,
-                      background: filtros.tipoProducto === t ? "#FBF6EC" : "var(--card-bg)",
-                      color: "var(--ink)",
-                      fontSize: 12,
-                      cursor: "pointer",
-                    }}
-                  >
-                    {TIPO_PRODUCTO_LABEL[t]}
-                  </button>
+                  />
                 ))}
-              </div>
+              </FiltroGrupo>
             )}
 
             {categoriaInfo.filtros.includes("nuevo") && (
-              <FiltroOpcion
-                label="Nuevos ingresos"
-                checked={filtros.soloNuevos}
-                onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
-              />
+              <FiltroGrupo titulo="Novedades">
+                <FiltroOpcion
+                  label="Nuevos ingresos"
+                  checked={filtros.soloNuevos}
+                  onChange={() => setFiltros((prev) => ({ ...prev, soloNuevos: !prev.soloNuevos }))}
+                />
+              </FiltroGrupo>
             )}
           </div>
 
@@ -647,6 +638,20 @@ function FiltroSeccion({ titulo, abierta, onToggle, children }) {
         <span style={{ fontSize: 11, transform: abierta ? "rotate(180deg)" : "none" }}>▾</span>
       </button>
       {abierta && <div style={{ marginTop: 16 }}>{children}</div>}
+    </div>
+  );
+}
+
+function FiltroGrupo({ titulo, children }) {
+  return (
+    <div>
+      <h4
+        className="stamp"
+        style={{ fontSize: 11.5, color: "var(--ink-soft)", marginBottom: 10 }}
+      >
+        {titulo}
+      </h4>
+      {children}
     </div>
   );
 }
