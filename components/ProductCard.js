@@ -25,7 +25,8 @@ export default function ProductCard({ producto, soloMarca }) {
     setIndice((i) => (i + 1) % galeria.length);
   }
 
-  const badge = producto.material ? MATERIAL_LABEL[producto.material] : null;
+  const badge =
+    producto.material && producto.categoria_slug !== "swarovski" ? MATERIAL_LABEL[producto.material] : null;
 
   // En la home (soloMarca) se muestra la marca como nombre, no el título
   // completo (que suele traer el código de referencia del fabricante, ej.
