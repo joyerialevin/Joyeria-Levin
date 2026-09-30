@@ -52,9 +52,16 @@ const PRODUCTOS = [
   },
   {
     cat: 'relojes', tag: 'RELOJES',
-    titulo: 'Relojes Citizen y Festina',
-    texto: 'Relojes de mujer de marcas reconocidas, para usar todos los días.',
-    fotos: ['post6-citizen.jpg', 'post7-formal2.jpg', 'post8-2.jpg', 'post1-sw-01-4.jpg', 'post2-personalizado-4.jpg']
+    titulo: 'Relojes para Mamá',
+    texto: 'Los nuevos ingresos de Citizen y Festina para mujer, para usar todos los días.',
+    fotos: [
+      'reloj-mama-REL-0021.jpg', 'reloj-mama-REL-0022.jpg', 'reloj-mama-REL-0023.jpg',
+      'reloj-mama-REL-0024.jpg', 'reloj-mama-REL-0025.jpg', 'reloj-mama-REL-0026.jpg',
+      'reloj-mama-REL-0027.jpg', 'reloj-mama-REL-0028.jpg', 'reloj-mama-REL-0029.jpg',
+      'reloj-mama-REL-0030.jpg', 'reloj-mama-REL-0031.jpg', 'reloj-mama-REL-0032.jpg',
+      'reloj-mama-REL-0033.jpg', 'reloj-mama-REL-0034.jpg', 'reloj-mama-REL-0037.jpg',
+      'reloj-mama-REL-0038.jpg', 'reloj-mama-REL-0039.jpg', 'reloj-mama-REL-0040.jpg'
+    ]
   }
 ];
 
