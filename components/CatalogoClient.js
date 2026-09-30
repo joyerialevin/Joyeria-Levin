@@ -298,16 +298,19 @@ export default function CatalogoClient({ productos }) {
                   >
                     <button
                       onClick={() => irANuevosIngresos(slug)}
-                      className="stamp"
                       style={{
                         display: "block",
                         width: "100%",
                         textAlign: "left",
-                        padding: "12px 16px",
+                        padding: "10px 16px",
                         border: "none",
                         background: "none",
-                        color: "var(--ink)",
+                        fontFamily: "var(--font-sans)",
+                        color: "var(--ink-soft)",
                         fontSize: 13,
+                        fontWeight: 400,
+                        letterSpacing: "normal",
+                        textTransform: "none",
                         cursor: "pointer",
                       }}
                     >
