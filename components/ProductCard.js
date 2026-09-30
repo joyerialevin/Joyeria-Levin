@@ -171,6 +171,9 @@ export default function ProductCard({ producto, soloMarca }) {
                   </span>
                 )}
               </div>
+              <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 2 }}>
+                3 cuotas sin interés de {formatearCuota(producto.precio)}
+              </div>
               {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
                 <div style={{ display: "flex", alignItems: "baseline", gap: 6, marginTop: 2, flexWrap: "wrap" }}>
                   <span style={{ fontSize: 11.5, color: "var(--ink)" }}>
@@ -181,11 +184,6 @@ export default function ProductCard({ producto, soloMarca }) {
                       {calcularDescuento(producto.precio, producto.precio_transferencia)}% OFF EXTRA
                     </span>
                   )}
-                </div>
-              )}
-              {producto.precio_anterior > producto.precio && (
-                <div style={{ fontSize: 11.5, color: "var(--ink-soft)", marginTop: 2 }}>
-                  3 cuotas sin interés de {formatearCuota(producto.precio)}
                 </div>
               )}
             </div>

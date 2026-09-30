@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { optimizarImagenSanity } from "../lib/imagenSanity";
-import { calcularDescuento, formatearPrecio } from "../lib/precio";
+import { calcularDescuento, formatearCuota, formatearPrecio } from "../lib/precio";
 import ProductModal from "./ProductModal";
 
 const NUMERO_WHATSAPP = "5493434728312";
@@ -106,6 +106,9 @@ export default function NuevoIngresoCard({ producto }) {
                     </span>
                   )}
                 </div>
+                <div style={{ fontSize: 10.5, color: "var(--ink-soft)", marginBottom: tieneTransferencia ? 4 : 10 }}>
+                  3 cuotas sin interés de {formatearCuota(producto.precio)}
+                </div>
                 {tieneTransferencia && (
                   <div style={{ marginBottom: 10, display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap" }}>
                     <span style={{ fontSize: 10.5, color: "var(--ink)" }}>
@@ -129,7 +132,6 @@ export default function NuevoIngresoCard({ producto }) {
                     )}
                   </div>
                 )}
-                {!tieneTransferencia && <div style={{ marginBottom: 10 }} />}
               </>
             ) : (
               <div className="stamp" style={{ fontSize: 10.5, color: "var(--ink-soft)", marginBottom: 10 }}>

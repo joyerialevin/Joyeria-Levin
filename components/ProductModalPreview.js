@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { calcularDescuento, formatearPrecio } from "../lib/precio";
+import { calcularDescuento, formatearCuota, formatearPrecio } from "../lib/precio";
 import { optimizarImagenSanity } from "../lib/imagenSanity";
 import ConsultarWhatsApp from "./ConsultarWhatsApp";
 
@@ -125,6 +125,9 @@ export default function ProductModalPreview({ producto, subtitulo }) {
                     {calcularDescuento(producto.precio_anterior, producto.precio)}% OFF
                   </span>
                 )}
+              </div>
+              <div style={{ fontSize: 13, color: "var(--ink-soft)", marginTop: 10 }}>
+                3 cuotas sin interés de {formatearCuota(producto.precio)}
               </div>
               {producto.precio_transferencia > 0 && producto.precio_transferencia < producto.precio && (
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
