@@ -1,4 +1,4 @@
-import Script from "next/script";
+import GuiaMamaScript from "../../components/GuiaMamaScript";
 
 // Guía de regalos del Día de la Madre — landing temporal.
 // A diferencia de las demás páginas del sitio, este contenido vino como
@@ -258,7 +258,7 @@ export default function RegalosDiaDeLaMadrePage() {
         </section>
       </main>
 
-      <Script src="/regalos-dia-de-la-madre/script.js" strategy="afterInteractive" />
+      <GuiaMamaScript />
     </div>
   );
 }
