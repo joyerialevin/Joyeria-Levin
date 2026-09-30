@@ -8,6 +8,8 @@ import {
   MATERIAL_LABEL,
   MATERIALES_ESTANDAR,
   MATERIALES_ALIANZAS,
+  TIPO_PRODUCTO_LABEL,
+  TIPOS_PRODUCTO_ORDEN,
 } from "../lib/categorias";
 
 // Todavía sin página propia — se muestran sin link hasta que se cargue
@@ -22,16 +24,16 @@ const INFORMACION_VACIA = [
 
 // Arma, para un grupo (Caballero/Dama), la lista de categorías del mega
 // menú con su tipo de submenú: "marca" para relojes (las marcas se cargan
-// dinámicamente más abajo), "material" para las categorías que ya separan
-// por material, "novedades" para Swarovski (todavía sin filtro real
-// detrás, solo la opción en el menú), o null cuando la categoría no tiene
+// dinámicamente más abajo), "swarovski" para Swarovski (Nuevos ingresos +
+// Aros/Pulseras/Collares/Dijes/Anillos), "material" para las categorías
+// que ya separan por material, o null cuando la categoría no tiene
 // subdivisión todavía (Bebés).
 function itemsDelGrupo(grupoSlug) {
   const grupo = GRUPOS.find((g) => g.slug === grupoSlug);
   return grupo.categorias.map(({ slug }) => {
     const cat = CATEGORIAS.find((c) => c.slug === slug);
     const tipoSubmenu =
-      slug === "relojes" ? "marca" : slug === "swarovski" ? "novedades" : cat.filtros.includes("material") ? "material" : null;
+      slug === "relojes" ? "marca" : slug === "swarovski" ? "swarovski" : cat.filtros.includes("material") ? "material" : null;
     return { slug, nombre: cat.nombre, tipoSubmenu };
   });
 }
@@ -243,11 +245,18 @@ function PanelGrupo({ grupoSlug, tipo, marcas, alinear }) {
                 ))}
               </ul>
             )}
-            {item.tipoSubmenu === "novedades" && (
+            {item.tipoSubmenu === "swarovski" && (
               <ul className="mega-sublist">
                 <li>
-                  <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}&nuevo=1`}>Nuevos Ingresos</Link>
+                  <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}&nuevo=1`}>Nuevos ingresos</Link>
                 </li>
+                {TIPOS_PRODUCTO_ORDEN.map((t) => (
+                  <li key={t}>
+                    <Link href={`/catalogo?grupo=${grupoSlug}&cat=${item.slug}&tipoProducto=${t}`}>
+                      {TIPO_PRODUCTO_LABEL[t]}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             )}
           </div>

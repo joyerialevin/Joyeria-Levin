@@ -58,6 +58,7 @@ export default function CatalogoClient({ productos }) {
     const materialParams = searchParams.getAll("material");
     const marcaParams = searchParams.getAll("marca");
     const soloNuevosParam = searchParams.get("nuevo") === "1";
+    const tipoProductoParam = searchParams.get("tipoProducto");
 
     let grupo = null;
     let cat_ = null;
@@ -79,7 +80,7 @@ export default function CatalogoClient({ productos }) {
       material: new Set(materialParams),
       abridor: null,
       soloNuevos: soloNuevosParam,
-      tipoProducto: null,
+      tipoProducto: tipoProductoParam,
       color: new Set(),
       precioMin: "",
       precioMax: "",
@@ -177,17 +178,18 @@ export default function CatalogoClient({ productos }) {
     limpiarFiltros();
   }
 
-  // Acceso directo a "Nuevos ingresos" desde el hover de la tira de
-  // categorías (ej. Swarovski), igual que el link del mega menú del
-  // header pero sin salir de la página si ya estás en el catálogo.
-  function irANuevosIngresos(slug) {
+  // Acceso directo a "Nuevos ingresos" o a un tipo de producto (Aros,
+  // Pulseras, etc.) desde el hover de la tira de categorías (ej.
+  // Swarovski), igual que los links del mega menú del header pero sin
+  // salir de la página si ya estás en el catálogo.
+  function irAAtajoCategoria(slug, { soloNuevos = false, tipoProducto = null } = {}) {
     setCategoriaActiva(slug);
     setFiltros({
       marca: new Set(),
       material: new Set(),
       abridor: null,
-      soloNuevos: true,
-      tipoProducto: null,
+      soloNuevos,
+      tipoProducto,
       color: new Set(),
       precioMin: "",
       precioMax: "",
@@ -258,8 +260,10 @@ export default function CatalogoClient({ productos }) {
           {grupoInfo.categorias.map(({ slug }) => {
             const cat = CATEGORIAS.find((c) => c.slug === slug);
             const tieneNuevos = cat.filtros.includes("nuevo");
+            const tieneTipoProducto = cat.filtros.includes("tipoProducto");
+            const tieneHover = tieneNuevos || tieneTipoProducto;
             return (
-              <div key={slug} className={tieneNuevos ? "tab-hover-wrap" : undefined}>
+              <div key={slug} className={tieneHover ? "tab-hover-wrap" : undefined}>
                 <button
                   onClick={() => cambiarCategoria(slug)}
                   className="stamp"
@@ -275,28 +279,22 @@ export default function CatalogoClient({ productos }) {
                   {cat.nombre}
                 </button>
 
-                {tieneNuevos && (
+                {tieneHover && (
                   <div className="tab-hover-panel">
-                    <button
-                      onClick={() => irANuevosIngresos(slug)}
-                      style={{
-                        display: "block",
-                        width: "100%",
-                        textAlign: "left",
-                        padding: "10px 16px",
-                        border: "none",
-                        background: "none",
-                        fontFamily: "var(--font-sans)",
-                        color: "var(--ink-soft)",
-                        fontSize: 13,
-                        fontWeight: 400,
-                        letterSpacing: "normal",
-                        textTransform: "none",
-                        cursor: "pointer",
-                      }}
-                    >
-                      Nuevos ingresos
-                    </button>
+                    {tieneNuevos && (
+                      <SubtituloHover onClick={() => irAAtajoCategoria(slug, { soloNuevos: true })}>
+                        Nuevos ingresos
+                      </SubtituloHover>
+                    )}
+                    {tieneTipoProducto &&
+                      TIPOS_PRODUCTO_ORDEN.map((t) => (
+                        <SubtituloHover
+                          key={t}
+                          onClick={() => irAAtajoCategoria(slug, { tipoProducto: t })}
+                        >
+                          {TIPO_PRODUCTO_LABEL[t]}
+                        </SubtituloHover>
+                      ))}
                   </div>
                 )}
               </div>
@@ -651,6 +649,31 @@ export default function CatalogoClient({ productos }) {
         </>
       )}
     </section>
+  );
+}
+
+function SubtituloHover({ onClick, children }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        display: "block",
+        width: "100%",
+        textAlign: "left",
+        padding: "10px 16px",
+        border: "none",
+        background: "none",
+        fontFamily: "var(--font-sans)",
+        color: "var(--ink-soft)",
+        fontSize: 13,
+        fontWeight: 400,
+        letterSpacing: "normal",
+        textTransform: "none",
+        cursor: "pointer",
+      }}
+    >
+      {children}
+    </button>
   );
 }
 
