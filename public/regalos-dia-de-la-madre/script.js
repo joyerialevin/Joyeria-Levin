@@ -39,12 +39,6 @@ const PRODUCTOS = [
     fotos: ['post1-sw-01-0.jpg', 'post1-sw-01-7.jpg', 'post1-sw-01-8.jpg', 'post1-sw-01-5.jpg', 'post1-sw-01-6.jpg', 'post1-sw-01-1.jpg']
   },
   {
-    cat: 'cristales', tag: 'MURANO',
-    titulo: 'Dije de Murano rosado',
-    texto: 'Un toque de color sobre la piel, para la mamá que se anima.',
-    fotos: ['post4-murano-1.jpg']
-  },
-  {
     cat: 'personalizados', tag: 'PERSONALIZADOS',
     titulo: 'Dijes para grabar',
     texto: 'Su nombre, o el de sus hijos, grabado en plata u oro.',
