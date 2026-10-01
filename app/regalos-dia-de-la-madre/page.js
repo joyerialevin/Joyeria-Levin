@@ -169,14 +169,17 @@ export default function RegalosDiaDeLaMadrePage() {
           </div>
         </section>
 
-        {/* LISTO PARA REGALAR */}
+        {/* PARA SALIR DE LO DE SIEMPRE */}
         <section className="moment">
           <div className="section-head">
             <div>
-              <span className="eyebrow">LISTO PARA REGALAR</span>
-              <h2>Cuidamos cada detalle.</h2>
+              <span className="eyebrow">PARA SALIR DE LO DE SIEMPRE</span>
+              <h2>Regalale algo distinto.</h2>
             </div>
-            <p>Cada joya se entrega en su estuche, lista para regalar. Elegí el regalo y nosotros nos ocupamos de la presentación.</p>
+            <p>
+              Un conjunto pensado para esas ocasiones especiales: una cena, una salida con amigas, una
+              fiesta o un cumpleaños. Para que mamá se arregle, salga y se sienta especial.
+            </p>
           </div>
           <div className="mosaic">
             {/* eslint-disable-next-line @next/next/no-img-element */}
