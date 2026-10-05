@@ -36,7 +36,7 @@ const PRODUCTOS = [
     cat: 'cristales', tag: 'CRISTALES SWAROVSKI',
     titulo: 'Conjunto Swarovski rosado',
     texto: 'Aros y dije con cristales Swarovski en rosa. Delicado y femenino.',
-    fotos: ['post1-sw-01-0.jpg', 'post1-sw-01-7.jpg', 'post1-sw-01-8.jpg', 'post1-sw-01-5.jpg', 'post1-sw-01-6.jpg', 'post1-sw-01-1.jpg']
+    fotos: ['post1-sw-01-0.jpg', 'post1-sw-01-7.jpg', 'post1-sw-01-8.jpg', 'post1-sw-01-5.jpg', 'post1-sw-01-6.jpg', 'post1-sw-01-1.jpg', 'post1-sw-01-2.jpg', 'post1-sw-01-3.jpg']
   },
   {
     cat: 'personalizados', tag: 'PERSONALIZADOS',
