@@ -1,82 +1,105 @@
 import Link from "next/link";
 
-// Banner temporal para la Guía de regalos del Día de la Madre.
+const NUMERO_WHATSAPP = "5493434728312";
+const MENSAJE_WHATSAPP = "Hola! Quería consultar por los regalos del Día de la Madre.";
+const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(MENSAJE_WHATSAPP)}`;
+
+const ACCESOS = [
+  { titulo: "JOYAS", subtitulo: "Oro 18K · Plata 925 · Swarovski" },
+  { titulo: "RELOJES", subtitulo: "Opciones para todos los estilos" },
+  { titulo: "PERSONALIZADOS", subtitulo: "Nombres · Iniciales · Fechas" },
+];
+
+// Banner temporal de la campaña Día de la Madre, en la home.
 // Sacar este componente (y su uso en app/page.js) después del
-// domingo 18 de octubre — junto con el ítem "Guía de regalos" del
+// domingo 18 de octubre — junto con el ítem "Especial Mamá ♡" del
 // menú en Header.js y MobileNav.js.
-// Mismo cálculo/redacción que el contador de la landing
-// (public/regalos-dia-de-la-madre/script.js) para que ambos coincidan.
-function diasParaElDia() {
-  const dia = new Date("2026-10-18T00:00:00-03:00");
-  const dias = Math.ceil((dia - new Date()) / 86400000);
-  if (dias <= 0) return null;
-  return dias === 1 ? "FALTA 1 DÍA" : `FALTAN ${dias} DÍAS`;
-}
-
 export default function BannerDiaDeLaMadre() {
-  const countdown = diasParaElDia();
-
   return (
-    <section style={{ background: "var(--porcelain)" }}>
+    <section style={{ background: "var(--porcelain-dim)" }}>
       <div
         className="container banner-dia-madre"
         style={{
-          maxWidth: 1200,
-          margin: "0 auto",
-          padding: "0",
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           alignItems: "center",
-          gap: 0,
+          gap: 56,
+          padding: "72px 6%",
         }}
       >
-        <div style={{ aspectRatio: "4 / 3", overflow: "hidden" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/regalos-dia-de-la-madre/img/post4-hijo.jpg"
-            alt="Mamá e hijo abrazados, ella con joyas de Levin"
-            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-          />
-        </div>
-        <div style={{ padding: "48px 6%" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 14, flexWrap: "wrap" }}>
-            <div className="stamp" style={{ color: "var(--oro-deep)" }}>
-              Día de la Madre
-            </div>
-            {countdown && (
-              <span
-                className="stamp"
-                style={{
-                  fontSize: 11,
-                  color: "var(--ink)",
-                  border: "1px solid var(--oro)",
-                  borderRadius: "var(--radius-pill)",
-                  padding: "4px 12px",
-                }}
-              >
-                {countdown}
-              </span>
-            )}
+        <div>
+          <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 16 }}>
+            Día de la Madre · 18 de octubre
           </div>
-          <h2 className="display" style={{ fontSize: "clamp(24px, 3vw, 34px)", lineHeight: 1.2, margin: "0 0 18px", color: "var(--ink)" }}>
-            ¿Qué le regalás a mamá?
+          <h2
+            className="display"
+            style={{ fontSize: "clamp(26px, 3vw, 38px)", lineHeight: 1.2, margin: "0 0 18px", color: "var(--ink)" }}
+          >
+            Encontrá el regalo para mamá.
           </h2>
-          <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 28px" }}>
-            Mirá nuestra guía del Día de la Madre.
+          <p style={{ fontSize: 15, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 28px", maxWidth: 440 }}>
+            Joyas en oro 18K, plata 925, Swarovski, relojes y regalos personalizados.
           </p>
           <Link
-            href="/regalos-dia-de-la-madre/"
-            className="stamp"
+            href="/regalos-dia-de-la-madre"
+            className="stamp banner-dia-madre-cta"
             style={{
               display: "inline-block",
               color: "var(--porcelain)",
               background: "var(--oro)",
-              padding: "15px 32px",
+              padding: "16px 34px",
               borderRadius: "var(--radius-sm)",
+              marginBottom: 16,
             }}
           >
-            Ver la guía
+            Ver especial Día de la Madre
           </Link>
+          <p style={{ fontSize: 13, color: "var(--ink-soft)", margin: 0 }}>
+            ¿No sabés qué elegir? Te ayudamos en el local o por{" "}
+            <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer" style={{ color: "var(--oro-deep)" }}>
+              WhatsApp
+            </a>
+            .
+          </p>
+        </div>
+
+        <div className="banner-dia-madre-img" style={{ aspectRatio: "4 / 3", overflow: "hidden", borderRadius: "var(--radius-sm)" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/regalos-dia-de-la-madre/img/post4-hijo.jpg"
+            alt="Mamá e hijo abrazados, ella con joyas de Levin"
+            loading="lazy"
+            style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+          />
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="banner-dia-madre-accesos" style={{ display: "flex", gap: 16, paddingBottom: 28 }}>
+          {ACCESOS.map((a) => (
+            <Link
+              key={a.titulo}
+              href="/regalos-dia-de-la-madre"
+              className="banner-dia-madre-acceso"
+              style={{
+                flex: 1,
+                minWidth: 200,
+                padding: "18px 20px",
+                background: "var(--card-bg)",
+                border: "1px solid var(--line)",
+                borderRadius: "var(--radius-sm)",
+                textDecoration: "none",
+              }}
+            >
+              <div className="stamp" style={{ color: "var(--ink)", marginBottom: 6 }}>
+                {a.titulo}
+              </div>
+              <div style={{ fontSize: 12.5, color: "var(--ink-soft)" }}>{a.subtitulo}</div>
+            </Link>
+          ))}
+        </div>
+        <div className="stamp" style={{ fontSize: 11.5, color: "var(--ink-soft)", paddingBottom: 48 }}>
+          3 cuotas sin interés · 10% OFF transferencia y efectivo · Retiro en nuestro local
         </div>
       </div>
     </section>

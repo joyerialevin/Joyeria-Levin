@@ -8,7 +8,7 @@ import Link from "next/link";
 // (app/page.js, BannerDiaDeLaMadre).
 const LINKS = [
   { href: "/", label: "Inicio" },
-  { href: "/regalos-dia-de-la-madre/", label: "Especial Mamá" },
+  { href: "/regalos-dia-de-la-madre/", label: "Especial Mamá ♡" },
   { href: "/catalogo?grupo=caballero", label: "Caballero" },
   { href: "/catalogo?grupo=dama", label: "Dama" },
   { href: "/catalogo?grupo=alianzas", label: "Alianzas" },

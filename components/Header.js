@@ -97,7 +97,7 @@ export default async function Header() {
           {/* Temporal: sacar después del 18/10 junto con el banner de la
               home (ver app/page.js, BannerDiaDeLaMadre). */}
           <Link href="/regalos-dia-de-la-madre/" className="stamp" style={{ color: "var(--porcelain)", fontWeight: 400 }}>
-            Especial Mamá
+            Especial Mamá ♡
           </Link>
 
           <div className="mega-item">
