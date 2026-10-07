@@ -397,6 +397,8 @@ a{ color:inherit; text-decoration:none; }
   .product-grid{ grid-template-columns:repeat(2, 1fr) !important; gap:14px !important; }
   /* Página de Tasación de oro y plata: todo apila en mobile. */
   .tasacion-grid-2, .tasacion-grid-3, .tasacion-grid-4{ grid-template-columns:1fr !important; }
+  /* "Qué podés traer": el texto va antes que las fotos en mobile (prioridad de lectura). */
+  .tasacion-qpt-img{ order:2; }
 }
 @media (max-width: 900px){
   .footer-grid{ grid-template-columns:1fr 1fr !important; gap:32px !important; }

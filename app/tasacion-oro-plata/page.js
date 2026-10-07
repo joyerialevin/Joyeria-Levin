@@ -5,6 +5,54 @@ const LINK_MAPS = "https://www.google.com/maps/search/?api=1&query=Per%C3%BA+134
 const MSG_HERO = "Hola, vengo desde la página web. Quería consultar por la tasación de oro y plata.";
 const MSG_VISITANOS = "Hola, vengo desde la página web. Quería consultar por la tasación de oro y plata antes de acercarme.";
 
+export const metadata = {
+  title: "Tasación de oro y plata en Paraná | Joyería Levin",
+  description:
+    "Tasación de oro y plata sin cargo y sin turno previo, en nuestro local de Paraná. Evaluamos, pesamos y te informamos el valor de tus piezas en el momento.",
+  openGraph: {
+    title: "Tasación de oro y plata en Paraná | Joyería Levin",
+    description:
+      "Tasación de oro y plata sin cargo y sin turno previo, en nuestro local de Paraná. Más de 50 años de oficio.",
+    images: ["/fotos/taller.jpg"],
+  },
+};
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  name: "Joyería y Relojería Levin",
+  image: "https://www.joyerialevin.com/fotos/taller.jpg",
+  telephone: "+5493434728312",
+  url: "https://www.joyerialevin.com/tasacion-oro-plata",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Perú 134",
+    addressLocality: "Paraná",
+    addressRegion: "Entre Ríos",
+    addressCountry: "AR",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "16:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "13:00",
+    },
+  ],
+};
+
 const BENEFICIOS = [
   {
     titulo: "En el momento",
@@ -99,6 +147,8 @@ function IconoWhatsApp({ size = 17 }) {
 export default function TasacionOroPlataPage() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
+
       {/* 1. HERO */}
       <section style={{ background: "var(--porcelain)", padding: "clamp(48px, 7vw, 96px) clamp(20px, 5vw, 72px)" }}>
         <div
@@ -140,8 +190,8 @@ export default function TasacionOroPlataPage() {
               Conocé el valor de tus piezas, con la claridad de siempre.
             </p>
             <p style={{ fontSize: 15.5, lineHeight: 1.7, color: "var(--ink-soft)", margin: "0 0 36px", maxWidth: 480 }}>
-              Comprobamos el material, verificamos su pureza y pesamos cada pieza para darte una tasación justa,
-              profesional y explicada con claridad. En el local, en el momento y sin cargo.
+              Comprobamos el material, verificamos su pureza y pesamos cada pieza para darte un valor preciso y
+              sin compromiso. En el local, en el momento y sin cargo.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
               <a
@@ -152,7 +202,7 @@ export default function TasacionOroPlataPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 10,
-                  background: "var(--oro)",
+                  background: "var(--oro-deep)",
                   color: "var(--porcelain)",
                   padding: "16px 30px",
                   borderRadius: 2,
@@ -289,14 +339,14 @@ export default function TasacionOroPlataPage() {
           }}
           className="tasacion-grid-2"
         >
-          <div style={{ position: "relative", height: "clamp(320px, 32vw, 440px)" }}>
+          <div className="tasacion-qpt-img" style={{ position: "relative", height: "clamp(320px, 32vw, 440px)" }}>
             <div style={{ position: "absolute", top: 0, left: 0, width: "62%", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 2 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/fotos/catalogo-anillos-mano.jpg" alt="Detalle de anillos y pulsera en oro" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <img src="/fotos/catalogo-anillos-mano.jpg" alt="Detalle de anillos y pulsera en oro" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ position: "absolute", top: "18%", right: 0, width: "52%", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 2 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/fotos/contacto-collar-detalle.jpg" alt="Detalle de collar de oro" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+              <img src="/fotos/contacto-collar-detalle.jpg" alt="Detalle de collar de oro" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
           </div>
 
@@ -403,7 +453,7 @@ export default function TasacionOroPlataPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 10,
-                  background: "var(--oro)",
+                  background: "var(--oro-deep)",
                   color: "var(--porcelain)",
                   padding: "15px 28px",
                   borderRadius: 2,
