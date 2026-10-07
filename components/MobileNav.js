@@ -13,7 +13,6 @@ const LINKS = [
   { href: "/catalogo?grupo=dama", label: "Dama" },
   { href: "/catalogo?grupo=alianzas", label: "Alianzas" },
   { href: "/service-relojeria", label: "Service" },
-  { href: "/sobre-nosotros", label: "Información" },
 ];
 
 export default function MobileNav() {

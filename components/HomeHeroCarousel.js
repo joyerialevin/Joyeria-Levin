@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import BannerDiaDeLaMadre from "./BannerDiaDeLaMadre";
 
 const NUMERO_WHATSAPP = "5493434728312";
 const MSG_DIA_MADRE = "Hola! Quería consultar por los regalos del Día de la Madre.";
 const LINK_WHATSAPP_DIA_MADRE = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(MSG_DIA_MADRE)}`;
 
-const INTERVALO_MS = 7000;
+const INTERVALO_MS = 10000;
+const INDICE_DIA_MADRE = 1;
 
 const SLIDES = [
   {
@@ -115,11 +117,12 @@ export default function HomeHeroCarousel() {
   const siguiente = useCallback(() => irA(activo + 1), [activo, irA]);
   const anterior = useCallback(() => irA(activo - 1), [activo, irA]);
 
-  // Navegación manual: pausa la rotación automática. Solo vuelve a
-  // avanzar sola si el usuario reactiva la reproducción a propósito.
+  // Navegación manual: no pausa la rotación automática, solo mueve el
+  // slide. El contador de 10s se reinicia solo porque el efecto de
+  // abajo depende de `activo` — cualquier cambio (manual o automático)
+  // vuelve a armar el temporizador desde cero.
   function manejarNavegacionManual(fn) {
     return () => {
-      setReproduciendo(false);
       fn();
     };
   }
@@ -132,7 +135,7 @@ export default function HomeHeroCarousel() {
       setActivo((a) => (a + 1) % SLIDES.length);
     }, INTERVALO_MS);
     return () => clearInterval(id);
-  }, [autoplayActivo]);
+  }, [autoplayActivo, activo]);
 
   function onKeyDown(e) {
     if (e.key === "ArrowLeft") {
@@ -145,6 +148,7 @@ export default function HomeHeroCarousel() {
   }
 
   return (
+    <>
     <section
       ref={heroRef}
       className="home-hero"
@@ -283,5 +287,16 @@ export default function HomeHeroCarousel() {
         </button>
       </div>
     </section>
+
+    {/* El bloque de accesos del Día de la Madre solo corresponde al
+        segundo banner. Se muestra/oculta con una transición suave de
+        alto (grid-template-rows 0fr/1fr) en vez de aparecer o
+        desaparecer de golpe cuando cambia el slide. */}
+    <div className={`home-hero-extra${activo === INDICE_DIA_MADRE ? " is-open" : ""}`}>
+      <div>
+        <BannerDiaDeLaMadre />
+      </div>
+    </div>
+    </>
   );
 }

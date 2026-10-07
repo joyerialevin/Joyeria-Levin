@@ -5,7 +5,6 @@ import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
 import NovedadesSection from "../components/NovedadesSection";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
-import BannerDiaDeLaMadre from "../components/BannerDiaDeLaMadre";
 import BeneficiosStrip from "../components/BeneficiosStrip";
 import VisitanosSection from "../components/VisitanosSection";
 
@@ -95,12 +94,6 @@ export default async function HomePage() {
   return (
     <>
       <HomeHeroCarousel />
-
-      {/* Temporal: sacar después del 18/10 junto con el slide del Día
-          de la Madre en HomeHeroCarousel.js (ver comentario ahí y en
-          Header.js / MobileNav.js). Solo quedan los accesos rápidos —
-          el resto del contenido ya vive en el carrusel del hero. */}
-      <BannerDiaDeLaMadre />
 
       <BeneficiosStrip />
       <NovedadesSection productos={novedades} />
