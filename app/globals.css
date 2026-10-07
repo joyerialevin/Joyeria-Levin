@@ -111,30 +111,6 @@ a{ color:inherit; text-decoration:none; }
   animation: levin-fade 700ms ease both;
 }
 
-/* Hero de la home: el texto vive sobre la mitad vacía (izquierda) de la
-   foto, sin overlay — esa zona ya es fondo liso, con buen contraste
-   natural para texto oscuro. En mobile la foto es demasiado baja a lo
-   ancho (recorte panorámico), así que se le da más alto y se recorta el
-   costado derecho (que igual muestra el anillo, no la cara) para dejar
-   lugar a un texto apilado y legible. */
-.hero-home{ position:relative; }
-.hero-home-img{ width:100%; height:auto; display:block; }
-.hero-home-copy{
-  position:absolute;
-  top:50%;
-  left:6%;
-  transform:translateY(-50%);
-  max-width:34%;
-}
-@media (max-width:760px){
-  .hero-home-img{
-    height:334px;
-    object-fit:cover;
-    object-position:0% center;
-  }
-  .hero-home-copy{ max-width:60%; left:6%; }
-  .hero-home-botones{ flex-direction:column; align-items:flex-start !important; gap:14px !important; }
-}
 
 /* Mega menú del header: se abre con hover, no con click. El truco del
    padding/margin negativo en .mega-item extiende el área de hover hasta
@@ -395,10 +371,7 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width: 760px){
   .taller-grid{ grid-template-columns:1fr !important; }
   .visitanos-info-grid{ grid-template-columns:1fr !important; }
-  /* Banner temporal Día de la Madre — sacar junto con el componente. */
-  .banner-dia-madre{ grid-template-columns:1fr !important; gap:28px !important; padding:40px 6% !important; }
-  .banner-dia-madre-img{ order:-1; }
-  .banner-dia-madre-cta{ display:block !important; text-align:center; }
+  /* Accesos del Día de la Madre — sacar junto con el componente. */
   .banner-dia-madre-accesos{ overflow-x:auto; scrollbar-width:none; margin:0 -6%; padding:0 6% 28px !important; }
   .banner-dia-madre-acceso{ flex:0 0 auto !important; min-width:220px !important; }
   /* Fotos grandes tipo editorial (Maria Cher): 2 columnas fijas en mobile,
@@ -529,4 +502,132 @@ a{ color:inherit; text-decoration:none; }
 }
 @media (prefers-reduced-motion: reduce){
   .announcement-bar-ticker{ animation:none; }
+}
+
+/* ============================================================
+   CARRUSEL DEL HERO DE LA HOME — 2 banners (institucional y Día
+   de la Madre). Los dos slides se apilan con position:absolute y
+   hacen crossfade de opacidad, así que la altura del contenedor
+   nunca depende de cuál esté activo (ningún salto de layout).
+   Tipografía y botones reutilizan las clases .svc-eyebrow/.svc-h1/
+   .svc-lead/.svc-btn-* ya usadas en Servicios, por pedido del
+   Manual de Identidad de usar la misma escala en todo el sitio.
+   ============================================================ */
+.home-hero{
+  position: relative;
+  height: 820px;
+  overflow: hidden;
+  background: var(--ink);
+}
+.home-hero-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 600ms ease;
+}
+.home-hero-slide.is-active{
+  opacity: 1;
+  z-index: 1;
+}
+.home-hero-slide-img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--op-desktop, center);
+  display: block;
+}
+.home-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(38,38,31,.72) 0%, rgba(38,38,31,.46) 30%, rgba(38,38,31,.16) 55%, rgba(38,38,31,0) 72%);
+}
+.home-hero-content{
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.home-hero-arrow{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(38,38,31,0.38);
+  border: 1px solid rgba(253,252,248,0.45);
+  color: var(--porcelain);
+  cursor: pointer;
+  z-index: 2;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.home-hero-arrow:hover{ background: rgba(38,38,31,0.62); border-color: rgba(253,252,248,0.8); }
+.home-hero-arrow-prev{ left: 20px; }
+.home-hero-arrow-next{ right: 20px; }
+
+.home-hero-controls{
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+.home-hero-dots{ display:flex; align-items:center; gap:10px; }
+.home-hero-dot{
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(253,252,248,0.4);
+  border: 1px solid rgba(253,252,248,0.65);
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.home-hero-dot.is-active{ background: var(--porcelain); transform: scale(1.2); }
+.home-hero-playpause{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(38,38,31,0.38);
+  border: 1px solid rgba(253,252,248,0.45);
+  color: var(--porcelain);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease;
+}
+.home-hero-playpause:hover{ background: rgba(38,38,31,0.62); border-color: rgba(253,252,248,0.8); }
+
+.home-hero-arrow:focus-visible,
+.home-hero-dot:focus-visible,
+.home-hero-playpause:focus-visible,
+.home-hero-content a:focus-visible{
+  outline: 2px solid var(--porcelain);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .home-hero-slide{ transition: none; }
+}
+
+@media (max-width: 760px){
+  .home-hero{ height: 640px; }
+  .home-hero-slide-img{ object-position: var(--op-mobile, center); }
+  .home-hero-content{ align-items: flex-start; padding-top: 88px; }
+  .home-hero-controls{ bottom: 18px; }
+  /* En mobile el contenido no está centrado verticalmente (va arriba,
+     apilado), así que una flecha centrada a media altura termina
+     tapando el párrafo. Se bajan al mismo renglón que los puntitos. */
+  .home-hero-arrow{ top: auto; bottom: 14px; transform: none; }
 }
