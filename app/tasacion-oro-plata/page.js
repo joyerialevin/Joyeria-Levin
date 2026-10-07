@@ -70,9 +70,9 @@ const BENEFICIOS = [
     texto: "La tasación no tiene costo.",
     icono: (
       <>
-        <path d="M4 12h16" />
-        <path d="M7 7l-3 5 3 5" />
-        <path d="M17 7l3 5-3 5" />
+        <circle cx="12" cy="12" r="9" />
+        <circle cx="12" cy="12" r="3" />
+        <path d="M6 18L18 6" />
       </>
     ),
   },
