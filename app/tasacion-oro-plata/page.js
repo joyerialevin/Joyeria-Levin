@@ -295,17 +295,6 @@ export default function TasacionOroPlataPage() {
           }}
           className="tasacion-grid-2"
         >
-          <div className="tasacion-qpt-img" style={{ position: "relative", width: "100%", aspectRatio: "9 / 8" }}>
-            <div style={{ position: "absolute", top: 0, left: 0, width: "62%", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 2 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/fotos/catalogo-anillos-mano.jpg" alt="Detalle de anillos y pulsera en oro" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-            <div style={{ position: "absolute", top: "18%", right: 0, width: "52%", aspectRatio: "3 / 4", overflow: "hidden", borderRadius: 2 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/fotos/contacto-collar-detalle.jpg" alt="Detalle de collar de oro" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
-          </div>
-
           <div>
             <Eyebrow>Qué podés traer</Eyebrow>
             <h2
@@ -334,6 +323,16 @@ export default function TasacionOroPlataPage() {
                 </span>
               ))}
             </div>
+          </div>
+
+          <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 2 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/fotos/tasacion-piezas-oro-plata.jpg"
+              alt="Piezas de oro y plata para tasación en Joyería Levin"
+              loading="lazy"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
           </div>
         </div>
       </section>
