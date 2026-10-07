@@ -1,3 +1,5 @@
+import TasacionProcesoPasos from "../../components/TasacionProcesoPasos";
+
 const NUMERO_WHATSAPP = "5493434728312";
 const linkWhatsApp = (mensaje) => `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
 const LINK_MAPS = "https://www.google.com/maps/search/?api=1&query=Per%C3%BA+134+Paran%C3%A1+Entre+R%C3%ADos";
@@ -276,27 +278,7 @@ export default function TasacionOroPlataPage() {
           >
             Cómo realizamos la tasación
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px, 3vw, 40px)" }} className="tasacion-grid-3">
-            {PROCESO.map((p) => (
-              <div key={p.numero} style={{ borderTop: "2px solid var(--ink)", paddingTop: 16 }}>
-                <div
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontSize: 34,
-                    lineHeight: 1,
-                    color: "var(--oro)",
-                    marginBottom: 12,
-                  }}
-                >
-                  {p.numero}
-                </div>
-                <h3 style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: 17, margin: "0 0 8px", color: "var(--ink)" }}>
-                  {p.titulo}
-                </h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink-soft)", margin: 0 }}>{p.texto}</p>
-              </div>
-            ))}
-          </div>
+          <TasacionProcesoPasos pasos={PROCESO} />
         </div>
       </section>
 
