@@ -101,14 +101,13 @@
 /* Bloques partidos (foto + texto). Antes tenían min-height fijo (700px /
    640px) que dejaba mucho aire vacío arriba y abajo del texto cuando el
    contenido era más corto que eso. Ahora la altura la define la propia
-   foto (aspect-ratio real de la imagen, 933x1400 = 2:3 — así entra
-   entera, sin que object-fit:cover le recorte nada) y align-items:center
-   centra el texto respecto a ella, sin alturas mínimas artificiales. */
+   foto (aspect-ratio) y align-items:center centra el texto respecto a
+   ella, sin alturas mínimas artificiales. */
 .guia-mama .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
 .guia-mama .split-sand { background: var(--sand-200); }
 .guia-mama .split-dark { background: var(--charcoal); color: var(--ivory); }
 .guia-mama .split-reverse .split-img { order: 2; }
-.guia-mama .split-img { overflow: hidden; aspect-ratio: 933 / 1400; }
+.guia-mama .split-img { overflow: hidden; aspect-ratio: 4 / 3; }
 .guia-mama .split-img img { width: 100%; height: 100%; object-fit: cover; }
 .guia-mama .split-text { padding: clamp(32px, 5vw, 64px) clamp(32px, 6vw, 88px); display: flex; flex-direction: column; justify-content: center; gap: 24px; align-items: flex-start; }
 .guia-mama .split-text .eyebrow { margin-bottom: 0; }
@@ -200,7 +199,7 @@
   .guia-mama .badge { top: 10px; left: 10px; font-size: 9px; padding: 5px 8px; }
 
   .guia-mama .split, .guia-mama .split-dark { grid-template-columns: 1fr; }
-  .guia-mama .split-img { aspect-ratio: 933 / 1400; }
+  .guia-mama .split-img { aspect-ratio: 4 / 3; }
   .guia-mama .split-reverse .split-img { order: 0; }
   .guia-mama .split-text { padding: 32px var(--pad) 40px; }
   .guia-mama .split-text .btn { align-self: stretch; }
