@@ -188,7 +188,7 @@ export default function TasacionOroPlataPage() {
 
       {/* Beneficios */}
       <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
-        <div className="svc-container svc-grid-3-auto" style={{ justifyContent: "center" }}>
+        <div className="svc-container svc-grid-3-auto" style={{ justifyContent: "space-between" }}>
           {BENEFICIOS.map((b) => (
             <div key={b.titulo} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }} aria-hidden="true">
