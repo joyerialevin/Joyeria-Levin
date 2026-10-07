@@ -383,6 +383,32 @@ a{ color:inherit; text-decoration:none; }
   color: oklch(from var(--oro) 0.82 calc(c * 0.8) h);
 }
 
+/* Tasación de oro y plata: hero con foto horizontal y texto superpuesto. */
+.tasacion-hero-media{
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+.tasacion-hero-media img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.tasacion-hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(38,38,31,.80) 0%, rgba(38,38,31,.55) 28%, rgba(38,38,31,.18) 52%, rgba(38,38,31,0) 68%);
+}
+.tasacion-hero-text{
+  position: absolute;
+  left: clamp(20px, 4vw, 56px);
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 460px;
+}
+
 @media (max-width: 760px){
   .taller-grid{ grid-template-columns:1fr !important; }
   .visitanos-info-grid{ grid-template-columns:1fr !important; }
@@ -399,6 +425,11 @@ a{ color:inherit; text-decoration:none; }
   .tasacion-grid-2, .tasacion-grid-3, .tasacion-grid-4{ grid-template-columns:1fr !important; }
   /* "Qué podés traer": el texto va antes que las fotos en mobile (prioridad de lectura). */
   .tasacion-qpt-img{ order:2; }
+  /* Hero de Tasación: proporción 4:3 en mobile, recorte que prioriza la
+     balanza, y texto arriba (no centrado) para no tapar las piezas. */
+  .tasacion-hero-media{ aspect-ratio:4/3; }
+  .tasacion-hero-media img{ object-position:35% 0%; }
+  .tasacion-hero-text{ top:clamp(16px,5vw,28px); bottom:auto; transform:none; max-width:84%; }
 }
 @media (max-width: 900px){
   .footer-grid{ grid-template-columns:1fr 1fr !important; gap:32px !important; }
