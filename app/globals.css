@@ -383,31 +383,14 @@ a{ color:inherit; text-decoration:none; }
   color: oklch(from var(--oro) 0.82 calc(c * 0.8) h);
 }
 
-/* Tasación de oro y plata: hero con foto horizontal y texto superpuesto. */
-.tasacion-hero-media{
-  position: relative;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-}
-.tasacion-hero-media img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-}
-.tasacion-hero-overlay{
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(38,38,31,.80) 0%, rgba(38,38,31,.55) 28%, rgba(38,38,31,.18) 52%, rgba(38,38,31,0) 68%);
-}
-.tasacion-hero-text{
-  position: absolute;
-  left: clamp(20px, 4vw, 56px);
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 460px;
-}
+/* Hero fotográfico compartido por las páginas de Servicios (Relojería y
+   Tasación): foto de fondo + degradado oscuro desde la izquierda + texto
+   superpuesto, misma altura en las dos páginas. */
+.svc-hero{ position:relative; min-height:640px; display:flex; align-items:center; overflow:hidden; }
+.svc-hero-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.svc-hero-overlay{ position:absolute; inset:0; background:linear-gradient(100deg, rgba(38,38,31,.82) 0%, rgba(38,38,31,.58) 32%, rgba(38,38,31,.2) 60%, rgba(38,38,31,0) 78%); }
+.svc-hero-content{ position:relative; width:100%; padding:72px 0; }
+.svc-hero-benefits{ position:absolute; left:0; right:0; bottom:0; background:rgba(38,38,31,0.55); padding:20px 0; }
 
 @media (max-width: 760px){
   .taller-grid{ grid-template-columns:1fr !important; }
@@ -421,13 +404,6 @@ a{ color:inherit; text-decoration:none; }
   /* Fotos grandes tipo editorial (Maria Cher): 2 columnas fijas en mobile,
      en vez de dejar que el ancho mínimo de la tarjeta decida cuántas entran. */
   .product-grid{ grid-template-columns:repeat(2, 1fr) !important; gap:14px !important; }
-  /* Página de Tasación de oro y plata: todo apila en mobile. */
-  .tasacion-grid-2, .tasacion-grid-3, .tasacion-grid-4{ grid-template-columns:1fr !important; }
-  /* Hero de Tasación: proporción 4:3 en mobile, recorte que prioriza la
-     balanza, y texto arriba (no centrado) para no tapar las piezas. */
-  .tasacion-hero-media{ aspect-ratio:4/3; }
-  .tasacion-hero-media img{ object-position:35% 0%; }
-  .tasacion-hero-text{ top:clamp(16px,5vw,28px); bottom:auto; transform:none; max-width:84%; }
 }
 @media (max-width: 900px){
   .footer-grid{ grid-template-columns:1fr 1fr !important; gap:32px !important; }
@@ -436,28 +412,97 @@ a{ color:inherit; text-decoration:none; }
   .footer-grid{ grid-template-columns:1fr !important; }
 }
 
-/* Página Servicio técnico (service-relojeria): estados hover que deben
-   quedar en clase, no inline, porque un estilo inline nunca puede ser
-   sobreescrito por un :hover externo (aprendido con .btn-oro). */
-.svc-cta{ background:var(--oro-40); color:var(--ink); transition:background 240ms ease; }
-.svc-cta:hover{ background:var(--line); }
+/* ============================================================
+   SISTEMA VISUAL — Servicios (Relojería / Tasación / Grabados)
+   Escala tipográfica, contenedores, botones y tarjetas comunes a
+   las tres páginas de servicios (pedido explícito de unificar su
+   criterio visual sin volverlas idénticas). Valores de escritorio;
+   el override de mobile vive en el @media (max-width:760px) de
+   más abajo, y el de tablet en su propio media query acá mismo.
+   ============================================================ */
+:root{
+  --svc-text-secondary:#71716C;
+  --svc-oliva-hover:#5F5510;
+  --svc-oro-pale-1:#DBD5AB;
+  --svc-oro-pale-2:#ABA26D;
+}
 
-.svc-secondary-link{ color:var(--porcelain); border-bottom:1px solid rgba(253,252,248,0.4); transition:border-color 240ms ease; }
-.svc-secondary-link:hover{ border-color:var(--oro-40); }
+.svc-container{ max-width:1180px; margin:0 auto; padding:0 32px; }
+.svc-prose{ max-width:620px; }
 
-.svc-card{ background:var(--sunken); border:1px solid var(--sand-200); transition:box-shadow 240ms ease, border-color 240ms ease; }
-.svc-card:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.09); border-color:var(--oro-40); }
+.svc-section{ padding-top:72px; padding-bottom:72px; }
+.svc-section-sm{ padding-top:56px; padding-bottom:56px; }
 
-.svc-card-tint{ background:var(--oro-10); border:1px solid var(--oro-40); transition:box-shadow 240ms ease, border-color 240ms ease; }
-.svc-card-tint:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.09); border-color:var(--oro-80); }
+.svc-eyebrow{ font-family:var(--font-sans); font-weight:300; font-size:14px; letter-spacing:0.14em; text-transform:uppercase; margin:0 0 12px; }
+.svc-h1{ font-family:var(--font-sans); font-weight:700; font-size:64px; line-height:1.15; margin:0 0 20px; }
+.svc-h2{ font-family:var(--font-sans); font-weight:700; font-size:34px; line-height:1.25; margin:0 0 20px; }
+.svc-subtitle{ font-family:var(--font-sans); font-weight:400; font-size:26px; line-height:1.25; margin:0; }
+.svc-card-title{ font-family:var(--font-sans); font-weight:700; font-size:20px; line-height:1.25; margin:0 0 8px; }
+.svc-lead{ font-family:var(--font-serif); font-size:19px; line-height:1.65; margin:0 0 28px; }
+.svc-body{ font-family:var(--font-serif); font-size:17px; line-height:1.65; margin:0; }
+.svc-small{ font-family:var(--font-serif); font-size:15px; line-height:1.6; margin:0; }
+.svc-caption{ font-family:var(--font-serif); font-style:italic; font-size:13px; line-height:1.6; margin:0; }
 
-.svc-card-dark{ background:var(--ink); border:1px solid var(--ink); transition:box-shadow 240ms ease; }
+.svc-btn-row{ display:flex; flex-wrap:wrap; gap:20px 24px; align-items:center; }
+
+.svc-btn-primary, .svc-btn-secondary, .svc-btn-secondary-dark{
+  display:inline-flex; align-items:center; justify-content:center; gap:10px;
+  min-height:48px; padding:0 24px; border-radius:4px; white-space:nowrap;
+  font-family:var(--font-sans); font-weight:400; font-size:14px; letter-spacing:0.06em; text-transform:uppercase;
+  transition:background 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+.svc-btn-primary{ background:var(--oro); color:var(--porcelain); border:1px solid var(--oro); }
+.svc-btn-primary:hover{ background:var(--svc-oliva-hover); border-color:var(--svc-oliva-hover); }
+
+.svc-btn-secondary{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+.svc-btn-secondary:hover{ border-color:var(--oro); background:rgba(130,120,56,0.06); }
+
+.svc-btn-secondary-dark{ background:transparent; color:var(--porcelain); border:1px solid rgba(253,252,248,0.55); }
+.svc-btn-secondary-dark:hover{ border-color:var(--porcelain); background:rgba(253,252,248,0.1); }
+
+.svc-card{ background:var(--sunken); border:1px solid var(--line); border-radius:4px; padding:28px; transition:box-shadow 240ms ease, border-color 240ms ease; }
+.svc-card:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.08); border-color:var(--oro); }
+
+.svc-card-dark{ background:var(--ink); border:1px solid var(--ink); border-radius:4px; padding:28px; transition:box-shadow 240ms ease; }
 .svc-card-dark:hover{ box-shadow:0 10px 30px rgba(38,38,31,0.2); }
 
-.svc-consultar{ color:var(--oro-80); transition:color 240ms ease; }
-.svc-consultar:hover{ color:var(--oro-90); }
-.svc-consultar-dark{ color:var(--oro-40); transition:color 240ms ease; }
+.svc-consultar{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-sans); font-size:14px; letter-spacing:0.06em; text-transform:uppercase; color:var(--oro); transition:color 200ms ease; }
+.svc-consultar:hover{ color:var(--svc-oliva-hover); }
+.svc-consultar-dark{ color:var(--svc-oro-pale-1); transition:color 200ms ease; }
 .svc-consultar-dark:hover{ color:var(--line); }
+
+.svc-divider{ border:none; border-top:1px solid var(--line); margin:0; }
+
+.svc-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.svc-grid-3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+.svc-grid-4{ display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; }
+
+@media (min-width:761px) and (max-width:900px){
+  .svc-container{ padding:0 24px; }
+}
+
+/* Mobile del sistema Servicios: va DESPUÉS de las reglas base de arriba
+   a propósito. Con la misma especificidad (una sola clase), si este
+   bloque quedara antes en el archivo, la regla base — que no está
+   condicionada por ningún media query — ganaría igual por ir después
+   en el documento, y el override de mobile nunca se vería. */
+@media (max-width: 760px){
+  .svc-container{ padding:0 20px; }
+  .svc-section{ padding-top:48px; padding-bottom:48px; }
+  .svc-section-sm{ padding-top:40px; padding-bottom:40px; }
+  .svc-eyebrow{ font-size:13px; }
+  .svc-h1{ font-size:40px; line-height:1.15; }
+  .svc-h2{ font-size:30px; }
+  .svc-subtitle{ font-size:22px; }
+  .svc-card-title{ font-size:18px; }
+  .svc-lead{ font-size:18px; }
+  .svc-grid-2, .svc-grid-3, .svc-grid-4{ grid-template-columns:1fr; gap:24px; }
+  .svc-btn-row{ flex-direction:column; align-items:stretch; gap:12px; }
+  .svc-btn-row > .svc-btn-primary, .svc-btn-row > .svc-btn-secondary, .svc-btn-row > .svc-btn-secondary-dark{ width:100%; }
+  .svc-hero{ min-height:auto; align-items:flex-start; }
+  .svc-hero-content{ padding:96px 0 48px; }
+  .svc-hero-benefits{ position:static; background:rgba(38,38,31,0.7); padding:20px 0; overflow-x:auto; }
+}
 
 @keyframes levin-ticker{
   0%{ transform:translateX(0); }

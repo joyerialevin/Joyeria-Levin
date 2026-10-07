@@ -109,25 +109,15 @@ const PROCESO = [
 
 const CHIPS = ["Anillos", "Alianzas", "Cadenas", "Pulseras", "Aros", "Dijes", "Monedas", "Otros objetos"];
 
-function Eyebrow({ children, color = "var(--oro-deep)" }) {
+function Eyebrow({ children, color = "var(--line)" }) {
   return (
-    <div
-      style={{
-        fontFamily: "var(--font-sans)",
-        fontSize: 12.5,
-        fontWeight: 600,
-        letterSpacing: "0.18em",
-        textTransform: "uppercase",
-        color,
-        marginBottom: 12,
-      }}
-    >
+    <div className="svc-eyebrow" style={{ margin: "0 0 12px", color }}>
       {children}
     </div>
   );
 }
 
-function IconoWhatsApp({ size = 17 }) {
+function IconoWhatsApp({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z" />
@@ -140,92 +130,48 @@ export default function TasacionOroPlataPage() {
     <div>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
 
-      {/* 1. HERO — foto horizontal con texto superpuesto */}
-      <section className="tasacion-hero-media">
+      {/* Hero */}
+      <section className="svc-hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/fotos/tasacion-balanza-oro.jpg" alt="Pesaje de joyas de oro en la balanza de Joyería Levin" />
-        <div className="tasacion-hero-overlay" />
-        <div className="tasacion-hero-text">
-          <h1
-            className="display"
-            style={{
-              fontSize: "clamp(28px, 4vw, 44px)",
-              lineHeight: 1.12,
-              margin: "0 0 12px",
-              color: "var(--porcelain)",
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-            }}
-          >
-            Tasación de oro y plata
-          </h1>
-          <p
-            style={{
-              fontSize: 15,
-              lineHeight: 1.6,
-              color: "rgba(253,252,248,0.92)",
-              margin: "0 0 22px",
-              maxWidth: 420,
-            }}
-          >
-            Comprobamos el material, verificamos su pureza y pesamos cada pieza para informarte su valor.
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 14 }}>
-            <a
-              href={linkWhatsApp(MSG_HERO)}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                background: "var(--oro-deep)",
-                color: "var(--porcelain)",
-                padding: "14px 26px",
-                borderRadius: 2,
-                fontFamily: "var(--font-sans)",
-                fontSize: 13,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
-              <IconoWhatsApp size={16} />
-              Consultar por WhatsApp
-            </a>
-            <a
-              href={LINK_MAPS}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                padding: "14px 26px",
-                border: "1px solid rgba(253,252,248,0.75)",
-                color: "var(--porcelain)",
-                borderRadius: 2,
-                fontFamily: "var(--font-sans)",
-                fontSize: 13,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
-              Cómo llegar
-            </a>
+        <img
+          src="/fotos/tasacion-balanza-oro.jpg"
+          alt="Pesaje de joyas de oro en la balanza de Joyería Levin"
+          className="svc-hero-img"
+          style={{ objectPosition: "62% 48%" }}
+        />
+        <div className="svc-hero-overlay" />
+        <div className="svc-hero-content">
+          <div className="svc-container">
+            <Eyebrow>Servicio de tasación</Eyebrow>
+            <h1 className="svc-h1" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
+              Tasación de oro y plata
+            </h1>
+            <p className="svc-lead" style={{ color: "var(--line)", maxWidth: 560 }}>
+              Comprobamos el material, verificamos su pureza y pesamos cada pieza para informarte su valor.
+            </p>
+            <div className="svc-btn-row">
+              <a href={linkWhatsApp(MSG_HERO)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
+                <IconoWhatsApp />
+                Consultar por WhatsApp
+              </a>
+              <a href={LINK_MAPS} target="_blank" rel="noopener noreferrer" className="svc-btn-secondary-dark">
+                Cómo llegar
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 2. DIRECCIÓN Y HORARIOS */}
-      <section style={{ background: "var(--sunken)", padding: "clamp(16px, 2.2vw, 22px) clamp(20px, 5vw, 72px)" }}>
+      {/* Dirección y horarios */}
+      <section style={{ background: "var(--sunken)", padding: "16px 0" }}>
         <div
+          className="svc-container"
           style={{
-            maxWidth: 1280,
-            margin: "0 auto",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
             alignItems: "center",
-            gap: "10px 28px",
+            gap: "8px 24px",
             fontFamily: "var(--font-sans)",
             fontSize: 14,
             color: "var(--ink)",
@@ -233,77 +179,52 @@ export default function TasacionOroPlataPage() {
           }}
         >
           <span>Perú 134, Paraná, Entre Ríos</span>
-          <span aria-hidden="true" style={{ color: "var(--sand-400)" }}>·</span>
+          <span aria-hidden="true" style={{ color: "var(--line)" }}>·</span>
           <span>Lunes a viernes de 9 a 13 y de 16 a 20 h</span>
-          <span aria-hidden="true" style={{ color: "var(--sand-400)" }}>·</span>
+          <span aria-hidden="true" style={{ color: "var(--line)" }}>·</span>
           <span>Sábados de 9 a 13 h</span>
         </div>
       </section>
 
-      {/* 3. BENEFICIOS */}
-      <section style={{ background: "var(--porcelain)", padding: "clamp(26px, 3.5vw, 40px) clamp(20px, 5vw, 72px)" }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "clamp(20px, 3vw, 32px)",
-          }}
-          className="tasacion-grid-3"
-        >
+      {/* Beneficios */}
+      <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
+        <div className="svc-container svc-grid-3">
           {BENEFICIOS.map((b) => (
-            <div key={b.titulo} style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--oro-deep)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }} aria-hidden="true">
+            <div key={b.titulo} style={{ display: "flex", alignItems: "flex-start", gap: 14 }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }} aria-hidden="true">
                 {b.icono}
               </svg>
               <div>
-                <h3 style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: 15, margin: "0 0 4px", color: "var(--ink)" }}>
+                <h3 style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: 18, margin: "0 0 4px", color: "var(--ink)" }}>
                   {b.titulo}
                 </h3>
-                <p style={{ fontSize: 13.5, lineHeight: 1.5, color: "var(--ink-soft)", margin: 0 }}>{b.texto}</p>
+                <p style={{ fontFamily: "var(--font-serif)", fontSize: 15, lineHeight: 1.6, color: "var(--svc-text-secondary)", margin: 0 }}>{b.texto}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* 4. PROCESO */}
-      <section style={{ background: "var(--sunken)", padding: "clamp(32px, 4.5vw, 56px) clamp(20px, 5vw, 72px)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto" }}>
-          <Eyebrow>El proceso</Eyebrow>
-          <h2
-            className="display"
-            style={{ fontSize: "clamp(24px, 2.8vw, 32px)", margin: "0 0 clamp(20px, 2.8vw, 32px)", color: "var(--ink)", fontFamily: "var(--font-sans)", fontWeight: 700 }}
-          >
+      {/* Proceso */}
+      <section className="svc-section-sm" style={{ background: "var(--sunken)" }}>
+        <div className="svc-container">
+          <Eyebrow color="var(--svc-text-secondary)">El proceso</Eyebrow>
+          <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
             Cómo realizamos la tasación
           </h2>
           <TasacionProcesoPasos pasos={PROCESO} />
         </div>
       </section>
 
-      {/* 5. QUÉ PODÉS TRAER */}
-      <section style={{ background: "var(--porcelain)", padding: "clamp(32px, 4.5vw, 56px) clamp(20px, 5vw, 72px)" }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(28px, 5vw, 64px)",
-            alignItems: "center",
-          }}
-          className="tasacion-grid-2"
-        >
+      {/* Piezas de oro y plata */}
+      <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
+        <div className="svc-container svc-grid-2">
           <div>
-            <Eyebrow>Qué podés traer</Eyebrow>
-            <h2
-              className="display"
-              style={{ fontSize: "clamp(22px, 2.6vw, 28px)", margin: "0 0 10px", color: "var(--ink)", fontFamily: "var(--font-sans)", fontWeight: 700 }}
-            >
+            <Eyebrow color="var(--svc-text-secondary)">Qué podés traer</Eyebrow>
+            <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
               Piezas de oro y plata
             </h2>
-            <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--ink-soft)", margin: "0 0 18px", maxWidth: 440 }}>
+            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", maxWidth: 440, marginBottom: 20 }}>
               Tasamos joyas y objetos de oro o plata, estén en uso o guardados hace años.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -313,9 +234,10 @@ export default function TasacionOroPlataPage() {
                   style={{
                     padding: "7px 16px",
                     borderRadius: 999,
+                    background: "var(--sunken)",
                     border: "1px solid var(--line)",
                     fontFamily: "var(--font-sans)",
-                    fontSize: 12.5,
+                    fontSize: 13.5,
                     color: "var(--ink)",
                   }}
                 >
@@ -325,7 +247,7 @@ export default function TasacionOroPlataPage() {
             </div>
           </div>
 
-          <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 2 }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 4 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/fotos/tasacion-piezas-oro-plata.jpg"
@@ -337,22 +259,12 @@ export default function TasacionOroPlataPage() {
         </div>
       </section>
 
-      {/* 6. TRAYECTORIA */}
-      <section style={{ background: "var(--ink)", padding: "clamp(28px, 4vw, 44px) clamp(20px, 5vw, 72px)" }}>
-        <div
-          style={{
-            maxWidth: 1280,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1fr 1.3fr",
-            gap: "clamp(28px, 5vw, 64px)",
-            alignItems: "center",
-          }}
-          className="tasacion-grid-2"
-        >
+      {/* Trayectoria */}
+      <section className="svc-section" style={{ background: "var(--ink)" }}>
+        <div className="svc-container svc-grid-2" style={{ gridTemplateColumns: "1fr 1.3fr" }}>
           <div>
-            <Eyebrow color="var(--oro-40)">Desde 1973</Eyebrow>
-            <div style={{ fontFamily: "var(--font-serif)", fontSize: "clamp(48px, 6.5vw, 84px)", lineHeight: 1, color: "var(--oro-40)" }}>
+            <Eyebrow color="var(--svc-oro-pale-2)">Desde 1973</Eyebrow>
+            <div style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: "clamp(48px, 6.5vw, 84px)", lineHeight: 1, color: "var(--svc-oro-pale-2)" }}>
               +50
             </div>
             <div style={{ fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--line)", marginTop: 6 }}>
@@ -360,13 +272,10 @@ export default function TasacionOroPlataPage() {
             </div>
           </div>
           <div>
-            <h2
-              className="display"
-              style={{ fontSize: "clamp(22px, 2.6vw, 30px)", margin: "0 0 12px", color: "var(--porcelain)", fontFamily: "var(--font-sans)", fontWeight: 700 }}
-            >
+            <h2 className="svc-h2" style={{ color: "var(--porcelain)" }}>
               Experiencia que genera confianza
             </h2>
-            <p style={{ fontSize: 14.5, lineHeight: 1.6, color: "var(--line)", margin: 0, maxWidth: 520 }}>
+            <p className="svc-body" style={{ color: "var(--line)", maxWidth: 520 }}>
               Acompañamos a nuestros clientes con responsabilidad, atención personalizada y conocimiento del
               oficio. Esa misma trayectoria respalda cada tasación que hacemos.
             </p>
@@ -374,20 +283,10 @@ export default function TasacionOroPlataPage() {
         </div>
       </section>
 
-      {/* 7. NOTA FINAL */}
-      <section style={{ background: "var(--porcelain)", padding: "clamp(20px, 3vw, 28px) clamp(20px, 5vw, 72px) clamp(28px, 4vw, 40px)" }}>
-        <div style={{ maxWidth: 1280, margin: "0 auto", borderTop: "1px solid var(--line)", paddingTop: 20 }}>
-          <p
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontStyle: "italic",
-              fontSize: 14,
-              lineHeight: 1.6,
-              color: "var(--ink-soft)",
-              margin: 0,
-              maxWidth: 560,
-            }}
-          >
+      {/* Nota final */}
+      <section style={{ background: "var(--porcelain)", padding: "28px 0 40px" }}>
+        <div className="svc-container" style={{ borderTop: "1px solid var(--line)", paddingTop: 20 }}>
+          <p className="svc-caption svc-prose" style={{ color: "var(--svc-text-secondary)" }}>
             Las consultas por WhatsApp son orientativas. Para realizar la tasación necesitamos ver y examinar la
             pieza en el local.
           </p>

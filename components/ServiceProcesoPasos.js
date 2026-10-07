@@ -34,26 +34,18 @@ export default function ServiceProcesoPasos() {
   }, [reducirMovimiento, enVista]);
 
   return (
-    <div
-      ref={sectionRef}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(175px, 1fr))",
-        gap: "clamp(14px, 1.6vw, 20px)",
-        marginBottom: "clamp(26px, 3vw, 40px)",
-      }}
-    >
+    <div ref={sectionRef} className="svc-grid-4">
       {PASOS.map((paso, i) => {
         const activa = !reducirMovimiento && i === activo;
         return (
           <div
             key={paso.titulo}
             style={{
-              borderRadius: "var(--radius-sm)",
+              borderRadius: 4,
               padding: "28px 26px 30px",
               transition: "background-color 900ms ease, border-color 900ms ease, box-shadow 900ms ease",
               backgroundColor: activa ? "var(--oro-90)" : "var(--porcelain)",
-              border: `1px solid ${activa ? "var(--oro-90)" : "var(--sand-200)"}`,
+              border: `1px solid ${activa ? "var(--oro-90)" : "var(--line)"}`,
               boxShadow: activa ? "0 10px 26px rgba(130,120,56,0.2)" : "none",
             }}
           >
@@ -61,22 +53,18 @@ export default function ServiceProcesoPasos() {
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 700,
-                fontSize: 36,
+                fontSize: 26,
                 lineHeight: 1,
-                marginBottom: 18,
+                marginBottom: 16,
                 transition: "color 900ms ease",
-                color: activa ? "var(--porcelain)" : "var(--oro-40)",
+                color: activa ? "var(--porcelain)" : "var(--oro)",
               }}
             >
               {String(i + 1).padStart(2, "0")}
             </div>
             <h3
+              className="svc-card-title"
               style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 400,
-                fontSize: 21,
-                lineHeight: 1.25,
-                margin: "0 0 10px",
                 transition: "color 900ms ease",
                 color: activa ? "var(--porcelain)" : "var(--ink)",
               }}
@@ -84,12 +72,10 @@ export default function ServiceProcesoPasos() {
               {paso.titulo}
             </h3>
             <p
+              className="svc-body"
               style={{
-                fontSize: 15,
-                lineHeight: 1.6,
-                margin: 0,
                 transition: "color 900ms ease",
-                color: activa ? "var(--porcelain)" : "var(--ink-soft)",
+                color: activa ? "var(--porcelain)" : "var(--svc-text-secondary)",
               }}
             >
               {paso.body}

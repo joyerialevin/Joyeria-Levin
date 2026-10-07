@@ -27,27 +27,28 @@ export default function TasacionProcesoPasos({ pasos }) {
   }, [reducirMovimiento, enVista, pasos.length]);
 
   return (
-    <div ref={sectionRef} style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "clamp(24px, 3vw, 40px)" }} className="tasacion-grid-3">
+    <div ref={sectionRef} className="svc-grid-3">
       {pasos.map((paso, i) => {
         const activa = !reducirMovimiento && i === activo;
         return (
           <div
             key={paso.numero}
             style={{
-              borderRadius: "var(--radius-sm)",
-              padding: "20px 22px 24px",
+              borderRadius: 4,
+              padding: "28px 26px 30px",
               transition: "background-color 900ms ease, border-color 900ms ease, box-shadow 900ms ease",
-              backgroundColor: activa ? "var(--oro-90)" : "transparent",
-              borderTop: `2px solid ${activa ? "var(--oro-90)" : "var(--ink)"}`,
+              backgroundColor: activa ? "var(--oro-90)" : "var(--porcelain)",
+              border: `1px solid ${activa ? "var(--oro-90)" : "var(--line)"}`,
               boxShadow: activa ? "0 10px 26px rgba(130,120,56,0.2)" : "none",
             }}
           >
             <div
               style={{
-                fontFamily: "var(--font-serif)",
-                fontSize: 34,
+                fontFamily: "var(--font-sans)",
+                fontWeight: 700,
+                fontSize: 26,
                 lineHeight: 1,
-                marginBottom: 12,
+                marginBottom: 16,
                 transition: "color 900ms ease",
                 color: activa ? "var(--porcelain)" : "var(--oro)",
               }}
@@ -55,11 +56,8 @@ export default function TasacionProcesoPasos({ pasos }) {
               {paso.numero}
             </div>
             <h3
+              className="svc-card-title"
               style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 700,
-                fontSize: 17,
-                margin: "0 0 8px",
                 transition: "color 900ms ease",
                 color: activa ? "var(--porcelain)" : "var(--ink)",
               }}
@@ -67,12 +65,10 @@ export default function TasacionProcesoPasos({ pasos }) {
               {paso.titulo}
             </h3>
             <p
+              className="svc-body"
               style={{
-                fontSize: 14.5,
-                lineHeight: 1.6,
-                margin: 0,
                 transition: "color 900ms ease",
-                color: activa ? "var(--porcelain)" : "var(--ink-soft)",
+                color: activa ? "var(--porcelain)" : "var(--svc-text-secondary)",
               }}
             >
               {paso.texto}

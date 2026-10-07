@@ -6,6 +6,35 @@ const linkWhatsApp = (mensaje) => `https://api.whatsapp.com/send?phone=${NUMERO_
 const MSG_HERO = "Hola, vengo desde la página web. Quería saber más sobre el servicio técnico de relojería.";
 const MSG_CONTACTO = "Hola, vengo desde la página web. No sé qué servicio necesita mi reloj y quería que me orienten.";
 
+const BENEFICIOS_HERO = [
+  {
+    texto: "Presupuesto antes de empezar",
+    icono: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M8.5 12.5l2.5 2.5 4.5-5" />
+      </>
+    ),
+  },
+  {
+    texto: "Avanzamos con tu aprobación",
+    icono: (
+      <>
+        <path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z" />
+      </>
+    ),
+  },
+  {
+    texto: "Muchos trabajos se resuelven en el momento",
+    icono: (
+      <>
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7.5V12l3 2" />
+      </>
+    ),
+  },
+];
+
 const SERVICIOS = [
   {
     numero: "01",
@@ -25,7 +54,6 @@ const SERVICIOS = [
     titulo: "Mallas, pernos y cierres",
     body: "Ajuste a medida, cambio de malla, reemplazo de pernos y reparación de cierres y broches.",
     mensaje: "Hola, vengo desde la página web. Quería consultar por la malla de mi reloj (ajuste, cambio, pernos o cierre).",
-    tinte: true,
     icono: (
       <>
         <path d="M9.5 14.5a3.5 3.5 0 0 1 0-5l2-2a3.5 3.5 0 0 1 5 5l-1 1" />
@@ -60,20 +88,11 @@ function IconoWhatsApp({ size = 18 }) {
   );
 }
 
-function Eyebrow({ texto, lineColor, textColor }) {
+function Eyebrow({ texto, color = "var(--line)", lineColor = "var(--svc-oro-pale-1)" }) {
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
+    <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 12 }}>
       <span style={{ width: 34, height: 1, background: lineColor }} />
-      <span
-        style={{
-          fontFamily: "var(--font-sans)",
-          fontWeight: 300,
-          fontSize: 13,
-          letterSpacing: "0.16em",
-          textTransform: "uppercase",
-          color: textColor,
-        }}
-      >
+      <span className="svc-eyebrow" style={{ margin: 0, color }}>
         {texto}
       </span>
     </div>
@@ -84,222 +103,113 @@ export default function ServiceRelojeriaPage() {
   return (
     <div style={{ overflowX: "hidden" }}>
       {/* Hero */}
-      <section
-        style={{
-          position: "relative",
-          minHeight: "min(88vh, 820px)",
-          display: "flex",
-          alignItems: "flex-end",
-          padding: "clamp(56px, 8vw, 110px) clamp(20px, 5vw, 72px) clamp(40px, 5vw, 68px)",
-        }}
-      >
+      <section className="svc-hero">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/service-tecnico-hero.jpg"
           alt="Relojera trabajando en el taller de Joyería Levin"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "50% 35%",
-            display: "block",
-          }}
+          className="svc-hero-img"
+          style={{ objectPosition: "50% 35%" }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(180deg, rgba(38,38,31,0.58) 0%, rgba(38,38,31,0.28) 38%, rgba(38,38,31,0.86) 100%)",
-          }}
-        />
-        <div style={{ position: "relative", maxWidth: 1360, margin: "0 auto", width: "100%" }}>
-          <Eyebrow texto="Servicio técnico de relojería" lineColor="var(--oro-40)" textColor="var(--line)" />
-          <h1
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 700,
-              fontSize: "clamp(38px, 5.6vw, 72px)",
-              lineHeight: 1.06,
-              letterSpacing: "-0.01em",
-              color: "var(--porcelain)",
-              margin: "0 0 22px",
-              maxWidth: "20ch",
-              textWrap: "balance",
-            }}
-          >
-            Cuidamos tu reloj.
-            <br />
-            <span style={{ fontWeight: 300, color: "var(--oro-40)" }}>Cuidamos su historia.</span>
-          </h1>
-          <p
-            style={{
-              fontSize: "clamp(17px, 1.4vw, 20px)",
-              lineHeight: 1.6,
-              color: "var(--line)",
-              maxWidth: "44ch",
-              margin: "0 0 34px",
-            }}
-          >
-            Revisamos cada pieza con detalle, te explicamos qué necesita y te la devolvemos funcionando como debe.
-          </p>
-          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "20px 30px", marginBottom: 34 }}>
-            <a
-              href={linkWhatsApp(MSG_HERO)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="svc-cta"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 12,
-                padding: "17px 32px",
-                borderRadius: "var(--radius-sm)",
-                fontFamily: "var(--font-sans)",
-                fontSize: 14,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
-              <IconoWhatsApp />
-              Consultar por WhatsApp
-            </a>
-            <a
-              href="#proceso"
-              className="svc-secondary-link"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                fontFamily: "var(--font-sans)",
-                fontSize: 15,
-                paddingBottom: 6,
-              }}
-            >
-              Conocé cómo trabajamos
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" />
-              </svg>
-            </a>
+        <div className="svc-hero-overlay" />
+        <div className="svc-hero-content">
+          <div className="svc-container">
+            <Eyebrow texto="Servicio técnico de relojería" />
+            <h1 className="svc-h1" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
+              Cuidamos tu reloj.
+              <br />
+              <span style={{ color: "var(--svc-oro-pale-1)" }}>Cuidamos su historia.</span>
+            </h1>
+            <p className="svc-lead" style={{ color: "var(--line)", maxWidth: 560 }}>
+              Revisamos cada pieza con detalle, te explicamos qué necesita y te la devolvemos funcionando como debe.
+            </p>
+            <div className="svc-btn-row">
+              <a href={linkWhatsApp(MSG_HERO)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
+                <IconoWhatsApp size={16} />
+                Consultar por WhatsApp
+              </a>
+              <a href="#proceso" className="svc-btn-secondary-dark">
+                Conocé cómo trabajamos
+              </a>
+            </div>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "12px 34px", fontFamily: "var(--font-sans)", fontSize: 14, color: "var(--line)" }}>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--oro-40)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M8.5 12.5l2.5 2.5 4.5-5" />
-              </svg>
-              Presupuesto antes de empezar
-            </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--oro-40)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <path d="M12 3l7 3v5.5c0 4.2-2.9 7.6-7 9.5-4.1-1.9-7-5.3-7-9.5V6z" />
-              </svg>
-              Avanzamos con tu aprobación
-            </span>
-            <span style={{ display: "inline-flex", alignItems: "center", gap: 9 }}>
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--oro-40)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="9" />
-                <path d="M12 7.5V12l3 2" />
-              </svg>
-              Muchos trabajos se resuelven en el momento
-            </span>
+        </div>
+        <div className="svc-hero-benefits">
+          <div className="svc-container" style={{ display: "flex", flexWrap: "nowrap", gap: 28 }}>
+            {BENEFICIOS_HERO.map((b) => (
+              <span key={b.texto} style={{ display: "inline-flex", alignItems: "center", gap: 9, flex: "none" }}>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--svc-oro-pale-1)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {b.icono}
+                </svg>
+                <span className="svc-small" style={{ fontFamily: "var(--font-sans)", fontSize: 15, color: "var(--line)" }}>
+                  {b.texto}
+                </span>
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Servicios */}
-      <section style={{ background: "var(--oro)", padding: "clamp(52px, 7vw, 100px) clamp(20px, 5vw, 72px)" }}>
-        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+      <section className="svc-section" style={{ background: "var(--oro)" }}>
+        <div className="svc-container">
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "clamp(22px, 4vw, 68px)",
+              gap: "32px",
               alignItems: "end",
-              marginBottom: "clamp(32px, 4vw, 56px)",
+              marginBottom: 40,
             }}
           >
             <div style={{ minWidth: 0 }}>
-              <Eyebrow texto="Nuestros servicios" lineColor="var(--oro-40)" textColor="var(--line)" />
-              <h2
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontWeight: 700,
-                  fontSize: "clamp(32px, 3.8vw, 50px)",
-                  lineHeight: 1.1,
-                  margin: 0,
-                  color: "var(--porcelain)",
-                  textWrap: "balance",
-                }}
-              >
+              <Eyebrow texto="Nuestros servicios" />
+              <h2 className="svc-h2" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
                 Todo lo que tu reloj necesita
               </h2>
             </div>
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--line)", maxWidth: "44ch", margin: 0 }}>
+            <p className="svc-body" style={{ color: "var(--line)", maxWidth: "44ch" }}>
               Desde un cambio de pila hasta una reparación completa. Trabajamos con relojes de todas las marcas que
               vendemos y con los que ya son parte de tu historia.
             </p>
           </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "clamp(14px, 1.8vw, 24px)" }}>
+          <div className="svc-grid-3">
             {SERVICIOS.map((s) => (
               <article
                 key={s.numero}
-                className={s.destacada ? "svc-card-dark" : s.tinte ? "svc-card-tint" : "svc-card"}
-                style={{
-                  borderRadius: "var(--radius-sm)",
-                  padding: "clamp(28px, 3vw, 40px)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 18,
-                }}
+                className={s.destacada ? "svc-card-dark" : "svc-card"}
+                style={{ display: "flex", flexDirection: "column", gap: 18 }}
               >
                 <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 16 }}>
                   <span
                     style={{
-                      width: 58,
-                      height: 58,
+                      width: 52,
+                      height: 52,
                       borderRadius: "50%",
                       background: s.destacada ? "rgba(253,252,248,0.08)" : "var(--porcelain)",
-                      border: "1px solid var(--oro-40)",
+                      border: "1px solid var(--oro)",
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      color: s.destacada ? "var(--oro-40)" : "var(--oro)",
+                      color: s.destacada ? "var(--svc-oro-pale-1)" : "var(--oro)",
                     }}
                   >
-                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       {s.icono}
                     </svg>
                   </span>
                   <span
-                    style={{
-                      fontFamily: "var(--font-sans)",
-                      fontWeight: 700,
-                      fontSize: 22,
-                      letterSpacing: "0.04em",
-                      color: s.destacada ? "var(--oro-40)" : "var(--sand-400)",
-                    }}
+                    className="svc-eyebrow"
+                    style={{ margin: 0, color: s.destacada ? "var(--svc-oro-pale-1)" : "var(--oro)" }}
                   >
                     {s.numero}
                   </span>
                 </div>
-                <h3
-                  style={{
-                    fontFamily: "var(--font-sans)",
-                    fontWeight: 700,
-                    fontSize: 27,
-                    lineHeight: 1.18,
-                    margin: 0,
-                    color: s.destacada ? "var(--porcelain)" : "var(--ink)",
-                    textWrap: "balance",
-                  }}
-                >
+                <h3 className="svc-card-title" style={{ color: s.destacada ? "var(--porcelain)" : "var(--ink)" }}>
                   {s.titulo}
                 </h3>
-                <p style={{ fontSize: 16, lineHeight: 1.6, color: s.destacada ? "var(--line)" : "var(--ink-soft)", margin: 0, flex: 1 }}>
+                <p className="svc-body" style={{ color: s.destacada ? "var(--line)" : "var(--svc-text-secondary)", flex: 1 }}>
                   {s.body}
                 </p>
                 <a
@@ -307,17 +217,7 @@ export default function ServiceRelojeriaPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className={s.destacada ? "svc-consultar-dark" : "svc-consultar"}
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: 8,
-                    fontFamily: "var(--font-sans)",
-                    fontSize: 14,
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    borderTop: `1px solid ${s.destacada ? "rgba(253,252,248,0.18)" : s.tinte ? "var(--oro-40)" : "var(--line)"}`,
-                    paddingTop: 16,
-                  }}
+                  style={{ borderTop: `1px solid ${s.destacada ? "rgba(253,252,248,0.18)" : "var(--line)"}`, paddingTop: 16 }}
                 >
                   Consultar
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -331,41 +231,24 @@ export default function ServiceRelojeriaPage() {
       </section>
 
       {/* Proceso */}
-      <section
-        id="proceso"
-        style={{
-          background: "var(--sunken)",
-          borderTop: "1px solid var(--sand-200)",
-          borderBottom: "1px solid var(--sand-200)",
-          padding: "clamp(48px, 6vw, 96px) clamp(20px, 5vw, 72px)",
-        }}
-      >
-        <div style={{ maxWidth: 1360, margin: "0 auto" }}>
+      <section id="proceso" className="svc-section" style={{ background: "var(--sunken)", borderTop: "1px solid var(--line)", borderBottom: "1px solid var(--line)" }}>
+        <div className="svc-container">
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-              gap: "clamp(22px, 4vw, 68px)",
+              gap: "32px",
               alignItems: "end",
-              marginBottom: "clamp(30px, 4vw, 52px)",
+              marginBottom: 40,
             }}
           >
             <div style={{ minWidth: 0 }}>
-              <Eyebrow texto="Simple y transparente" lineColor="var(--oro)" textColor="var(--oro-80)" />
-              <h2
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontWeight: 700,
-                  fontSize: "clamp(32px, 3.8vw, 50px)",
-                  lineHeight: 1.1,
-                  margin: 0,
-                  textWrap: "balance",
-                }}
-              >
+              <Eyebrow texto="Simple y transparente" color="var(--svc-text-secondary)" lineColor="var(--oro)" />
+              <h2 className="svc-h2" style={{ color: "var(--ink)", textWrap: "balance" }}>
                 ¿Cómo trabajamos?
               </h2>
             </div>
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--ink-soft)", maxWidth: "44ch", margin: 0 }}>
+            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", maxWidth: "44ch" }}>
               Sabés qué necesita tu reloj, cuánto cuesta y cuándo estará listo antes de que hagamos cualquier
               trabajo.
             </p>
@@ -373,98 +256,46 @@ export default function ServiceRelojeriaPage() {
 
           <ServiceProcesoPasos />
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 12,
-              borderTop: "1px solid var(--line)",
-              paddingTop: 22,
-              fontSize: 16,
-              lineHeight: 1.6,
-              color: "var(--ink-soft)",
-            }}
-          >
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, borderTop: "1px solid var(--line)", paddingTop: 22, marginTop: 24 }}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ flex: "none", marginTop: 3 }} aria-hidden="true">
               <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z" />
               <circle cx="12" cy="10" r="2.5" />
             </svg>
-            <span>Atención en Paraná, Entre Ríos. También recibimos y enviamos relojes al resto del país.</span>
+            <span className="svc-small" style={{ color: "var(--svc-text-secondary)" }}>
+              Atención en Paraná, Entre Ríos. También recibimos y enviamos relojes al resto del país.
+            </span>
           </div>
         </div>
       </section>
 
       {/* Contacto */}
-      <section style={{ position: "relative", padding: "clamp(44px, 6vw, 92px) clamp(20px, 5vw, 72px)", overflow: "hidden" }}>
+      <section className="svc-section-sm" style={{ position: "relative", overflow: "hidden" }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/service-tecnico-reloj.jpg"
           alt="Reloj Citizen dorado puesto en la muñeca, junto a una pulsera Levin"
-          style={{
-            position: "absolute",
-            inset: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "48% 35%",
-            display: "block",
-          }}
+          className="svc-hero-img"
+          style={{ objectPosition: "48% 35%" }}
         />
-        <div style={{ position: "absolute", inset: 0, background: "rgba(130,120,56,0.86)" }} />
-        <div
-          style={{
-            position: "relative",
-            maxWidth: 1360,
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "clamp(28px, 4vw, 64px)",
-            alignItems: "center",
-          }}
-        >
+        <div className="svc-hero-overlay" />
+        <div className="svc-container" style={{ position: "relative", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 48, alignItems: "center" }}>
           <div style={{ minWidth: 0 }}>
-            <Eyebrow texto="Estamos para ayudarte" lineColor="var(--oro-40)" textColor="var(--line)" />
-            <h2
-              style={{
-                fontFamily: "var(--font-sans)",
-                fontWeight: 700,
-                fontSize: "clamp(30px, 3.4vw, 46px)",
-                lineHeight: 1.12,
-                color: "var(--porcelain)",
-                margin: "0 0 18px",
-                textWrap: "balance",
-              }}
-            >
+            <Eyebrow texto="Estamos para ayudarte" />
+            <h2 className="svc-h2" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
               ¿No sabés qué servicio necesitás?
             </h2>
-            <p style={{ fontSize: 18, lineHeight: 1.65, color: "var(--line)", maxWidth: "46ch", margin: 0 }}>
+            <p className="svc-body" style={{ color: "var(--line)", maxWidth: "46ch" }}>
               Contanos qué le pasa a tu reloj o mandanos una foto. Te orientamos y te decimos cómo seguir.
             </p>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 22, alignItems: "flex-start" }}>
-            <a
-              href={linkWhatsApp(MSG_CONTACTO)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="svc-cta"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 12,
-                padding: "18px 32px",
-                borderRadius: "var(--radius-sm)",
-                fontFamily: "var(--font-sans)",
-                fontSize: 14,
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-              }}
-            >
-              <IconoWhatsApp />
+          <div style={{ display: "flex", flexDirection: "column", gap: 20, alignItems: "flex-start" }}>
+            <a href={linkWhatsApp(MSG_CONTACTO)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
+              <IconoWhatsApp size={16} />
               Enviar una consulta
             </a>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px 32px", fontSize: 15, lineHeight: 1.7, color: "var(--line)" }}>
-              <span>Lunes a viernes de 9 a 13 y de 17 a 20.30 h</span>
-              <span>Sábados de 9 a 13 h</span>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "6px 28px" }}>
+              <span className="svc-small" style={{ color: "var(--line)" }}>Lunes a viernes de 9 a 13 y de 16 a 20 h</span>
+              <span className="svc-small" style={{ color: "var(--line)" }}>Sábados de 9 a 13 h</span>
             </div>
           </div>
         </div>
