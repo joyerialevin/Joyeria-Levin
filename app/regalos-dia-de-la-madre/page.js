@@ -19,7 +19,7 @@ export const metadata = {
   openGraph: {
     title: "Regalos para el Día de la Madre | Joyería Levin",
     description: "Joyas en oro 18K, plata 925, Swarovski y relojes para encontrar ese regalo especial.",
-    images: ["/regalos-dia-de-la-madre/img/post4-hijo.jpg"],
+    images: ["/fotos/banner-dia-madre-joyas.jpg"],
   },
 };
 
@@ -60,7 +60,11 @@ export default function RegalosDiaDeLaMadrePage() {
           </div>
           <div className="hero-img">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/regalos-dia-de-la-madre/img/post4-hijo.jpg" alt="Mamá e hijo abrazados, ella con joyas de Levin" />
+            <img
+              src="/fotos/banner-dia-madre-joyas.jpg"
+              alt="Joyas en oro de Joyería Levin: pulseras, anillos y reloj, luciendo el conjunto completo"
+              style={{ objectPosition: "100% center" }}
+            />
           </div>
         </section>
 

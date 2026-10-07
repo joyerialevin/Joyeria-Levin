@@ -8,7 +8,7 @@ const NUMERO_WHATSAPP = "5493434728312";
 const MSG_DIA_MADRE = "Hola! Quería consultar por los regalos del Día de la Madre.";
 const LINK_WHATSAPP_DIA_MADRE = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(MSG_DIA_MADRE)}`;
 
-const INTERVALO_MS = 10000;
+const INTERVALO_MS = 5000;
 const INDICE_DIA_MADRE = 1;
 
 const SLIDES = [
