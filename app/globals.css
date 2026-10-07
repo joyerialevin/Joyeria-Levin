@@ -475,6 +475,13 @@ a{ color:inherit; text-decoration:none; }
 
 .svc-grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
 .svc-grid-3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+/* Variante con columnas al ancho de su contenido (no 1fr parejo): para
+   filas de ítems cortos (ícono + título + texto breve) donde columnas
+   de igual ancho dejan un espacio sobrante distinto entre cada par,
+   dando una sensación de espaciado desparejo aunque el gap sea el
+   mismo. Con columnas "auto" el espacio real entre ítems es siempre
+   el gap, sin importar cuánto texto tenga cada uno. */
+.svc-grid-3-auto{ display:grid; grid-template-columns:repeat(3, auto); gap:24px 56px; }
 .svc-grid-4{ display:grid; grid-template-columns:repeat(4, 1fr); gap:24px; }
 
 @media (min-width:761px) and (max-width:900px){
@@ -496,7 +503,7 @@ a{ color:inherit; text-decoration:none; }
   .svc-subtitle{ font-size:22px; }
   .svc-card-title{ font-size:18px; }
   .svc-lead{ font-size:18px; }
-  .svc-grid-2, .svc-grid-3, .svc-grid-4{ grid-template-columns:1fr; gap:24px; }
+  .svc-grid-2, .svc-grid-3, .svc-grid-4, .svc-grid-3-auto{ grid-template-columns:1fr; gap:24px; }
   .svc-btn-row{ flex-direction:column; align-items:stretch; gap:12px; }
   .svc-btn-row > .svc-btn-primary, .svc-btn-row > .svc-btn-secondary, .svc-btn-row > .svc-btn-secondary-dark{ width:100%; }
   .svc-hero{ min-height:auto; align-items:flex-start; }
