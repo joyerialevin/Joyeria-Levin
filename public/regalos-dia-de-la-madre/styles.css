@@ -98,27 +98,31 @@
 .guia-mama .card-link { align-self: flex-start; font-size: 13px; letter-spacing: 0.16em; text-decoration: none; border-bottom: 1px solid var(--olive); padding-bottom: 4px; }
 .guia-mama .card-link:hover { color: var(--olive-text); }
 
-/* Bloques partidos (foto + texto) */
-.guia-mama .split { display: grid; grid-template-columns: 1fr 1fr; min-height: 700px; }
+/* Bloques partidos (foto + texto). Antes tenían min-height fijo (700px /
+   640px) que dejaba mucho aire vacío arriba y abajo del texto cuando el
+   contenido era más corto que eso. Ahora la altura la define la propia
+   foto (aspect-ratio) y align-items:center centra el texto respecto a
+   ella, sin alturas mínimas artificiales. */
+.guia-mama .split { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
 .guia-mama .split-sand { background: var(--sand-200); }
-.guia-mama .split-dark { background: var(--charcoal); color: var(--ivory); min-height: 640px; }
+.guia-mama .split-dark { background: var(--charcoal); color: var(--ivory); }
 .guia-mama .split-reverse .split-img { order: 2; }
-.guia-mama .split-img { overflow: hidden; }
+.guia-mama .split-img { overflow: hidden; aspect-ratio: 4 / 3; }
 .guia-mama .split-img img { width: 100%; height: 100%; object-fit: cover; }
-.guia-mama .split-text { padding: 80px 112px; display: flex; flex-direction: column; justify-content: center; gap: 24px; align-items: flex-start; }
+.guia-mama .split-text { padding: clamp(32px, 5vw, 64px) clamp(32px, 6vw, 88px); display: flex; flex-direction: column; justify-content: center; gap: 24px; align-items: flex-start; }
 .guia-mama .split-text .eyebrow { margin-bottom: 0; }
 .guia-mama .split-text p { font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--body); }
 .guia-mama .split-dark .split-text p { color: var(--sand-200); }
 .guia-mama .split-text .btn { margin-top: 8px; }
 
 /* Momento de regalar */
-.guia-mama .moment { padding: 112px var(--pad); }
-.guia-mama .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.guia-mama .moment { padding-block: clamp(32px, 5vw, 72px); padding-inline: var(--pad); }
+.guia-mama .mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .guia-mama .mosaic img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
 
 /* Visitanos */
-.guia-mama .visit { padding: 128px var(--pad); display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
-.guia-mama .visit-img img { width: 100%; height: 560px; object-fit: cover; object-position: center 25%; border-radius: 2px; }
+.guia-mama .visit { padding-block: clamp(32px, 5vw, 72px); padding-inline: var(--pad); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 56px); align-items: center; }
+.guia-mama .visit-img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 25%; border-radius: 2px; }
 .guia-mama .visit-text { display: flex; flex-direction: column; gap: 24px; }
 .guia-mama .visit-text .eyebrow { margin-bottom: 0; }
 .guia-mama .visit-text p { font-family: var(--serif); font-size: 18px; line-height: 1.7; color: var(--body); }
@@ -128,7 +132,7 @@
 .guia-mama .info dd { margin: 0; text-align: right; }
 
 /* FAQ */
-.guia-mama .faq { padding: 112px var(--pad); display: grid; grid-template-columns: 1fr 2fr; gap: 64px; background: var(--sand-100); }
+.guia-mama .faq { padding-block: clamp(32px, 5vw, 72px); padding-inline: var(--pad); display: grid; grid-template-columns: 1fr 2fr; gap: 64px; background: var(--sand-100); }
 .guia-mama .faq h2 { font-size: 40px; line-height: 1.15; }
 .guia-mama .faq-list { border-top: 1px solid var(--sand-400); }
 .guia-mama .faq details { border-bottom: 1px solid var(--sand-400); }
@@ -153,8 +157,8 @@
   .guia-mama .hero-text { padding: 64px 48px; }
   .guia-mama .hero h1 { font-size: 60px; }
   .guia-mama .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .guia-mama .split-text { padding: 64px 56px; }
-  .guia-mama .visit { gap: 56px; }
+  /* .split-text y .visit ya usan clamp() en la regla base — se
+     ajustan solos acá, no hace falta pisarlos. */
   .guia-mama .nav { gap: 24px; }
 }
 
@@ -180,7 +184,9 @@
   .guia-mama .trust div + div { border-left: none; border-top: 1px solid var(--sand-300); padding-top: 20px; }
 
   .guia-mama .section-head { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 32px; }
-  .guia-mama .guide, .guia-mama .moment, .guia-mama .faq { padding-top: 72px; padding-bottom: 72px; }
+  .guia-mama .guide { padding-top: 72px; padding-bottom: 72px; }
+  /* .moment y .faq ya son clamp(32px,5vw,72px) en la regla base —
+     se ajustan solos en mobile, no hace falta pisarlos acá. */
   .guia-mama .tabs { flex-wrap: nowrap; overflow-x: auto; margin: 0 calc(var(--pad) * -1) 36px; padding: 0 var(--pad); scrollbar-width: none; }
   .guia-mama .tab { flex-shrink: 0; }
   .guia-mama .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 12px; }
@@ -192,19 +198,20 @@
   .guia-mama .arrow-next { right: 6px; }
   .guia-mama .badge { top: 10px; left: 10px; font-size: 9px; padding: 5px 8px; }
 
-  .guia-mama .split, .guia-mama .split-dark { grid-template-columns: 1fr; min-height: 0; }
-  .guia-mama .split-img { height: 420px; }
+  .guia-mama .split, .guia-mama .split-dark { grid-template-columns: 1fr; }
+  .guia-mama .split-img { aspect-ratio: 4 / 3; }
   .guia-mama .split-reverse .split-img { order: 0; }
-  .guia-mama .split-text { padding: 48px var(--pad) 64px; }
+  .guia-mama .split-text { padding: 32px var(--pad) 40px; }
   .guia-mama .split-text .btn { align-self: stretch; }
 
-  /* Carrusel horizontal en vez de grilla 2x2: evita cuatro fotos
-     gigantes apiladas y todo el scroll que eso suma en mobile. */
-  .guia-mama .mosaic { display: flex; grid-template-columns: none; overflow-x: auto; gap: 10px; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad); scrollbar-width: none; }
-  .guia-mama .mosaic img { flex: 0 0 68%; aspect-ratio: 3 / 4; }
+  /* Carrusel horizontal en vez de grilla de 2 columnas: evita fotos
+     grandes apiladas y todo el scroll que eso suma en mobile. Con
+     scroll-snap cada foto queda encuadrada al soltar el dedo. */
+  .guia-mama .mosaic { display: flex; grid-template-columns: none; overflow-x: auto; gap: 10px; margin: 0 calc(var(--pad) * -1); padding: 0 var(--pad); scrollbar-width: none; scroll-snap-type: x mandatory; }
+  .guia-mama .mosaic img { flex: 0 0 68%; aspect-ratio: 3 / 4; scroll-snap-align: center; }
 
-  .guia-mama .visit { grid-template-columns: 1fr; gap: 40px; padding: 72px var(--pad); }
-  .guia-mama .visit-img img { height: 380px; }
+  .guia-mama .visit { grid-template-columns: 1fr; gap: 32px; padding-block: clamp(32px, 6vw, 48px); padding-inline: var(--pad); }
+  .guia-mama .visit-img img { aspect-ratio: 4 / 3; }
 
   .guia-mama .faq { grid-template-columns: 1fr; gap: 24px; }
   .guia-mama .faq summary { font-size: 17px; }
