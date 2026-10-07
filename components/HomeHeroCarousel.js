@@ -12,13 +12,15 @@ const INTERVALO_MS = 7000;
 const SLIDES = [
   {
     id: "institucional",
+    estilo: "original",
     imagen: "/fotos/clara-inicio.png",
     alt: "Joyería Levin — Joyería & Relojería",
     opDesktop: "75% 28%",
-    opMobile: "70% 12%",
-    eyebrow: "Joyería y Relojería Levin",
+    opMobile: "25% center",
+    eyebrow: "Joyería & Relojería Levin",
     titulo: "Desde 1973, acompañando momentos que perduran.",
     texto: "Joyas en oro 18K y plata 925 · Relojes de primeras marcas · Taller y atención personalizada.",
+    extra: "Perú 134 · Paraná",
     primario: { texto: "Ver catálogo", href: "/catalogo" },
     secundario: { texto: "Visitanos en Paraná", href: "#visitanos" },
   },
@@ -178,24 +180,73 @@ export default function HomeHeroCarousel() {
                 style={{ "--op-desktop": slide.opDesktop, "--op-mobile": slide.opMobile }}
                 fetchPriority={i === 0 ? "high" : "low"}
               />
-              <div className="home-hero-overlay" />
-              <div className="home-hero-content">
-                <div className="svc-container" style={{ maxWidth: 1180, width: "100%" }}>
-                  <div style={{ maxWidth: 560 }}>
-                    <div className="svc-eyebrow" style={{ color: "var(--line)" }}>{slide.eyebrow}</div>
-                    <h1 className="svc-h1" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
-                      {slide.titulo}
-                    </h1>
-                    <p className="svc-lead" style={{ color: "var(--line)" }}>
-                      {slide.texto}
-                    </p>
-                    <div className="svc-btn-row">
-                      <BotonSlide slide={slide} variante="primario" />
-                      <BotonSlide slide={slide} variante="secundario" />
+
+              {slide.estilo === "original" ? (
+                <div className="home-hero-copy-original">
+                  <div className="stamp" style={{ color: "var(--oro-deep)", marginBottom: 14 }}>
+                    {slide.eyebrow}
+                  </div>
+                  <h1
+                    className="display"
+                    style={{
+                      fontSize: "clamp(26px, 3.6vw, 46px)",
+                      lineHeight: 1.15,
+                      margin: "0 0 20px",
+                      color: "var(--ink)",
+                    }}
+                  >
+                    {slide.titulo}
+                  </h1>
+                  <p
+                    style={{
+                      fontSize: "clamp(13px, 1.1vw, 16px)",
+                      lineHeight: 1.6,
+                      color: "var(--ink-soft)",
+                      margin: "0 0 32px",
+                    }}
+                  >
+                    {slide.texto}
+                  </p>
+                  <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap", marginBottom: 18 }}>
+                    <Link
+                      href={slide.primario.href}
+                      className="stamp"
+                      style={{ color: "var(--porcelain)", background: "var(--oro)", padding: "16px 34px", borderRadius: "var(--radius-sm)" }}
+                    >
+                      {slide.primario.texto}
+                    </Link>
+                    <a
+                      href={slide.secundario.href}
+                      className="stamp"
+                      style={{ color: "var(--ink)", borderBottom: "1px solid var(--oro)", paddingBottom: 4 }}
+                    >
+                      {slide.secundario.texto}
+                    </a>
+                  </div>
+                  <div style={{ fontSize: 13, color: "var(--ink-soft)" }}>{slide.extra}</div>
+                </div>
+              ) : (
+                <>
+                  <div className="home-hero-overlay" />
+                  <div className="home-hero-content">
+                    <div className="svc-container" style={{ maxWidth: 1180, width: "100%" }}>
+                      <div style={{ maxWidth: 560 }}>
+                        <div className="svc-eyebrow" style={{ color: "var(--line)" }}>{slide.eyebrow}</div>
+                        <h1 className="svc-h1" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
+                          {slide.titulo}
+                        </h1>
+                        <p className="svc-lead" style={{ color: "var(--line)" }}>
+                          {slide.texto}
+                        </p>
+                        <div className="svc-btn-row">
+                          <BotonSlide slide={slide} variante="primario" />
+                          <BotonSlide slide={slide} variante="secundario" />
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </>
+              )}
             </div>
           );
         })}

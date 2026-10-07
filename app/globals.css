@@ -551,6 +551,21 @@ a{ color:inherit; text-decoration:none; }
   align-items: center;
 }
 
+/* Slide institucional (la chica): vuelve a su estilo de siempre — sin
+   degradado, texto oscuro directamente sobre la mitad lisa de la
+   foto, como lo tenía el hero antes del carrusel. */
+.home-hero-copy-original{
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 6%;
+  transform: translateY(-50%);
+  max-width: 34%;
+}
+@media (max-width: 760px){
+  .home-hero-copy-original{ max-width: 60%; left: 6%; }
+}
+
 .home-hero-arrow{
   position: absolute;
   top: 50%;
