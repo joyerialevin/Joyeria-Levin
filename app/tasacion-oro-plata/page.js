@@ -13,7 +13,7 @@ export const metadata = {
     title: "Tasación de oro y plata en Paraná | Joyería Levin",
     description:
       "Tasación de oro y plata sin cargo y sin turno previo, en nuestro local de Paraná. Más de 50 años de oficio.",
-    images: ["/fotos/taller.jpg"],
+    images: ["/fotos/tasacion-balanza-oro.jpg"],
   },
 };
 
@@ -21,7 +21,7 @@ const JSON_LD = {
   "@context": "https://schema.org",
   "@type": "JewelryStore",
   name: "Joyería y Relojería Levin",
-  image: "https://www.joyerialevin.com/fotos/taller.jpg",
+  image: "https://www.joyerialevin.com/fotos/tasacion-balanza-oro.jpg",
   telephone: "+5493434728312",
   url: "https://www.joyerialevin.com/tasacion-oro-plata",
   address: {
@@ -241,9 +241,9 @@ export default function TasacionOroPlataPage() {
             <div style={{ aspectRatio: "4 / 5", overflow: "hidden", borderRadius: 2 }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/fotos/taller.jpg"
-                alt="Tasación de joyas en el mostrador de Joyería Levin"
-                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 30%", filter: "grayscale(1)", display: "block" }}
+                src="/fotos/tasacion-balanza-oro.jpg"
+                alt="Pesaje de joyas de oro en la balanza de Joyería Levin"
+                style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "60% center", display: "block" }}
               />
             </div>
             <div
