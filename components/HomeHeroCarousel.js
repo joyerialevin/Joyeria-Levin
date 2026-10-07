@@ -90,7 +90,6 @@ function IconoPlayPause({ reproduciendo }) {
 export default function HomeHeroCarousel() {
   const [activo, setActivo] = useState(0);
   const [reproduciendo, setReproduciendo] = useState(true);
-  const [enHover, setEnHover] = useState(false);
   const [conFoco, setConFoco] = useState(false);
   const [pestanaVisible, setPestanaVisible] = useState(true);
   const [reducirMovimiento, setReducirMovimiento] = useState(false);
@@ -127,7 +126,7 @@ export default function HomeHeroCarousel() {
     };
   }
 
-  const autoplayActivo = reproduciendo && !enHover && !conFoco && pestanaVisible && !reducirMovimiento;
+  const autoplayActivo = reproduciendo && !conFoco && pestanaVisible && !reducirMovimiento;
 
   useEffect(() => {
     if (!autoplayActivo) return undefined;
@@ -154,8 +153,6 @@ export default function HomeHeroCarousel() {
       className="home-hero"
       aria-roledescription="carousel"
       aria-label="Banners destacados de Joyería Levin"
-      onMouseEnter={() => setEnHover(true)}
-      onMouseLeave={() => setEnHover(false)}
       onFocus={() => setConFoco(true)}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget)) setConFoco(false);
