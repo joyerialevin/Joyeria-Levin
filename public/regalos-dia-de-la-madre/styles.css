@@ -117,7 +117,7 @@
 
 /* Momento de regalar */
 .guia-mama .moment { padding-block: clamp(32px, 5vw, 72px); padding-inline: var(--pad); }
-.guia-mama .mosaic { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.guia-mama .mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .guia-mama .mosaic img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 2px; }
 
 /* Visitanos */
