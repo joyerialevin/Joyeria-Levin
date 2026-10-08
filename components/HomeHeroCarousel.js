@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import BannerDiaDeLaMadre from "./BannerDiaDeLaMadre";
 
 const NUMERO_WHATSAPP = "5493434728312";
 const MSG_DIA_MADRE = "Hola! Quería consultar por los regalos del Día de la Madre.";
@@ -283,13 +282,6 @@ export default function HomeHeroCarousel() {
         </button>
       </div>
     </section>
-
-    {/* Las tarjetas de acceso (Joyas/Relojes/Personalizados) quedan
-        siempre visibles debajo del hero, sin importar qué slide esté
-        activo — antes se ocultaban con el banner institucional y
-        reaparecían cada 5s con el del Día de la Madre, lo que se veía
-        como si "se borraran" solas todo el tiempo. */}
-    <BannerDiaDeLaMadre />
     </>
   );
 }
