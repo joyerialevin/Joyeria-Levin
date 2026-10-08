@@ -95,6 +95,7 @@ export default async function HomePage() {
   return (
     <>
       <HomeHeroCarousel />
+      <BeneficiosStrip />
 
       {/* Debajo del banner de Día de la Madre (que vive adentro de
           HomeHeroCarousel.js) y antes de Nuevos ingresos. Cuando se
@@ -102,7 +103,6 @@ export default async function HomePage() {
           del hero. */}
       <ServiciosInicio />
 
-      <BeneficiosStrip />
       <NovedadesSection productos={novedades} />
       <CategoryStrip categorias={categorias} />
       <VisitanosSection />
