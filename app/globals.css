@@ -363,11 +363,11 @@ a{ color:inherit; text-decoration:none; }
    Tasación): foto de fondo + degradado oscuro desde la izquierda + texto
    superpuesto, misma altura en las dos páginas. */
 .svc-hero{ position:relative; min-height:640px; display:flex; align-items:center; overflow:hidden; }
-/* Modificador puntual para Relojería y Grabados (pedido explícito de
-   1418px de alto en computadora) — no toca .svc-hero en sí, así que
-   Tasación (que usa el mismo hero sin este modificador) no se ve
-   afectada. En mobile se cancela, ver media query de abajo. */
-.svc-hero--tall{ height:1418px; }
+/* Modificador puntual para Relojería y Grabados: mismo alto que el
+   banner de la home (.home-hero, 820px desktop). No toca .svc-hero en
+   sí, así que Tasación (que usa el mismo hero sin este modificador)
+   no se ve afectada. En mobile se cancela, ver media query de abajo. */
+.svc-hero--tall{ height:820px; }
 .svc-hero-img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
 /* El segundo gradiente (de abajo hacia arriba) oscurece todo el ancho
    de la franja de beneficios como parte del mismo degradado de la
