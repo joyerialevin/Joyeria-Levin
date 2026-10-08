@@ -1,4 +1,5 @@
 import TasacionProcesoPasos from "../../components/TasacionProcesoPasos";
+import ImageCarousel from "../../components/ImageCarousel";
 
 const NUMERO_WHATSAPP = "5493434728312";
 const linkWhatsApp = (mensaje) => `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
@@ -65,6 +66,15 @@ const QUE_GRABAR = [
 ];
 
 const QUE_PIEZAS = ["Pulseras", "Anillos", "Dijes", "Relojes", "Otras piezas"];
+
+const FOTOS_PIEZAS = [
+  { src: "/fotos/grabados-esclava-iniciales.jpg", alt: "Esclava de plata con las iniciales S y O grabadas en los extremos" },
+  { src: "/fotos/grabados-anillo-inicial-m.jpg", alt: "Anillo en oro y plata con la inicial M grabada, sostenido en la mano" },
+  { src: "/fotos/grabados-anillo-inicial-g.jpg", alt: "Anillo en oro y plata con la inicial G grabada, sostenido en la mano" },
+  { src: "/fotos/grabados-anillo-iniciales-ms.jpg", alt: "Anillo de plata con las iniciales M y S grabadas en relieve" },
+  { src: "/fotos/grabados-dije-circulos-plata.jpg", alt: "Dije de círculos entrelazados en plata sobre cadena" },
+  { src: "/fotos/grabados-pulseras-plata.jpg", alt: "Pulseras de plata lisas y torneadas" },
+];
 
 const MATERIALES = [
   { titulo: "Oro", color: "var(--oro)" },
@@ -166,13 +176,13 @@ export default function GrabadosPersonalizadosPage() {
 
       {/* Qué piezas grabamos */}
       <section className="svc-section-sm" style={{ background: "var(--sunken)" }}>
-        <div className="svc-container svc-grid-2">
+        <div className="svc-container svc-grid-2" style={{ gap: 32 }}>
           <div>
             <Eyebrow color="var(--svc-text-secondary)">Qué piezas grabamos</Eyebrow>
             <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
               Para usar todos los días
             </h2>
-            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", maxWidth: 440, marginBottom: 20 }}>
+            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", maxWidth: 440, marginBottom: 12 }}>
               Grabamos sobre estas piezas, en oro o plata.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
@@ -195,15 +205,7 @@ export default function GrabadosPersonalizadosPage() {
             </div>
           </div>
 
-          <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 4 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/fotos/grabados-esclava-iniciales.jpg"
-              alt="Esclava de plata con las iniciales S y O grabadas en los extremos"
-              loading="lazy"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </div>
+          <ImageCarousel images={FOTOS_PIEZAS} aspectRatio="3 / 2" intervalMs={4000} label="Piezas que grabamos" />
         </div>
       </section>
 
