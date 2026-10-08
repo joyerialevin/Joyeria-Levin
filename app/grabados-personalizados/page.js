@@ -1,6 +1,101 @@
+import TasacionProcesoPasos from "../../components/TasacionProcesoPasos";
+
 const NUMERO_WHATSAPP = "5493434728312";
-const MSG = "Hola, vengo desde la página web. Quería consultar por grabados personalizados.";
 const linkWhatsApp = (mensaje) => `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(mensaje)}`;
+const LINK_MAPS = "https://www.google.com/maps/search/?api=1&query=Per%C3%BA+134+Paran%C3%A1+Entre+R%C3%ADos";
+
+const MSG_HERO = "Hola, vengo desde la página web. Quería consultar por un grabado personalizado.";
+const MSG_MATERIALES = "Hola, vengo desde la página web. Quería consultar por un grabado personalizado (oro o plata).";
+
+export const metadata = {
+  title: "Grabados personalizados en Paraná | Joyería Levin",
+  description:
+    "Grabamos nombres, iniciales, fechas y símbolos en oro y plata, sobre pulseras, anillos, dijes, relojes y otras piezas. Consultá disponibilidad y presupuesto por WhatsApp.",
+  openGraph: {
+    title: "Grabados personalizados en Paraná | Joyería Levin",
+    description: "Personalizá una pieza especial o dale un significado único a una joya que ya tenés.",
+    images: ["/fotos/grabados-anillo-inicial-m.jpg"],
+  },
+};
+
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  name: "Joyería y Relojería Levin",
+  image: "https://www.joyerialevin.com/fotos/grabados-anillo-inicial-m.jpg",
+  telephone: "+5493434728312",
+  url: "https://www.joyerialevin.com/grabados-personalizados",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Perú 134",
+    addressLocality: "Paraná",
+    addressRegion: "Entre Ríos",
+    addressCountry: "AR",
+  },
+};
+
+const QUE_GRABAR = [
+  {
+    titulo: "Nombres",
+    icono: <path d="M4 16c1.5-5 3-7 5-7s1.5 5 3.5 5 2-6 4-6 2.5 4 4.5 4" />,
+  },
+  {
+    titulo: "Iniciales",
+    icono: (
+      <>
+        <circle cx="9" cy="12" r="6" />
+        <circle cx="15" cy="12" r="6" />
+      </>
+    ),
+  },
+  {
+    titulo: "Fechas",
+    icono: (
+      <>
+        <rect x="4" y="5" width="16" height="15" rx="1" />
+        <path d="M4 9.5h16" />
+        <path d="M8 3v4M16 3v4" />
+      </>
+    ),
+  },
+  {
+    titulo: "Símbolos y otros diseños",
+    icono: <path d="M12 3l1.8 5.6L19 10.5l-5.2 1.9L12 18l-1.8-5.6L5 10.5l5.2-1.9z" />,
+  },
+];
+
+const QUE_PIEZAS = ["Pulseras", "Anillos", "Dijes", "Relojes", "Otras piezas"];
+
+const MATERIALES = [
+  { titulo: "Oro", color: "var(--oro)" },
+  { titulo: "Plata", color: "var(--svc-text-secondary)" },
+];
+
+const PROCESO = [
+  {
+    numero: "01",
+    titulo: "Elegí la pieza",
+    texto: "Buscá en nuestra joyería la pieza que más te guste.",
+  },
+  {
+    numero: "02",
+    titulo: "Definí el grabado",
+    texto: "Elegí qué querés grabar y la tipografía que preferís.",
+  },
+  {
+    numero: "03",
+    titulo: "Consultanos",
+    texto: "Escribinos por WhatsApp para confirmar el diseño, el presupuesto y el tiempo de entrega.",
+  },
+];
+
+function Eyebrow({ children, color = "var(--line)" }) {
+  return (
+    <div className="svc-eyebrow" style={{ margin: "0 0 12px", color }}>
+      {children}
+    </div>
+  );
+}
 
 function IconoWhatsApp({ size = 16 }) {
   return (
@@ -12,34 +107,161 @@ function IconoWhatsApp({ size = 16 }) {
 
 export default function GrabadosPersonalizadosPage() {
   return (
-    <section style={{ position: "relative", minHeight: "clamp(480px, 55vh, 560px)", display: "flex", alignItems: "center", background: "var(--ink)", overflow: "hidden" }}>
-      {/* Detalle gráfico sutil en oliva, a modo de trazo de grabado, mientras
-          no haya una fotografía real del servicio. */}
-      <svg
-        width="620"
-        height="620"
-        viewBox="0 0 620 620"
-        fill="none"
-        aria-hidden="true"
-        style={{ position: "absolute", right: "-120px", top: "50%", transform: "translateY(-50%)", opacity: 0.16 }}
-      >
-        <circle cx="310" cy="310" r="300" stroke="var(--oro)" strokeWidth="1" />
-        <circle cx="310" cy="310" r="246" stroke="var(--oro)" strokeWidth="1" />
-        <circle cx="310" cy="310" r="192" stroke="var(--oro)" strokeWidth="1" />
-        <path d="M310 10v600M10 310h600" stroke="var(--oro)" strokeWidth="1" />
-      </svg>
+    <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
 
-      <div className="svc-container" style={{ position: "relative" }}>
-        <div className="svc-eyebrow" style={{ color: "var(--line)" }}>Grabados personalizados</div>
-        <h1 className="svc-h1" style={{ color: "var(--porcelain)" }}>Próximamente</h1>
-        <p className="svc-lead" style={{ color: "var(--line)", maxWidth: 520 }}>
-          Estamos preparando esta sección. Mientras tanto, escribinos por WhatsApp y te ayudamos.
-        </p>
-        <a href={linkWhatsApp(MSG)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
-          <IconoWhatsApp />
-          Consultar por WhatsApp
-        </a>
-      </div>
-    </section>
+      {/* Hero */}
+      <section className="svc-hero">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/fotos/grabados-anillo-inicial-m.jpg"
+          alt="Anillo en oro y plata con la inicial M grabada, sostenido en la mano"
+          className="svc-hero-img"
+          style={{ objectPosition: "62% 42%" }}
+        />
+        <div className="svc-hero-overlay" />
+        <div className="svc-hero-content">
+          <div className="svc-container">
+            <Eyebrow>Grabados personalizados</Eyebrow>
+            <h1 className="svc-h1" style={{ color: "var(--porcelain)", textWrap: "balance" }}>
+              Piezas hechas para vos
+            </h1>
+            <p className="svc-lead" style={{ color: "var(--line)", maxWidth: 560 }}>
+              Personalizá una pieza especial o dale un significado único a una joya que ya tenés.
+            </p>
+            <div className="svc-btn-row">
+              <a href={linkWhatsApp(MSG_HERO)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
+                <IconoWhatsApp />
+                Consultar por WhatsApp
+              </a>
+              <a href={LINK_MAPS} target="_blank" rel="noopener noreferrer" className="svc-btn-secondary-dark">
+                Ver ubicación
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Qué podés grabar */}
+      <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
+        <div className="svc-container">
+          <Eyebrow color="var(--svc-text-secondary)">Personalización</Eyebrow>
+          <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
+            ¿Qué podés grabar?
+          </h2>
+          <div className="svc-grid-4">
+            {QUE_GRABAR.map((item) => (
+              <div key={item.titulo} className="svc-card" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {item.icono}
+                </svg>
+                <h3 className="svc-card-title" style={{ color: "var(--ink)", margin: 0 }}>
+                  {item.titulo}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Qué piezas grabamos */}
+      <section className="svc-section-sm" style={{ background: "var(--sunken)" }}>
+        <div className="svc-container svc-grid-2">
+          <div>
+            <Eyebrow color="var(--svc-text-secondary)">Qué piezas grabamos</Eyebrow>
+            <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
+              Para usar todos los días
+            </h2>
+            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", maxWidth: 440, marginBottom: 20 }}>
+              Grabamos sobre estas piezas, en oro o plata.
+            </p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {QUE_PIEZAS.map((p) => (
+                <span
+                  key={p}
+                  style={{
+                    padding: "7px 16px",
+                    borderRadius: 999,
+                    background: "var(--porcelain)",
+                    border: "1px solid var(--line)",
+                    fontFamily: "var(--font-sans)",
+                    fontSize: 13.5,
+                    color: "var(--ink)",
+                  }}
+                >
+                  {p}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", borderRadius: 4 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/fotos/grabados-esclava-iniciales.jpg"
+              alt="Esclava de plata con las iniciales S y O grabadas en los extremos"
+              loading="lazy"
+              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Materiales */}
+      <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
+        <div className="svc-container">
+          <Eyebrow color="var(--svc-text-secondary)">Materiales</Eyebrow>
+          <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
+            ¿Sobre qué materiales trabajamos?
+          </h2>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 24, marginBottom: 32 }}>
+            {MATERIALES.map((m) => (
+              <div
+                key={m.titulo}
+                className="svc-card"
+                style={{ flex: "1 1 220px", display: "flex", alignItems: "center", gap: 14 }}
+              >
+                <span style={{ width: 22, height: 22, borderRadius: "50%", background: m.color, flexShrink: 0 }} aria-hidden="true" />
+                <h3 className="svc-card-title" style={{ color: "var(--ink)", margin: 0 }}>
+                  {m.titulo}
+                </h3>
+              </div>
+            ))}
+          </div>
+          <p className="svc-body svc-prose" style={{ color: "var(--svc-text-secondary)", marginBottom: 28 }}>
+            Podés elegir la tipografía que más te guste. La posibilidad de realizar cada diseño dependerá del
+            tamaño, la forma y el espacio disponible en la pieza.
+          </p>
+          <a href={linkWhatsApp(MSG_MATERIALES)} target="_blank" rel="noopener noreferrer" className="svc-btn-primary">
+            <IconoWhatsApp />
+            Consultar por WhatsApp
+          </a>
+        </div>
+      </section>
+
+      {/* Cómo solicitar tu grabado */}
+      <section className="svc-section-sm" style={{ background: "var(--sunken)" }}>
+        <div className="svc-container">
+          <Eyebrow color="var(--svc-text-secondary)">El proceso</Eyebrow>
+          <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
+            Cómo solicitar tu grabado
+          </h2>
+          <TasacionProcesoPasos pasos={PROCESO} />
+
+          <div className="svc-card" style={{ marginTop: 32 }}>
+            <h3 className="svc-card-title" style={{ color: "var(--ink)" }}>
+              ¿Ya tenés una pieza?
+            </h3>
+            <p className="svc-body" style={{ color: "var(--svc-text-secondary)", margin: "0 0 20px" }}>
+              También podés traer una pieza que ya tengas. La evaluaremos y, antes de comenzar, te informaremos
+              si es posible realizar el grabado, cuál es el presupuesto y cuánto tiempo llevará.
+            </p>
+            <a href={LINK_MAPS} target="_blank" rel="noopener noreferrer" className="svc-btn-secondary">
+              Ver ubicación
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }
