@@ -98,8 +98,8 @@ const PROCESO = [
   },
   {
     numero: "03",
-    titulo: "Consultanos",
-    texto: "Escribinos por WhatsApp para confirmar el diseño, el presupuesto y el tiempo de entrega.",
+    titulo: "Retirá tu pieza grabada",
+    texto: "Una vez confirmado el diseño y el presupuesto, realizamos el grabado y te avisamos por WhatsApp cuando tu pieza esté lista.",
   },
 ];
 
