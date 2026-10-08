@@ -1,11 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const NUMERO_WHATSAPP = "5493434728312";
-const LINK_WHATSAPP = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(
-  "Hola, vengo desde la página web. Quería consultar por un servicio."
-)}`;
-
 const SERVICIOS = [
   {
     href: "/service-relojeria",
@@ -110,15 +105,6 @@ export default function ServiciosInicio() {
               </div>
             </Link>
           ))}
-        </div>
-
-        <div className="servicios-inicio-cierre">
-          <p className="servicios-inicio-cierre-texto">
-            ¿No sabés qué necesita tu pieza? Mandanos una foto y te orientamos.
-          </p>
-          <a href={LINK_WHATSAPP} target="_blank" rel="noopener noreferrer" className="servicios-inicio-cierre-btn">
-            Consultar por WhatsApp
-          </a>
         </div>
       </div>
     </section>
