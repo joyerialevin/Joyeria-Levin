@@ -9,7 +9,6 @@ const MSG_DIA_MADRE = "Hola! Quería consultar por los regalos del Día de la Ma
 const LINK_WHATSAPP_DIA_MADRE = `https://api.whatsapp.com/send?phone=${NUMERO_WHATSAPP}&text=${encodeURIComponent(MSG_DIA_MADRE)}`;
 
 const INTERVALO_MS = 5000;
-const INDICE_DIA_MADRE = 1;
 
 const SLIDES = [
   {
@@ -285,15 +284,12 @@ export default function HomeHeroCarousel() {
       </div>
     </section>
 
-    {/* El bloque de accesos del Día de la Madre solo corresponde al
-        segundo banner. Se muestra/oculta con una transición suave de
-        alto (grid-template-rows 0fr/1fr) en vez de aparecer o
-        desaparecer de golpe cuando cambia el slide. */}
-    <div className={`home-hero-extra${activo === INDICE_DIA_MADRE ? " is-open" : ""}`}>
-      <div>
-        <BannerDiaDeLaMadre />
-      </div>
-    </div>
+    {/* Las tarjetas de acceso (Joyas/Relojes/Personalizados) quedan
+        siempre visibles debajo del hero, sin importar qué slide esté
+        activo — antes se ocultaban con el banner institucional y
+        reaparecían cada 5s con el del Día de la Madre, lo que se veía
+        como si "se borraran" solas todo el tiempo. */}
+    <BannerDiaDeLaMadre />
     </>
   );
 }

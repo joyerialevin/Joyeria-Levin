@@ -647,18 +647,3 @@ a{ color:inherit; text-decoration:none; }
   .home-hero-arrow{ top: auto; bottom: 14px; transform: none; }
 }
 
-/* Bloque de accesos del Día de la Madre debajo del hero: solo debe
-   verse cuando ese es el slide activo del carrusel. Se anima el alto
-   con la técnica de grid-template-rows 0fr/1fr (no hace falta medir
-   la altura real en JS) para que aparezca/desaparezca con una
-   transición suave en vez de un salto brusco. */
-.home-hero-extra{
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 450ms ease;
-}
-.home-hero-extra.is-open{ grid-template-rows: 1fr; }
-.home-hero-extra > div{ overflow: hidden; min-height: 0; }
-@media (prefers-reduced-motion: reduce){
-  .home-hero-extra{ transition: none; }
-}
