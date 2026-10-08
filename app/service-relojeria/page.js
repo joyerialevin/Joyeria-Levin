@@ -103,7 +103,7 @@ export default function ServiceRelojeriaPage() {
   return (
     <div style={{ overflowX: "hidden" }}>
       {/* Hero */}
-      <section className="svc-hero">
+      <section className="svc-hero svc-hero--tall">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/service-tecnico-hero.jpg"

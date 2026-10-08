@@ -111,7 +111,7 @@ export default function GrabadosPersonalizadosPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }} />
 
       {/* Hero */}
-      <section className="svc-hero">
+      <section className="svc-hero svc-hero--tall">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/fotos/grabados-anillo-inicial-m.jpg"
