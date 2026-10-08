@@ -38,10 +38,12 @@ const JSON_LD = {
 const QUE_GRABAR = [
   {
     titulo: "Nombres",
+    ejemplo: "Ej.: Ana",
     icono: <path d="M4 16c1.5-5 3-7 5-7s1.5 5 3.5 5 2-6 4-6 2.5 4 4.5 4" />,
   },
   {
     titulo: "Iniciales",
+    ejemplo: "Ej.: A · M",
     icono: (
       <>
         <circle cx="9" cy="12" r="6" />
@@ -51,6 +53,7 @@ const QUE_GRABAR = [
   },
   {
     titulo: "Fechas",
+    ejemplo: "Ej.: 08.10.26",
     icono: (
       <>
         <rect x="4" y="5" width="16" height="15" rx="1" />
@@ -60,7 +63,8 @@ const QUE_GRABAR = [
     ),
   },
   {
-    titulo: "Símbolos y otros diseños",
+    titulo: "Símbolos y diseños",
+    ejemplo: "Consultanos por tu idea",
     icono: <path d="M12 3l1.8 5.6L19 10.5l-5.2 1.9L12 18l-1.8-5.6L5 10.5l5.2-1.9z" />,
   },
 ];
@@ -153,21 +157,22 @@ export default function GrabadosPersonalizadosPage() {
       </section>
 
       {/* Qué podés grabar */}
-      <section className="svc-section-sm" style={{ background: "var(--porcelain)" }}>
-        <div className="svc-container">
-          <Eyebrow color="var(--svc-text-secondary)">Personalización</Eyebrow>
-          <h2 className="svc-h2" style={{ color: "var(--ink)" }}>
-            ¿Qué podés grabar?
-          </h2>
-          <div className="svc-grid-4">
+      <section className="grab-que-section">
+        <div className="grab-que-container">
+          <div className="grab-eyebrow">Personalización</div>
+          <h2 className="grab-title">¿Qué podés grabar?</h2>
+          <div className="grab-grid">
             {QUE_GRABAR.map((item) => (
-              <div key={item.titulo} className="svc-card" style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  {item.icono}
-                </svg>
-                <h3 className="svc-card-title" style={{ color: "var(--ink)", margin: 0 }}>
-                  {item.titulo}
-                </h3>
+              <div key={item.titulo} className="grab-card">
+                <div className="grab-icon-wrap">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--oro)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    {item.icono}
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="grab-card-title">{item.titulo}</h3>
+                  <p className="grab-card-example">{item.ejemplo}</p>
+                </div>
               </div>
             ))}
           </div>
