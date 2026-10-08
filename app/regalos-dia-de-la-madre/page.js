@@ -140,8 +140,8 @@ export default function RegalosDiaDeLaMadrePage() {
               siempre cerca.
             </h2>
             <p>
-              El dije de niño en oro 18K es uno de esos regalos que guardan un significado especial.
-              Completá el conjunto con cadena, anillo y pulseras para usar juntos o por separado.
+              El dije de niño en oro 18k es una pieza para usar todos los días y atesorar para siempre. Un
+              símbolo de ese vínculo único que una mamá lleva siempre cerca.
             </p>
             <a href="#" className="btn btn-dark js-wa" data-msg="Hola! Quiero consultar por el dije de niño en oro 18K">
               CONSULTAR DISPONIBILIDAD
