@@ -5,6 +5,7 @@ import CategoryStrip from "../components/CategoryStrip";
 import BrandStrip from "../components/BrandStrip";
 import NovedadesSection from "../components/NovedadesSection";
 import HomeHeroCarousel from "../components/HomeHeroCarousel";
+import ServiciosInicio from "../components/ServiciosInicio";
 import BeneficiosStrip from "../components/BeneficiosStrip";
 import VisitanosSection from "../components/VisitanosSection";
 
@@ -94,6 +95,12 @@ export default async function HomePage() {
   return (
     <>
       <HomeHeroCarousel />
+
+      {/* Debajo del banner de Día de la Madre (que vive adentro de
+          HomeHeroCarousel.js) y antes de Nuevos ingresos. Cuando se
+          saque ese banner, esta sección queda directamente debajo
+          del hero. */}
+      <ServiciosInicio />
 
       <BeneficiosStrip />
       <NovedadesSection productos={novedades} />
