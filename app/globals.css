@@ -1018,3 +1018,20 @@ a{ color:inherit; text-decoration:none; }
   .servicios-inicio-card-content{ flex-direction:row; align-items:flex-end; justify-content:space-between; gap:16px; padding:20px; }
   .servicios-inicio-card-arrow{ display:flex; }
 }
+
+/* ============================================================
+   Franja de aviso fija arriba de todo el sitio (AvisoCatalogo.js),
+   encima de la cinta animada de promociones (AnnouncementBar.js).
+   ============================================================ */
+.aviso-catalogo{ background:#26261F; border-bottom:1px solid #3A3A2F; }
+.aviso-catalogo-inner{ position:relative; max-width:1240px; margin:0 auto; padding:10px 56px; display:flex; align-items:center; justify-content:center; }
+.aviso-catalogo-texto{ margin:0; font-family:var(--font-sans); font-size:14px; line-height:1.4; color:#FDFCF8; text-align:center; }
+.aviso-catalogo-link{ font-weight:700; color:#FDFCF8; text-decoration:underline; text-decoration-color:#B9AF8F; text-underline-offset:4px; }
+.aviso-catalogo-cerrar{ position:absolute; right:10px; top:50%; transform:translateY(-50%); width:32px; height:32px; display:flex; align-items:center; justify-content:center; background:none; border:none; padding:0; color:#DCD5BE; cursor:pointer; }
+
+@media (max-width:760px){
+  .aviso-catalogo-inner{ padding:11px 52px; }
+  .aviso-catalogo-texto{ font-size:13px; }
+  .aviso-catalogo-link{ display:block; margin-top:2px; }
+  .aviso-catalogo-cerrar{ width:44px; height:44px; right:0; }
+}
