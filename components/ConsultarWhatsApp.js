@@ -26,7 +26,7 @@ export default function ConsultarWhatsApp({ titulo, imagenUrl, onClick, compacto
         textAlign: "center",
       }}
     >
-      Consultar por WhatsApp
+      Consultar disponibilidad
     </a>
   );
 }
