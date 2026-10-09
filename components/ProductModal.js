@@ -154,6 +154,11 @@ export default function ProductModal({ producto, subtitulo, onClose }) {
             <h3 className="display" style={{ fontSize: 26, marginBottom: 6 }}>
               {producto.titulo}
             </h3>
+            {producto.codigo && (
+              <div style={{ fontSize: 10.5, color: "var(--ink-soft)", opacity: 0.6, marginBottom: 2 }}>
+                Cód. interno: {producto.codigo}
+              </div>
+            )}
             {producto.precio && !producto.ocultar_precio ? (
               <div style={{ marginTop: 24 }}>
                 <div style={{ display: "flex", alignItems: "baseline", justifyContent: "flex-start", gap: 10, flexWrap: "wrap" }}>
