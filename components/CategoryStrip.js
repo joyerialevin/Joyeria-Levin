@@ -54,7 +54,7 @@ function GeneroBox({ catSlug }) {
 export default function CategoryStrip({ categorias }) {
   return (
     <section style={{ background: "var(--sunken)", borderTop: "1px solid var(--line)" }}>
-      <div className="container" style={{ padding: "88px 6% 84px" }}>
+      <div className="container" style={{ padding: "60px 6% 60px" }}>
         <div
           style={{
             display: "flex",

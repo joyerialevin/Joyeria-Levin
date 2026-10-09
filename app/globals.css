@@ -854,8 +854,8 @@ a{ color:inherit; text-decoration:none; }
    "Nuestros servicios" en la home (ServiciosInicio.js) — 3 tarjetas
    grandes con foto que llevan a cada página de servicio.
    ============================================================ */
-.servicios-inicio{ background:#FDFCF8; padding:96px 0; }
-@media (max-width:760px){ .servicios-inicio{ padding:56px 0; } }
+.servicios-inicio{ background:#FDFCF8; padding:64px 0; }
+@media (max-width:760px){ .servicios-inicio{ padding:40px 0; } }
 
 .servicios-inicio-head{
   display:flex;

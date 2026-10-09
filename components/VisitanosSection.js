@@ -1,7 +1,7 @@
 export default function VisitanosSection() {
   return (
     <section id="visitanos" style={{ background: "rgba(130,120,56,0.16)" }}>
-      <div className="container visitanos-grid" style={{ padding: "56px 6% 70px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
+      <div className="container visitanos-grid" style={{ padding: "48px 6% 56px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 56, alignItems: "center" }}>
         <div
           style={{
             borderRadius: "var(--radius-sm)",

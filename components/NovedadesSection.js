@@ -59,7 +59,7 @@ export default function NovedadesSection({ productos }) {
 
   return (
     <section style={{ background: "var(--card-bg)" }}>
-      <div className="container" style={{ padding: "84px 6% 84px" }}>
+      <div className="container" style={{ padding: "64px 6% 60px" }}>
         <div
           style={{
             display: "flex",
